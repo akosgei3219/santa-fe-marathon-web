@@ -119,6 +119,9 @@ venue/hours stripped, cancelled-Expo entry removed). The repo's
 footer-block.html was updated to 2027 in the same sitting; mega-menu.html
 was already 2027-aware. Intentional 2026 mentions remain only as history:
 the menu's sold-out note, its 2026 Archive section, and the results CTA.
+A phone-layout audit later surfaced one more remnant - the race cards'
+2026 start times - fixed with the mobile polish in 9660f54 (cards now
+say 2027 time-TBA; note the 5K moved to Saturday for 2027) and deployed.
 
 ## If it goes wrong
 
