@@ -96,12 +96,23 @@ Relay), date-only `startDate`/`endDate`, `EventScheduled`, and **no offers
 array** — registration isn't open and the 2027 RunSignup race doesn't
 exist, so an offer would have pointed at the closed 2026 page.
 
-**When 2027 registration opens** (single follow-up commit):
-- restore `offers` with the new RunSignup race ID, one Offer per event,
-  `availability: https://schema.org/InStock`, real `validThrough`
-- swap every registration link in the page body — as of the switchover
-  there are 7 (`raceId=83604` ×4 and the 2026 race-page URL ×3)
+**The 2027 RunSignup race exists: raceId 89412** (created late Sept 2026,
+page up, entries NOT open yet). The homepage's three registration URLs
+(`REG_URL`, the concierge register answer, the Kids CTA) already point at
+`https://runsignup.com/Race/Register/?raceId=89412`; they only render in
+the open/walkup states, so nothing user-facing changed.
+
+**When 2027 registration actually opens** (single follow-up commit):
+- set the 2027 `REG_CLOSE` / `WALKUP_CLOSE` constants (close date was
+  undecided when the race was created) and rewrite the open-state copy —
+  the current open-branch strings still describe the 2026 deadlines
+- restore schema `offers`: one Offer per event (Half, Relay, 5K, 10K,
+  Kids Dash), url with raceId 89412, `availability: InStock`, real
+  `validThrough` once the close date exists
 - confirm exact start times and put them back in `startDate`
+- sweep the legacy WordPress paste blocks/components for `raceId=83604`
+  before any of them are re-pasted (hero, race-grid, paste-bundle,
+  urgency/referral components) — they were left untouched deliberately
 
 Two more copies of the event schema live in **WordPress, not this repo**:
 All in One SEO's schema settings, and the Corre Santa Fe page. Both were
