@@ -110,14 +110,15 @@ brought in line with the 2027 values on 2026-09-23 and verified clean
 including the registration-opens update above - change those two in the
 same sitting, or Google sees conflicting events.
 
-## Known remaining 2026 references (WordPress-side, as of the switchover)
+## 2026 references: all cleared (2026-09-23)
 
-- Menu: packet pickup still Running Hub/2026 hours; "Health & Wellness
-  Expo (cancelled)" entry
-
-(The Elementor footer date and both AIOSEO schema copies were fixed and
-verified 2026-09-23; the repo's footer-block.html paste block was updated
-to 2027 in the same sitting.)
+The switchover is complete site-wide. Fixed and verified logged-out, in
+order: homepage tiles + embedded JSON-LD (deployed), both AIOSEO schema
+copies, the Elementor footer date, and the menu (packet-pickup 2026
+venue/hours stripped, cancelled-Expo entry removed). The repo's
+footer-block.html was updated to 2027 in the same sitting; mega-menu.html
+was already 2027-aware. Intentional 2026 mentions remain only as history:
+the menu's sold-out note, its 2026 Archive section, and the results CTA.
 
 ## If it goes wrong
 
