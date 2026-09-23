@@ -102,14 +102,22 @@ page up, entries NOT open yet). The homepage's three registration URLs
 `https://runsignup.com/Race/Register/?raceId=89412`; they only render in
 the open/walkup states, so nothing user-facing changed.
 
-**When 2027 registration actually opens** (single follow-up commit):
-- set the 2027 `REG_CLOSE` / `WALKUP_CLOSE` constants (close date was
-  undecided when the race was created) and rewrite the open-state copy —
-  the current open-branch strings still describe the 2026 deadlines
-- restore schema `offers`: one Offer per event (Half, Relay, 5K, 10K,
-  Kids Dash), url with raceId 89412, `availability: InStock`, real
-  `validThrough` once the close date exists
-- confirm exact start times and put them back in `startDate`
+**2027 registration OPENED (executed 2026-09-23, same pattern as 2026):**
+online closes Thursday Sept 16, 2027 11:59 PM MDT (`REG_CLOSE`); 5K
+walk-ups until Sat Sept 18 7:45 AM (`WALKUP_CLOSE`); all open/walkup/
+closed state copy rewritten for 2027 EN+ES (the closed branch now reads
+as post-close, since "not open yet" can never render again); the
+packet-pickup FAQ no longer claims the 2026 sold-out state; schema
+carries 5 InStock offers (Half, Relay, 5K, 10K, Kids Dash) on raceId
+89412 with validThrough at the online close. The driver's two sold-out
+probes were rewritten to assert the open state.
+
+**Still pending after opening day:**
+- `RACE_START` is a PLACEHOLDER (Sun Sept 19, 2027 07:30) — update when
+  official start times are confirmed, along with the schema startDate
+  times and the race-card time-TBA notes
+- 2027 packet-pickup hours are TBA in several strings — search
+  "hours to be announced" / "horario por anunciar" when they're set
 - sweep the legacy WordPress paste blocks/components for `raceId=83604`
   before any of them are re-pasted (hero, race-grid, paste-bundle,
   urgency/referral components) — they were left untouched deliberately

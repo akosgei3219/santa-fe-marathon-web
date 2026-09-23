@@ -1,6 +1,6 @@
 <title>Run Santa Fe 2026</title>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SportsEvent","name":"Santa Fe International Half Marathon 2027","alternateName":"Capitol Ford Santa Fe International Half Marathon","sport":"Running","description":"6th annual Santa Fe International Half Marathon race weekend at 7,000 ft in Santa Fe, New Mexico. Saturday, September 18, 2027: 5K, 10K, and free Kids 1K Dash. Sunday, September 19, 2027: Half Marathon and 3-Amigos Relay. 2027 courses to be USATF-certified; registration opens soon.","startDate":"2027-09-18","endDate":"2027-09-19","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","image":"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-startline.jpg","url":"https://santafehalfmarathon.com/","location":{"@type":"Place","name":"Romero's Park, Agua Fria (start) to Reunity Resources Farm (finish)","address":{"@type":"PostalAddress","streetAddress":"3901 Camino Carlos Rael","addressLocality":"Santa Fe","addressRegion":"NM","postalCode":"87507","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":35.65914276,"longitude":-106.02618269}},"organizer":{"@type":"Organization","name":"Santa Fe International Half Marathon","url":"https://santafehalfmarathon.com/","email":"info@santafehalfmarathon.com","telephone":"+15059209799"}}
+{"@context":"https://schema.org","@type":"SportsEvent","name":"Santa Fe International Half Marathon 2027","alternateName":"Capitol Ford Santa Fe International Half Marathon","sport":"Running","description":"6th annual Santa Fe International Half Marathon race weekend at 7,000 ft in Santa Fe, New Mexico. Saturday, September 18, 2027: 5K, 10K, and free Kids 1K Dash. Sunday, September 19, 2027: Half Marathon and 3-Amigos Relay. 2027 courses to be USATF-certified; registration is open on RunSignup.","startDate":"2027-09-18","endDate":"2027-09-19","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","image":"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-startline.jpg","url":"https://santafehalfmarathon.com/","location":{"@type":"Place","name":"Romero's Park, Agua Fria (start) to Reunity Resources Farm (finish)","address":{"@type":"PostalAddress","streetAddress":"3901 Camino Carlos Rael","addressLocality":"Santa Fe","addressRegion":"NM","postalCode":"87507","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":35.65914276,"longitude":-106.02618269}},"organizer":{"@type":"Organization","name":"Santa Fe International Half Marathon","url":"https://santafehalfmarathon.com/","email":"info@santafehalfmarathon.com","telephone":"+15059209799"},"offers":[{"@type":"Offer","name":"Half Marathon (13.1 MI)","availability":"https://schema.org/InStock","validThrough":"2027-09-16T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=89412"},{"@type":"Offer","name":"3-Amigos Relay (team of 3)","availability":"https://schema.org/InStock","validThrough":"2027-09-16T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=89412"},{"@type":"Offer","name":"Santa Fe 5K (3.1 MI)","availability":"https://schema.org/InStock","validThrough":"2027-09-16T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=89412"},{"@type":"Offer","name":"Santa Fe 10K (6.2 MI)","availability":"https://schema.org/InStock","validThrough":"2027-09-16T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=89412"},{"@type":"Offer","name":"Kids 1K Dash (ages 3-12)","availability":"https://schema.org/InStock","validThrough":"2027-09-16T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=89412"}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -463,14 +463,17 @@ function Ic({name,size=22,color}){
   return <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>;
 }
 
-const RACE_START = new Date("2026-09-20T07:30:00-06:00");
+/* 2027 main event is Sunday Sept 19; 7:30 is a PLACEHOLDER until start times are
+   confirmed. Saturday races (5K, 10K, Kids Dash) are Sept 18. */
+const RACE_START = new Date("2027-09-19T07:30:00-06:00");
 const REG_URL = "https://runsignup.com/Race/Register/?raceId=89412";
-/* online registration closes Saturday Sept 19, 5:00 PM MDT for every race; register buttons switch to a closed state after it */
-const REG_CLOSE = new Date("2026-09-17T23:59:00-06:00");
+/* 2027, mirroring the 2026 pattern: online registration closes the Thursday before
+   race weekend at 11:59 PM MDT; register buttons switch state after it */
+const REG_CLOSE = new Date("2027-09-16T23:59:00-06:00");
 /* Kosgei 9/13: after the online close ONLY the Santa Fe 5K takes walk-up entries on race morning, $50, until 7:45 AM.
    No location was given, so the copy names none. States: open, walkup (Sat 5 PM to Sun 7:45 AM), closed.
    ?regnow=<epoch ms> previews a state for QA; it only changes these labels. */
-const WALKUP_CLOSE = new Date("2026-09-19T10:00:00-06:00");
+const WALKUP_CLOSE = new Date("2027-09-18T07:45:00-06:00");
 const REG_NOW = (()=>{try{const v=new URLSearchParams(location.search).get("regnow");if(v&&/^\d{13}$/.test(v))return Number(v);}catch(e){}return Date.now();})();
 const REG_STATE = REG_NOW<REG_CLOSE.getTime() ? "open" : (REG_NOW<WALKUP_CLOSE.getTime() ? "walkup" : "closed");
 /* 2026-09-23 (Kosgei): a FOURTH state for the nav anchor button -- on race day only, it
@@ -609,8 +612,8 @@ en:{
     kids:{name:"Kids Dash",dist:"1 KM",blurb:"Ages 3–12, Saturday, Sept 18, 2027 at Reunity Resources Farm — start time to be announced. Every kid gets a bib and a finish line to remember.",note:"Sat, Sept 18, 2027 · time TBA · Reunity Resources Farm"}
   },
   register:"Register",
-  regClosed:"2027 registration not open yet",
-  walkup5k:"Walk-up entry at the start line Sunday until 7:45 AM",
+  regClosed:"2027 online registration closed",
+  walkup5k:"Walk-up entry at the start line Saturday until 7:45 AM",
   walkupShort:"5K walk-ups until 7:45 AM",
   registerFor:(n)=>"Register for the "+n,
   courseKicker:"The 2026 course",courseTitle:"Romero's Park to Reunity, the long way round",
@@ -709,7 +712,7 @@ en:{
   lodgeName:"Concept Hotel Group",
   lodgeStatement:"Concept Hotel Group is the Official Lodging Partner of the 2026 Santa Fe International Half Marathon.",
   lodgeProps:["The Sage Hotel","Coyote South","Inn at Santa Fe","Guadalupe Inn"],
-  lodgeHow:"To secure discounted race rates, email starla@concepthotelgroup.com or call 505-772-0476 and use promo code SHM.",
+  lodgeHow:"To secure discounted race rates, email starla@concepthotelgroup.com or call 505-772-0476 and use promo code SHM.",lodgeCta:"Email Starla",
   pecosEyebrow:"Also offering race rates",pecosName:"Pecos Trail Inn",
   pecosDetail:"Classic Santa Fe motor-court charm on the Old Pecos Trail. 15% off for race week, Wednesday September 16 to Tuesday September 22 \u2014 book direct.",
   code:"Booking code",copy:"Copy code",copied:"Copied!",
@@ -738,10 +741,10 @@ en:{
   faqKicker:"Good to know",faqTitle:"FAQ",
   faqs:[
     {q:"How do I handle the altitude?",a:"Santa Fe sits at 7,000 feet, and it hits different if you're coming from sea level. Arrive two or three days early if you can, keep a water bottle glued to your hand all week, ease off the pace on the climbs, and don't judge your fitness by your first shakeout here. The air is thin; that's the point."},
-    {q:"Where is packet pickup?",a:"Friday, Sept 18 from 12–6 PM and Saturday, Sept 19 from 10 AM–5 PM. Pick up your bib and shirt at the Running Hub, 1100 Don Diego Ave, Suite B. The 2026 race is sold out, so no new entries are available. Half Marathon and 3-Amigos Relay runners can also pick up race morning, 6:00–7:00 AM at Romero's Park (the start line). 5K runners pick up at the Running Hub."},
+    {q:"Where is packet pickup?",a:"For the 2027 race weekend: Friday, Sept 17 and Saturday, Sept 18 at Reunity Resources Farm — hours to be announced. Pick up your bib and shirt there for every race."},
     {q:"How does the relay sash work?",a:"The 3-Amigos Relay uses a ceremonial sash instead of a baton. Runner one wears it from the start, hands it off at each exchange zone, and runner three wears it across the line. The sash is chip-timed — no sash at the finish, no team time."},
     {q:"Is there a time limit?",a:"Yes — the half marathon course is fully supported for 4.5 hours after the 7:30 AM start. If you're near the back you'll still get a finish line; the course simply reopens to traffic on that schedule."},
-    {q:"When does registration close?",a:({open:"Online registration closes Saturday, September 19 at 5:00 PM for every race: the Half Marathon, the 3-Amigos Relay, the Santa Fe 5K and the free Kids 1K Dash. Sign up on RunSignup before then.",walkup:"Online registration closed Thursday, September 17. You can register in person for any race during packet pickup hours and pay on site. On race morning, the Santa Fe 5K also takes walk-up entries at the 5K start line at Reunity Resources Farm, until 7:45 AM.",closed:"Registration for 2027 isn't open yet. Race weekend is Saturday, Sept 18 – Sunday, Sept 19, 2027. Sign up for race updates to hear when it opens."})[REG_STATE]},
+    {q:"When does registration close?",a:({open:"Online registration closes Thursday, September 16, 2027 at 11:59 PM for every race: the Half Marathon, the 3-Amigos Relay, the 5K, the new Saturday 10K, and the free Kids 1K Dash. Sign up on RunSignup before then.",walkup:"Online registration closed Thursday, September 16. You can register in person during packet pickup at Reunity Resources Farm (hours to be announced). On Saturday morning, the 5K takes walk-up entries at the start line until 7:45 AM.",closed:"Online registration for the 2027 race weekend has closed. Sign up for race updates for any late-entry announcements."})[REG_STATE]},
     {q:"Can I defer or transfer my entry?",a:"Entries are non-refundable. The free deferral and bib-transfer window closed on September 10, 2026, so entries can no longer be deferred or transferred, and there are no race-day changes."}
   ],
   bannerDate:"Next race: Sept 18–19, 2027",
@@ -812,8 +815,8 @@ es:{
     kids:{name:"Kids Dash",dist:"1 KM",blurb:"De 3 a 12 años, el sábado 18 de septiembre de 2027 en Reunity Resources Farm — hora por anunciar. Cada niño recibe un número y una meta para recordar.",note:"Sáb 18 sept 2027 · hora por anunciar · Reunity Resources Farm"}
   },
   register:"Inscríbete",
-  regClosed:"Inscripción 2027 aún no abierta",
-  walkup5k:"Inscripción en persona en la salida el domingo hasta las 7:45 AM",
+  regClosed:"Inscripción en línea 2027 cerrada",
+  walkup5k:"Inscripción en persona en la salida el sábado hasta las 7:45 AM",
   walkupShort:"5K en persona hasta 7:45 AM",
   registerFor:(n)=>"Inscríbete en el "+n,
   courseKicker:"La ruta 2026",courseTitle:"De Romero's Park a Reunity, por el camino largo",
@@ -912,7 +915,7 @@ es:{
   lodgeName:"Concept Hotel Group",
   lodgeStatement:"Concept Hotel Group es el socio oficial de hospedaje del Medio Maratón Internacional de Santa Fe 2026.",
   lodgeProps:["The Sage Hotel","Coyote South","Inn at Santa Fe","Guadalupe Inn"],
-  lodgeHow:"Para asegurar tarifas de carrera con descuento, escribe a starla@concepthotelgroup.com o llama al 505-772-0476 y usa el código promocional SHM.",
+  lodgeHow:"Para asegurar tarifas de carrera con descuento, escribe a starla@concepthotelgroup.com o llama al 505-772-0476 y usa el código promocional SHM.",lodgeCta:"Escribir a Starla",
   pecosEyebrow:"Tambi\u00e9n con tarifa de carrera",pecosName:"Pecos Trail Inn",
   pecosDetail:"Encanto clásico de motor-court en el Old Pecos Trail. 15% de descuento para la semana de carrera, del mi\u00e9rcoles 16 al martes 22 de septiembre \u2014 reserva directo.",
   code:"Código de reserva",copy:"Copiar código",copied:"¡Copiado!",
@@ -941,10 +944,10 @@ es:{
   faqKicker:"Bueno saberlo",faqTitle:"Preguntas frecuentes",
   faqs:[
     {q:"¿Cómo manejo la altitud?",a:"Santa Fe está a 7,000 pies, y se siente distinto si vienes del nivel del mar. Llega dos o tres días antes si puedes, trae una botella de agua pegada a la mano toda la semana, baja el ritmo en las subidas, y no juzgues tu condición por tu primer trote aquí. El aire es delgado; de eso se trata."},
-    {q:"¿Dónde es la entrega de paquetes?",a:"Viernes 18 de sept de 12–6 PM y sábado 19 de sept de 10 AM–5 PM. Recoge tu número y playera en The Running Hub, 1100 Don Diego Ave, Suite B. La carrera 2026 está agotada, así que ya no hay inscripciones disponibles. Los corredores del Medio Maratón y del Relevo 3-Amigos también pueden recogerlo la mañana de la carrera, de 6:00 a 7:00 AM en Romero's Park (la salida). Los del 5K lo recogen en The Running Hub."},
+    {q:"¿Dónde es la entrega de paquetes?",a:"Para el fin de semana 2027: viernes 17 y sábado 18 de septiembre en Reunity Resources Farm — horario por anunciar. Ahí recoges tu número y playera para todas las carreras."},
     {q:"¿Cómo funciona la banda del relevo?",a:"El Relevo 3-Amigos usa una banda ceremonial en lugar de testigo. El primer corredor la lleva desde la salida, la entrega en cada zona de cambio, y el tercero cruza la meta con ella puesta. La banda lleva el chip — sin banda en la meta, no hay tiempo de equipo."},
     {q:"¿Hay límite de tiempo?",a:"Sí — el medio maratón tiene apoyo completo durante 4.5 horas desde la salida de 7:30 AM. Si vas al final, igual tendrás tu meta; la ruta simplemente se reabre al tráfico en ese horario."},
-    {q:"¿Cuándo cierra la inscripción?",a:({open:"La inscripción en línea cierra el sábado 19 de septiembre a las 5:00 PM para todas las carreras: el Medio Maratón, el Relevo 3-Amigos, el Santa Fe 5K y el Kids 1K Dash gratuito. Inscríbete en RunSignup antes de esa hora.",walkup:"La inscripción en línea cerró el jueves 17 de septiembre. Puedes inscribirte en persona para cualquier carrera durante el horario de entrega de paquetes y pagar ahí mismo. La mañana de la carrera, el Santa Fe 5K también acepta inscripciones en la salida del 5K en Reunity Resources Farm, hasta las 7:45 AM.",closed:"La inscripción para 2027 aún no está abierta. El fin de semana de carrera es del sábado 18 al domingo 19 de septiembre de 2027. Suscríbete a las novedades de la carrera para saber cuándo abre."})[REG_STATE]},
+    {q:"¿Cuándo cierra la inscripción?",a:({open:"La inscripción en línea cierra el jueves 16 de septiembre de 2027 a las 11:59 PM para todas las carreras: el Medio Maratón, el Relevo 3-Amigos, el 5K, el nuevo 10K del sábado y el Kids 1K Dash gratuito. Inscríbete en RunSignup antes de esa hora.",walkup:"La inscripción en línea cerró el jueves 16 de septiembre. Puedes inscribirte en persona durante la entrega de paquetes en Reunity Resources Farm (horario por anunciar). El sábado por la mañana, el 5K acepta inscripciones en la salida hasta las 7:45 AM.",closed:"La inscripción en línea para el fin de semana 2027 ha cerrado. Suscríbete a las novedades por si hay anuncios de inscripción tardía."})[REG_STATE]},
     {q:"¿Puedo transferir o diferir mi inscripción?",a:"Las inscripciones no son reembolsables. El plazo gratuito para diferir la inscripción o transferir el número cerró el 10 de septiembre de 2026, así que ya no se aceptan aplazamientos ni transferencias, y no hay cambios el día de la carrera."}
   ],
   bannerDate:"Próxima carrera: 18–19 sept 2027",
@@ -1032,7 +1035,7 @@ function TopStrip({t}){
    facts with links, matched locally; there is NO AI backend. Keep the routes
    in sync with landing-src/data/ask-sync-map.json (source of truth). */
 const CONCIERGE_ROUTES=[
- {k:["register","sign up","signup","entry","inscrib","registro","registration","deadline","closes","inscripci"],p:(REG_STATE==="open"?"https://runsignup.com/Race/Register/?raceId=89412":REG_STATE==="walkup"?"/event-schedule/":"/news/newsletter/"),f:({open:"Registration is on RunSignup and closes Saturday, September 19 at 5:00 PM for every race. Race day is Sunday, September 20, 2026.",walkup:"Online registration closed Thursday, September 17. You can register in person for any race during packet pickup hours and pay on site. On race morning, the Santa Fe 5K also takes walk-up entries at the 5K start line at Reunity Resources Farm, until 7:45 AM.",closed:"Registration for 2027 isn't open yet. Race weekend is Saturday, Sept 18 – Sunday, Sept 19, 2027. Sign up for race updates to hear when it opens."})[REG_STATE],fs:({open:"La inscripci\u00f3n es en RunSignup y cierra el s\u00e1bado 19 de septiembre a las 5:00 PM para todas las carreras. La carrera es el domingo 20 de septiembre de 2026.",walkup:"La inscripci\u00f3n en l\u00ednea cerr\u00f3 el jueves 17 de septiembre. Puedes inscribirte en persona para cualquier carrera durante el horario de entrega de paquetes y pagar ah\u00ed mismo. La ma\u00f1ana de la carrera, el Santa Fe 5K tambi\u00e9n acepta inscripciones en la salida del 5K en Reunity Resources Farm, hasta las 7:45 AM.",closed:"La inscripci\u00f3n para 2027 a\u00fan no est\u00e1 abierta. El fin de semana de carrera es del s\u00e1bado 18 al domingo 19 de septiembre de 2027. Suscr\u00edbete a las novedades de la carrera para saber cu\u00e1ndo abre."})[REG_STATE]},
+ {k:["register","sign up","signup","entry","inscrib","registro","registration","deadline","closes","inscripci"],p:(REG_STATE==="open"?"https://runsignup.com/Race/Register/?raceId=89412":REG_STATE==="walkup"?"/event-schedule/":"/news/newsletter/"),f:({open:"Registration is on RunSignup and closes Thursday, September 16, 2027 at 11:59 PM for every race. Race weekend is Saturday, Sept 18 – Sunday, Sept 19, 2027.",walkup:"Online registration closed Thursday, September 16. In-person registration during packet pickup at Reunity Resources Farm (hours TBA); 5K walk-ups Saturday until 7:45 AM.",closed:"Online registration for the 2027 race weekend has closed. Sign up for race updates for any late-entry announcements."})[REG_STATE],fs:({open:"La inscripci\u00f3n es en RunSignup y cierra el jueves 16 de septiembre de 2027 a las 11:59 PM para todas las carreras. El fin de semana de carrera es del s\u00e1bado 18 al domingo 19 de septiembre de 2027.",walkup:"La inscripci\u00f3n en l\u00ednea cerr\u00f3 el jueves 16 de septiembre. Inscripci\u00f3n en persona durante la entrega de paquetes en Reunity Resources Farm (horario por anunciar); el 5K acepta inscripciones el s\u00e1bado hasta las 7:45 AM.",closed:"La inscripci\u00f3n en l\u00ednea para el fin de semana 2027 ha cerrado. Suscr\u00edbete a las novedades por si hay anuncios de inscripci\u00f3n tard\u00eda."})[REG_STATE]},
  {k:["spectat","watch","cheer","espectador"],p:"/spectator-guide/",f:"Half and Relay start 7:30 AM at Romero's Park; every race finishes at Reunity Resources. Best viewing: the Santa Fe River trail crossings and the finish-line festival.",fs:"El Medio y el Relevo salen a las 7:30 AM en Romero's Park; todas las carreras terminan en Reunity Resources. Las mejores zonas: los cruces del sendero del r\u00edo Santa Fe y el festival de la meta."},
  {k:["festival","music","party","celebra","happy hour","nuckolls","brew","beer","burrito","breakfast","chile","food","eat","lunch"],p:"/finish-line-festival/",f:"Post-race celebration and awards at Reunity Resources Farm, 1829 San Ysidro Crossing, 9:00 AM-1:00 PM: live New Mexico music and a green chile brunch from Santa Fe YouthWorks, then happy hour at Nuckolls Brewing Company.",fs:"Celebraci\u00f3n y premiaci\u00f3n en Reunity Resources Farm, 1829 San Ysidro Crossing, de 9:00 AM a 1:00 PM: m\u00fasica en vivo de Nuevo M\u00e9xico y un brunch de chile verde de Santa Fe YouthWorks; despu\u00e9s, happy hour en Nuckolls Brewing Company."},
  {k:["city","visit","things to do","hotel","stay","lodging","hospeda"],p:"/host-city-guide/",f:"The Host City Guide covers altitude, lodging, and race week in Santa Fe.",fs:"La Gu\u00eda de la ciudad anfitriona cubre la altitud, el hospedaje y la semana de carrera en Santa Fe."},
@@ -1170,7 +1173,7 @@ function Nav({t,lang,setLang}){
             {lang==="en"?"ES":"EN"}
           </button>
           {REG_STATE==="open"
-            ? <a className="btn btn-primary !px-3.5 !py-2 !text-[.75rem]" href={REG_URL} target="_blank" rel="noopener">{t.nav.register}</a>
+            ? <a className="btn btn-primary !px-2 sm:!px-3.5 !py-2 !text-[.75rem]" href={REG_URL} target="_blank" rel="noopener">{t.nav.register}</a>
             : null}
           <button className="md:hidden rounded-[3px] px-2.5 py-2 cursor-pointer border inline-flex" aria-label="Menu" aria-expanded={open} aria-controls="mobile-menu"
             onClick={()=>setOpen(!open)} style={{background:"var(--card)",color:"var(--ink)",borderColor:"var(--line)"}}>
@@ -1815,7 +1818,7 @@ function Travel({t}){
           </div>
           <p className="m-0 mb-4 text-[.85rem] max-w-[62ch]" style={{color:"var(--ink-soft)"}}>{t.lodgeHow}</p>
           <div className="flex flex-wrap items-center gap-3">
-            <a className="btn !py-2.5 !px-4 !text-[.75rem]" style={{background:"var(--terra)",color:"#FFF8EF"}} href="mailto:starla@concepthotelgroup.com">starla@concepthotelgroup.com</a>
+            <a className="btn !py-2.5 !px-4 !text-[.75rem]" style={{background:"var(--terra)",color:"#FFF8EF"}} href="mailto:starla@concepthotelgroup.com">{t.lodgeCta}</a>
             <a className="mono text-[.85rem] font-bold lodge-phone" style={{color:"var(--ink)",textDecoration:"none"}} href="tel:+15057720476">505-772-0476</a>
             <span className="lodge-code">{t.code}: <strong>SHM</strong></span>
             <button className="mono text-[.6875rem] font-bold uppercase tracking-[.06em] rounded-[3px] px-2.5 py-1.5 cursor-pointer"

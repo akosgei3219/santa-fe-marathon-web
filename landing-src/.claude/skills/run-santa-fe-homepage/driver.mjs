@@ -144,7 +144,9 @@ window.__PROBE__ = { done:false, results:{} };
     const t = appTxt();
     R.noWarehouse21 = t.indexOf("Warehouse 21") < 0 && t.indexOf("Railyard") < 0;
     R.runningHub    = t.indexOf("Running Hub") >= 0;
-    R.soldOut       = t.toLowerCase().indexOf("sold out") >= 0;
+    // 2026-09-23: registration flipped OPEN for 2027 (raceId 89412) — the old sold-out
+    // assertions inverted. regOpen checks the open-state FAQ copy is rendering.
+    R.regOpen       = t.indexOf("closes Thursday, September 16, 2027") >= 0 && t.toLowerCase().indexOf("sold out") < 0;
     R.resultsNested = !!document.querySelector('a[href="/race-information/results-photos/"]');
 
     // --- shared structure
@@ -159,7 +161,7 @@ window.__PROBE__ = { done:false, results:{} };
                    && /Results/i.test(R.navGroups);
     // The race is SOLD OUT. Rule 9: this control must not offer registration when it is
     // closed. Asserted explicitly so a regression to a bare "Register" fails the build.
-    R.navRegNotOpen = !/^Register/i.test(R.navRegLabel.trim());
+    R.navRegOpen    = /^Register/i.test(R.navRegLabel.trim());
     R.quickBar   = q("nav.quick-bar li.qb-item") === 4;
     R.concierge  = q(".cg-trigger") >= 1;
     R.langToggle = !!document.querySelector('[aria-label*="espa"]');
@@ -260,11 +262,11 @@ async function verify() {
     ["sub-headline is the 2027 date",    R.subIs2027 === true],
     ["no Warehouse 21 / Railyard",       R.noWarehouse21 === true],
     ["Running Hub packet pickup",        R.runningHub === true],
-    ["sold-out state",                   R.soldOut === true],
+    ["registration-open state",          R.regOpen === true],
     ["results nested under race-information", R.resultsNested === true],
     ["four race cards",                  R.raceCards === true],
     ["flat nav: 4 links + reg button",   R.navFlat === true],
-    ["reg control respects sold-out",    R.navRegNotOpen === true],
+    ["nav register is live",             R.navRegOpen === true],
     ["quick-access bar",                 R.quickBar === true],
     ["concierge button",                 R.concierge === true],
     ["language toggle present",          R.langToggle === true],
