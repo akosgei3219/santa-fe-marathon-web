@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en" data-pt-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santa Fe International Half Marathon — Next race Sept 18–19, 2027</title>
+  <meta name="description" content="The 2026 Santa Fe International Half Marathon is run. Results are posted, and we are back September 18–19, 2027 in Santa Fe, New Mexico at 7,000 ft.">
+  <link rel="canonical" href="https://santafehalfmarathon.com/">
+
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Santa Fe International Half Marathon">
+  <meta property="og:title" content="Santa Fe International Half Marathon — Next race Sept 18–19, 2027">
+  <meta property="og:description" content="Thank you for running the 5th Santa Fe International Half Marathon. 2026 results are posted. Next race: September 18–19, 2027.">
+  <meta property="og:url" content="https://santafehalfmarathon.com/">
+  <meta property="og:image" content="https://santafehalfmarathon.com/images/web/route66.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Santa Fe International Half Marathon — Next race Sept 18–19, 2027">
+  <meta name="twitter:description" content="Thank you for running the 5th Santa Fe International Half Marathon. 2026 results are posted. Next race: September 18–19, 2027.">
+  <meta name="twitter:image" content="https://santafehalfmarathon.com/images/web/route66.jpg">
+
+  <!-- SportsEvent structured data (Google rich results). Adjust endDate if needed. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    "name": "Santa Fe International Half Marathon",
+    "sport": "Running",
+    "description": "The Santa Fe International Half Marathon, presented by Capitol Ford. Half Marathon, 3-Amigos Relay, Santa Fe 5K, and a free Kids 1K Dash.",
+    "startDate": "2026-09-20T07:30:00-06:00",
+    "endDate": "2026-09-20T12:00:00-06:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "url": "https://santafehalfmarathon.com/",
+    "image": "https://santafehalfmarathon.com/images/web/route66.jpg",
+    "location": {
+      "@type": "Place",
+      "name": "Start: Romero's Park, Agua Fr\u00eda - Finish: Reunity Resources Farm",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1829 San Ysidro Crossing",
+        "addressLocality": "Santa Fe",
+        "addressRegion": "NM",
+        "addressCountry": "US"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Santa Fe International Half Marathon",
+      "url": "https://santafehalfmarathon.com/"
+    },
+    "sponsor": {
+      "@type": "Organization",
+      "name": "Capitol Ford"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Half Marathon",
+        "availability": "https://schema.org/SoldOut",
+        "url": "https://runsignup.com/Race/Register/?raceId=83604"
+      },
+      {
+        "@type": "Offer",
+        "name": "3-Amigos Relay",
+        "availability": "https://schema.org/SoldOut",
+        "url": "https://runsignup.com/Race/Register/?raceId=83604"
+      },
+      {
+        "@type": "Offer",
+        "name": "Santa Fe 5K",
+        "availability": "https://schema.org/SoldOut",
+        "url": "https://runsignup.com/Race/Register/?raceId=83604"
+      },
+      {
+        "@type": "Offer",
+        "name": "Kids 1K Dash",
+        "availability": "https://schema.org/SoldOut",
+        "url": "https://runsignup.com/Race/Register/?raceId=83604"
+      }
+    ]
+  }
+  </script>
+  <style>
+/* =============================================================================
+   premium-typography.css
+   A warm, organic type system: earth-toned gradients, fluid hierarchies,
+   and generous breathing space.
+
+   Palette is the Santa Fe rebrand canon (CLAUDE.md, 2026-09-10):
+     terracotta #C2593F · turquoise #1FA6B8 · charcoal #222222 · sand #FBF9F6
+
+   Two canon rules are encoded here, not just documented:
+     · #C2593F is for borders, accents and LARGE DISPLAY TYPE ONLY.
+       Body and small text use --pt-terracotta-ink (#AD4A2E), which clears
+       AA on sand. Gradient text is likewise gated to display sizes.
+     · The homepage hero CTA (#FF5400 on #0C0C0E) is a deliberate exception.
+       Nothing in this file styles buttons, so it cannot "correct" that.
+
+   USAGE
+     <link rel="stylesheet" href="premium-typography.css">
+     Tokens + utilities are global. Element styling is opt-in:
+       <article class="pt-prose"> … </article>
+     To apply base styles document-wide, see [ OPTIONAL: GLOBAL BASE ] below.
+
+   FONTS — host-loaded on purpose (an @import here would block rendering):
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+           family=Anton&family=Archivo:wght@400;500;600&display=swap">
+     Anton is the canon display face. Swap either face by overriding
+     --pt-font-display / --pt-font-text; nothing else needs to change.
+============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. TOKENS
+   All custom properties are --pt-* so they cannot collide with the existing
+   --stone-*, --nm-*, --terra / --ink / --sand sets already in this project.
+-------------------------------------------------------------------------- */
+:root {
+  /* --- Type families ------------------------------------------------------ */
+  --pt-font-display: "Anton", "Arial Narrow", system-ui, sans-serif;
+  --pt-font-text: "Archivo", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pt-font-mono: ui-monospace, "Martian Mono", "SFMono-Regular", Menlo,
+    Consolas, monospace;
+
+  /* Anton is condensed and heavy, so it reads better with a whisker of
+     positive tracking. If you swap in a wide face, take this to a negative
+     value (-0.015em is a good starting point). */
+  --pt-display-tracking: 0.005em;
+
+  /* --- Earth palette ------------------------------------------------------ */
+  --pt-sand: #fbf9f6;          /* canon */
+  --pt-sand-deep: #f2ebe2;
+  --pt-clay: #e3d2c3;
+  --pt-clay-deep: #cdb6a2;
+
+  --pt-terracotta: #c2593f;    /* canon — borders, accents, DISPLAY type only */
+  --pt-terracotta-ink: #ad4a2e;/* canon — the safe one for small text + fills  */
+  --pt-terracotta-deep: #8c3a24;
+  --pt-ember: #e07b39;         /* focus + gradient stop, not a text colour     */
+  --pt-ochre: #d9a066;         /* gradient stop only — too light for text      */
+
+  --pt-turquoise: #1fa6b8;     /* canon */
+  /* Canon turquoise text. Measured 4.80:1 on --pt-sand (AA) but only 4.27:1
+     on --pt-sand-deep, so it is NOT safe for small text inside .pt-card.
+     The value is canon and deliberately left alone — use it on the page
+     ground, or step to --pt-ink for card copy. */
+  --pt-turquoise-ink: #147a87;
+
+  --pt-charcoal: #222222;      /* canon */
+
+  /* --- Semantic ink + ground --------------------------------------------- */
+  --pt-ground: var(--pt-sand);
+  --pt-ground-sunk: var(--pt-sand-deep);
+  --pt-ink: var(--pt-charcoal);
+  --pt-ink-soft: #55514d;
+  --pt-ink-faint: #716961;   /* AA on both sand and sand-deep (card ground) */
+  --pt-accent: var(--pt-terracotta);      /* display / rules / borders */
+  --pt-accent-ink: var(--pt-terracotta-ink); /* anything set small     */
+  --pt-line: color-mix(in oklab, var(--pt-clay) 72%, transparent);
+
+  /* --- Earth-toned gradients ---------------------------------------------- */
+  /* Angles are off-axis on purpose: 100/118/135deg reads hand-made, where
+     90deg reads like a corporate header band. */
+  --pt-grad-ember: linear-gradient(100deg, #8c3a24 0%, #c2593f 46%, #e07b39 100%);
+  --pt-grad-dune:  linear-gradient(118deg, #ad4a2e 0%, #c2593f 38%, #d9a066 100%);
+  --pt-grad-mesa:  linear-gradient(135deg, #c2593f 0%, #a9614c 42%, #147a87 100%);
+  --pt-grad-ground: linear-gradient(176deg, #fbf9f6 0%, #f2ebe2 100%);
+  --pt-grad-rule: linear-gradient(90deg, transparent, var(--pt-clay-deep) 18%,
+                                  var(--pt-terracotta) 50%,
+                                  var(--pt-clay-deep) 82%, transparent);
+
+  /* --- Fluid type scale ---------------------------------------------------
+     clamp(min, preferred, max). Preferred pairs a rem floor with a vw slope
+     so every step keeps growing between roughly 360px and 1240px, then
+     stops — nothing runs away on an ultrawide display. Ratio ≈ 1.25 small, 1.33 large.
+  ------------------------------------------------------------------------ */
+  --pt-text-2xs:  clamp(0.72rem, 0.700rem + 0.10vw, 0.78rem);
+  --pt-text-xs:   clamp(0.80rem, 0.770rem + 0.15vw, 0.88rem);
+  --pt-text-sm:   clamp(0.90rem, 0.860rem + 0.20vw, 1.00rem);
+  --pt-text-base: clamp(1.00rem, 0.950rem + 0.28vw, 1.15rem);
+  --pt-text-lg:   clamp(1.15rem, 1.060rem + 0.42vw, 1.40rem);
+  --pt-text-xl:   clamp(1.35rem, 1.200rem + 0.70vw, 1.80rem);
+  --pt-text-2xl:  clamp(1.65rem, 1.380rem + 1.25vw, 2.45rem);
+  --pt-text-3xl:  clamp(2.05rem, 1.550rem + 2.30vw, 3.40rem);
+  --pt-text-4xl:  clamp(2.55rem, 1.650rem + 4.10vw, 4.80rem);
+  --pt-text-5xl:  clamp(3.10rem, 1.550rem + 6.90vw, 6.80rem);
+
+  /* --- Leading + measure --------------------------------------------------
+     Display type sets tight; body sets open. Measure caps line length so
+     long-form copy never sprawls past comfortable reading.
+  ------------------------------------------------------------------------ */
+  --pt-leading-display: 0.94;
+  --pt-leading-tight: 1.15;
+  --pt-leading-snug: 1.35;
+  --pt-leading-body: 1.62;
+  --pt-leading-loose: 1.78;
+
+  --pt-measure: 66ch;
+  --pt-measure-tight: 52ch;
+  --pt-measure-wide: 78ch;
+
+  /* --- Breathing space ----------------------------------------------------
+     A fluid spacing scale on the same principle as the type scale, so
+     rhythm and type grow together instead of drifting apart.
+  ------------------------------------------------------------------------ */
+  --pt-space-3xs: clamp(0.25rem, 0.23rem + 0.10vw, 0.31rem);
+  --pt-space-2xs: clamp(0.50rem, 0.46rem + 0.20vw, 0.62rem);
+  --pt-space-xs:  clamp(0.75rem, 0.69rem + 0.30vw, 0.94rem);
+  --pt-space-sm:  clamp(1.00rem, 0.92rem + 0.40vw, 1.25rem);
+  --pt-space-md:  clamp(1.50rem, 1.38rem + 0.60vw, 1.88rem);
+  --pt-space-lg:  clamp(2.00rem, 1.75rem + 1.25vw, 2.75rem);
+  --pt-space-xl:  clamp(3.00rem, 2.50rem + 2.50vw, 4.50rem);
+  --pt-space-2xl: clamp(4.50rem, 3.50rem + 5.00vw, 7.50rem);
+
+  --pt-flow-space: var(--pt-space-sm);
+
+  /* --- Organic geometry ---------------------------------------------------
+     Four different corner radii. The eye reads the asymmetry as drawn
+     rather than generated; a uniform radius is the corporate tell.
+  ------------------------------------------------------------------------ */
+  --pt-radius-organic: 14px 9px 16px 10px;
+  --pt-radius-soft: 10px;
+  --pt-radius-pill: 999px;
+}
+
+/* --- Dark ground -----------------------------------------------------------
+   Warm charcoal, never neutral black — the earth tones die against #000.
+   Honours the system preference unless the host opts out with
+   data-pt-theme="light", and can be forced with data-pt-theme="dark".
+-------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-pt-theme="light"]) {
+    --pt-ground: #1a1613;
+    --pt-ground-sunk: #120f0d;
+    --pt-ink: #f4ede4;
+    --pt-ink-soft: #c3b6a8;
+    --pt-ink-faint: #94867a;
+    --pt-accent: #e2795c;
+    --pt-accent-ink: #f0a184;
+    --pt-line: color-mix(in oklab, #e2795c 26%, transparent);
+    --pt-grad-ember: linear-gradient(100deg, #c2593f 0%, #e07b39 52%, #f0b27a 100%);
+    --pt-grad-dune:  linear-gradient(118deg, #c2593f 0%, #de8350 40%, #e8c08c 100%);
+    --pt-grad-mesa:  linear-gradient(135deg, #e2795c 0%, #c98a72 42%, #4fc2d1 100%);
+    --pt-grad-ground: linear-gradient(176deg, #1a1613 0%, #120f0d 100%);
+    --pt-grad-rule: linear-gradient(90deg, transparent, #6b4a3c 18%,
+                                    #e2795c 50%, #6b4a3c 82%, transparent);
+  }
+}
+
+:root[data-pt-theme="dark"] {
+  --pt-ground: #1a1613;
+  --pt-ground-sunk: #120f0d;
+  --pt-ink: #f4ede4;
+  --pt-ink-soft: #c3b6a8;
+  --pt-ink-faint: #94867a;
+  --pt-accent: #e2795c;
+  --pt-accent-ink: #f0a184;
+  --pt-line: color-mix(in oklab, #e2795c 26%, transparent);
+  --pt-grad-ember: linear-gradient(100deg, #c2593f 0%, #e07b39 52%, #f0b27a 100%);
+  --pt-grad-dune:  linear-gradient(118deg, #c2593f 0%, #de8350 40%, #e8c08c 100%);
+  --pt-grad-mesa:  linear-gradient(135deg, #e2795c 0%, #c98a72 42%, #4fc2d1 100%);
+  --pt-grad-ground: linear-gradient(176deg, #1a1613 0%, #120f0d 100%);
+  --pt-grad-rule: linear-gradient(90deg, transparent, #6b4a3c 18%,
+                                  #e2795c 50%, #6b4a3c 82%, transparent);
+}
+
+/* -----------------------------------------------------------------------------
+   2. TYPE UTILITIES
+   Each step pairs a size with the leading and tracking that suit it, so you
+   never have to remember to tighten a heading by hand.
+-------------------------------------------------------------------------- */
+.pt-display,
+.pt-title,
+.pt-subtitle,
+.pt-heading {
+  font-family: var(--pt-font-display);
+  font-weight: 400;              /* Anton ships one weight; don't fake-bold it */
+  letter-spacing: var(--pt-display-tracking);
+  line-height: var(--pt-leading-display);
+  text-wrap: balance;            /* no orphaned last word in a headline */
+  color: var(--pt-ink);
+  margin: 0;
+}
+
+.pt-display   { font-size: var(--pt-text-5xl); }
+.pt-title     { font-size: var(--pt-text-4xl); }
+.pt-subtitle  { font-size: var(--pt-text-3xl); line-height: var(--pt-leading-tight); }
+.pt-heading   { font-size: var(--pt-text-2xl); line-height: var(--pt-leading-tight); }
+
+/* Eyebrow — the small tracked label above a heading. Uses the ink-safe
+   terracotta because it is small text, per canon. */
+.pt-eyebrow {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: var(--pt-leading-snug);
+  color: var(--pt-accent-ink);
+  margin: 0 0 var(--pt-space-2xs);
+}
+
+/* Lede — the standfirst paragraph. Larger, looser, deliberately shorter measure. */
+.pt-lede {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-lg);
+  font-weight: 400;
+  line-height: var(--pt-leading-loose);
+  color: var(--pt-ink-soft);
+  max-width: var(--pt-measure-tight);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.pt-body {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-base);
+  line-height: var(--pt-leading-body);
+  color: var(--pt-ink);
+  max-width: var(--pt-measure);
+  text-wrap: pretty;
+}
+
+.pt-fine {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-xs);
+  line-height: var(--pt-leading-snug);
+  color: var(--pt-ink-faint);
+}
+
+.pt-mono {
+  font-family: var(--pt-font-mono);
+  font-size: var(--pt-text-sm);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -----------------------------------------------------------------------------
+   3. EARTH-TONED GRADIENT TEXT
+   Gated to display sizes on purpose. Gradient text cannot be contrast-tested
+   reliably, and canon restricts #C2593F to large display type anyway — so
+   these classes carry a guard that opts out below 1.75rem.
+-------------------------------------------------------------------------- */
+.pt-grad-text {
+  /* Solid fallback paints first; the clip only wins where it is supported. */
+  color: var(--pt-accent);
+  background-image: var(--pt-grad-ember);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* The gradient box is the ELEMENT box, not the glyphs. On a block-level
+     heading a short word would sample only the leftmost sliver and read as
+     flat colour, so shrink-wrap to the text. max-width keeps it wrapping.
+     Centring a gradient heading therefore needs margin-inline: auto. */
+  width: fit-content;
+  max-width: 100%;
+  /* A gradient runs out of contrast at the light end, so keep it off thin
+     strokes: these are display classes only. */
+  padding-bottom: 0.06em;        /* stops descenders clipping in WebKit */
+}
+
+.pt-grad-text--dune { background-image: var(--pt-grad-dune); }
+.pt-grad-text--mesa { background-image: var(--pt-grad-mesa); }
+
+/* Guard: if the element is not actually display-sized, fall back to solid
+   ink-safe terracotta rather than shipping unreadable gradient body text. */
+@supports (font-size: 1cap) {
+  .pt-grad-text:not(.pt-display):not(.pt-title):not(.pt-subtitle):not(.pt-heading) {
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--pt-accent-ink);
+  }
+}
+
+/* Forced-colours (Windows high contrast): drop the clip entirely. */
+@media (forced-colors: active) {
+  .pt-grad-text {
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: CanvasText;
+  }
+}
+
+/* Gradient grounds --------------------------------------------------------- */
+.pt-ground        { background: var(--pt-grad-ground); color: var(--pt-ink); }
+.pt-ground--ember { background: var(--pt-grad-ember); color: #fff6f0; }
+.pt-ground--mesa  { background: var(--pt-grad-mesa);  color: #fff6f0; }
+
+/* Optional paper grain. Two offset radial washes, no image asset, and it
+   costs nothing to paint. Sits under content via a pseudo-element. */
+.pt-grain { position: relative; isolation: isolate; }
+.pt-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(60% 45% at 12% 8%,  color-mix(in oklab, var(--pt-ochre) 16%, transparent), transparent 70%),
+    radial-gradient(52% 40% at 88% 82%, color-mix(in oklab, var(--pt-turquoise) 10%, transparent), transparent 72%);
+}
+
+/* -----------------------------------------------------------------------------
+   4. BREATHING SPACE
+-------------------------------------------------------------------------- */
+
+/* The owl: space between siblings, never before the first or after the last,
+   so a section's outer padding stays under your control. */
+.pt-flow > * + * { margin-block-start: var(--pt-flow-space, var(--pt-space-sm)); }
+
+/* Context-aware rhythm: a heading wants more air above it than a paragraph. */
+.pt-flow > :is(h1, h2, .pt-display, .pt-title) + *,
+.pt-flow > * + :is(h1, h2, .pt-display, .pt-title) { margin-block-start: var(--pt-space-lg); }
+.pt-flow > * + :is(h3, h4, .pt-subtitle, .pt-heading) { margin-block-start: var(--pt-space-md); }
+.pt-flow > :is(.pt-eyebrow) + *                      { margin-block-start: var(--pt-space-2xs); }
+
+.pt-flow--tight { --pt-flow-space: var(--pt-space-2xs); }
+.pt-flow--loose { --pt-flow-space: var(--pt-space-md); }
+
+.pt-measure       { max-width: var(--pt-measure); }
+.pt-measure-tight { max-width: var(--pt-measure-tight); }
+.pt-measure-wide  { max-width: var(--pt-measure-wide); }
+
+/* Section shell. The asymmetric block padding (more above than below) is
+   deliberate: even padding reads like a CMS, uneven reads composed. */
+.pt-section {
+  padding-block: var(--pt-space-2xl) var(--pt-space-xl);
+  padding-inline: var(--pt-space-md);
+}
+.pt-container {
+  width: 100%;
+  max-width: 68rem;
+  margin-inline: auto;
+}
+.pt-stack-center { margin-inline: auto; }
+
+/* -----------------------------------------------------------------------------
+   5. ORGANIC DETAILS
+-------------------------------------------------------------------------- */
+
+/* A rule that fades in and out instead of hitting the edges — a drawn line,
+   not a table border. */
+.pt-rule {
+  border: 0;
+  height: 2px;
+  background: var(--pt-grad-rule);
+  border-radius: var(--pt-radius-pill);
+  margin-block: var(--pt-space-lg);
+  opacity: 0.85;
+}
+
+/* Inked underline: sits below the baseline, skips descenders, thickens on
+   hover. Reads like a marked-up page rather than a default link. */
+.pt-link {
+  color: var(--pt-accent-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+  transition: text-decoration-thickness 140ms ease, color 140ms ease;
+}
+.pt-link:hover,
+.pt-link:focus-visible {
+  color: var(--pt-terracotta-deep);
+  text-decoration-thickness: 0.16em;
+}
+
+/* Pull quote — hung terracotta bar, generous leading, no italic cliché. */
+.pt-quote {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-xl);
+  line-height: var(--pt-leading-snug);
+  color: var(--pt-ink);
+  max-width: var(--pt-measure-tight);
+  margin: var(--pt-space-lg) 0;
+  padding-inline-start: var(--pt-space-md);
+  border-inline-start: 3px solid var(--pt-accent);
+  border-start-start-radius: 3px;
+  border-end-start-radius: 3px;
+}
+.pt-quote cite {
+  display: block;
+  margin-block-start: var(--pt-space-2xs);
+  font-size: var(--pt-text-sm);
+  font-style: normal;
+  color: var(--pt-ink-faint);
+}
+
+/* Drop cap. Opt-in per paragraph — never automatic, it wrecks short copy. */
+.pt-dropcap::first-letter {
+  float: inline-start;
+  font-family: var(--pt-font-display);
+  font-size: 3.1em;
+  line-height: 0.82;
+  padding-inline-end: 0.08em;
+  padding-block-start: 0.04em;
+  color: var(--pt-accent);
+}
+
+/* Card with the hand-drawn corner set. */
+.pt-card {
+  background: var(--pt-ground-sunk);
+  border: 1px solid var(--pt-line);
+  border-radius: var(--pt-radius-organic);
+  padding: var(--pt-space-md);
+}
+
+/* Focus ring — ember, offset, visible on both grounds. */
+:where(.pt-prose, .pt-link, .pt-card) :focus-visible,
+.pt-link:focus-visible {
+  outline: 3px solid var(--pt-ember);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* -----------------------------------------------------------------------------
+   6. PROSE SCOPE
+   Opt-in element styling. Wrap raw HTML in .pt-prose and it inherits the
+   whole system without touching anything outside.
+-------------------------------------------------------------------------- */
+.pt-prose {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-base);
+  line-height: var(--pt-leading-body);
+  color: var(--pt-ink);
+  max-width: var(--pt-measure);
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pt-prose > * + *            { margin-block-start: var(--pt-space-sm); }
+.pt-prose > * + :is(h1,h2)   { margin-block-start: var(--pt-space-xl); }
+.pt-prose > * + :is(h3,h4)   { margin-block-start: var(--pt-space-lg); }
+.pt-prose :is(h1,h2,h3,h4,h5,h6) {
+  font-family: var(--pt-font-display);
+  font-weight: 400;
+  letter-spacing: var(--pt-display-tracking);
+  line-height: var(--pt-leading-tight);
+  text-wrap: balance;
+  color: var(--pt-ink);
+  margin: 0;
+}
+.pt-prose h1 { font-size: var(--pt-text-4xl); line-height: var(--pt-leading-display); }
+.pt-prose h2 { font-size: var(--pt-text-3xl); }
+.pt-prose h3 { font-size: var(--pt-text-2xl); }
+.pt-prose h4 { font-size: var(--pt-text-xl); }
+.pt-prose h5 { font-size: var(--pt-text-lg); }
+.pt-prose h6 {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pt-accent-ink);
+}
+.pt-prose p { margin: 0; }
+.pt-prose :is(ul, ol) { margin: 0; padding-inline-start: var(--pt-space-md); }
+.pt-prose li + li { margin-block-start: var(--pt-space-2xs); }
+.pt-prose li::marker { color: var(--pt-accent); }
+.pt-prose a {
+  color: var(--pt-accent-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+.pt-prose a:hover { color: var(--pt-terracotta-deep); }
+.pt-prose strong { font-weight: 600; color: var(--pt-ink); }
+.pt-prose small  { font-size: var(--pt-text-xs); color: var(--pt-ink-faint); }
+.pt-prose code   { font-family: var(--pt-font-mono); font-size: 0.9em; }
+.pt-prose hr {
+  border: 0; height: 2px; background: var(--pt-grad-rule);
+  border-radius: var(--pt-radius-pill); margin-block: var(--pt-space-lg);
+}
+.pt-prose blockquote {
+  margin: 0;
+  padding-inline-start: var(--pt-space-md);
+  border-inline-start: 3px solid var(--pt-accent);
+  color: var(--pt-ink-soft);
+}
+
+/* -----------------------------------------------------------------------------
+   7. [ OPTIONAL: GLOBAL BASE ]
+   Commented out by default so this file is safe to drop onto an existing
+   page. Uncomment only where you control the whole document — on the
+   Elementor site it will fight the theme.
+-------------------------------------------------------------------------- */
+/*
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--pt-grad-ground);
+  color: var(--pt-ink);
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-base);
+  line-height: var(--pt-leading-body);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--pt-font-display);
+  font-weight: 400;
+  letter-spacing: var(--pt-display-tracking);
+  line-height: var(--pt-leading-tight);
+  text-wrap: balance;
+}
+*/
+
+/* -----------------------------------------------------------------------------
+   8. PREFERENCES
+-------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .pt-link { transition: none; }
+}
+
+/* Long words and URLs should wrap rather than blow out the measure on a
+   360px phone — the single most common cause of horizontal page scroll. */
+@media (max-width: 30rem) {
+  .pt-prose, .pt-body, .pt-lede { overflow-wrap: break-word; }
+  .pt-dropcap::first-letter { font-size: 2.6em; }
+}
+
+@media print {
+  .pt-grad-text {
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: #000;
+  }
+  .pt-grain::before { display: none; }
+}
+
+/* ===== premium-typography.css — inlined so deploy/ stays self-contained =====
+   The component is token-driven, so applying it here means pointing its
+   tokens at this page's established voice (gold / crimson / obsidian) rather
+   than overwriting it. The type scale, leading, measure and spacing rhythm
+   all come from the component; the palette and face stay this page's own. */
+:root {
+  --pt-font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pt-font-text: var(--pt-font-display);
+  --pt-display-tracking: -0.02em;      /* this page sets display type tight */
+  --pt-ground: var(--dark-obsidian);
+  --pt-ground-sunk: var(--card-bg);
+  --pt-ink: #ffffff;
+  --pt-ink-soft: var(--text-muted);
+  --pt-ink-faint: #8f8f8f;
+  --pt-accent: var(--nm-gold);
+  --pt-accent-ink: var(--nm-gold);
+  --pt-line: var(--border-gray);
+  /* match the hero's existing crimson-to-gold clip so the component's
+     gradient utilities are consistent with what the page already ships */
+  --pt-grad-ember: linear-gradient(45deg, var(--nm-crimson), var(--nm-gold));
+}
+
+    :root {
+      --nm-gold: #FFB800;
+      --nm-crimson: #D6221D;
+      --nm-turquoise: #00A896;
+      --dark-obsidian: #0A0A0A;
+      --card-bg: #121212;
+      --border-gray: #1E1E1E;
+      --text-muted: #A3A3A3;
+      /* Transparent-header palette. The bar keeps background-color: transparent
+         and gets its readability from a background-image scrim (see .site-header),
+         because the hero photo behind it contains blown highlights where unaided
+         sand text measures 1.05:1. Sampled from the rendered composite across the
+         nav text band: sand-canvas 13.66:1 worst case, brand gold 8.28:1,
+         0 of 6304 pixels below AA. */
+      --sand-canvas: #FBF9F6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark-obsidian); color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: var(--pt-text-base); line-height: var(--pt-leading-body); overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; transition: all 0.25s ease; }
+    section[id] { scroll-margin-top: 110px; }
+
+    /* HEADER */
+    .site-header {
+      position: sticky; top: 0; width: 100%; height: 90px;
+      /* forced transparent: the hero supplies its own rgba(10,10,9,0.66) scrim,
+         so the bar needs no background of its own while it sits over the hero.
+         .scrolled below restores an opaque bar the moment it leaves the hero. */
+      /* background-COLOR stays transparent, as specified. Readability comes from
+         a background-IMAGE scrim instead: the hero photo contains blown
+         highlights (measured luminance 1.0), where sand text would sit at
+         1.05:1. No fixed text colour survives an arbitrary photo unaided. */
+      background-color: transparent;
+      background-image: linear-gradient(180deg, rgba(10,10,10,0.88) 0%,
+                                        rgba(10,10,10,0.72) 55%,
+                                        rgba(10,10,10,0.28) 100%);
+      z-index: 10000; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .site-header.scrolled {
+      height: 70px; background: rgba(10,10,10,0.96);
+      border-bottom: 1px solid var(--border-gray); backdrop-filter: blur(16px);
+    }
+    .brand-link { display: flex; align-items: center; gap: 14px; }
+    .brand-logo { height: 54px; width: auto; display: block; }
+    .brand-block { display: flex; flex-direction: column; }
+    .brand-presenter { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--nm-gold); font-weight: 700; margin-bottom: -2px; }
+    .brand-main { font-weight: 900; font-size: 1.4rem; letter-spacing: 1px; text-transform: uppercase; }
+    .brand-main span { color: var(--nm-turquoise); }
+
+    .main-nav { display: flex; list-style: none; height: 100%; align-items: center; }
+    .nav-item {
+      position: relative; display: flex; align-items: center; height: 100%; padding: 0 24px;
+      font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: var(--sand-canvas); cursor: pointer;
+    }
+    .nav-item > a, .nav-item > .nav-label { display: flex; align-items: center; height: 100%; color: inherit; }
+    .nav-item::after { content: ''; position: absolute; bottom: 28px; left: 24px; width: 0; height: 2px; background: var(--nm-gold); transition: width 0.3s ease; }
+    .nav-item:hover::after { width: calc(100% - 48px); }
+    .nav-item:hover, .nav-item:focus-within { color: var(--nm-gold); }
+
+    .mega-menu {
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+      width: min(94vw, 880px); background: #111; border: 1px solid var(--border-gray); border-radius: 12px;
+      padding: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+      opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    }
+    .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .mega-col h4 { color: var(--nm-turquoise); font-size: 0.8rem; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border-gray); padding-bottom: 8px; }
+    .mega-col a { display: block; color: var(--text-muted); padding: 7px 0; font-size: 0.9rem; text-transform: none; font-weight: 400; }
+    .mega-col a:hover { color: #fff; transform: translateX(6px); }
+
+    .nav-register {
+      margin-left: 16px; background: var(--nm-crimson); color: #fff; padding: 11px 22px; border-radius: 8px;
+      font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;
+    }
+    .nav-register:hover { background: #b51a15; transform: translateY(-1px); }
+
+    .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; background: none; border: none; padding: 8px; }
+    .menu-toggle span { width: 26px; height: 2px; background: var(--sand-canvas); display: block; }
+
+    /* HERO */
+    .hero-container {
+      min-height: 86vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+      /* pulled up under the 90px sticky header so the transparent bar actually
+         has the hero behind it; the padding restores the visual top inset. */
+      margin-top: -90px; padding: 210px 24px 80px; border-bottom: 1px solid var(--border-gray);
+      background:
+        linear-gradient(180deg, rgba(10,10,9,0.66), rgba(10,10,9,0.88)),
+        url('images/web/hero.jpg') center 38% / cover no-repeat,
+        radial-gradient(circle at center, #1f1207 0%, var(--dark-obsidian) 70%);
+    }
+    .hero-tag { font-size: var(--pt-text-xs); font-weight: 800; text-transform: uppercase; letter-spacing: 0.3em; color: var(--nm-gold); margin-bottom: 24px; }
+    .hero-title { font-size: var(--pt-text-5xl); font-weight: 900; line-height: var(--pt-leading-display); text-transform: uppercase; letter-spacing: var(--pt-display-tracking); margin-bottom: 22px; max-width: 1000px; }
+    .hero-title .light-accent { color: #fff; }
+    .hero-title .color-accent { color: var(--nm-gold); background: linear-gradient(45deg, var(--nm-crimson), var(--nm-gold)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { color: var(--pt-ink-soft); font-size: var(--pt-text-lg); line-height: var(--pt-leading-loose); max-width: var(--pt-measure-tight); margin-bottom: 40px; }
+    .hero-sub strong { color: #fff; font-weight: 700; }
+
+    .countdown-board { display: flex; gap: 18px; background: rgba(18,18,18,0.55); padding: 20px 28px; border-radius: 16px; border: 1px solid var(--border-gray); backdrop-filter: blur(8px); }
+    .countdown-segment { text-align: center; min-width: 70px; }
+    .countdown-val { font-size: 2.25rem; font-weight: 900; color: #fff; font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+    .countdown-lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
+    .hero-countdown-lede { color: var(--pt-ink-soft); font-size: var(--pt-text-xs); text-transform: uppercase; letter-spacing: 0.24em; font-weight: 700; margin-top: 28px; }
+    .hero-cta { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+    /* RACES */
+    .race-section { padding: var(--pt-space-2xl) var(--pt-space-md); max-width: 1240px; margin: 0 auto; }
+    .section-eyebrow { color: var(--nm-turquoise); font-weight: 800; text-transform: uppercase; letter-spacing: 0.24em; font-size: var(--pt-text-xs); text-align: center; }
+    .section-title { font-size: var(--pt-text-3xl); font-weight: 900; text-transform: uppercase; text-align: center; margin-top: var(--pt-space-2xs); line-height: var(--pt-leading-tight); letter-spacing: var(--pt-display-tracking); text-wrap: balance; }
+    .section-lede { color: var(--pt-ink-soft); text-align: center; font-size: var(--pt-text-base); line-height: var(--pt-leading-body); max-width: var(--pt-measure-tight); margin: var(--pt-space-xs) auto 0; text-wrap: pretty; }
+    .race-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 56px; }
+    .race-card { background: var(--card-bg); border: 1px solid var(--border-gray); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .race-card:hover { transform: translateY(-10px); border-color: var(--nm-turquoise); box-shadow: 0 20px 40px rgba(0,168,150,0.12); }
+    .race-img-box { width: 100%; height: 150px; border-radius: 10px; margin-bottom: 24px; display: flex; align-items: flex-end; padding: 16px; position: relative; overflow: hidden; }
+    .race-img-box span { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.92); position: relative; z-index: 2; }
+    .race-img-box::after { content: attr(data-badge); position: absolute; top: 14px; left: 14px; background: rgba(10,10,10,0.55); color: #fff; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; padding: 4px 10px; border-radius: 999px; z-index: 2; }
+    .ri-half { background: linear-gradient(135deg, #2b1d10, var(--nm-gold) 240%); }
+    .ri-relay { background: linear-gradient(135deg, #102a27, var(--nm-turquoise) 220%); }
+    .ri-fitness { background: linear-gradient(135deg, #2b1410, var(--nm-crimson) 230%); }
+    .ri-kids { background: linear-gradient(135deg, #0f2a27, var(--nm-gold) 260%); }
+    .ri-expo { background: linear-gradient(135deg, #11201f, var(--nm-turquoise) 210%); }
+    .race-img-box__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .race-img-box::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(10,10,9,0.8), rgba(10,10,9,0.15) 55%, rgba(10,10,9,0)); }
+    .race-card h3 { font-size: var(--pt-text-xl); font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .race-card .meta-details { color: var(--nm-gold); font-weight: 700; font-size: var(--pt-text-xs); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .race-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 22px; flex-grow: 1; }
+    .race-price { font-size: 2rem; font-weight: 900; margin-bottom: 20px; }
+    .race-price small { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+    .race-price.free { color: var(--nm-turquoise); }
+
+    .action-btn { display: block; text-align: center; background: var(--nm-crimson); color: #fff; padding: 15px 24px; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    .action-btn:hover { background: #b51a15; transform: translateY(-1px); }
+    .action-btn-alt { background: transparent; color: #fff; border: 2px solid #fff; padding: 14px 24px; }
+    .action-btn-alt:hover { background: #fff; color: var(--dark-obsidian); }
+
+    /* COURSE MAP & MILE PROFILE */
+    .map-section { padding: var(--pt-space-2xl) var(--pt-space-md); background: #0d0d0d; border-top: 1px solid var(--border-gray); }
+    .map-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+    .map-visual-container { background: #121212; border: 1px solid var(--border-gray); border-radius: 16px; padding: 24px; position: relative; }
+    .map-graphic-frame { width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #1a1a1a; background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
+    .map-graphic-frame img { width: 100%; height: auto; display: block; filter: grayscale(10%) contrast(105%); }
+    .map-graphic-frame svg { width: 100%; height: auto; display: block; }
+    .map-image-frame { width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #1a1a1a; background: #fff; margin-bottom: 16px; }
+    .map-image-frame img { width: 100%; height: auto; display: block; }
+    .map-placeholder { display: none; min-height: 220px; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; text-align: center; color: #777; background: #15151a; }
+    .map-placeholder .ph-label { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: #aaa; }
+    .map-placeholder .ph-hint { font-size: 0.8rem; }
+    .map-download { display: inline-block; margin: 0 0 16px; color: var(--nm-turquoise); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .map-download:hover { color: #fff; }
+    .elevation-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; text-align: center; }
+    .stat-box { background: #161616; border: 1px solid #222; padding: 12px; border-radius: 8px; }
+    .stat-box var { font-size: 1.2rem; font-weight: 800; font-style: normal; color: var(--nm-gold); display: block; }
+    .stat-box label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+    .map-data-panel h2 { font-size: 2.25rem; font-weight: 900; text-transform: uppercase; color: #fff; line-height: 1.1; margin-bottom: 8px; }
+    .map-data-panel h2 span { color: var(--nm-crimson); }
+    .map-data-panel .route-intro { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 32px; line-height: 1.6; }
+    .mile-timeline { display: flex; flex-direction: column; gap: 12px; }
+    .mile-row { background: #121212; border: 1px solid var(--border-gray); border-radius: 10px; padding: 16px 20px; display: flex; gap: 20px; align-items: center; transition: all 0.3s ease; cursor: pointer; }
+    .mile-row:hover { border-color: var(--nm-turquoise); background: #141414; transform: translateX(4px); }
+    .mile-badge { background: var(--nm-turquoise); color: #fff; font-weight: 900; font-size: 1.1rem; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .mile-row:nth-child(even) .mile-badge { background: var(--nm-gold); color: #0d0d0d; }
+    .mile-details h4 { font-size: var(--pt-text-base); text-transform: uppercase; color: #fff; margin-bottom: 2px; letter-spacing: 0.5px; }
+    .mile-details p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
+    @media (max-width: 991px) { .map-wrapper { grid-template-columns: 1fr; gap: 40px; } }
+    @media (max-width: 600px) { .map-section { padding: 64px 16px; } .elevation-strip { grid-template-columns: 1fr; gap: 10px; } .mile-row { padding: 14px 16px; gap: 14px; } .mile-badge { width: 44px; height: 44px; font-size: 1rem; } }
+
+    /* KIDS 1K DASH & FAQ */
+    .kids-faq-section { padding: var(--pt-space-2xl) var(--pt-space-md); background: #0d0d0d; border-top: 1px solid var(--border-gray); }
+    .kids-faq-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: start; }
+    .kids-profile-card { background: #121212; border: 1px solid var(--border-gray); border-radius: 16px; padding: 40px 32px; position: relative; overflow: hidden; }
+    .kids-profile-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--nm-gold), var(--nm-turquoise)); z-index: 2; }
+    .kids-profile-card__img { width: 100%; height: 200px; object-fit: cover; object-position: center 66%; border-radius: 10px; margin-bottom: 24px; display: block; }
+    .kids-profile-card h2 { font-size: 2.25rem; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .kids-profile-card h2 span { color: var(--nm-gold); }
+    .kids-meta-badge { display: inline-block; background: rgba(255,184,0,0.1); color: var(--nm-gold); border: 1px solid rgba(255,184,0,0.2); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; }
+    .kids-profile-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 28px; }
+    .logistics-mini-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px; }
+    .logistics-mini-box { background: #161616; border: 1px solid #222; padding: 16px; border-radius: 8px; }
+    .logistics-mini-box label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 4px; }
+    .logistics-mini-box span { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .faq-header { margin-bottom: 32px; }
+    .faq-header h3 { font-size: 1.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
+    .faq-header h3 span { color: var(--nm-turquoise); }
+    .faq-stack { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item { background: #121212; border: 1px solid var(--border-gray); border-radius: 12px; padding: 24px; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .faq-item:hover { border-color: #333; }
+    .faq-question { font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+    @media (max-width: 991px) { .kids-faq-container { grid-template-columns: 1fr; gap: 48px; } }
+    @media (max-width: 600px) { .kids-faq-section { padding: 64px 16px; } .kids-profile-card { padding: 32px 20px; } .kids-profile-card h2 { font-size: 1.85rem; } .logistics-mini-grid { grid-template-columns: 1fr; gap: 12px; } .faq-item { padding: 20px; } .faq-question { font-size: 0.95rem; } }
+
+    /* COACH WELCOME BANNER */
+
+    /* PLAN + STORY */
+    .plan-section { padding: var(--pt-space-2xl) var(--pt-space-md); background: #0d0d0d; border-top: 1px solid var(--border-gray); }
+    .plan-grid { max-width: 1100px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .plan-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .plan-grid { grid-template-columns: 1fr; } }
+    .plan-card { background: #121212; border: 1px solid var(--border-gray); border-radius: 14px; padding: 28px 24px; }
+    .plan-card .ic { font-size: 1.8rem; margin-bottom: 14px; }
+    .plan-card h3 { font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .plan-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* SPONSORSHIP TIERS HUB */
+    .tiers-container { background: #090909; border-top: 1px solid var(--border-gray); padding: var(--pt-space-2xl) var(--pt-space-md); text-align: center; }
+    .sponsors-photo { display: block; width: 100%; max-width: 760px; height: 300px; object-fit: cover; object-position: center 32%; border-radius: 16px; margin: 0 auto 56px; border: 1px solid var(--border-gray); }
+    .tier-group { margin-bottom: 64px; }
+    .tier-group:last-child { margin-bottom: 0; }
+    .tier-badge { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 32px; display: inline-block; padding: 6px 16px; border-radius: 20px; }
+    .badge-title { background: rgba(255,184,0,0.1); color: var(--nm-gold); border: 1px solid rgba(255,184,0,0.2); }
+    .badge-gold { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+    .badge-silver { background: rgba(163,163,163,0.05); color: var(--text-muted); border: 1px solid rgba(163,163,163,0.1); }
+    .presenter-hero-card { max-width: 500px; margin: 0 auto; background: #121212; border: 1px solid rgba(255,184,0,0.3); border-radius: 16px; padding: 48px 32px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(255,184,0,0.03); transition: transform 0.3s ease; }
+    .presenter-hero-card:hover { transform: scale(1.02); }
+    .presenter-logo-mock { font-size: 2rem; font-weight: 900; letter-spacing: 1px; color: #fff; text-transform: uppercase; }
+    .presenter-logo-mock span { color: var(--nm-gold); }
+    .tier-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .logo-box-standard { width: 220px; height: 80px; background: #121212; border: 1px solid var(--border-gray); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+    .logo-box-standard:hover { border-color: #fff; color: #fff; }
+    .tier-grid-silver .logo-box-standard { width: 180px; height: 70px; font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .presenter-hero-card { padding: 32px 20px; }
+      .presenter-logo-mock { font-size: 1.5rem; }
+      .logo-box-standard { width: 45%; }
+    }
+
+    /* FOOTER */
+    .footer-container { background: #050505; border-top: 1px solid var(--border-gray); padding: 80px 40px 40px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 48px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--border-gray); padding-bottom: 56px; }
+    .footer-brand h3 { font-size: 1.25rem; font-weight: 900; text-transform: uppercase; margin-bottom: 14px; letter-spacing: 1px; }
+    .footer-brand h3 span { color: var(--nm-turquoise); }
+    .footer-brand p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 22px; max-width: 320px; }
+    .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--nm-gold); margin-bottom: 16px; }
+    .footer-col a { display: block; color: var(--text-muted); padding: 6px 0; font-size: 0.92rem; }
+    .footer-col a:hover { color: #fff; }
+    .newsletter-box h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--nm-gold); margin-bottom: 12px; }
+    .newsletter-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .newsletter-form { display: flex; gap: 8px; }
+    .newsletter-form input { flex: 1; background: #111; border: 1px solid var(--border-gray); border-radius: 8px; padding: 12px 14px; color: #fff; font-size: 0.9rem; }
+    .newsletter-form input:focus { outline: none; border-color: var(--nm-turquoise); }
+    .newsletter-form button { background: var(--nm-gold); color: var(--dark-obsidian); border: none; border-radius: 8px; padding: 0 18px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; }
+    .newsletter-form button:hover { background: #ffc52e; }
+    .newsletter-note { color: var(--nm-turquoise); font-size: 0.85rem; margin-top: 10px; min-height: 1.2em; }
+    .footer-bottom { max-width: 1200px; margin: 28px auto 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--text-muted); font-size: 0.82rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .site-header { padding: 0 20px; }
+      .menu-toggle { display: flex; }
+      .main-nav {
+        position: absolute; top: 90px; left: 0; right: 0; flex-direction: column; align-items: stretch; height: auto;
+        background: #0d0d0d; border-bottom: 1px solid var(--border-gray); padding: 8px 0; gap: 0;
+        max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+      }
+      .main-nav.open { max-height: 80vh; overflow-y: auto; }
+      .nav-item { display: block; height: auto; padding: 16px 22px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
+      .nav-item > .nav-label { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--sand-canvas); }
+      .nav-item::after { display: none; }
+      .mega-menu { position: static; transform: none; opacity: 1; visibility: visible; width: 100%; box-shadow: none; border: none; background: transparent; padding: 14px 0 4px; grid-template-columns: 1fr; gap: 16px; }
+      .nav-register { margin: 12px 22px; text-align: center; }
+    }
+    @media (max-width: 760px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .countdown-board { gap: 10px; padding: 16px; }
+      .countdown-segment { min-width: 56px; }
+      .countdown-val { font-size: 1.7rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+/* --- premium-typography: small-screen guards -------------------------------
+   Measured 332px scrollWidth in a 320px viewport. Two causes, both fixed at
+   source rather than with overflow:hidden: the footer brand paragraph carried
+   a fixed 320px max-width, and a long uppercased, tracked button label is wide. */
+.footer-brand p { max-width: min(320px, 100%); }
+@media (max-width: 24rem) {
+  .action-btn,
+  .nav-register { padding-inline: var(--pt-space-xs); letter-spacing: 0.04em; overflow-wrap: anywhere; }
+}
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand-link" href="index.html">
+      <img class="brand-logo" src="images/web/logo-dark.png" alt="Santa Fe International Half Marathon" onerror="this.style.display='none'">
+      <div class="brand-block">
+        <span class="brand-presenter">Presented by Capitol Ford</span>
+        <span class="brand-main">Santa Fe <span>International</span> Half</span>
+      </div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="main-nav" id="mainNav">
+      <li class="nav-item">
+        <span class="nav-label">Races</span>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>The four races</h4>
+            <a href="#races">Half Marathon</a>
+            <a href="#races">3-Amigos Relay</a>
+            <a href="#races">Santa Fe 5K</a>
+            <a href="#kids-event">Kids 1K Dash — Free</a>
+          </div>
+          <div class="mega-col">
+            <h4>Good to know</h4>
+            <a href="#plan">Plan your weekend</a>
+            <a href="about-us.html">Our story</a>
+            <a href="#sponsors">Sponsors</a>
+          </div>
+          <div class="mega-col">
+            <h4>Race weekend</h4>
+            <a href="#course-map">Course map &amp; profile</a>
+            <a href="#expo">Packet pickup</a>
+            <a href="#races">September 20, 2026</a>
+            <a href="#races">Start &#183; Romero's Park, Agua Fr&iacute;a</a>
+            <a href="#races">Finish &#183; Reunity Resources Farm</a>
+            <a href="https://santafehalfmarathon.com/race-information/results-photos/" target="_blank" rel="noopener noreferrer">2026 results</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item"><a href="#sponsors">Sponsors</a></li>
+      <li class="nav-item"><a href="https://santafehalfmarathon.com/race-information/results-photos/" class="nav-register" target="_blank" rel="noopener noreferrer">2026 results</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="hero-container">
+      <p class="hero-tag">Santa Fe, New Mexico · 7,000 ft</p>
+      <h1 class="hero-title">
+        <span class="light-accent">Run the</span><br>
+        <span class="color-accent">High Desert</span>
+      </h1>
+      <p class="hero-sub">The 5th Santa Fe International Half Marathon ran on <strong>Sunday, September 20, 2026</strong> &#8212; out of Romero&rsquo;s Park in Agua Fr&iacute;a, along the Santa Fe River Trail corridor, home to Reunity Resources Farm. Thank you to everyone who ran it, worked it and shouted for it. We are back <strong>September 18&#8211;19, 2027</strong>.</p>
+
+      <div class="countdown-board" id="countdown">
+        <div class="countdown-segment"><div class="countdown-val" id="cd-days">--</div><div class="countdown-lbl">Days</div></div>
+        <div class="countdown-segment"><div class="countdown-val" id="cd-hours">--</div><div class="countdown-lbl">Hours</div></div>
+        <div class="countdown-segment"><div class="countdown-val" id="cd-mins">--</div><div class="countdown-lbl">Mins</div></div>
+        <div class="countdown-segment"><div class="countdown-val" id="cd-secs">--</div><div class="countdown-lbl">Secs</div></div>
+      </div>
+
+      <p class="hero-countdown-lede">Until race weekend 2027</p>
+      <div class="hero-cta">
+        <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer">See the 2026 results</a>
+        <a href="#races" class="action-btn action-btn-alt">The four races</a>
+      </div>
+    </section>
+
+    <section class="race-section" id="races">
+      <p class="section-eyebrow">Pick your distance</p>
+      <h2 class="section-title">Four races, one morning</h2>
+      <p class="section-lede">From a goal half marathon to a free dash for the kids — four races, one morning at 7,000 feet. Here is how the 2026 weekend ran.</p>
+
+      <div class="race-grid">
+        <article class="race-card">
+          <div class="race-img-box ri-half" data-badge="13.1 MI"><img class="race-img-box__photo" src="images/web/route66.jpg" alt="A half marathon runner paced down the high-desert road" loading="lazy"><span>Past finishers on the high-desert course</span></div>
+          <h3>Half Marathon</h3>
+          <p class="meta-details">13.1 miles &#183; out-and-back &#183; 7:30 AM</p>
+          <p>The main event. A loop through Agua Fr&iacute;a village, out along the Santa Fe River Trail corridor to the mile-9 turnaround, and back the same road to the drums at Reunity Resources Farm.</p>
+          <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer">2026 results</a>
+        </article>
+
+        <article class="race-card">
+          <div class="race-img-box ri-relay" data-badge="3 × 4.4 MI"><img class="race-img-box__photo" src="images/web/start-arch.jpg" alt="Runners pouring through the start arch" loading="lazy"><span>Relay teams out on course</span></div>
+          <h3>3-Amigos Relay</h3>
+          <p class="meta-details">3 &#215; 4.4 miles &#183; team of three &#183; 7:30 AM</p>
+          <p>Split the 13.1 with two friends. Three legs, one finish line at Reunity Resources Farm, all the bragging rights.</p>
+          <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer">2026 results</a>
+        </article>
+
+        <article class="race-card">
+          <div class="race-img-box ri-fitness" data-badge="5 KM"><img class="race-img-box__photo" src="images/web/oncourse.jpg" alt="Runners out on the high-desert course" loading="lazy"><span>5K runners at Reunity Resources Farm</span></div>
+          <h3>Santa Fe 5K</h3>
+          <p class="meta-details">5 kilometers &#183; walk / jog / run &#183; 8:00 AM</p>
+          <p>Starts and finishes at Reunity Resources Farm. A friendly distance for a first race, a walk with family, or a low-key morning with friends.</p>
+          <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer">2026 results</a>
+        </article>
+
+        <article class="race-card">
+          <div class="race-img-box ri-kids" data-badge="1 KM"><img class="race-img-box__photo" src="images/web/20250921_112904.jpg" alt="Finishers celebrating at the awards podium" loading="lazy"><span>Medals & smiles at the finish</span></div>
+          <h3>Kids 1K Dash</h3>
+          <p class="meta-details">1 kilometer &#183; Sunday 9:00&#8211;10:00 AM &#183; ages 3&#8211;12</p>
+          <p>A 1K at Reunity Resources Farm just for our youngest runners. Not chip-timed &#8212; every kid gets a medal. Zero entry fee, all heart.</p>
+          <div class="race-price free">Free <small>medal included</small></div>
+          <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer">2026 results</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="map-section" id="course-map">
+      <div class="map-wrapper">
+        <div class="map-visual-container">
+          <div class="map-image-frame">
+            <a href="images/web/course-map.jpg" target="_blank" rel="noopener noreferrer" title="Open the full-size course map">
+              <img src="images/web/course-map.jpg" alt="Official USATF-certified Santa Fe International Half Marathon course map" loading="lazy" onerror="this.closest('a').style.display='none'; this.closest('.map-image-frame').querySelector('.map-placeholder').style.display='flex';">
+            </a>
+            <div class="map-placeholder">
+              <span class="ph-label">Official course map</span>
+              <span class="ph-hint">The official 2026 course map.</span>
+            </div>
+          </div>
+          <a class="map-download" href="images/web/course-map.jpg" download>Download course map</a>
+          <div class="map-graphic-frame" style="padding: 20px;">
+            <svg viewBox="0 0 460 200" role="img" aria-label="Course elevation profile: an out-and-back that starts at Romero's Park in Agua Fria, climbs gradually along the Santa Fe River Trail corridor to a 6,883-foot turnaround at mile 9, then returns the same road to the finish at Reunity Resources Farm, with 651 feet of total climb.">
+              <defs>
+                <linearGradient id="elevFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#00A896" stop-opacity="0.35"/>
+                  <stop offset="1" stop-color="#00A896" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <line x1="20" y1="60" x2="440" y2="60" stroke="#222" stroke-width="1"/>
+              <line x1="20" y1="110" x2="440" y2="110" stroke="#222" stroke-width="1"/>
+              <line x1="20" y1="160" x2="440" y2="160" stroke="#222" stroke-width="1"/>
+              <path d="M20,150 L84,138 L148,120 L212,101 L245,88 L309,62 L373,104 L437,150 L440,180 L20,180 Z" fill="url(#elevFill)"/>
+              <path d="M20,150 L84,138 L148,120 L212,101 L245,88 L309,62 L373,104 L437,150" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="20" cy="150" r="5" fill="#00A896"/>
+              <circle cx="309" cy="62" r="5" fill="#FFB800"/>
+              <circle cx="437" cy="150" r="5" fill="#D6221D"/>
+              <text x="20" y="194" fill="#888" font-size="11" font-family="sans-serif" text-anchor="start">Start &#183; Romero's Park</text>
+              <text x="309" y="52" fill="#FFB800" font-size="11" font-family="sans-serif" text-anchor="middle">Turnaround &#183; Mile 9</text>
+              <text x="440" y="194" fill="#888" font-size="11" font-family="sans-serif" text-anchor="end">Finish &#183; Reunity</text>
+            </svg>
+          </div>
+
+          <div class="elevation-strip">
+            <div class="stat-box">
+              <var>6,883'</var>
+              <label>Turnaround (Mile 9)</label>
+            </div>
+            <div class="stat-box">
+              <var>+651'</var>
+              <label>Total Climb</label>
+            </div>
+            <div class="stat-box">
+              <var>13.1</var>
+              <label>Miles, Out and Back</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-data-panel">
+          <h2>The Course <span>Profile</span></h2>
+          <p class="route-intro">
+            A road race through a working village and along the river path. You'll start at Romero's Park, loop through Agua Fr&iacute;a, head out the Santa Fe River Trail corridor to the turnaround at mile 9, then run back the same road to the finish at Reunity Resources Farm. It is 100% paved, and it climbs 651 feet in total.
+          </p>
+
+          <div class="mile-timeline">
+            <div class="mile-row">
+              <div class="mile-badge">START</div>
+              <div class="mile-details">
+                <h4>The Starting Line</h4>
+                <p>Romero's Park, Agua Fr&iacute;a. Gear bag drop and race-morning packet pickup run 6:00&#8211;7:00 AM. Roads into the start close at 7:00 AM. Wheelchair division rolls at 7:25 AM; Half Marathon and 3-Amigos Relay at 7:30 AM.</p>
+              </div>
+            </div>
+            <div class="mile-row">
+              <div class="mile-badge">04</div>
+              <div class="mile-details">
+                <h4>Mile 4 &#183; Medic</h4>
+                <p>A medic is stationed here. Water is on course at miles 2, 4, 6, 8, 9, 10 and 12 across five aid stations.</p>
+              </div>
+            </div>
+            <div class="mile-row">
+              <div class="mile-badge">09</div>
+              <div class="mile-details">
+                <h4>Mile 9 &#183; The Turnaround</h4>
+                <p>6,883 feet, the high point of the day, out on the Santa Fe River Trail corridor. ALS medical is stationed at the turnaround. From here you retrace the same road home.</p>
+              </div>
+            </div>
+            <div class="mile-row" style="border-color: rgba(0,168,150,0.4);">
+              <div class="mile-badge" style="background: var(--nm-crimson); color: #fff;">FIN</div>
+              <div class="mile-details">
+                <h4>The Finish</h4>
+                <p>Reunity Resources Farm, 1829 San Ysidro Crossing &#8212; every race finishes here. Medical tent and ALS on site. Course limit is 4 hours 30 minutes and support ends at 12:00 PM; anyone behind the sweep is offered a ride in.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width: 600px; margin: 72px auto 0; text-align: center;">
+        <p class="section-eyebrow">The short course</p>
+        <h2 class="section-title" style="font-size: 1.9rem; margin-top: 10px;">A flat, fast farm loop</h2>
+      </div>
+      <div style="max-width: 520px; margin: 36px auto 0;">
+        <article class="race-card" style="border-left: 4px solid var(--nm-turquoise);">
+          <div>
+            <div class="race-img-box ri-fitness" data-badge="5 KM"><span>The Santa Fe 5K at Reunity</span></div>
+            <h3>The Santa Fe 5K</h3>
+            <div class="meta-details" style="color: var(--nm-turquoise);">5 kilometers &#8226; 8:00 AM &#8226; Starts &amp; finishes at Reunity Resources Farm</div>
+            <p>The short course of the morning. Runners and walkers cross the mat at Reunity Resources Farm, 1829 San Ysidro Crossing, and come back into the same finish-line festival the half marathoners run into. Parking for the 5K is at Reunity.</p>
+          </div>
+          <div style="background: #1a1a1a; padding: 16px; border-radius: 8px; border: 1px solid var(--border-gray); margin-bottom: 24px;">
+            <span style="display:block; font-size:0.75rem; text-transform:uppercase; color:var(--nm-gold); font-weight:700; letter-spacing:1px; margin-bottom:4px;">Terrain note</span>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Paved the whole way and far shorter than the half &#8212; the friendliest distance on the schedule for a first race or a family morning. You are still at 7,000 feet, so start easy.</p>
+          </div>
+          <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer" style="background: var(--nm-turquoise);">Santa Fe 5K results</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="race-section" id="expo" style="padding-top: 30px;">
+      <p class="section-eyebrow">Before you run</p>
+      <h2 class="section-title">How pickup ran</h2>
+      <p class="section-lede">For the record, here is how 2026 worked. The Health &amp; Wellness Expo was cancelled and pickup moved to the Santa Fe Running Hub.</p>
+      <div style="max-width: 420px; margin: 48px auto 0;">
+        <article class="race-card">
+          <div class="race-img-box ri-expo" data-badge="Sept 18&#8211;19"><span>Santa Fe Running Hub</span></div>
+          <h3>Packet pickup</h3>
+          <p class="meta-details" style="color: var(--nm-turquoise);">Fri, Sept 18 &#183; 12:00&#8211;6:00 PM<br>Sat, Sept 19 &#183; 10:00 AM &#8211; 5:00 PM</p>
+          <p>Santa Fe Running Hub, 1100 Don Diego Ave # B. Half Marathon and 3-Amigos Relay runners could also collect race morning, 6:00&#8211;7:00 AM at Romero's Park. Santa Fe 5K runners picked up Friday or Saturday.</p>
+          <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer">2026 results</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="kids-faq-section" id="kids-event">
+      <div class="kids-faq-container">
+        <div class="kids-profile-card">
+          <img class="kids-profile-card__img" src="images/web/20250921_0856090.jpg" alt="Runners at the Santa Fe International Half Marathon" loading="lazy">
+          <div class="kids-meta-badge">Ages 3&#8211;12</div>
+          <h2>The Kids 1K <span>Dash</span></h2>
+          <p style="margin-top: 12px;">
+            A high-energy, fun-filled loop around the festival grounds at Reunity Resources Farm, run entirely for our next generation of runners. The Dash was not chip-timed. Every single participant got an official race bib and crossed the main finish line for a medal.
+          </p>
+          <div class="logistics-mini-grid">
+            <div class="logistics-mini-box">
+              <label>Dash Kickoff</label>
+              <span>Ran Sun, Sept 20 &#183; 9:00&#8211;10:00 AM</span>
+            </div>
+            <div class="logistics-mini-box">
+              <label>Entry</label>
+              <span style="color: var(--nm-turquoise);">Always free</span>
+            </div>
+            <div class="logistics-mini-box">
+              <label>Event Location</label>
+              <span>Reunity Resources Farm</span>
+            </div>
+            <div class="logistics-mini-box">
+              <label>Timing</label>
+              <span>Not chip-timed</span>
+            </div>
+          </div>
+          <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer" style="background: var(--nm-gold); color: #0d0d0d;">Kids 1K results</a>
+        </div>
+
+        <div class="faq-data-panel">
+          <div class="faq-header">
+            <h3>Kids 1K Dash <span>FAQ</span></h3>
+          </div>
+          <div class="faq-stack">
+            <div class="faq-item">
+              <div class="faq-question">Who made this year's shirt and medals?</div>
+              <div class="faq-answer">
+                The 2026 race shirt carries a pattern by <strong>Gasali Adeyemo</strong>, the Santa Fe&#8211;based master of Yoruba adire. The finisher medal and the age-group medallions are both made by Maasai artisans. Post-race food is a green chile brunch cooked by Santa Fe YouthWorks.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">How do I register my child for the 1K Dash?</div>
+              <div class="faq-answer">
+                The Dash is free, but registration is closed. Online entry closed Thursday, September 17, and the race is sold out &#8212; there are no walk-up or race-day entries for any distance, the Kids 1K included.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Can parents run along with their children?</div>
+              <div class="faq-answer">
+                Absolutely. Parents and guardians are fully encouraged to jog alongside younger runners. Strollers, wagons, and family cheering crews are welcome around the festival loop at Reunity Resources Farm.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Can I pick up my adult half marathon packet at the same time?</div>
+              <div class="faq-answer">
+                Yes. Packet pickup runs at the Santa Fe Running Hub, 1100 Don Diego Ave # B, on Friday 12:00&#8211;6:00 PM and Saturday 10:00 AM&#8211;5:00 PM. If you are running the Half or the Relay you can also collect race morning, 6:00&#8211;7:00 AM at Romero's Park, before the Dash starts at 9:00 AM.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plan-section" id="plan">
+      <p class="section-eyebrow">Plan your weekend</p>
+      <h2 class="section-title">Planning for 2027</h2>
+      <p class="section-lede">The advice does not change much year to year. Save this for September 18&#8211;19, 2027.</p>
+      <div class="plan-grid">
+        <div class="plan-card">
+          <h3>Beat the altitude</h3>
+          <p>Coming from sea level? Get here two to three days early, skip the hard efforts, and keep a water bottle glued to your hand.</p>
+        </div>
+        <div class="plan-card">
+          <h3>Getting here</h3>
+          <p>Fly into Albuquerque (ABQ) and drive an hour north, or land right at Santa Fe Regional (SAF).</p>
+        </div>
+        <div class="plan-card">
+          <h3>Packet pickup</h3>
+          <p>Santa Fe Running Hub, 1100 Don Diego Ave # B &#8212; Friday 12&#8211;6, Saturday 10&#8211;5. Half and Relay runners can also collect at Romero's Park on race morning, 6&#8211;7 AM.</p>
+        </div>
+        <div class="plan-card">
+          <h3>Where to stay</h3>
+          <p>Parking on race morning is at Romero's Park for the Half and Relay, at Reunity for the 5K, with a third lot at San Isidro Church. Santa Fe Trails runs one shuttle bus on roughly 15-minute loops, 6:00&#8211;7:45 AM and again 10:00&#8211;11:30 AM, with ADA boarding assistance. Easiest way to stay close: grab a room from our <a href="https://be.synxis.com/?Hotel=64099&amp;Chain=6235&amp;arrive=2026-09-15&amp;depart=2026-09-25&amp;adult=1&amp;child=0&amp;promo=SHM" target="_blank" rel="noopener noreferrer">race-rate room block</a> &#8212; the SHM rate is already applied. Want to shop around? Try <a href="https://www.concepthotelgroup.com/" target="_blank" rel="noopener noreferrer">Concept Hotel Group</a> or the <a href="https://thepecostrailinn.com/" target="_blank" rel="noopener noreferrer">Pecos Trail Inn</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tiers-container" id="sponsors">
+      <img class="sponsors-photo" src="images/web/20250921_112904.jpg" alt="Finishers celebrating on the podium at the Capitol Ford backdrop" loading="lazy">
+      <div class="tier-group">
+        <div class="tier-badge badge-title">Title Presenting Partner</div>
+        <div class="presenter-hero-card">
+          <a href="https://www.capitolfordsantafe.com/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;"><img src="images/web/capitol-ford.png" alt="Capitol Ford" style="max-width:100%; max-height:140px; object-fit:contain; display:block; margin:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="presenter-logo-mock" style="display:none;">Capitol <span>Ford</span></div></a>
+        </div>
+      </div>
+
+      <div class="tier-group" style="margin-top: 80px;">
+        <div class="tier-badge badge-gold">Official Gold Partners</div>
+        <div class="tier-grid">
+          <div class="logo-box-standard"><a href="https://santafenm.gov/office-of-economic-development" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;"><img src="images/web/santa-fe-economic-development.png" alt="City of Santa Fe Economic Development" style="max-width:100%; max-height:64px; object-fit:contain; display:block; margin:auto;" onerror="this.replaceWith(document.createTextNode('City of Santa Fe · Office of Economic Development'))"></a></div>
+          <div class="logo-box-standard"><a href="https://www.jiranikahawa.com/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;"><img src="images/web/jirani-kenyan-coffee.png" alt="Jirani Kenyan Coffee" style="max-width:100%; max-height:80px; object-fit:contain; display:block; margin:auto;" onerror="this.replaceWith(document.createTextNode('Jirani Kenyan Coffee'))"></a></div>
+          <div class="logo-box-standard"><a href="https://runsantafe.com/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">Run Santa Fe</a></div>
+        </div>
+      </div>
+
+      <div class="tier-group" style="margin-top: 80px;">
+        <div class="tier-badge badge-silver">Community Silver Supporters</div>
+        <div class="tier-grid tier-grid-silver">
+          <div class="logo-box-standard">Local Business</div>
+          <div class="logo-box-standard">Local Business</div>
+          <div class="logo-box-standard">Local Business</div>
+          <div class="logo-box-standard">Local Business</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Santa Fe <span>International</span> Half</h3>
+        <p>High desert. Drums on the route. A finish line that feels like home. Next race September 18–19, 2027 — presented by Capitol Ford.</p>
+        <a href="https://santafehalfmarathon.com/race-information/results-photos/" class="action-btn" target="_blank" rel="noopener noreferrer" style="display:inline-block;">See the 2026 results</a>
+      </div>
+      <div class="footer-col">
+        <h4>Races</h4>
+        <a href="#races">Half Marathon</a>
+        <a href="#races">3-Amigos Relay</a>
+        <a href="#races">Santa Fe 5K</a>
+        <a href="#races">Kids 1K Dash</a>
+      </div>
+      <div class="footer-col">
+        <h4>Event</h4>
+        <a href="#sponsors">Sponsors</a>
+        <a href="https://santafehalfmarathon.com/race-information/results-photos/" target="_blank" rel="noopener noreferrer">2026 results</a>
+      </div>
+      <div class="newsletter-box">
+        <h4>Stay in the loop</h4>
+        <p>Race updates, training tips, and early-bird news for 2027.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" id="newsletterEmail" placeholder="you@email.com" aria-label="Email address" required>
+          <button type="submit">Join</button>
+        </form>
+        <p class="newsletter-note" id="newsletterNote"></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Santa Fe International Half Marathon · Presented by Capitol Ford</span>
+      <span>Santa Fe, New Mexico · 7,000 ft</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 20); };
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+      var toggle = document.getElementById('menuToggle');
+      var nav = document.getElementById('mainNav');
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+      });
+
+      // Counts to the opening of 2027 race weekend (Sat Sept 18). No gun time is
+      // asserted for 2027 because none is published yet.
+      var raceDay = new Date('2027-09-18T00:00:00-06:00');
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      function tick() {
+        var diff = raceDay - new Date();
+        if (diff <= 0) {
+          document.getElementById('countdown').innerHTML = '<div class="countdown-segment" style="min-width:auto"><div class="countdown-val">Race weekend is here.</div></div>';
+          return;
+        }
+        document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+        document.getElementById('cd-hours').textContent = pad(Math.floor(diff / 3600000) % 24);
+        document.getElementById('cd-mins').textContent = pad(Math.floor(diff / 60000) % 60);
+        document.getElementById('cd-secs').textContent = pad(Math.floor(diff / 1000) % 60);
+      }
+      tick(); setInterval(tick, 1000);
+
+      // Newsletter signup — hands the address off to the race inbox via the
+      // visitor's email app. Swap this block for a real provider embed
+      // (Mailchimp / Klaviyo / etc.) when the list is set up.
+      var form = document.getElementById('newsletterForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = document.getElementById('newsletterEmail').value.trim();
+          var note = document.getElementById('newsletterNote');
+          if (!email) { note.textContent = 'Enter your email to join.'; return; }
+          var subject = encodeURIComponent('Add me to the Santa Fe Half mailing list');
+          var body = encodeURIComponent('Please add this email to your race updates list: ' + email);
+          window.location.href = 'mailto:info@santafehalfmarathon.com?subject=' + subject + '&body=' + body;
+          note.textContent = 'Opening your email app — hit send to finish signing up.';
+          form.reset();
+        });
+      }
+    })();
+  </script>
+  <script>
+    // Campaign tracking: tag every RunSignup CTA with UTMs so signups are
+    // attributable in analytics. Per-race utm_content comes from each race
+    // card's heading; other links fall back to their link text. Runs at parse
+    // time (end of body) and is safe to run more than once.
+    (function () {
+      var UTM = { utm_source: 'website', utm_medium: 'cta', utm_campaign: 'sfhm_2026' };
+      // Referral / Groups-Teams. RunSignup receives the value on REFERRAL_PARAM.
+      // Currently 'groupId' for RunSignup Groups/Teams; use 'ref' for a plain tag.
+      var REFERRAL_PARAM = 'groupId';
+      // Optional static value — a real RunSignup team groupId. Placeholder = off.
+      var STATIC_REF = 'YOUR_GROUP_ID';
+      // Passthrough: a visitor arriving via ?ref= or ?groupId= carries that value
+      // straight into registration, so shared runner links keep their credit.
+      var incomingRef = '';
+      try { var _qs = new URLSearchParams(window.location.search); incomingRef = _qs.get('ref') || _qs.get('groupId') || ''; } catch (e) {}
+      var refVal = incomingRef || (STATIC_REF !== 'YOUR_GROUP_ID' ? STATIC_REF : '');
+      function slug(s){ return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40); }
+      document.querySelectorAll('a[href*="runsignup.com"]').forEach(function (a) {
+        var url; try { url = new URL(a.href); } catch (e) { return; }
+        var content = '';
+        var card = a.closest('.race-card');
+        if (card) { var h = card.querySelector('h3'); if (h) content = slug(h.textContent); }
+        if (!content) content = slug(a.textContent) || 'cta';
+        url.searchParams.set('utm_source', UTM.utm_source);
+        url.searchParams.set('utm_medium', UTM.utm_medium);
+        url.searchParams.set('utm_campaign', UTM.utm_campaign);
+        url.searchParams.set('utm_content', content);
+        if (refVal) url.searchParams.set(REFERRAL_PARAM, refVal);
+        a.href = url.toString();
+      });
+    })();
+  </script>
+</body>
+</html>

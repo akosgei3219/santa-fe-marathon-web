@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SFHM Mobile Nav — Device Frame Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* ============ design tokens ============ */
+:root{
+  --paper:#FAF6EF;          /* warm gallery white */
+  --paper-2:#F2EBDF;        /* sand wash for wells */
+  --charcoal:#26211D;       /* deep desert charcoal */
+  --charcoal-soft:#5C5248;
+  --faint:#8C8075;
+  --terracotta:#C65B33;
+  --terracotta-deep:#A84826;
+  --turquoise:#1F9E94;
+  --line:rgba(38,33,29,.12);
+  --display:'Archivo',sans-serif;
+  --body:'Hanken Grotesk',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,.9,.24,1);   /* premium snap */
+  --dur:.52s;
+  --phone-w:390px;
+  --phone-h:790px;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+
+/* ============ desk backdrop the chassis sits on ============ */
+body{
+  font-family:var(--body);
+  min-height:100%;
+  display:grid;place-items:center;
+  padding:34px 16px;
+  background:
+    radial-gradient(70% 90% at 80% 0%,rgba(198,91,51,.10),transparent 55%),
+    radial-gradient(60% 70% at 10% 100%,rgba(31,158,148,.09),transparent 50%),
+    #E9E1D3;
+}
+.desk-label{
+  position:fixed;left:24px;bottom:20px;
+  font-weight:600;font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(38,33,29,.4);
+}
+
+/* ============ device chassis ============ */
+.phone{
+  position:relative;
+  width:calc(var(--phone-w) + 24px);
+  height:calc(var(--phone-h) + 24px);
+  background:#17130F;
+  border-radius:54px;
+  padding:12px;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.08),
+    0 2px 4px rgba(23,19,15,.2),
+    0 40px 80px -30px rgba(23,19,15,.55);
+}
+.phone::after{               /* side button hint */
+  content:"";position:absolute;right:-3px;top:180px;width:3px;height:72px;
+  background:#17130F;border-radius:0 3px 3px 0;
+}
+.screen{
+  position:relative;
+  width:var(--phone-w);height:var(--phone-h);
+  background:var(--paper);
+  border-radius:42px;
+  overflow:hidden;              /* the drawer clips to the glass */
+  isolation:isolate;
+}
+.notch{
+  position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  width:118px;height:30px;border-radius:18px;
+  background:#17130F;z-index:200;
+  pointer-events:none;
+}
+.home-pill{
+  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+  width:120px;height:5px;border-radius:3px;
+  background:rgba(38,33,29,.28);z-index:200;
+  pointer-events:none;
+}
+
+/* ============ in-phone page ============ */
+.viewport{
+  position:absolute;inset:0;
+  overflow-y:auto;
+  scrollbar-width:none;
+}
+.viewport::-webkit-scrollbar{display:none}
+
+.site-header{
+  position:sticky;top:0;z-index:120;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:54px 22px 14px;      /* clears the notch */
+  background:linear-gradient(var(--paper) 78%,rgba(250,246,239,0));
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;color:var(--charcoal);
+}
+.logo-mark{
+  width:34px;height:34px;border-radius:10px;flex:none;
+  background:
+    linear-gradient(135deg,var(--terracotta) 0 46%,transparent 46%),
+    linear-gradient(315deg,var(--turquoise) 0 30%,transparent 30%),
+    var(--charcoal);
+}
+.logo-word{
+  font-family:var(--display);
+  font-weight:800;font-stretch:72%;
+  font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+  line-height:1.1;
+}
+.logo-word small{
+  display:block;
+  font-family:var(--body);font-weight:600;
+  font-size:8.5px;letter-spacing:.34em;color:var(--terracotta);
+}
+
+/* ---- morphing hamburger (48px touch target) ---- */
+.burger{
+  position:relative;z-index:180;
+  width:48px;height:48px;flex:none;
+  display:grid;place-items:center;
+  background:transparent;border:0;border-radius:14px;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.burger:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px}
+.burger .bars{position:relative;width:24px;height:16px}
+.burger .bars i{
+  position:absolute;left:0;width:100%;height:2px;border-radius:2px;
+  background:var(--charcoal);
+  transition:transform var(--dur) var(--ease),opacity .3s var(--ease);
+  will-change:transform;
+}
+.burger .bars i:nth-child(1){top:0;transform-origin:center}
+.burger .bars i:nth-child(2){top:7px}
+.burger .bars i:nth-child(3){top:14px}
+.screen.nav-open .burger .bars i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.screen.nav-open .burger .bars i:nth-child(2){opacity:0;transform:scaleX(.3)}
+.screen.nav-open .burger .bars i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---- demo hero behind the drawer ---- */
+.hero{padding:26px 26px 60px}
+.hero-kicker{
+  font-weight:700;font-size:10.5px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--turquoise);
+  margin-bottom:16px;
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:850;font-stretch:68%;
+  font-size:56px;line-height:.95;
+  letter-spacing:.005em;text-transform:uppercase;
+  color:var(--charcoal);
+}
+.hero h1 em{font-style:normal;color:var(--terracotta)}
+.hero p{
+  margin-top:22px;max-width:30ch;
+  font-size:15px;line-height:1.7;color:var(--charcoal-soft);
+}
+.hero-card{
+  margin-top:34px;padding:20px 22px;border-radius:16px;
+  background:var(--paper-2);
+  display:flex;justify-content:space-between;gap:12px;
+}
+.hero-card div{display:flex;flex-direction:column;gap:4px}
+.hero-card b{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:19px;color:var(--charcoal)}
+.hero-card span{font-weight:600;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+
+/* ============ sliding drawer ============ */
+.scrim{
+  position:absolute;inset:0;z-index:140;
+  background:rgba(38,33,29,.34);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  opacity:0;visibility:hidden;
+  transition:opacity var(--dur) var(--ease),visibility 0s linear var(--dur);
+}
+.screen.nav-open .scrim{opacity:1;visibility:visible;transition:opacity var(--dur) var(--ease)}
+
+.drawer{
+  position:absolute;top:0;right:0;bottom:0;z-index:160;
+  width:88%;max-width:340px;
+  background:var(--paper);
+  box-shadow:-24px 0 60px -24px rgba(38,33,29,.45);
+  display:flex;flex-direction:column;
+  transform:translateX(104%);            /* GPU: transform only */
+  transition:transform var(--dur) var(--ease);
+  will-change:transform;
+  visibility:hidden;
+}
+.screen.nav-open .drawer{transform:translateX(0);visibility:visible}
+.drawer[data-anim]{visibility:visible}   /* keep visible while sliding out */
+
+.drawer-scroll{
+  flex:1;overflow-y:auto;
+  display:flex;flex-direction:column;
+  padding:74px 26px 0;
+  scrollbar-width:none;
+}
+.drawer-scroll::-webkit-scrollbar{display:none}
+
+.drawer-eyebrow{
+  font-weight:700;font-size:9.5px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--faint);
+  margin-bottom:14px;
+}
+
+/* staggered rows */
+.nav-row{
+  opacity:0;transform:translateX(28px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+}
+.screen.nav-open .nav-row{opacity:1;transform:none}
+.screen.nav-open .nav-row:nth-of-type(2){transition-delay:.10s}
+.screen.nav-open .nav-row:nth-of-type(3){transition-delay:.16s}
+.screen.nav-open .nav-row:nth-of-type(4){transition-delay:.22s}
+.nav-row + .nav-row{border-top:1px solid var(--line)}
+
+/* shared row look: min 52px touch targets */
+.acc-head,.solo-link{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  width:100%;min-height:60px;
+  padding:16px 2px;
+  background:none;border:0;cursor:pointer;
+  text-align:left;text-decoration:none;
+  font-family:var(--display);
+  font-weight:800;font-stretch:72%;
+  font-size:22px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--charcoal);
+  transition:color .25s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.acc-head:hover,.solo-link:hover{color:var(--terracotta)}
+.acc-head:focus-visible,.solo-link:focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;border-radius:4px}
+.acc-head[aria-expanded="true"]{color:var(--terracotta)}
+
+.chev{
+  flex:none;width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;
+  border:1.5px solid var(--line);
+  transition:transform var(--dur) var(--ease),border-color .3s,background .3s;
+  will-change:transform;
+}
+.chev svg{display:block}
+.chev svg path{stroke:var(--charcoal-soft);transition:stroke .3s}
+.acc-head[aria-expanded="true"] .chev{
+  transform:rotate(180deg);                 /* 0 -> 180 */
+  background:var(--terracotta);border-color:var(--terracotta);
+}
+.acc-head[aria-expanded="true"] .chev svg path{stroke:var(--paper)}
+
+.solo-link .go{
+  font-family:var(--body);font-weight:700;
+  font-size:9px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--turquoise);
+}
+
+/* accordion panel — grid-rows keeps height animation layout-shift-free */
+.acc-panel{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows var(--dur) var(--ease);
+}
+.acc-head[aria-expanded="true"] + .acc-panel{grid-template-rows:1fr}
+.acc-panel > div{overflow:hidden}
+.acc-links{
+  display:flex;flex-direction:column;
+  padding:0 0 18px;
+}
+.acc-links a{
+  position:relative;
+  display:flex;align-items:center;
+  min-height:46px;
+  padding:10px 8px 10px 20px;
+  text-decoration:none;
+  font-weight:500;font-size:15.5px;letter-spacing:.02em;
+  color:var(--charcoal-soft);
+  border-left:2px solid var(--line);
+  opacity:0;transform:translateY(-6px);
+  transition:opacity .35s var(--ease),transform .35s var(--ease),
+             color .25s,border-color .25s,padding-left .25s var(--ease);
+}
+.acc-head[aria-expanded="true"] + .acc-panel .acc-links a{opacity:1;transform:none}
+.acc-head[aria-expanded="true"] + .acc-panel .acc-links a:nth-child(1){transition-delay:.08s}
+.acc-head[aria-expanded="true"] + .acc-panel .acc-links a:nth-child(2){transition-delay:.14s}
+.acc-head[aria-expanded="true"] + .acc-panel .acc-links a:nth-child(3){transition-delay:.20s}
+.acc-head[aria-expanded="true"] + .acc-panel .acc-links a:nth-child(4){transition-delay:.26s}
+.acc-links a:hover{color:var(--terracotta);border-color:var(--terracotta);padding-left:26px}
+.acc-links a:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px;border-radius:3px}
+
+/* ============ anchored conversion zone (thumb reach) ============ */
+.drawer-cta{
+  margin-top:auto;              /* pins to drawer base */
+  padding:18px 26px calc(26px + 10px);
+  background:linear-gradient(rgba(250,246,239,0),var(--paper) 30%);
+  opacity:0;transform:translateY(16px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.screen.nav-open .drawer-cta{opacity:1;transform:none;transition-delay:.3s}
+.cta-note{
+  display:flex;align-items:center;gap:8px;
+  font-weight:600;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:12px;
+}
+.cta-note::before{
+  content:"";width:6px;height:6px;border-radius:50%;flex:none;
+  background:var(--turquoise);
+}
+.register{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;min-height:58px;
+  background:var(--terracotta);
+  color:var(--paper);
+  border-radius:14px;
+  text-decoration:none;
+  font-family:var(--display);
+  font-weight:850;font-stretch:75%;
+  font-size:18px;letter-spacing:.14em;text-transform:uppercase;
+  box-shadow:0 12px 26px -10px rgba(198,91,51,.55);
+  transition:transform .3s var(--ease),background .3s,box-shadow .3s var(--ease);
+  will-change:transform;
+}
+.register:hover{background:var(--terracotta-deep);transform:translateY(-2px);box-shadow:0 18px 32px -10px rgba(198,91,51,.6)}
+.register:active{transform:translateY(0) scale(.985)}
+.register:focus-visible{outline:3px solid var(--charcoal);outline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;transition-delay:0ms !important}
+}
+</style>
+</head>
+<body>
+
+<p class="desk-label">SFHM · Mobile nav prototype · v2 device frame</p>
+
+<div class="phone" role="presentation">
+  <div class="screen" id="screen">
+    <div class="notch" aria-hidden="true"></div>
+
+    <div class="viewport">
+      <header class="site-header">
+        <a class="logo" href="#" aria-label="Santa Fe Half — home">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-word">Santa Fe Half<small>Sept 20 · 7000 ft</small></span>
+        </a>
+        <button class="burger" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
+          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </header>
+
+      <main class="hero">
+        <p class="hero-kicker">High-Desert Racing</p>
+        <h1>Thin air.<br>Big <em>sky.</em><br>True grit.</h1>
+        <p>Prototype backdrop. Tap the hamburger to slide the drawer in from the right, then work the accordions with your thumb.</p>
+        <div class="hero-card">
+          <div><b>13.1</b><span>Miles</span></div>
+          <div><b>7,000</b><span>Feet</span></div>
+          <div><b>Sep 20</b><span>Race Day</span></div>
+        </div>
+      </main>
+    </div>
+
+    <div class="scrim" id="scrim" aria-hidden="true"></div>
+
+    <nav class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
+      <div class="drawer-scroll">
+        <p class="drawer-eyebrow">Menu</p>
+
+        <div class="nav-row">
+          <button class="acc-head" aria-expanded="false" aria-controls="panelRaceInfo" id="headRaceInfo">
+            Race Info
+            <span class="chev" aria-hidden="true">
+              <svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1.25l4.5 4.5 4.5-4.5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="acc-panel" id="panelRaceInfo" role="region" aria-labelledby="headRaceInfo">
+            <div>
+              <div class="acc-links">
+                <a href="#">Half Marathon</a>
+                <a href="#">10K</a>
+                <a href="#">5K</a>
+                <a href="#">Course Maps &amp; Elevation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button class="acc-head" aria-expanded="false" aria-controls="panelWeekend" id="headWeekend">
+            Race Weekend
+            <span class="chev" aria-hidden="true">
+              <svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1.25l4.5 4.5 4.5-4.5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="acc-panel" id="panelWeekend" role="region" aria-labelledby="headWeekend">
+            <div>
+              <div class="acc-links">
+                <a href="#">Packet Pickup &amp; Expo</a>
+                <a href="#">Shuttles &amp; Parking</a>
+                <a href="#">Event Schedule</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <a class="solo-link" href="#">Results &amp; Photos <span class="go">View</span></a>
+        </div>
+      </div>
+
+      <div class="drawer-cta">
+        <p class="cta-note">Entries open thru Sep 19</p>
+        <a class="register" href="#">Register Now</a>
+      </div>
+    </nav>
+
+    <div class="home-pill" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ */
+/* Drawer + accordion controller — state lives in the DOM (classes +  */
+/* aria attributes); heights animate via grid-template-rows, so there  */
+/* is no measuring, no inline px, and no layout shift.                 */
+/* ------------------------------------------------------------------ */
+(function () {
+  "use strict";
+
+  var screen  = document.getElementById("screen");
+  var toggle  = document.getElementById("navToggle");
+  var drawer  = document.getElementById("navDrawer");
+  var scrim   = document.getElementById("scrim");
+  var heads   = Array.prototype.slice.call(drawer.querySelectorAll(".acc-head"));
+
+  /* ---- drawer ---- */
+  function isOpen() { return screen.classList.contains("nav-open"); }
+
+  function setDrawer(open) {
+    if (open === isOpen()) return;
+    screen.classList.toggle("nav-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    drawer.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      drawer.removeAttribute("data-anim");
+      drawer.querySelector(".acc-head, .solo-link").focus({ preventScroll: true });
+    } else {
+      /* keep the drawer visible while it slides off-glass */
+      drawer.setAttribute("data-anim", "closing");
+      drawer.addEventListener("transitionend", function done(e) {
+        if (e.propertyName !== "transform") return;
+        drawer.removeAttribute("data-anim");
+        drawer.removeEventListener("transitionend", done);
+      });
+      collapseAll(null);
+      toggle.focus({ preventScroll: true });
+    }
+  }
+
+  toggle.addEventListener("click", function () { setDrawer(!isOpen()); });
+  scrim.addEventListener("click", function () { setDrawer(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && isOpen()) setDrawer(false);
+  });
+
+  /* ---- accordions (one open at a time = lower cognitive load) ---- */
+  function setPanel(head, open) {
+    head.setAttribute("aria-expanded", String(open));
+  }
+  function collapseAll(except) {
+    heads.forEach(function (h) { if (h !== except) setPanel(h, false); });
+  }
+  heads.forEach(function (head) {
+    head.addEventListener("click", function () {
+      var next = head.getAttribute("aria-expanded") !== "true";
+      collapseAll(head);
+      setPanel(head, next);
+    });
+  });
+
+  /* ---- prototype links close the drawer so the flow reads end-to-end ---- */
+  Array.prototype.forEach.call(drawer.querySelectorAll("a"), function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      setDrawer(false);
+    });
+  });
+})();
+</script>
+</body>
+</html>

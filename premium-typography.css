@@ -1,0 +1,545 @@
+/* =============================================================================
+   premium-typography.css
+   A warm, organic type system: earth-toned gradients, fluid hierarchies,
+   and generous breathing space.
+
+   Palette is the Santa Fe rebrand canon (CLAUDE.md, 2026-09-10):
+     terracotta #C2593F · turquoise #1FA6B8 · charcoal #222222 · sand #FBF9F6
+
+   Two canon rules are encoded here, not just documented:
+     · #C2593F is for borders, accents and LARGE DISPLAY TYPE ONLY.
+       Body and small text use --pt-terracotta-ink (#AD4A2E), which clears
+       AA on sand. Gradient text is likewise gated to display sizes.
+     · The homepage hero CTA (#FF5400 on #0C0C0E) is a deliberate exception.
+       Nothing in this file styles buttons, so it cannot "correct" that.
+
+   USAGE
+     <link rel="stylesheet" href="premium-typography.css">
+     Tokens + utilities are global. Element styling is opt-in:
+       <article class="pt-prose"> … </article>
+     To apply base styles document-wide, see [ OPTIONAL: GLOBAL BASE ] below.
+
+   FONTS — host-loaded on purpose (an @import here would block rendering):
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+           family=Anton&family=Archivo:wght@400;500;600&display=swap">
+     Anton is the canon display face. Swap either face by overriding
+     --pt-font-display / --pt-font-text; nothing else needs to change.
+============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. TOKENS
+   All custom properties are --pt-* so they cannot collide with the existing
+   --stone-*, --nm-*, --terra / --ink / --sand sets already in this project.
+-------------------------------------------------------------------------- */
+:root {
+  /* --- Type families ------------------------------------------------------ */
+  --pt-font-display: "Anton", "Arial Narrow", system-ui, sans-serif;
+  --pt-font-text: "Archivo", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pt-font-mono: ui-monospace, "Martian Mono", "SFMono-Regular", Menlo,
+    Consolas, monospace;
+
+  /* Anton is condensed and heavy, so it reads better with a whisker of
+     positive tracking. If you swap in a wide face, take this to a negative
+     value (-0.015em is a good starting point). */
+  --pt-display-tracking: 0.005em;
+
+  /* --- Earth palette ------------------------------------------------------ */
+  --pt-sand: #fbf9f6;          /* canon */
+  --pt-sand-deep: #f2ebe2;
+  --pt-clay: #e3d2c3;
+  --pt-clay-deep: #cdb6a2;
+
+  --pt-terracotta: #c2593f;    /* canon — borders, accents, DISPLAY type only */
+  --pt-terracotta-ink: #ad4a2e;/* canon — the safe one for small text + fills  */
+  --pt-terracotta-deep: #8c3a24;
+  --pt-ember: #e07b39;         /* focus + gradient stop, not a text colour     */
+  --pt-ochre: #d9a066;         /* gradient stop only — too light for text      */
+
+  --pt-turquoise: #1fa6b8;     /* canon */
+  /* Canon turquoise text. Measured 4.80:1 on --pt-sand (AA) but only 4.27:1
+     on --pt-sand-deep, so it is NOT safe for small text inside .pt-card.
+     The value is canon and deliberately left alone — use it on the page
+     ground, or step to --pt-ink for card copy. */
+  --pt-turquoise-ink: #147a87;
+
+  --pt-charcoal: #222222;      /* canon */
+
+  /* --- Semantic ink + ground --------------------------------------------- */
+  --pt-ground: var(--pt-sand);
+  --pt-ground-sunk: var(--pt-sand-deep);
+  --pt-ink: var(--pt-charcoal);
+  --pt-ink-soft: #55514d;
+  --pt-ink-faint: #716961;   /* AA on both sand and sand-deep (card ground) */
+  --pt-accent: var(--pt-terracotta);      /* display / rules / borders */
+  --pt-accent-ink: var(--pt-terracotta-ink); /* anything set small     */
+  --pt-line: color-mix(in oklab, var(--pt-clay) 72%, transparent);
+
+  /* --- Earth-toned gradients ---------------------------------------------- */
+  /* Angles are off-axis on purpose: 100/118/135deg reads hand-made, where
+     90deg reads like a corporate header band. */
+  --pt-grad-ember: linear-gradient(100deg, #8c3a24 0%, #c2593f 46%, #e07b39 100%);
+  --pt-grad-dune:  linear-gradient(118deg, #ad4a2e 0%, #c2593f 38%, #d9a066 100%);
+  --pt-grad-mesa:  linear-gradient(135deg, #c2593f 0%, #a9614c 42%, #147a87 100%);
+  --pt-grad-ground: linear-gradient(176deg, #fbf9f6 0%, #f2ebe2 100%);
+  --pt-grad-rule: linear-gradient(90deg, transparent, var(--pt-clay-deep) 18%,
+                                  var(--pt-terracotta) 50%,
+                                  var(--pt-clay-deep) 82%, transparent);
+
+  /* --- Fluid type scale ---------------------------------------------------
+     clamp(min, preferred, max). Preferred pairs a rem floor with a vw slope
+     so every step keeps growing between roughly 360px and 1240px, then
+     stops — nothing runs away on an ultrawide display. Ratio ≈ 1.25 small, 1.33 large.
+  ------------------------------------------------------------------------ */
+  --pt-text-2xs:  clamp(0.72rem, 0.700rem + 0.10vw, 0.78rem);
+  --pt-text-xs:   clamp(0.80rem, 0.770rem + 0.15vw, 0.88rem);
+  --pt-text-sm:   clamp(0.90rem, 0.860rem + 0.20vw, 1.00rem);
+  --pt-text-base: clamp(1.00rem, 0.950rem + 0.28vw, 1.15rem);
+  --pt-text-lg:   clamp(1.15rem, 1.060rem + 0.42vw, 1.40rem);
+  --pt-text-xl:   clamp(1.35rem, 1.200rem + 0.70vw, 1.80rem);
+  --pt-text-2xl:  clamp(1.65rem, 1.380rem + 1.25vw, 2.45rem);
+  --pt-text-3xl:  clamp(2.05rem, 1.550rem + 2.30vw, 3.40rem);
+  --pt-text-4xl:  clamp(2.55rem, 1.650rem + 4.10vw, 4.80rem);
+  --pt-text-5xl:  clamp(3.10rem, 1.550rem + 6.90vw, 6.80rem);
+
+  /* --- Leading + measure --------------------------------------------------
+     Display type sets tight; body sets open. Measure caps line length so
+     long-form copy never sprawls past comfortable reading.
+  ------------------------------------------------------------------------ */
+  --pt-leading-display: 0.94;
+  --pt-leading-tight: 1.15;
+  --pt-leading-snug: 1.35;
+  --pt-leading-body: 1.62;
+  --pt-leading-loose: 1.78;
+
+  --pt-measure: 66ch;
+  --pt-measure-tight: 52ch;
+  --pt-measure-wide: 78ch;
+
+  /* --- Breathing space ----------------------------------------------------
+     A fluid spacing scale on the same principle as the type scale, so
+     rhythm and type grow together instead of drifting apart.
+  ------------------------------------------------------------------------ */
+  --pt-space-3xs: clamp(0.25rem, 0.23rem + 0.10vw, 0.31rem);
+  --pt-space-2xs: clamp(0.50rem, 0.46rem + 0.20vw, 0.62rem);
+  --pt-space-xs:  clamp(0.75rem, 0.69rem + 0.30vw, 0.94rem);
+  --pt-space-sm:  clamp(1.00rem, 0.92rem + 0.40vw, 1.25rem);
+  --pt-space-md:  clamp(1.50rem, 1.38rem + 0.60vw, 1.88rem);
+  --pt-space-lg:  clamp(2.00rem, 1.75rem + 1.25vw, 2.75rem);
+  --pt-space-xl:  clamp(3.00rem, 2.50rem + 2.50vw, 4.50rem);
+  --pt-space-2xl: clamp(4.50rem, 3.50rem + 5.00vw, 7.50rem);
+
+  --pt-flow-space: var(--pt-space-sm);
+
+  /* --- Organic geometry ---------------------------------------------------
+     Four different corner radii. The eye reads the asymmetry as drawn
+     rather than generated; a uniform radius is the corporate tell.
+  ------------------------------------------------------------------------ */
+  --pt-radius-organic: 14px 9px 16px 10px;
+  --pt-radius-soft: 10px;
+  --pt-radius-pill: 999px;
+}
+
+/* --- Dark ground -----------------------------------------------------------
+   Warm charcoal, never neutral black — the earth tones die against #000.
+   Honours the system preference unless the host opts out with
+   data-pt-theme="light", and can be forced with data-pt-theme="dark".
+-------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-pt-theme="light"]) {
+    --pt-ground: #1a1613;
+    --pt-ground-sunk: #120f0d;
+    --pt-ink: #f4ede4;
+    --pt-ink-soft: #c3b6a8;
+    --pt-ink-faint: #94867a;
+    --pt-accent: #e2795c;
+    --pt-accent-ink: #f0a184;
+    --pt-line: color-mix(in oklab, #e2795c 26%, transparent);
+    --pt-grad-ember: linear-gradient(100deg, #c2593f 0%, #e07b39 52%, #f0b27a 100%);
+    --pt-grad-dune:  linear-gradient(118deg, #c2593f 0%, #de8350 40%, #e8c08c 100%);
+    --pt-grad-mesa:  linear-gradient(135deg, #e2795c 0%, #c98a72 42%, #4fc2d1 100%);
+    --pt-grad-ground: linear-gradient(176deg, #1a1613 0%, #120f0d 100%);
+    --pt-grad-rule: linear-gradient(90deg, transparent, #6b4a3c 18%,
+                                    #e2795c 50%, #6b4a3c 82%, transparent);
+  }
+}
+
+:root[data-pt-theme="dark"] {
+  --pt-ground: #1a1613;
+  --pt-ground-sunk: #120f0d;
+  --pt-ink: #f4ede4;
+  --pt-ink-soft: #c3b6a8;
+  --pt-ink-faint: #94867a;
+  --pt-accent: #e2795c;
+  --pt-accent-ink: #f0a184;
+  --pt-line: color-mix(in oklab, #e2795c 26%, transparent);
+  --pt-grad-ember: linear-gradient(100deg, #c2593f 0%, #e07b39 52%, #f0b27a 100%);
+  --pt-grad-dune:  linear-gradient(118deg, #c2593f 0%, #de8350 40%, #e8c08c 100%);
+  --pt-grad-mesa:  linear-gradient(135deg, #e2795c 0%, #c98a72 42%, #4fc2d1 100%);
+  --pt-grad-ground: linear-gradient(176deg, #1a1613 0%, #120f0d 100%);
+  --pt-grad-rule: linear-gradient(90deg, transparent, #6b4a3c 18%,
+                                  #e2795c 50%, #6b4a3c 82%, transparent);
+}
+
+/* -----------------------------------------------------------------------------
+   2. TYPE UTILITIES
+   Each step pairs a size with the leading and tracking that suit it, so you
+   never have to remember to tighten a heading by hand.
+-------------------------------------------------------------------------- */
+.pt-display,
+.pt-title,
+.pt-subtitle,
+.pt-heading {
+  font-family: var(--pt-font-display);
+  font-weight: 400;              /* Anton ships one weight; don't fake-bold it */
+  letter-spacing: var(--pt-display-tracking);
+  line-height: var(--pt-leading-display);
+  text-wrap: balance;            /* no orphaned last word in a headline */
+  color: var(--pt-ink);
+  margin: 0;
+}
+
+.pt-display   { font-size: var(--pt-text-5xl); }
+.pt-title     { font-size: var(--pt-text-4xl); }
+.pt-subtitle  { font-size: var(--pt-text-3xl); line-height: var(--pt-leading-tight); }
+.pt-heading   { font-size: var(--pt-text-2xl); line-height: var(--pt-leading-tight); }
+
+/* Eyebrow — the small tracked label above a heading. Uses the ink-safe
+   terracotta because it is small text, per canon. */
+.pt-eyebrow {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: var(--pt-leading-snug);
+  color: var(--pt-accent-ink);
+  margin: 0 0 var(--pt-space-2xs);
+}
+
+/* Lede — the standfirst paragraph. Larger, looser, deliberately shorter measure. */
+.pt-lede {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-lg);
+  font-weight: 400;
+  line-height: var(--pt-leading-loose);
+  color: var(--pt-ink-soft);
+  max-width: var(--pt-measure-tight);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.pt-body {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-base);
+  line-height: var(--pt-leading-body);
+  color: var(--pt-ink);
+  max-width: var(--pt-measure);
+  text-wrap: pretty;
+}
+
+.pt-fine {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-xs);
+  line-height: var(--pt-leading-snug);
+  color: var(--pt-ink-faint);
+}
+
+.pt-mono {
+  font-family: var(--pt-font-mono);
+  font-size: var(--pt-text-sm);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -----------------------------------------------------------------------------
+   3. EARTH-TONED GRADIENT TEXT
+   Gated to display sizes on purpose. Gradient text cannot be contrast-tested
+   reliably, and canon restricts #C2593F to large display type anyway — so
+   these classes carry a guard that opts out below 1.75rem.
+-------------------------------------------------------------------------- */
+.pt-grad-text {
+  /* Solid fallback paints first; the clip only wins where it is supported. */
+  color: var(--pt-accent);
+  background-image: var(--pt-grad-ember);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* The gradient box is the ELEMENT box, not the glyphs. On a block-level
+     heading a short word would sample only the leftmost sliver and read as
+     flat colour, so shrink-wrap to the text. max-width keeps it wrapping.
+     Centring a gradient heading therefore needs margin-inline: auto. */
+  width: fit-content;
+  max-width: 100%;
+  /* A gradient runs out of contrast at the light end, so keep it off thin
+     strokes: these are display classes only. */
+  padding-bottom: 0.06em;        /* stops descenders clipping in WebKit */
+}
+
+.pt-grad-text--dune { background-image: var(--pt-grad-dune); }
+.pt-grad-text--mesa { background-image: var(--pt-grad-mesa); }
+
+/* Guard: if the element is not actually display-sized, fall back to solid
+   ink-safe terracotta rather than shipping unreadable gradient body text. */
+@supports (font-size: 1cap) {
+  .pt-grad-text:not(.pt-display):not(.pt-title):not(.pt-subtitle):not(.pt-heading) {
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--pt-accent-ink);
+  }
+}
+
+/* Forced-colours (Windows high contrast): drop the clip entirely. */
+@media (forced-colors: active) {
+  .pt-grad-text {
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: CanvasText;
+  }
+}
+
+/* Gradient grounds --------------------------------------------------------- */
+.pt-ground        { background: var(--pt-grad-ground); color: var(--pt-ink); }
+.pt-ground--ember { background: var(--pt-grad-ember); color: #fff6f0; }
+.pt-ground--mesa  { background: var(--pt-grad-mesa);  color: #fff6f0; }
+
+/* Optional paper grain. Two offset radial washes, no image asset, and it
+   costs nothing to paint. Sits under content via a pseudo-element. */
+.pt-grain { position: relative; isolation: isolate; }
+.pt-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(60% 45% at 12% 8%,  color-mix(in oklab, var(--pt-ochre) 16%, transparent), transparent 70%),
+    radial-gradient(52% 40% at 88% 82%, color-mix(in oklab, var(--pt-turquoise) 10%, transparent), transparent 72%);
+}
+
+/* -----------------------------------------------------------------------------
+   4. BREATHING SPACE
+-------------------------------------------------------------------------- */
+
+/* The owl: space between siblings, never before the first or after the last,
+   so a section's outer padding stays under your control. */
+.pt-flow > * + * { margin-block-start: var(--pt-flow-space, var(--pt-space-sm)); }
+
+/* Context-aware rhythm: a heading wants more air above it than a paragraph. */
+.pt-flow > :is(h1, h2, .pt-display, .pt-title) + *,
+.pt-flow > * + :is(h1, h2, .pt-display, .pt-title) { margin-block-start: var(--pt-space-lg); }
+.pt-flow > * + :is(h3, h4, .pt-subtitle, .pt-heading) { margin-block-start: var(--pt-space-md); }
+.pt-flow > :is(.pt-eyebrow) + *                      { margin-block-start: var(--pt-space-2xs); }
+
+.pt-flow--tight { --pt-flow-space: var(--pt-space-2xs); }
+.pt-flow--loose { --pt-flow-space: var(--pt-space-md); }
+
+.pt-measure       { max-width: var(--pt-measure); }
+.pt-measure-tight { max-width: var(--pt-measure-tight); }
+.pt-measure-wide  { max-width: var(--pt-measure-wide); }
+
+/* Section shell. The asymmetric block padding (more above than below) is
+   deliberate: even padding reads like a CMS, uneven reads composed. */
+.pt-section {
+  padding-block: var(--pt-space-2xl) var(--pt-space-xl);
+  padding-inline: var(--pt-space-md);
+}
+.pt-container {
+  width: 100%;
+  max-width: 68rem;
+  margin-inline: auto;
+}
+.pt-stack-center { margin-inline: auto; }
+
+/* -----------------------------------------------------------------------------
+   5. ORGANIC DETAILS
+-------------------------------------------------------------------------- */
+
+/* A rule that fades in and out instead of hitting the edges — a drawn line,
+   not a table border. */
+.pt-rule {
+  border: 0;
+  height: 2px;
+  background: var(--pt-grad-rule);
+  border-radius: var(--pt-radius-pill);
+  margin-block: var(--pt-space-lg);
+  opacity: 0.85;
+}
+
+/* Inked underline: sits below the baseline, skips descenders, thickens on
+   hover. Reads like a marked-up page rather than a default link. */
+.pt-link {
+  color: var(--pt-accent-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+  transition: text-decoration-thickness 140ms ease, color 140ms ease;
+}
+.pt-link:hover,
+.pt-link:focus-visible {
+  color: var(--pt-terracotta-deep);
+  text-decoration-thickness: 0.16em;
+}
+
+/* Pull quote — hung terracotta bar, generous leading, no italic cliché. */
+.pt-quote {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-xl);
+  line-height: var(--pt-leading-snug);
+  color: var(--pt-ink);
+  max-width: var(--pt-measure-tight);
+  margin: var(--pt-space-lg) 0;
+  padding-inline-start: var(--pt-space-md);
+  border-inline-start: 3px solid var(--pt-accent);
+  border-start-start-radius: 3px;
+  border-end-start-radius: 3px;
+}
+.pt-quote cite {
+  display: block;
+  margin-block-start: var(--pt-space-2xs);
+  font-size: var(--pt-text-sm);
+  font-style: normal;
+  color: var(--pt-ink-faint);
+}
+
+/* Drop cap. Opt-in per paragraph — never automatic, it wrecks short copy. */
+.pt-dropcap::first-letter {
+  float: inline-start;
+  font-family: var(--pt-font-display);
+  font-size: 3.1em;
+  line-height: 0.82;
+  padding-inline-end: 0.08em;
+  padding-block-start: 0.04em;
+  color: var(--pt-accent);
+}
+
+/* Card with the hand-drawn corner set. */
+.pt-card {
+  background: var(--pt-ground-sunk);
+  border: 1px solid var(--pt-line);
+  border-radius: var(--pt-radius-organic);
+  padding: var(--pt-space-md);
+}
+
+/* Focus ring — ember, offset, visible on both grounds. */
+:where(.pt-prose, .pt-link, .pt-card) :focus-visible,
+.pt-link:focus-visible {
+  outline: 3px solid var(--pt-ember);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* -----------------------------------------------------------------------------
+   6. PROSE SCOPE
+   Opt-in element styling. Wrap raw HTML in .pt-prose and it inherits the
+   whole system without touching anything outside.
+-------------------------------------------------------------------------- */
+.pt-prose {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-base);
+  line-height: var(--pt-leading-body);
+  color: var(--pt-ink);
+  max-width: var(--pt-measure);
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pt-prose > * + *            { margin-block-start: var(--pt-space-sm); }
+.pt-prose > * + :is(h1,h2)   { margin-block-start: var(--pt-space-xl); }
+.pt-prose > * + :is(h3,h4)   { margin-block-start: var(--pt-space-lg); }
+.pt-prose :is(h1,h2,h3,h4,h5,h6) {
+  font-family: var(--pt-font-display);
+  font-weight: 400;
+  letter-spacing: var(--pt-display-tracking);
+  line-height: var(--pt-leading-tight);
+  text-wrap: balance;
+  color: var(--pt-ink);
+  margin: 0;
+}
+.pt-prose h1 { font-size: var(--pt-text-4xl); line-height: var(--pt-leading-display); }
+.pt-prose h2 { font-size: var(--pt-text-3xl); }
+.pt-prose h3 { font-size: var(--pt-text-2xl); }
+.pt-prose h4 { font-size: var(--pt-text-xl); }
+.pt-prose h5 { font-size: var(--pt-text-lg); }
+.pt-prose h6 {
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pt-accent-ink);
+}
+.pt-prose p { margin: 0; }
+.pt-prose :is(ul, ol) { margin: 0; padding-inline-start: var(--pt-space-md); }
+.pt-prose li + li { margin-block-start: var(--pt-space-2xs); }
+.pt-prose li::marker { color: var(--pt-accent); }
+.pt-prose a {
+  color: var(--pt-accent-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+.pt-prose a:hover { color: var(--pt-terracotta-deep); }
+.pt-prose strong { font-weight: 600; color: var(--pt-ink); }
+.pt-prose small  { font-size: var(--pt-text-xs); color: var(--pt-ink-faint); }
+.pt-prose code   { font-family: var(--pt-font-mono); font-size: 0.9em; }
+.pt-prose hr {
+  border: 0; height: 2px; background: var(--pt-grad-rule);
+  border-radius: var(--pt-radius-pill); margin-block: var(--pt-space-lg);
+}
+.pt-prose blockquote {
+  margin: 0;
+  padding-inline-start: var(--pt-space-md);
+  border-inline-start: 3px solid var(--pt-accent);
+  color: var(--pt-ink-soft);
+}
+
+/* -----------------------------------------------------------------------------
+   7. [ OPTIONAL: GLOBAL BASE ]
+   Commented out by default so this file is safe to drop onto an existing
+   page. Uncomment only where you control the whole document — on the
+   Elementor site it will fight the theme.
+-------------------------------------------------------------------------- */
+/*
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--pt-grad-ground);
+  color: var(--pt-ink);
+  font-family: var(--pt-font-text);
+  font-size: var(--pt-text-base);
+  line-height: var(--pt-leading-body);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--pt-font-display);
+  font-weight: 400;
+  letter-spacing: var(--pt-display-tracking);
+  line-height: var(--pt-leading-tight);
+  text-wrap: balance;
+}
+*/
+
+/* -----------------------------------------------------------------------------
+   8. PREFERENCES
+-------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .pt-link { transition: none; }
+}
+
+/* Long words and URLs should wrap rather than blow out the measure on a
+   360px phone — the single most common cause of horizontal page scroll. */
+@media (max-width: 30rem) {
+  .pt-prose, .pt-body, .pt-lede { overflow-wrap: break-word; }
+  .pt-dropcap::first-letter { font-size: 2.6em; }
+}
+
+@media print {
+  .pt-grad-text {
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: #000;
+  }
+  .pt-grain::before { display: none; }
+}

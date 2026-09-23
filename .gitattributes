@@ -1,0 +1,22 @@
+# Force LF in the working tree on every platform.
+#
+# Why this is not cosmetic here: driver.mjs REFUSES TO BUILD when the two canonical
+# source copies (repo root and landing-src/) differ byte-for-byte, and predeploy_exact.js
+# compares the built artifact against live byte-for-byte. Every tool in this repo writes
+# LF. If Git checked files out as CRLF, those byte comparisons would fight the toolchain
+# and the md5 pairs recorded in CLAUDE.md would stop matching.
+* text=auto eol=lf
+
+# Binary assets: never touch these.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.JPG  binary
+*.webp binary
+*.avif binary
+*.heic binary
+*.HEIC binary
+*.pdf  binary
+*.ico  binary
+*.woff binary
+*.woff2 binary

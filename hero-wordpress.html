@@ -1,0 +1,117 @@
+<!--
+  Santa Fe International Half Marathon — Hero section, WordPress-ready.
+  Paste this whole block into a "Custom HTML" block in the WordPress editor.
+  All styles are scoped under .sfm-hero so it won't collide with your theme.
+  No Tailwind, no React, no JavaScript required.
+-->
+<style>
+  .sfm-hero * { box-sizing: border-box; }
+  .sfm-hero {
+    position: relative;
+    overflow: hidden;
+    background: #1c1917;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .sfm-hero__bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom right, #1c1917, #292524, #042f2e);
+  }
+  .sfm-hero__blob { position: absolute; height: 24rem; width: 24rem; border-radius: 9999px; filter: blur(64px); }
+  .sfm-hero__blob--amber { right: -6rem; top: -6rem; background: rgba(245, 158, 11, 0.20); }
+  .sfm-hero__blob--teal  { bottom: -8rem; left: -4rem; background: rgba(20, 184, 166, 0.20); }
+  .sfm-hero__inner {
+    position: relative; margin: 0 auto; max-width: 64rem;
+    padding: 6rem 1.5rem; text-align: center;
+  }
+  @media (min-width: 640px) { .sfm-hero__inner { padding: 8rem 1.5rem; } }
+  .sfm-hero__badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border-radius: 9999px; background: rgba(20, 184, 166, 0.10);
+    padding: 0.375rem 1rem; font-size: 0.875rem; font-weight: 500;
+    color: #5eead4; box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.30);
+  }
+  .sfm-hero__dot { height: 0.5rem; width: 0.5rem; border-radius: 9999px; background: #fbbf24; }
+  .sfm-hero__title {
+    margin: 1.5rem 0 0; font-size: 2.25rem; line-height: 1.1;
+    font-weight: 800; letter-spacing: -0.025em; color: #fafaf9;
+  }
+  @media (min-width: 640px) { .sfm-hero__title { font-size: 3.75rem; } }
+  .sfm-hero__presenter {
+    margin: 0.75rem 0 0; font-size: 0.875rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase; color: #5eead4;
+  }
+  .sfm-hero__lede {
+    margin: 1.25rem auto 0; max-width: 42rem;
+    font-size: 1.125rem; color: #d6d3d1;
+  }
+  @media (min-width: 640px) { .sfm-hero__lede { font-size: 1.25rem; } }
+  .sfm-hero__cta { margin-top: 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+  @media (min-width: 640px) { .sfm-hero__cta { flex-direction: row; } }
+  .sfm-hero__btn {
+    display: inline-block; border-radius: 0.75rem; padding: 0.875rem 2rem;
+    font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.15s ease;
+  }
+  .sfm-hero__btn--primary { background: #f59e0b; color: #1c1917; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+  .sfm-hero__btn--primary:hover { background: #fbbf24; }
+  .sfm-hero__btn--ghost { border: 1px solid #57534e; color: #f5f5f4; }
+  .sfm-hero__btn--ghost:hover { border-color: #2dd4bf; color: #5eead4; }
+  .sfm-hero__stats {
+    margin: 4rem auto 0; display: grid; max-width: 42rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem;
+    border-top: 1px solid rgba(68, 64, 60, 0.6); padding-top: 2rem;
+  }
+  .sfm-hero__stat-num { font-size: 1.5rem; font-weight: 700; color: #fbbf24; }
+  @media (min-width: 640px) { .sfm-hero__stat-num { font-size: 1.875rem; } }
+  .sfm-hero__stat-label { margin-top: 0.25rem; font-size: 0.875rem; color: #a8a29e; }
+  .sfm-hero__stat-list { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+  .sfm-hero__stat-list li { font-size: 0.8rem; line-height: 1.6; font-weight: 600; color: #d6d3d1; }
+</style>
+
+<section class="sfm-hero">
+  <div class="sfm-hero__bg"></div>
+  <div class="sfm-hero__blob sfm-hero__blob--amber"></div>
+  <div class="sfm-hero__blob sfm-hero__blob--teal"></div>
+
+  <div class="sfm-hero__inner">
+    <span class="sfm-hero__badge">
+      <span class="sfm-hero__dot"></span>
+      Santa Fe, New Mexico &middot; 7,000 ft
+    </span>
+
+    <h1 class="sfm-hero__title">Santa Fe International Half Marathon</h1>
+
+    <p class="sfm-hero__presenter">Presented by Capitol Ford</p>
+
+    <p class="sfm-hero__lede">
+      High desert air, drums along the route, and a finish line at Railyard
+      Park. Four ways to run the City Different over race weekend, September 19–20, 2026.
+    </p>
+
+    <div class="sfm-hero__cta">
+      <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-hero__btn sfm-hero__btn--primary">Register Now</a>
+      <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-hero__btn sfm-hero__btn--ghost">See the Course</a>
+    </div>
+
+    <dl class="sfm-hero__stats">
+      <div>
+        <dt class="sfm-hero__stat-num">Sep 20</dt>
+        <dd class="sfm-hero__stat-label">Race Day 2026</dd>
+      </div>
+      <div>
+        <dt class="sfm-hero__stat-num">4 Races</dt>
+        <dd>
+          <ul class="sfm-hero__stat-list">
+            <li>13.1 MI Half Marathon</li>
+            <li>3-Amigos Relay</li>
+            <li>4K Fitness Walk/Jog/Run</li>
+            <li>Kids 1K Dash</li>
+          </ul>
+        </dd>
+      </div>
+      <div>
+        <dt class="sfm-hero__stat-num">7,000 ft</dt>
+        <dd class="sfm-hero__stat-label">Run the High Desert</dd>
+      </div>
+    </dl>
+  </div>
+</section>

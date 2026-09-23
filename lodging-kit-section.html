@@ -1,0 +1,92 @@
+<!--
+  Santa Fe International Half Marathon 2026
+  "Lodging and Runner Kit" section.
+
+  Drop this whole block into a single Elementor HTML widget.
+  It is self-contained: no Tailwind, no external fonts, no scripts.
+  All styles are scoped under .sfhm-kit so nothing leaks into the rest of the page.
+
+  No arrows and no emoji, per the site rule.
+-->
+<div class="sfhm-kit">
+  <style>
+    .sfhm-kit{--sfk-surface:#ffffff;--sfk-ink:#2d2d2d;--sfk-soft:#6b635c;--sfk-rule:#dcd7ce;
+      --sfk-terracotta:#ad4a2e;--sfk-turquoise:#147a87;--sfk-indigo:#2a3a5c;
+      --sfk-code-bg:#fbf2df;--sfk-code-ink:#8a5a12;
+      color:var(--sfk-ink);line-height:1.6}
+    .sfhm-kit *{box-sizing:border-box}
+    .sfhm-kit-grid{display:grid;grid-template-columns:1fr;gap:22px}
+    @media(min-width:800px){.sfhm-kit-grid{grid-template-columns:1fr 1fr}}
+    .sfhm-kit-card{background:var(--sfk-surface);border:2px solid var(--sfk-ink);
+      padding:28px;display:flex;flex-direction:column;gap:18px}
+    .sfhm-kit-tag{align-self:flex-start;margin:0;font-size:11px;font-weight:700;
+      letter-spacing:.12em;text-transform:uppercase;color:var(--sfk-terracotta)}
+    .sfhm-kit-card h3{margin:0;font-size:30px;line-height:1.02;text-transform:uppercase}
+    .sfhm-kit-card p{margin:0}
+    .sfhm-kit-lede{font-size:15px;color:var(--sfk-soft)}
+    .sfhm-kit-hotel{border-top:1px solid var(--sfk-rule);padding-top:16px}
+    .sfhm-kit-hotel .sfhm-kit-name{font-weight:700;font-size:16px;margin:0 0 2px}
+    .sfhm-kit-hotel .sfhm-kit-props{font-size:14px;color:var(--sfk-soft);margin:0 0 10px}
+    .sfhm-kit-hotel .sfhm-kit-book{font-size:14px}
+    .sfhm-kit a{color:var(--sfk-turquoise);text-underline-offset:2px}
+    .sfhm-kit a:focus-visible{outline:2px solid var(--sfk-terracotta);outline-offset:2px}
+    .sfhm-kit-code{display:inline-block;font-weight:700;letter-spacing:.06em;
+      background:var(--sfk-code-bg);color:var(--sfk-code-ink);padding:1px 7px;border-radius:3px}
+    .sfhm-kit-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+    .sfhm-kit-list li{display:flex;gap:13px;font-size:15px}
+    .sfhm-kit-bar{flex:0 0 auto;width:4px;align-self:stretch;background:var(--sfk-indigo)}
+    .sfhm-kit-list li:last-child .sfhm-kit-bar{background:var(--sfk-terracotta)}
+    .sfhm-kit-credit{display:block;font-size:13px;color:var(--sfk-soft);margin-top:3px}
+    .sfhm-kit-btnrow{margin-top:auto;display:flex;gap:12px;flex-wrap:wrap}
+    .sfhm-kit-btn{flex:1 1 auto;text-align:center;text-decoration:none;font-size:12px;
+      font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:14px 18px;
+      border:2px solid var(--sfk-ink);background:var(--sfk-ink);color:#fff;
+      transition:background .2s ease,color .2s ease}
+    .sfhm-kit-btn.sfhm-kit-ghost{background:transparent;color:var(--sfk-ink)}
+    .sfhm-kit-btn:hover{background:var(--sfk-terracotta);border-color:var(--sfk-terracotta);color:#fff}
+    .sfhm-kit-btn:focus-visible{outline:2px solid var(--sfk-turquoise);outline-offset:3px}
+    @media(prefers-reduced-motion:reduce){.sfhm-kit-btn{transition:none}}
+  </style>
+
+  <div class="sfhm-kit-grid">
+
+    <div class="sfhm-kit-card">
+      <p class="sfhm-kit-tag" data-en="Where to stay" data-es="D&oacute;nde hospedarse">Where to stay</p>
+      <h3 data-en="Race Weekend Lodging" data-es="Hospedaje del fin de semana">Race Weekend Lodging</h3>
+      <p class="sfhm-kit-lede" data-en="Two ways to book. One partner group handles four properties for you, and one independent inn you book yourself." data-es="Dos maneras de reservar. Un grupo asociado gestiona cuatro propiedades por ti, y una posada independiente que reservas t&uacute; mismo.">Two ways to book. One partner group handles four properties for you, and one independent inn you book yourself.</p>
+
+      <div class="sfhm-kit-hotel">
+        <p class="sfhm-kit-name">Concept Hotel Group</p>
+        <p class="sfhm-kit-props" data-en="Official Race Lodging Partner. The Sage Hotel, Inn at Santa Fe, Guadalupe Inn and Coyote South." data-es="Socio oficial de hospedaje. The Sage Hotel, Inn at Santa Fe, Guadalupe Inn y Coyote South.">Official Race Lodging Partner. The Sage Hotel, Inn at Santa Fe, Guadalupe Inn and Coyote South.</p>
+        <p class="sfhm-kit-book">Book through Starla with code <span class="sfhm-kit-code">SHM</span>, by phone at <a href="tel:+15057720476">505-772-0476</a> or at <a href="mailto:starla@concepthotelgroup.com">starla@concepthotelgroup.com</a>.</p>
+      </div>
+
+      <div class="sfhm-kit-hotel">
+        <p class="sfhm-kit-name">Pecos Trail Inn</p>
+        <p class="sfhm-kit-props" data-en="Also offering race rates. 2239 Old Pecos Trail, classic Santa Fe motor-court charm." data-es="Tambi&eacute;n ofrece tarifas de carrera. 2239 Old Pecos Trail, encanto cl&aacute;sico de motor-court en Santa Fe.">Also offering race rates. 2239 Old Pecos Trail, classic Santa Fe motor-court charm.</p>
+        <p class="sfhm-kit-book">15% off Wednesday September 16 through Tuesday September 22. Book direct at <a href="https://thepecostrailinn.com/" target="_blank" rel="noopener noreferrer">thepecostrailinn.com</a> with code <span class="sfhm-kit-code">RUNSANTAFE26</span>, or call <a href="tel:+15059821943">505-982-1943</a>.</p>
+      </div>
+
+      <div class="sfhm-kit-btnrow">
+        <a class="sfhm-kit-btn" href="/lodging-travel/" data-en="All lodging and travel" data-es="Todo sobre hospedaje y viaje">All lodging and travel</a>
+      </div>
+    </div>
+
+    <div class="sfhm-kit-card">
+      <p class="sfhm-kit-tag" data-en="What you receive" data-es="Lo que recibes">What you receive</p>
+      <h3 data-en="The 2026 Runner Kit" data-es="El kit del corredor 2026">The 2026 Runner Kit</h3>
+      <p class="sfhm-kit-lede" data-en="Every registered runner in all four events takes home a race shirt. Finishers in the timed races add a medallion." data-es="Cada corredor inscrito en los cuatro eventos se lleva una camiseta. Quienes terminan las carreras cronometradas suman un medall&oacute;n.">Every registered runner in all four events takes home a race shirt. Finishers in the timed races add a medallion.</p>
+
+      <ul class="sfhm-kit-list">
+        <li><span class="sfhm-kit-bar"></span><span><strong>Race shirt, every event.</strong> Half Marathon, 3-Amigos Relay, Santa Fe 5K and the Kids 1K Dash.<span class="sfhm-kit-credit">The 2026 shirt carries an indigo design by Gasali Adeyemo, the Yoruba adire master based here in Santa Fe.</span></span></li>
+        <li><span class="sfhm-kit-bar"></span><span><strong>Finisher medal.</strong> Handmade by Maasai artisans, for every Half Marathon, 3-Amigos Relay and Santa Fe 5K finisher. Kids 1K Dash finishers receive a medal too.</span></li>
+        <li><span class="sfhm-kit-bar"></span><span><strong>Age-group medals, Half Marathon.</strong> Top three men, women and non-binary finishers in each of sixteen five-year divisions, from 14 and Under through 85 plus.</span></li>
+      </ul>
+
+      <div class="sfhm-kit-btnrow">
+        <a class="sfhm-kit-btn sfhm-kit-ghost" href="https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon" target="_blank" rel="noopener noreferrer" data-en="Register for 2026" data-es="Inscr&iacute;bete para 2026">Register for 2026</a>
+      </div>
+    </div>
+
+  </div>
+</div>

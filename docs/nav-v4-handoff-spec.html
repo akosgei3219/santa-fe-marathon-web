@@ -1,0 +1,719 @@
+<title>Nav IA v4 Handoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#FBF9F6;
+  --surface:#FFFFFF;
+  --surface-2:#F4F0EA;
+  --ink:#222222;
+  --ink-soft:#55514D;
+  --ink-faint:#8C857B;
+  --clay:#AD4A2E;
+  --clay-deep:#8C3A24;
+  --turq:#147A87;
+  --amber:#7E5F12;
+  --line:rgba(34,34,34,.14);
+  --line-strong:rgba(34,34,34,.30);
+  --ribbon:#222222;
+  --code-bg:#F1EDE6;
+  --font-display:'Anton','Arial Narrow',Impact,sans-serif;
+  --font-body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,'Cascadia Mono','Consolas',monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#171512;
+    --surface:#201D19;
+    --surface-2:#262219;
+    --ink:#EDE8E0;
+    --ink-soft:#A79F94;
+    --ink-faint:#847C71;
+    --clay:#E0764C;
+    --clay-deep:#F09067;
+    --turq:#4CBACB;
+    --amber:#D6AA45;
+    --line:rgba(237,232,224,.15);
+    --line-strong:rgba(237,232,224,.32);
+    --ribbon:#0D0C0A;
+    --code-bg:#100F0D;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#171512;
+  --surface:#201D19;
+  --surface-2:#262219;
+  --ink:#EDE8E0;
+  --ink-soft:#A79F94;
+  --ink-faint:#847C71;
+  --clay:#E0764C;
+  --clay-deep:#F09067;
+  --turq:#4CBACB;
+  --amber:#D6AA45;
+  --line:rgba(237,232,224,.15);
+  --line-strong:rgba(237,232,224,.32);
+  --ribbon:#0D0C0A;
+  --code-bg:#100F0D;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{max-width:900px;margin:0 auto;padding:40px 28px 96px}
+@media (max-width:640px){ .sheet{padding:28px 18px 72px} }
+
+/* ---------- masthead ---------- */
+.masthead{border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin:0 0 10px
+}
+h1{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(38px,7.5vw,64px);line-height:.92;letter-spacing:.005em;
+  text-transform:uppercase;margin:0;text-wrap:balance;color:var(--ink)
+}
+.dek{
+  font-size:16px;color:var(--ink-soft);margin:12px 0 0;max-width:62ch
+}
+
+.meta{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  margin:22px 0 0
+}
+.meta div{background:var(--ground);padding:11px 13px}
+.meta dt{
+  font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);margin:0 0 3px
+}
+.meta dd{
+  margin:0;font-family:var(--font-mono);font-size:12.5px;font-weight:500;
+  color:var(--ink);font-variant-numeric:tabular-nums;word-break:break-word
+}
+
+/* ---------- notice ---------- */
+.notice{
+  margin:26px 0 0;padding:14px 16px;border-left:3px solid var(--amber);
+  background:var(--surface-2);font-size:14px;color:var(--ink)
+}
+.notice-ok{border-left-color:var(--turq)}
+.notice strong{font-weight:700}
+.finding.fixed{border-left-color:var(--turq)}
+.chip-fixed{color:var(--turq)}
+.was{text-decoration:line-through;color:var(--ink-faint)}
+
+/* ---------- sections ---------- */
+section{margin-top:52px}
+.sec-head{display:flex;align-items:baseline;gap:12px;border-top:1px solid var(--line-strong);padding-top:12px}
+.sec-num{
+  font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--clay);
+  letter-spacing:.1em;flex:none;padding-top:4px
+}
+h2{
+  font-family:var(--font-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(21px,3.2vw,27px);line-height:1.05;letter-spacing:.01em;
+  margin:0;color:var(--ink);text-wrap:balance
+}
+h3{
+  font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--turq);margin:30px 0 10px
+}
+p{margin:0 0 14px;max-width:68ch}
+section > p:first-of-type{margin-top:14px}
+ul,ol{margin:0 0 16px;padding-left:20px;max-width:68ch}
+li{margin-bottom:7px}
+li::marker{color:var(--ink-faint)}
+a{color:var(--clay);text-underline-offset:2px}
+a:hover{color:var(--clay-deep)}
+:focus-visible{outline:2px solid var(--turq);outline-offset:2px}
+
+code{
+  font-family:var(--font-mono);font-size:.875em;background:var(--code-bg);
+  padding:1px 5px;border-radius:2px;color:var(--ink);word-break:break-word
+}
+pre{
+  background:var(--code-bg);border-left:3px solid var(--line-strong);
+  padding:14px 16px;overflow-x:auto;margin:0 0 18px;border-radius:0 2px 2px 0
+}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.65;white-space:pre}
+
+/* ---------- tables ---------- */
+.scroll{overflow-x:auto;margin:0 0 20px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px}
+caption{
+  text-align:left;font-family:var(--font-mono);font-size:10px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+  padding:9px 12px;background:var(--surface-2);border-bottom:1px solid var(--line)
+}
+th{
+  text-align:left;font-family:var(--font-body);font-weight:700;font-size:10.5px;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);
+  padding:9px 12px;border-bottom:1px solid var(--line-strong);
+  background:var(--ground);vertical-align:bottom;white-space:nowrap
+}
+td{
+  padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;
+  color:var(--ink)
+}
+tbody tr:last-child td{border-bottom:none}
+td.mono,th.mono,td .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+td.mono{font-size:12.5px;white-space:nowrap}
+td.wrap{min-width:180px}
+
+/* swatch */
+.sw{display:inline-block;width:13px;height:13px;border:1px solid var(--line-strong);
+  vertical-align:-2px;margin-right:7px;flex:none}
+
+/* chips */
+.chip{
+  display:inline-block;font-family:var(--font-mono);font-size:9.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border:1px solid currentColor;
+  border-radius:999px;white-space:nowrap
+}
+.chip-ok{color:var(--turq)}
+.chip-warn{color:var(--amber)}
+.chip-dead{color:var(--clay)}
+
+/* findings */
+.finding{
+  border:1px solid var(--line);border-left:3px solid var(--amber);
+  background:var(--surface);padding:15px 17px;margin:0 0 14px
+}
+.finding.by-design{border-left-color:var(--turq)}
+.finding h4{
+  font-family:var(--font-body);font-weight:700;font-size:15px;margin:0 0 4px;
+  display:flex;flex-wrap:wrap;gap:9px;align-items:center;color:var(--ink)
+}
+.finding p{margin:0 0 8px;font-size:13.5px;color:var(--ink-soft);max-width:none}
+.finding p:last-child{margin-bottom:0}
+.finding .fix{color:var(--ink);font-size:13.5px}
+.finding .fix strong{font-weight:700}
+
+/* diagram */
+figure{margin:0 0 22px}
+figcaption{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-faint);margin-top:9px
+}
+.diagram{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line)}
+.d-band-dark{fill:var(--ribbon)}
+.d-band-nav{fill:var(--surface-2)}
+.d-band-mega{fill:var(--surface-2)}
+.d-stroke{stroke:var(--line-strong);fill:none}
+.d-accent{stroke:var(--clay);fill:none}
+.d-label{fill:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:11px}
+.d-label-soft{fill:var(--ink-faint);font-family:'IBM Plex Mono',monospace;font-size:10px}
+.d-label-invert{fill:#EDE8E0;font-family:'IBM Plex Mono',monospace;font-size:11px}
+.d-label-accent{fill:var(--clay);font-family:'IBM Plex Mono',monospace;font-size:10px}
+
+hr.rule{border:0;border-top:1px solid var(--line);margin:34px 0}
+
+.colophon{
+  margin-top:60px;border-top:2px solid var(--ink);padding-top:14px;
+  font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);
+  display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between
+}
+</style>
+
+<div class="sheet">
+
+<header class="masthead">
+  <p class="eyebrow">Santa Fe International Half Marathon &middot; Developer handoff</p>
+  <h1>Two-Tier Site Header</h1>
+  <p class="dek">Information architecture v4. The sitewide header served on every page except the homepage: a dark utility ribbon over a sand navigation bar, three mega panels, a disabled Store chip, a bilingual text layer, and a client-side Race Concierge.</p>
+
+  <dl class="meta">
+    <div><dt>Source of truth</dt><dd>Elementor template 2365</dd></div>
+    <div><dt>Widget</dt><dd>sfhmnavw1</dd></div>
+    <div><dt>Snapshot pulled</dt><dd>2026-09-11 MDT</dd></div>
+    <div><dt>Measured at</dt><dd>1280 / 560 / 500 / 375 px</dd></div>
+    <div><dt>Widget size</dt><dd>67,839 chars</dd></div>
+    <div><dt>Bilingual pairs</dt><dd>126</dd></div>
+  </dl>
+</header>
+
+<p class="notice notice-ok"><strong>Two dead rules were fixed after this spec was first written.</strong> The Register breakpoint and the brand mark height are now corrected on template 2365 and verified logged out. Findings 1 and 3 in section 13 are marked resolved and the tables here describe the fixed behavior. Nothing else changed: 126 bilingual pairs, 3 mega panels, 35 drawer links and both script blocks are byte-identical.</p>
+
+<p class="notice"><strong>This is a snapshot of a moving file.</strong> Another session was writing to template 2365 while this spec was being measured. Two pulls minutes apart differed by 192 characters: the second Runner Info column was relabeled from "Travel &amp; Parking" to "Getting Here" and "Host Hotels &amp; Lodging" became "Lodging &amp; Travel". Link labels are volatile. Structure, tokens, geometry, states and script behavior were identical across both pulls and are what this document specifies.</p>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head"><span class="sec-num">01</span><h2>Where the header comes from</h2></div>
+
+  <p>Elementor's <code>header</code> location does not render on this install, so the header is authored as a single HTML widget inside <strong>footer</strong> template 2365 and moves itself into place at runtime. A developer reading the page source before JavaScript runs will find the header near the bottom of the document.</p>
+
+  <ul>
+    <li><strong>Relocation.</strong> On load the script inserts <code>#sitenav-wrap</code> as the first child of <code>&lt;body&gt;</code>, so tab order and landmark order match the visual order. Layout does not depend on the move, because both tiers are <code>position:fixed</code>.</li>
+    <li><strong>Homepage opt-out.</strong> When <code>body.home</code> is present the script removes <code>#sitenav</code> and <code>#sitenavMobile</code> from the DOM and returns. The homepage ships its own React navigation, aligned to the same information architecture but built separately.</li>
+    <li><strong>Skip links win the first slot.</strong> An accessibility pass runs later and inserts <code>nav.sfhm-skiplinks</code> ahead of the wrapper, so the wrapper ends up second in the body. That is expected.</li>
+  </ul>
+
+  <p>Everything in the widget is scoped under <code>#sitenav-wrap</code>. Treat that ID as the isolation boundary: nothing inside it should be styled from a page stylesheet, and the widget should not style anything outside it beyond the documented body rules.</p>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head"><span class="sec-num">02</span><h2>DOM contract</h2></div>
+
+  <p>These class and ID names are load-bearing. The script binds to them, and the language toggle, mega toggling, active-page marking and Concierge all break silently if one is renamed.</p>
+
+<pre><code>&lt;div id="sitenav-wrap" class="sfhm"&gt;
+  &lt;style&gt;...&lt;/style&gt;
+
+  &lt;div id="sitenavRibbon" class="ribbon"&gt;              &lt;!-- TIER 1 --&gt;
+    &lt;div class="ribbon-in"&gt;
+      &lt;div class="lang-toggle" role="group" aria-label="Language"&gt;
+        &lt;button class="lang-btn active" data-lang="en"&gt;EN&lt;/button&gt;
+        &lt;button class="lang-btn" data-lang="es"&gt;ES&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;nav class="ribbon-util" aria-label="Account"&gt;
+        Sign In &middot; Create Account &middot; Help
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;header id="sitenav" class="nav"&gt;                    &lt;!-- TIER 2 --&gt;
+    &lt;a class="brand" href="/"&gt;&lt;img class="mark"&gt;&lt;/a&gt;
+    &lt;nav id="sitenavLinks" class="nav-links" aria-label="Main"&gt;
+      &lt;div class="nav-item has-mega"&gt;                  &lt;!-- The Races --&gt;
+        &lt;button class="nav-trigger" aria-expanded="false" aria-haspopup="true"&gt;
+        &lt;div class="mega"&gt;&lt;div class="mega-inner mega-cols"&gt;
+          &lt;p class="mega-strip"&gt; + 3 &times; .mega-col
+      &lt;div class="nav-item has-mega"&gt;                  &lt;!-- Runner Info --&gt;
+        &lt;div class="mega"&gt;&lt;div class="mega-inner mega-cols mega-has-cta"&gt;
+          3 &times; .mega-col + .mega-ctacard + .mega-util
+      &lt;div class="nav-item has-mega"&gt;                  &lt;!-- Experience Santa Fe --&gt;
+        &lt;div class="mega"&gt;&lt;div class="mega-inner mega-cols mega-two"&gt;
+          2 &times; .mega-col
+      &lt;div class="nav-item"&gt;
+        &lt;span class="nav-soon"&gt;Store &lt;span class="soon-chip"&gt;Soon&lt;/span&gt;&lt;/span&gt;
+    &lt;/nav&gt;
+    &lt;div class="nav-right"&gt;
+      &lt;button id="sfcgOpen" class="cg-open" aria-haspopup="dialog"&gt;
+      &lt;a class="nav-cta"&gt;Register&lt;/a&gt;
+      &lt;button class="hamburger" aria-controls="sitenavMobile"&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;nav id="sitenavMobile" aria-label="Mobile menu"&gt;    &lt;!-- 4 .m-group, 35 links --&gt;
+  &lt;div id="sfcgOverlay" class="cg-ov" hidden&gt;          &lt;!-- Concierge dialog --&gt;
+  &lt;div id="sfcgData" hidden&gt;                           &lt;!-- 23 fact rows --&gt;
+
+  &lt;script&gt;nav machinery&lt;/script&gt;
+  &lt;script&gt;concierge&lt;/script&gt;
+&lt;/div&gt;</code></pre>
+
+  <h3>Link inventory</h3>
+  <div class="scroll">
+  <table>
+    <caption>Top-level tracks and their contents</caption>
+    <thead><tr><th>Track</th><th>Panel class</th><th class="mono">Cols</th><th class="mono">Links</th><th>Columns</th></tr></thead>
+    <tbody>
+      <tr><td>The Races</td><td class="mono">.mega-cols</td><td class="mono">3</td><td class="mono">10</td><td class="wrap">Maps &amp; Course, Rules &amp; Safety, Race Day. A <code>.mega-strip</code> tagline spans the top.</td></tr>
+      <tr><td>Runner Info</td><td class="mono">.mega-has-cta</td><td class="mono">4</td><td class="mono">11 + 5</td><td class="wrap">Race Week Logistics, Getting Here, Schedule &amp; Family, plus the Secure Your Spot card and a 5-link <code>.mega-util</code> row.</td></tr>
+      <tr><td>Experience Santa Fe</td><td class="mono">.mega-two</td><td class="mono">2</td><td class="mono">6</td><td class="wrap">Experience, Community.</td></tr>
+      <tr><td>Store</td><td class="mono">&mdash;</td><td class="mono">0</td><td class="mono">0</td><td class="wrap">Not a link. A disabled <code>.nav-soon</code> chip.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head"><span class="sec-num">03</span><h2>Design tokens</h2></div>
+
+  <p>Declared on <code>#sitenav-wrap</code>, then overridden later in the same widget by a rebrand block on <code>html body .sfhm</code>. Use the resolved values in the right-hand column. Never hard-code a hex where a token exists.</p>
+
+  <div class="scroll">
+  <table>
+    <caption>Color</caption>
+    <thead><tr><th>Token</th><th class="mono">Resolved</th><th>Used for</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">--ink</td><td class="mono"><span class="sw" style="background:#222222"></span>#222222</td><td class="wrap">Ribbon ground, mobile drawer ground, brand wordmark, hamburger bars</td></tr>
+      <tr><td class="mono">--ink-2</td><td class="mono"><span class="sw" style="background:#4a3a30"></span>#4a3a30</td><td class="wrap">Nav trigger labels, disabled Store label</td></tr>
+      <tr><td class="mono">--ink-soft</td><td class="mono"><span class="sw" style="background:#55514D"></span>#55514D</td><td class="wrap">Sub-link descriptors, utility row links, race meta</td></tr>
+      <tr><td class="mono">--sand</td><td class="mono"><span class="sw" style="background:#FBF9F6"></span>#FBF9F6</td><td class="wrap">Drawer link text on the dark ground</td></tr>
+      <tr><td class="mono">--clay</td><td class="mono"><span class="sw" style="background:#AD4A2E"></span>#AD4A2E</td><td class="wrap">Register pill, card button, column headings, eyebrows. The only accent allowed behind white text.</td></tr>
+      <tr><td class="mono">--adobe</td><td class="mono"><span class="sw" style="background:#AD4A2E"></span>#AD4A2E</td><td class="wrap">Rebranded to match clay. Originally #C2593F.</td></tr>
+      <tr><td class="mono">--turquoise</td><td class="mono"><span class="sw" style="background:#147A87"></span>#147A87</td><td class="wrap">Active sub-link rail and tag text</td></tr>
+      <tr><td class="mono">--dawn-coral</td><td class="mono"><span class="sw" style="background:#e8623a"></span>#e8623a</td><td class="wrap">Trigger underline sweep, active language button fill</td></tr>
+      <tr><td class="mono">--dawn-gold</td><td class="mono"><span class="sw" style="background:#ffce6b"></span>#ffce6b</td><td class="wrap">Focus ring</td></tr>
+      <tr><td class="mono">--line</td><td class="mono"><span class="sw" style="background:#dcdcdc"></span>rgba(34,34,34,.14)</td><td class="wrap">Hairlines, card borders, chip outline</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="notice"><strong>Contrast rule, non-negotiable.</strong> <code>#C2593F</code> is for borders, accents and large display type only. White text on it measures 4.38:1 and fails WCAG AA. Every fill sitting behind small text or a button label uses <code>#AD4A2E</code>, hover <code>#8C3A24</code>. Do not "restore" the original hex.</p>
+
+  <div class="scroll">
+  <table>
+    <caption>Type and layout</caption>
+    <thead><tr><th>Token</th><th class="mono">Value</th><th>Used for</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">--font-display</td><td class="mono">Anton, Arial Narrow</td><td class="wrap">Brand, mega titles, sub-link names, drawer top-level links</td></tr>
+      <tr><td class="mono">--font-body</td><td class="mono">Hanken Grotesk</td><td class="wrap">Everything else</td></tr>
+      <tr><td class="mono">--maxw</td><td class="mono">1240px</td><td class="wrap">Ribbon inner width and mega inner width</td></tr>
+      <tr><td class="mono">--pad</td><td class="mono">clamp(20px,5vw,64px)</td><td class="wrap">Horizontal gutter on both tiers</td></tr>
+      <tr><td class="mono">--navh</td><td class="mono">119px</td><td class="wrap"><span class="chip chip-warn">Stale</span> Nothing reads it. The real stack is 122px. See section 13.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Type scale in the header</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Element</th><th class="mono">Size</th><th class="mono">Weight</th><th>Treatment</th></tr></thead>
+    <tbody>
+      <tr><td>Ribbon links and language buttons</td><td class="mono">11px</td><td class="mono">600</td><td>Uppercase, 0.08em tracking</td></tr>
+      <tr><td>Brand wordmark</td><td class="mono">20px</td><td class="mono">Anton</td><td>Uppercase, 0.02em</td></tr>
+      <tr><td>Nav triggers</td><td class="mono">14px</td><td class="mono">600</td><td>Drops to 13px below 1120px</td></tr>
+      <tr><td>Column heading</td><td class="mono">11px</td><td class="mono">700</td><td>Uppercase, 0.22em, clay, hairline underneath</td></tr>
+      <tr><td>Sub-link name</td><td class="mono">17px</td><td class="mono">Anton</td><td>Uppercase. 19px in the non-column grid.</td></tr>
+      <tr><td>Sub-link descriptor</td><td class="mono">12px</td><td class="mono">600</td><td>Sentence case, ink-soft</td></tr>
+      <tr><td>Register pill</td><td class="mono">13px</td><td class="mono">700</td><td>Uppercase, 0.05em</td></tr>
+      <tr><td>Soon chip</td><td class="mono">9px</td><td class="mono">inherit</td><td>Uppercase, 0.12em, pill outline</td></tr>
+      <tr><td>Drawer top-level</td><td class="mono">28px</td><td class="mono">Anton</td><td>Uppercase, centered</td></tr>
+      <tr><td>Drawer sub-link</td><td class="mono">15px</td><td class="mono">600</td><td>Sentence case, 62% opacity sand</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head"><span class="sec-num">04</span><h2>Geometry, as measured</h2></div>
+
+  <p>Every figure below was read off the live page at 1280 CSS px, not from the stylesheet. Where a declared value and a rendered value disagree, both are given.</p>
+
+  <figure>
+    <svg class="diagram" viewBox="0 0 720 356" role="img" aria-label="Vertical stack diagram. A 31 pixel dark ribbon at the top of the viewport, a 91 pixel sand navigation bar below it, together forming a 122 pixel fixed stack that the body is padded to clear. A mega panel drops from the 122 pixel line to a content-driven height.">
+      <rect x="60" y="20" width="470" height="316" class="d-stroke"/>
+
+      <rect x="61" y="21" width="468" height="26" class="d-band-dark"/>
+      <text x="72" y="38" class="d-label-invert">ribbon &middot; z 9991</text>
+      <text x="518" y="38" class="d-label-invert" text-anchor="end">31 px</text>
+
+      <rect x="61" y="47" width="468" height="76" class="d-band-nav"/>
+      <line x1="61" y1="123" x2="529" y2="123" class="d-stroke"/>
+      <text x="72" y="72" class="d-label">nav bar &middot; z 9990</text>
+      <text x="72" y="90" class="d-label-soft">brand &middot; links &middot; concierge &middot; register &middot; burger</text>
+      <text x="518" y="72" class="d-label" text-anchor="end">91 px</text>
+
+      <line x1="60" y1="123" x2="700" y2="123" class="d-accent" stroke-dasharray="3 3"/>
+      <text x="704" y="120" class="d-label-accent" text-anchor="end">122 px</text>
+      <text x="704" y="134" class="d-label-soft" text-anchor="end">body padding-top</text>
+
+      <rect x="61" y="124" width="468" height="112" class="d-band-mega" opacity="0.75"/>
+      <rect x="61" y="124" width="468" height="112" class="d-stroke" stroke-dasharray="4 3"/>
+      <text x="72" y="146" class="d-label">mega panel</text>
+      <text x="72" y="164" class="d-label-soft">top:100% of the fixed bar &middot; left/right 0</text>
+      <text x="72" y="182" class="d-label-soft">inner 1240 px &middot; padding 24 px &middot; gap 24 px</text>
+      <text x="72" y="200" class="d-label-soft">height follows content (483 px for Runner Info)</text>
+
+      <text x="72" y="264" class="d-label-soft">page content begins here</text>
+      <line x1="72" y1="276" x2="380" y2="276" class="d-stroke"/>
+      <line x1="72" y1="292" x2="440" y2="292" class="d-stroke"/>
+      <line x1="72" y1="308" x2="330" y2="308" class="d-stroke"/>
+
+      <text x="560" y="176" class="d-label-soft">drawer z 9995</text>
+      <text x="560" y="192" class="d-label-soft">concierge z 10000</text>
+      <text x="560" y="208" class="d-label-soft">mega z 40 (scoped)</text>
+    </svg>
+    <figcaption>Fixed stack and panel geometry, measured at 1280 px</figcaption>
+  </figure>
+
+  <div class="scroll">
+  <table>
+    <caption>Measured values</caption>
+    <thead><tr><th>Property</th><th class="mono">Measured</th><th class="mono">Declared</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Ribbon height</td><td class="mono">31.00 px</td><td class="mono">31 px</td><td class="wrap">Fixed height, not min-height. An earlier min-height let a 44px tap target inflate it to 48.</td></tr>
+      <tr><td>Nav bar height</td><td class="mono">91.00 px</td><td class="mono">auto</td><td class="wrap">12px vertical padding plus a 67px brand mark</td></tr>
+      <tr><td>Total fixed stack</td><td class="mono">122.00 px</td><td class="mono">&mdash;</td><td class="wrap">Ribbon bottom at 31, nav bottom at 122</td></tr>
+      <tr><td>Body offset</td><td class="mono">122 px</td><td class="mono">122 px</td><td class="wrap"><code>body:not(.home){padding-top:122px}</code>. Exact match.</td></tr>
+      <tr><td>Brand mark</td><td class="mono">67 &times; 67 px</td><td class="mono">67 &times; auto</td><td class="wrap"><span class="chip chip-fixed">Fixed</span> Was declared <span class="was">60 px</span>, which never applied. Source asset is 500 square.</td></tr>
+      <tr><td>Mega inner width</td><td class="mono">1240 px</td><td class="mono">--maxw</td><td class="wrap">Centered; the panel itself is full-bleed</td></tr>
+      <tr><td>Mega column width</td><td class="mono">280.01 px</td><td class="mono">1fr</td><td class="wrap">Four equal columns in Runner Info at 1280</td></tr>
+      <tr><td>Hamburger target</td><td class="mono">44 &times; 44 px</td><td class="mono">44 min</td><td class="wrap">Meets the target minimum</td></tr>
+      <tr><td>Concierge button</td><td class="mono">37 &times; 36 px</td><td class="mono">36 px</td><td class="wrap"><span class="chip chip-warn">Under 44</span> See section 13.</td></tr>
+      <tr><td>Ribbon language button</td><td class="mono">32 &times; 19 px</td><td class="mono">auto</td><td class="wrap"><span class="chip chip-warn">Under 44</span> See section 13.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head"><span class="sec-num">05</span><h2>Components</h2></div>
+
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Component</th><th class="mono">Selector</th><th>Behavior and notes</th></tr></thead>
+    <tbody>
+      <tr><td>Utility ribbon</td><td class="mono">.ribbon<br>.ribbon-in</td><td class="wrap">Fixed, full bleed, dark. Inner row is a flex bar capped at 1240px: language toggle left, account links right. Fixed 31px height with zero vertical padding.</td></tr>
+      <tr><td>Account links</td><td class="mono">.ribbon-util</td><td class="wrap">Three links: Sign In to RunSignup login, Create Account to the race registration URL, Help to the contact page. Hidden at 700px and below.</td></tr>
+      <tr><td>Language toggle</td><td class="mono">.lang-toggle<br>.lang-btn</td><td class="wrap">Two buttons in a pill, <code>role="group"</code>. Active button takes a coral fill. Moving this markup into the ribbon required no script change because the handler binds by class.</td></tr>
+      <tr><td>Brand</td><td class="mono">.brand .mark</td><td class="wrap">Square logo plus a wordmark span. The wordmark is hidden at 600px and below.</td></tr>
+      <tr><td>Nav trigger</td><td class="mono">.nav-trigger</td><td class="wrap">A real <code>&lt;button&gt;</code>, not a link. Carries a caret that rotates 180 degrees when open, and a coral underline that scales in from the left.</td></tr>
+      <tr><td>Mega panel</td><td class="mono">.mega<br>.mega-inner</td><td class="wrap">Absolutely positioned against the fixed bar, so it spans the full viewport width and drops from the 122px line. Three grid variants: three columns, four with a CTA card, and two.</td></tr>
+      <tr><td>Sub-link</td><td class="mono">.mega-x<br>.mx-name / .mx-desc</td><td class="wrap">Name in Anton over an optional 12px descriptor. Descriptors currently carry live race facts, so they are content, not decoration.</td></tr>
+      <tr><td>Tagline strip</td><td class="mono">.mega-strip</td><td class="wrap">Spans the full grid at the top of The Races. Reads "Run the Santa Fe River."</td></tr>
+      <tr><td>Register card</td><td class="mono">.mega-ctacard<br>.mcc-btn</td><td class="wrap">Fourth column of Runner Info. 16:9 image, heading, date line, button pinned to the bottom with <code>margin-top:auto</code>. Hidden at 1100px and below by design.</td></tr>
+      <tr><td>Utility row</td><td class="mono">.mega-util</td><td class="wrap">Spans the grid bottom of Runner Info. Five demoted links kept reachable: refunds, charity, story, sponsors, contact.</td></tr>
+      <tr><td>Store chip</td><td class="mono">.nav-soon<br>.soon-chip</td><td class="wrap">A <code>&lt;span&gt;</code>, deliberately not a link and not focusable. 50% opacity, <code>cursor:default</code>. Make it a link only when a store page actually exists.</td></tr>
+      <tr><td>Register pill</td><td class="mono">.nav-cta</td><td class="wrap">Clay fill, 999px radius, cream label. Lives in <code>.nav-right</code>, not in the link list.</td></tr>
+      <tr><td>Concierge</td><td class="mono">.cg-open<br>.cg-ov / .cg-card</td><td class="wrap">Circular icon button opening a keyword-router dialog. Entirely client-side: 23 hidden fact rows are scored against the query and the top three render as cards. No network call, no AI backend.</td></tr>
+      <tr><td>Mobile drawer</td><td class="mono">#sitenavMobile<br>.m-group / .m-sub</td><td class="wrap">Full-screen dark panel, four groups, 35 links, mirroring the desktop tracks plus Sign In and a Register pill.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head"><span class="sec-num">06</span><h2>States and interactions</h2></div>
+
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Element</th><th>State</th><th>Behavior</th></tr></thead>
+    <tbody>
+      <tr><td>Nav trigger</td><td>Hover</td><td class="wrap">Coral underline scales from 0 to full width, left origin. Panel opens on pure CSS hover, so it works with JavaScript off.</td></tr>
+      <tr><td>Nav trigger</td><td>Focus within</td><td class="wrap">Panel opens via <code>:focus-within</code>. Keyboard users reach the panel by tabbing, without activating anything.</td></tr>
+      <tr><td>Nav trigger</td><td>Click</td><td class="wrap">Toggles <code>.open</code> on the item, closes every sibling, flips <code>aria-expanded</code>. Click is additive to hover, not a replacement.</td></tr>
+      <tr><td>Nav trigger</td><td>Current page</td><td class="wrap">Underline is held at full width when the trigger carries <code>aria-current="page"</code>.</td></tr>
+      <tr><td>Mega panel</td><td>Closed</td><td class="wrap"><code>opacity:0; visibility:hidden; transform:translateY(10px); pointer-events:none</code>. It stays in the accessibility tree only while visible.</td></tr>
+      <tr><td>Mega panel</td><td>Dismiss</td><td class="wrap">Escape closes all panels and the drawer. A document-level click closes all panels; trigger clicks stop propagation.</td></tr>
+      <tr><td>Sub-link</td><td>Hover</td><td class="wrap">Faint turquoise wash plus a 3px shift to the right.</td></tr>
+      <tr><td>Sub-link</td><td>Current page</td><td class="wrap">Turquoise wash at 12% with a 3px inset turquoise rail on the left edge.</td></tr>
+      <tr><td>Register pill and card button</td><td>Hover, focus</td><td class="wrap">Fill darkens to <code>#8C3A24</code>. The card button also lifts 1px.</td></tr>
+      <tr><td>Any nav control</td><td>Keyboard focus</td><td class="wrap">2px gold outline, 3px offset, 2px radius. Applied to links and buttons in both the bar and the drawer.</td></tr>
+      <tr><td>Hamburger</td><td>Expanded</td><td class="wrap">Bars one and three rotate into an X, bar two fades out. Driven off <code>aria-expanded="true"</code>, so the visual state cannot drift from the announced state.</td></tr>
+      <tr><td>Drawer</td><td>Open</td><td class="wrap">Slides down from <code>translateY(-100%)</code>. Root element gets <code>overflow:hidden</code> to lock background scroll. Any link tap closes it.</td></tr>
+      <tr><td>Concierge</td><td>Open</td><td class="wrap">Overlay unhidden, input cleared, results cleared, focus moved to the input after 40ms. Opening element is stored and refocused on close.</td></tr>
+      <tr><td>Concierge</td><td>Typing</td><td class="wrap">Scores on every <code>input</code> event. A whole-phrase keyword hit scores 2; a query token of three or more characters that prefixes a keyword, or is prefixed by one, scores 1. Top three render.</td></tr>
+      <tr><td>Concierge</td><td>No match</td><td class="wrap">Renders a single fallback card pointing at the contact page. Never an empty box.</td></tr>
+      <tr><td>Concierge</td><td>Dismiss</td><td class="wrap">Escape, the close button, or a mousedown on the overlay backdrop.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head"><span class="sec-num">07</span><h2>Responsive behavior</h2></div>
+
+  <p>Six breakpoints, all max-width. They are not a tidy ladder: they accumulated feature by feature. The 600 and 520 pixel rules used to fight each other over the Register pill; that conflict is resolved and the table below is the current behavior.</p>
+
+  <div class="scroll">
+  <table>
+    <thead><tr><th class="mono">Breakpoint</th><th>What changes</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1120 px</td><td class="wrap">Nav link gap 28 to 16px, trigger type 14 to 13px</td><td class="wrap">Four tracks plus a long "Experience Santa Fe" stop fitting beside the brand</td></tr>
+      <tr><td class="mono">1100 px</td><td class="wrap">Runner Info drops to three columns; the Register card is hidden</td><td class="wrap">Deliberate. The card is a desktop upsell, and Register stays reachable in the bar.</td></tr>
+      <tr><td class="mono">980 px</td><td class="wrap">Link list hidden, hamburger appears, drawer becomes available</td><td class="wrap">The real desktop-to-mobile switch</td></tr>
+      <tr><td class="mono">700 px</td><td class="wrap">Account links hidden; language toggle stays</td><td class="wrap">Sign In and Create Account survive inside the drawer</td></tr>
+      <tr><td class="mono">600 px</td><td class="wrap">Brand wordmark hidden; <code>.nav-right</code> gap 16 to 10px</td><td class="wrap">The logo mark alone carries the brand from here down</td></tr>
+      <tr><td class="mono">520 px</td><td class="wrap">Register pill hidden; Concierge button gains 4px right margin</td><td class="wrap">Register survives to 521px, per the IA v4 intent. Below this the drawer's Register pill takes over.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Verified at 375 px</h3>
+  <ul>
+    <li>Ribbon 31px with the language toggle alone; account links gone.</li>
+    <li>Nav bar 91px holding brand mark, Concierge button, hamburger. Register pill gone.</li>
+    <li>Drawer parked at <code>translateY(-812px)</code>, four groups, 35 links, dark ground.</li>
+    <li>Concierge dialog renders 343px wide inside a 375px viewport. Its input is set to 16px specifically to stop iOS zooming on focus. Do not reduce it.</li>
+  </ul>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head"><span class="sec-num">08</span><h2>Bilingual contract</h2></div>
+
+  <p>The header is fully bilingual with no i18n library. Every translatable node carries both strings as attributes, and the toggle swaps <code>textContent</code>.</p>
+
+<pre><code>&lt;span class="mx-name"
+      data-en="Course Highlights &amp;amp; Elevation"
+      data-es="Atractivos del recorrido y elevaci&amp;oacute;n"&gt;Course Highlights &amp;amp; Elevation&lt;/span&gt;</code></pre>
+
+  <p>126 element pairs are live and every one of them matches its own rendered text, so a toggle to Spanish and back is lossless. Four rules keep it that way.</p>
+
+  <ol>
+    <li><strong>Never put <code>data-es</code> on an element that has child elements.</strong> The toggle sets <code>textContent</code>, which would destroy the children. A link with a descriptor must carry its label in a child span and leave the anchor itself untranslated.</li>
+    <li><strong>Write accents as numeric HTML entities</strong> inside the attributes. Backslash-u escapes do not survive the WordPress slashing round trip.</li>
+    <li><strong>Keep the literal text and <code>data-en</code> identical.</strong> They are two independent copies of the same string, and only the toggle reconciles them. If they drift, the label silently changes the first time someone switches language.</li>
+    <li><strong>The toggle persists</strong> to <code>localStorage</code> under <code>sfhm-lang</code> and sets the document <code>lang</code> attribute to <code>es-US</code> or <code>en-US</code>.</li>
+  </ol>
+
+  <p>The Concierge reuses this mechanism rather than duplicating it: its 23 fact rows are hidden spans carrying <code>data-en</code> and <code>data-es</code> inside the wrapper, so the toggle translates them for free and the script simply reads <code>textContent</code> at query time. Keyword lists use <code>|</code> as the delimiter, never a comma, because one keyword is "7,000".</p>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head"><span class="sec-num">09</span><h2>Motion</h2></div>
+
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Element</th><th>Trigger</th><th>Animation</th><th class="mono">Duration</th><th class="mono">Easing</th></tr></thead>
+    <tbody>
+      <tr><td>Mega panel</td><td>Hover, focus, click</td><td class="wrap">Fade in with a 10px rise</td><td class="mono">260 ms</td><td class="mono">cubic-bezier(.2,.8,.2,1)</td></tr>
+      <tr><td>Trigger underline</td><td>Hover, open</td><td class="wrap">scaleX 0 to 1 from the left</td><td class="mono">250 ms</td><td class="mono">cubic-bezier(.2,.8,.2,1)</td></tr>
+      <tr><td>Caret</td><td>Open</td><td class="wrap">Rotate 180 degrees</td><td class="mono">250 ms</td><td class="mono">cubic-bezier(.2,.8,.2,1)</td></tr>
+      <tr><td>Sub-link</td><td>Hover</td><td class="wrap">Background wash and 3px shift right</td><td class="mono">200 ms</td><td class="mono">default</td></tr>
+      <tr><td>Race tile</td><td>Hover</td><td class="wrap">3px lift plus card shadow</td><td class="mono">200 ms</td><td class="mono">cubic-bezier(.2,.8,.2,1)</td></tr>
+      <tr><td>Mobile drawer</td><td>Hamburger</td><td class="wrap">translateY -100% to 0</td><td class="mono">400 ms</td><td class="mono">cubic-bezier(.2,.8,.2,1)</td></tr>
+      <tr><td>Hamburger bars</td><td>Expanded</td><td class="wrap">Rotate to X, middle bar fades</td><td class="mono">300 / 200 ms</td><td class="mono">default</td></tr>
+      <tr><td>Card button</td><td>Hover, focus</td><td class="wrap">Fill darken plus 1px lift</td><td class="mono">200 / 100 ms</td><td class="mono">ease</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><strong>Reduced motion.</strong> Only the card button currently opts out under <code>prefers-reduced-motion</code>. The panel fade, drawer slide, caret rotation and hover lifts do not. Extending the existing query to cover them is a small, safe change and is listed in section 13.</p>
+
+  <p><strong>Testing note.</strong> In an automation browser pane, CSS transitions never composite, so an opening panel freezes at <code>currentTime: 0</code> and looks broken. Set <code>transition:none</code> before measuring. That is a harness artifact, not a defect.</p>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head"><span class="sec-num">10</span><h2>Accessibility</h2></div>
+
+  <h3>What is already correct</h3>
+  <ul>
+    <li><strong>Focus order matches visual order</strong> because the wrapper relocates to the top of the body. Skip links sit ahead of it.</li>
+    <li><strong>Triggers are buttons</strong> with <code>aria-haspopup="true"</code>, <code>aria-expanded</code>, and <code>aria-controls</code> wired at runtime to <code>sitenav-mega-0</code> through <code>-2</code>.</li>
+    <li><strong>Panels are properly hidden</strong> when closed. <code>visibility:hidden</code> keeps their links out of the tab order.</li>
+    <li><strong>Landmarks are labeled.</strong> Main navigation, Account, Mobile menu, Language group, Skip links.</li>
+    <li><strong>Current page</strong> is marked with <code>aria-current="page"</code> on any anchor whose normalized path matches the URL. The root path is excluded so the brand link never claims to be current.</li>
+    <li><strong>Escape</strong> closes panels and the drawer from anywhere on the page.</li>
+    <li><strong>The Concierge dialog</strong> moves focus to its input on open and returns it to the trigger on close.</li>
+    <li><strong>Focus is always visible</strong>: a 2px gold outline at 3px offset on every link and button in the header and drawer.</li>
+  </ul>
+
+  <h3>Gaps a developer should close</h3>
+  <ul>
+    <li><strong>The Concierge dialog does not trap focus.</strong> It has <code>role="dialog"</code> and a labelling heading, but Tab can walk out of it into the page behind. It also lacks <code>aria-modal="true"</code>.</li>
+    <li><strong>The drawer does not trap focus</strong> either, and the page behind it remains tabbable while it is open. Background scroll is locked, but focus is not.</li>
+    <li><strong>Two touch targets fall short of 44px</strong> on phones. See section 13.</li>
+    <li><strong>Panels have no arrow-key navigation.</strong> This is acceptable for a disclosure pattern with buttons, but worth a decision if the menu is ever announced as a menubar.</li>
+    <li><strong>Most motion ignores <code>prefers-reduced-motion</code>.</strong></li>
+  </ul>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head"><span class="sec-num">11</span><h2>Content rules and edge cases</h2></div>
+
+  <h3>Editorial rules that constrain the markup</h3>
+  <ul>
+    <li><strong>No emoji and no arrows anywhere on the website.</strong> Inline SVG or nothing. Watch for escaped characters sneaking in through Elementor JSON.</li>
+    <li><strong>Discount codes and percentages are email-only.</strong> They must never appear in the header, a mega panel, or a Concierge fact card. Hotel codes are the only exception, and they live on the lodging page.</li>
+    <li><strong>Credit artists by name</strong> wherever their work is referenced.</li>
+    <li><strong>The Store chip stays inert</strong> until a store page actually exists.</li>
+  </ul>
+
+  <h3>Length and overflow</h3>
+  <ul>
+    <li><strong>Sub-link names</strong> run to about 33 characters today ("Age-Group Divisions &amp; Medallions"). At 280px column width and 17px Anton they wrap to two lines cleanly. There is no truncation and none should be added; wrapping is the intended behavior.</li>
+    <li><strong>Spanish runs longer than English</strong>, routinely by 15 to 30 percent. Every layout decision must be checked in Spanish, not only English. "Logistica de la semana de carrera" is the current worst case.</li>
+    <li><strong>Trigger labels do not wrap</strong> (<code>white-space:nowrap</code>). A fifth top-level track, or a longer label than "Experience Santa Fe", will overflow before the 980px breakpoint catches it.</li>
+    <li><strong>Descriptors are single-purpose fact lines.</strong> Keep them under about 45 characters so they hold one line at 1280px.</li>
+  </ul>
+
+  <h3>Edge cases</h3>
+  <ul>
+    <li><strong>JavaScript disabled.</strong> Panels still open on hover and focus. The language toggle, click-toggle, drawer, active-page marking and Concierge do not work, and the header does not relocate, so it renders near the bottom of the page. Layout is unaffected because both tiers are fixed.</li>
+    <li><strong>Homepage.</strong> The widget deletes itself. Any change made here must be mirrored by hand into the React navigation, which is a separate implementation.</li>
+    <li><strong>Long page with an anchor link.</strong> Four nav destinations are homepage anchors. From an inner page these navigate away and then jump, landing under the 122px fixed stack unless the target has scroll padding.</li>
+    <li><strong>Concierge with an empty query.</strong> Results are cleared and nothing renders. The hint line stays visible.</li>
+    <li><strong>Concierge with no keyword match.</strong> One fallback card to the contact page.</li>
+    <li><strong>Slow connection.</strong> Anton and Hanken Grotesk load from Google Fonts with <code>display=swap</code>, so the header paints in the fallback stack first. Anton has no close metric match, so expect visible reflow in the brand and sub-link names.</li>
+    <li><strong>Missing card image.</strong> The Register card's image has a fixed 16:9 aspect ratio, so a failed load leaves a correctly sized gap rather than collapsing the card.</li>
+  </ul>
+</section>
+
+<!-- 12 -->
+<section>
+  <div class="sec-head"><span class="sec-num">12</span><h2>Build and deploy constraints</h2></div>
+
+  <p>These are properties of the delivery mechanism, not the design, and they have all cost real time before.</p>
+
+  <ul>
+    <li><strong>Scripts must be ASCII with zero angle brackets.</strong> Elementor's HTML widget truncates at tag-like strings. That rules out arrow functions, comparison operators and template literals building markup. Use <code>function</code> keywords, <code>Math.sign(a-b)</code> comparisons, and <code>createElement</code> with <code>textContent</code>. Assert the constraint before every write.</li>
+    <li><strong>The Concierge script is deliberately last.</strong> If Elementor ever truncates the widget, it cuts that script rather than the navigation machinery. Any new script goes after it, and the widget must still end with a closing script tag and the wrapper's closing div.</li>
+    <li><strong>Writes can report success without persisting.</strong> Always re-read the widget and assert a marker string before treating a deploy as done.</li>
+    <li><strong>Two cache layers.</strong> Purge Elementor files and the WP-Optimize page cache. Skipping either shows a stale header and fakes a failed deploy. In the WP-Optimize interface only the plain purge button works; the all-pages variant silently does nothing.</li>
+    <li><strong>Verify logged out.</strong> Administrators bypass the page cache, so an admin view proves nothing.</li>
+    <li><strong>Never retype the widget.</strong> Cut existing fragments and reassemble, so each link's English string, Spanish string, entities and href travel together. Guard on zero lost hrefs, an unchanged script block, no loss of <code>data-es</code> count, and per-tag open/close balance.</li>
+    <li><strong>Do not use a naive angle-bracket balance check</strong> on this widget. The CSS contains child combinators, so it always fails. Per-tag deltas are the correct guard.</li>
+    <li><strong>ElementsKit is active again</strong> and injects its own hamburger rules at 1024px and below. It does not currently collide with this header, but it is a live source of conflict for anything added to the bar.</li>
+  </ul>
+</section>
+
+<!-- 13 -->
+<section>
+  <div class="sec-head"><span class="sec-num">13</span><h2>Open decisions</h2></div>
+
+  <p>Six things surfaced while measuring the live header. Two have been fixed on template 2365 and verified logged out. Two remain open. Two are confirmations that something odd is intentional.</p>
+
+  <div class="finding fixed">
+    <h4>The Register pill hid 80px earlier than documented <span class="chip chip-fixed">Fixed</span></h4>
+    <p>The two-tier notes said the pill hides at 520px and below. It was hiding at 600px, because an older rule carried <code>!important</code> and nothing could un-hide it in between:</p>
+<pre><code>/* before */
+@media (max-width:600px){ #sitenav-wrap .nav-cta{display:none !important} }
+@media (max-width:520px){ #sitenav-wrap .nav-right .nav-cta{display:none} }   /* never fired */
+
+/* after: the .nav-cta declaration is gone from the 600px block */
+@media (max-width:600px){ #sitenav-wrap .nav-right{gap:10px}
+                          #sitenav-wrap .brand span{display:none} }
+@media (max-width:520px){ #sitenav-wrap .nav-right .nav-cta{display:none} }   /* now governs */</code></pre>
+    <p class="fix"><strong>Resolved as 520.</strong> The IA v4 migration deliberately moved the pill into <code>.nav-right</code> and recorded it as visible on mobile down to 520px; the 600px rule predates that work. Removing the <code>!important</code> alone would not have helped, because the 600px rule would still have matched. Verified: Register renders 106 by 48px at 560px, and is <code>display:none</code> at 500px.</p>
+  </div>
+
+  <div class="finding">
+    <h4>Two touch targets are below 44px on phones <span class="chip chip-warn">Accessibility</span></h4>
+    <p>A global <code>(pointer:coarse)</code> rule sets <code>min-height:44px</code> on language buttons, but the ribbon compression rule overrides it from a higher-specificity ID selector. The result measures 32 by 19px. The Concierge button measures 37 by 36px.</p>
+<pre><code>#sitenav-wrap .ribbon .lang-btn{min-height:0;min-width:0;height:auto;padding:2px 8px}</code></pre>
+    <p class="fix"><strong>Fix:</strong> keep the visual size but grow the hit area, with padding on a wrapper or a pseudo-element that extends the target past the ribbon's 31px band. Removing the compression rule is not an option: it is what keeps the ribbon at 31px instead of inflating to 48px.</p>
+  </div>
+
+  <div class="finding fixed">
+    <h4>The brand mark's declared height never applied <span class="chip chip-fixed">Fixed</span></h4>
+    <p>The header declared a 67 by 60px mark. A sitewide <code>html body img{height:auto!important}</code> rule won and the logo rendered 67 square, so the declaration was fiction and the bar was 7px taller than the stylesheet implied.</p>
+<pre><code>#sitenav-wrap .brand .mark{width:67px;height:auto;flex:none;display:block;border-radius:8px;object-fit:contain}</code></pre>
+    <p class="fix"><strong>Resolved by making the declaration truthful,</strong> not by forcing 60px. Winning that fight would have shrunk the bar from 91 to 84px on every page and required retuning the body offset from 122px, which is a design change nobody asked for. The source asset is 500 square, so nothing is distorted. Zero visual change: the mark measures 67 by 67 before and after.</p>
+  </div>
+
+  <div class="finding">
+    <h4>The <code>--navh</code> token is 3px short <span class="chip chip-warn">Stale</span></h4>
+    <p>The token reads 119px. The measured stack is 122px, which matches the body padding. Nothing currently reads the token, so this is latent rather than live.</p>
+    <p class="fix"><strong>Fix:</strong> set it to 122px and use it for the body padding, so the two values cannot drift again.</p>
+  </div>
+
+  <div class="finding by-design">
+    <h4>The Register card is invisible on tablets <span class="chip chip-ok">By design</span></h4>
+    <p>Between 980 and 1100px the desktop menu is still showing, but the Secure Your Spot card is hidden. This was a deliberate call: at three columns the card had nowhere to sit, and the Register pill in the bar still covers the action.</p>
+    <p class="fix">Do not "fix" this without asking. If it should return, the panel needs a two-by-two layout at that width, not a fourth column.</p>
+  </div>
+
+  <div class="finding by-design">
+    <h4>Store is not a link <span class="chip chip-ok">By design</span></h4>
+    <p>No store page exists and the wearable-art line has no pre-order URL. The chip is an inert span at 50% opacity so it cannot be tabbed to or clicked. It becomes an anchor only when there is a real destination.</p>
+  </div>
+</section>
+
+<div class="colophon">
+  <span>Nav IA v4 &middot; template 2365 &middot; widget sfhmnavw1</span>
+  <span>Measured 2026-09-11 &middot; rev. 2, two dead rules fixed</span>
+</div>
+
+</div>

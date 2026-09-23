@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFHM Two-Tier Header Concept (prototype, not deployed)</title>
+<!-- ============================================================
+     ELEMENTOR FRAME 1 of 3: CSS
+     Paste into an Elementor Custom HTML widget inside a <style> tag,
+     or the site's Custom CSS. Self-contained under .sfh2 scope.
+     ============================================================ -->
+<style>
+.sfh2{
+  --sand-bar:#fcfbfa;        /* per spec: off-white navbar */
+  --ink:#1a1a1a;
+  --ink-soft:#55514D;
+  --terra:#C2593F;           /* accents and large display only */
+  --terra-cta:#AD4A2E;       /* AA-safe fill for small white CTA text */
+  --terra-cta-hover:#8C3A24;
+  --line:#eae6e1;
+  --font-display:'Archivo','Arial Narrow',sans-serif;
+  --font-body:'Hanken Grotesk',system-ui,sans-serif;
+  font-family:var(--font-body);
+}
+.sfh2 *{box-sizing:border-box;margin:0;padding:0}
+.sfh2 a{text-decoration:none}
+
+/* ---- Tier 1: dark utility ribbon ---- */
+.sfh2 .ribbon{background:#222222;color:rgba(251,249,246,.85);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sfh2 .ribbon-in{max-width:1240px;margin:0 auto;padding:.45rem clamp(1rem,4vw,2rem);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.sfh2 .lang button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:.15rem .3rem;letter-spacing:inherit}
+.sfh2 .lang button[aria-pressed="true"]{color:#E8764F;font-weight:800}
+.sfh2 .lang .sep{opacity:.4;margin:0 .1rem}
+.sfh2 .util{display:flex;gap:1.4rem}
+.sfh2 .util a{color:inherit;transition:color .2s}
+.sfh2 .util a:hover,.sfh2 .util a:focus-visible{color:#E8764F}
+
+/* ---- Tier 2: main navbar (sticky) ---- */
+.sfh2 .bar{position:sticky;top:0;z-index:900;background:var(--sand-bar);border-bottom:1px solid var(--line);box-shadow:0 2px 20px rgba(26,26,26,.05)}
+.sfh2 .bar-in{max-width:1240px;margin:0 auto;padding:.8rem clamp(1rem,4vw,2rem);display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.sfh2 .brand{display:flex;align-items:center;gap:.7rem;color:var(--ink);font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.05rem;letter-spacing:.02em}
+.sfh2 .brand img{width:44px;height:auto;border-radius:8px}
+.sfh2 .nodes{display:flex;gap:2rem;list-style:none}
+.sfh2 .nodes a{position:relative;color:var(--ink);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;padding:.5rem 0;transition:color .2s}
+.sfh2 .nodes a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--terra);transition:width .25s}
+.sfh2 .nodes a:hover,.sfh2 .nodes a:focus-visible{color:var(--terra-cta)}
+.sfh2 .nodes a:hover::after,.sfh2 .nodes a:focus-visible::after{width:100%}
+.sfh2 .nodes .soon{opacity:.45;pointer-events:none}
+.sfh2 .nodes .soon .tagchip{font-size:.55rem;letter-spacing:.1em;border:1px solid var(--line);border-radius:999px;padding:.1rem .4rem;margin-left:.35rem;vertical-align:middle}
+.sfh2 .right{display:flex;align-items:center;gap:.9rem}
+.sfh2 .ask-toggle{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s}
+.sfh2 .ask-toggle:hover,.sfh2 .ask-toggle:focus-visible{border-color:var(--terra-cta)}
+.sfh2 .ask-toggle svg{width:17px;height:17px;stroke:var(--ink);stroke-width:2.2;fill:none;stroke-linecap:round}
+.sfh2 .cta{background:var(--terra-cta);color:#fff;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;padding:.7rem 1.4rem;border-radius:4px;transition:background .2s,transform .12s;box-shadow:0 4px 12px rgba(173,74,46,.25)}
+.sfh2 .cta:hover,.sfh2 .cta:focus-visible{background:var(--terra-cta-hover);transform:translateY(-1px)}
+.sfh2 .burger{display:none;width:42px;height:42px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;position:relative}
+.sfh2 .burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--ink);transition:transform .25s,opacity .2s}
+.sfh2 .burger span:nth-child(1){top:13px}
+.sfh2 .burger span:nth-child(2){top:20px}
+.sfh2 .burger span:nth-child(3){top:27px}
+.sfh2 .burger.is-active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.sfh2 .burger.is-active span:nth-child(2){opacity:0}
+.sfh2 .burger.is-active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---- Off-canvas mobile drawer (right slide) ---- */
+.sfh2 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(88vw,380px);background:#fff;z-index:950;transform:translateX(105%);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:-12px 0 40px rgba(26,26,26,.18);display:flex;flex-direction:column;padding:4.5rem 1.5rem 1.5rem;overflow-y:auto}
+.sfh2 .drawer.is-active{transform:none}
+.sfh2 .overlay{position:fixed;inset:0;background:rgba(26,26,26,.4);z-index:940;opacity:0;visibility:hidden;transition:opacity .3s}
+.sfh2 .overlay.is-active{opacity:1;visibility:visible}
+.sfh2 .acc-item{border-bottom:1px solid var(--line)}
+.sfh2 .acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:0;padding:1.1rem 0;font-family:var(--font-body);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);cursor:pointer}
+.sfh2 .acc-btn svg{width:12px;height:8px;stroke:var(--terra-cta);stroke-width:2;fill:none;stroke-linecap:round;transition:transform .25s}
+.sfh2 .acc-item.is-active .acc-btn svg{transform:rotate(180deg)}
+.sfh2 .acc-panel{max-height:0;overflow:hidden;transition:max-height .3s ease;display:flex;flex-direction:column}
+.sfh2 .acc-item.is-active .acc-panel{max-height:400px}
+.sfh2 .acc-panel a{color:var(--ink-soft);font-size:.95rem;font-weight:600;padding:.55rem 0 .55rem .5rem}
+.sfh2 .acc-panel a:hover{color:var(--terra-cta)}
+.sfh2 .drawer .cta{display:block;text-align:center;margin-top:1.5rem}
+@media (max-width:960px){
+  .sfh2 .nodes{display:none}
+  .sfh2 .burger{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  .sfh2 .drawer,.sfh2 .burger span,.sfh2 .nodes a::after,.sfh2 .acc-panel,.sfh2 .acc-btn svg{transition:none}
+}
+</style>
+</head>
+<body style="margin:0;background:#FBF9F6">
+<!-- ============================================================
+     ELEMENTOR FRAME 2 of 3: HTML
+     Paste as the body of the same Custom HTML widget.
+     NOTE: every visible label carries data-en/data-es for the
+     site's language toggle contract.
+     ============================================================ -->
+<div class="sfh2">
+  <div class="ribbon">
+    <div class="ribbon-in">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">EN</button><span class="sep">|</span><button type="button" aria-pressed="false">ES</button>
+      </div>
+      <nav class="util" aria-label="Account">
+        <a href="https://runsignup.com/Login" data-en="Sign In" data-es="Iniciar sesi&oacute;n">Sign In</a>
+        <a href="https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon" data-en="Create Account" data-es="Crear cuenta">Create Account</a>
+        <a href="/contact-us/" data-en="Help" data-es="Ayuda">Help</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="/">
+        <img src="https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-logo.png" alt="">
+        <span data-en="Santa Fe Intl Half" data-es="Santa Fe Intl Half">Santa Fe Intl Half</span>
+      </a>
+      <ul class="nodes" aria-label="Main">
+        <li><a href="/course-highlights/" data-en="The Races" data-es="Las carreras">The Races</a></li>
+        <li><a href="/event-schedule/" data-en="Runner Info" data-es="Informaci&oacute;n del corredor">Runner Info</a></li>
+        <li><a href="/host-city-guide/" data-en="Experience Santa Fe" data-es="Vive Santa Fe">Experience Santa Fe</a></li>
+        <li class="soon"><a href="#" aria-disabled="true"><span data-en="Store" data-es="Tienda">Store</span><span class="tagchip" data-en="Soon" data-es="Pronto">Soon</span></a></li>
+      </ul>
+      <div class="right">
+        <button class="ask-toggle" type="button" aria-label="Jump to Ask anything">
+          <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 L21 21"/></svg>
+        </button>
+        <a class="cta" href="https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon" data-en="Register Now" data-es="Inscr&iacute;bete ahora">Register Now</a>
+        <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sfh2Drawer"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" hidden></div>
+  <nav class="drawer" id="sfh2Drawer" aria-label="Mobile menu">
+    <div class="acc-item">
+      <button class="acc-btn" type="button" aria-expanded="false"><span data-en="The Races" data-es="Las carreras">The Races</span><svg viewBox="0 0 12 8"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></button>
+      <div class="acc-panel">
+        <a href="/course-map/" data-en="Half Marathon Course" data-es="Recorrido del medio marat&oacute;n">Half Marathon Course</a>
+        <a href="/relays-exchange-zones/" data-en="3-Amigos Relay" data-es="Relevos 3-Amigos">3-Amigos Relay</a>
+        <a href="/course-highlights/" data-en="Course Highlights &amp; Elevation" data-es="Atractivos y elevaci&oacute;n">Course Highlights &amp; Elevation</a>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" type="button" aria-expanded="false"><span data-en="Runner Info" data-es="Informaci&oacute;n del corredor">Runner Info</span><svg viewBox="0 0 12 8"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></button>
+      <div class="acc-panel">
+        <a href="/event-schedule/" data-en="Event Schedule" data-es="Horario del evento">Event Schedule</a>
+        <a href="/packet-pickup/" data-en="Packet Pickup &amp; Expo" data-es="Recogida de kits y expo">Packet Pickup &amp; Expo</a>
+        <a href="/transportation-parking/" data-en="Parking &amp; Shuttles" data-es="Estacionamiento y shuttles">Parking &amp; Shuttles</a>
+        <a href="/time-limits/" data-en="Time Limits" data-es="L&iacute;mites de tiempo">Time Limits</a>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" type="button" aria-expanded="false"><span data-en="Experience Santa Fe" data-es="Vive Santa Fe">Experience Santa Fe</span><svg viewBox="0 0 12 8"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></button>
+      <div class="acc-panel">
+        <a href="/host-city-guide/" data-en="Host City Guide" data-es="Gu&iacute;a de la ciudad anfitriona">Host City Guide</a>
+        <a href="/spectator-guide/" data-en="Spectator Guide" data-es="Gu&iacute;a para espectadores">Spectator Guide</a>
+        <a href="/finish-line-festival/" data-en="Finish Line Festival" data-es="Festival en la meta">Finish Line Festival</a>
+        <a href="/lodging-travel/" data-en="Lodging &amp; Travel" data-es="Hospedaje y viaje">Lodging &amp; Travel</a>
+      </div>
+    </div>
+    <a class="cta" href="https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon" data-en="Register Now" data-es="Inscr&iacute;bete ahora">Register Now</a>
+  </nav>
+
+  <!-- prototype-only stand-in so the magnifier's smooth-scroll has a target -->
+  <section id="ask-anything" style="min-height:60vh;display:flex;align-items:center;justify-content:center;margin-top:70vh;padding:2rem">
+    <p style="font-family:var(--font-body);color:#55514D">[ Homepage "Ask anything" input renders here — concept mock, no backend ]</p>
+  </section>
+</div>
+
+<!-- ============================================================
+     ELEMENTOR FRAME 3 of 3: JS
+     Paste inside the same widget in a <script> tag.
+     PRODUCTION WARNING for this site: Elementor HTML-widget scripts
+     must be rewritten ASCII-only with ZERO angle brackets (< >) or
+     WordPress truncates them — build DOM via createElement and
+     replace comparisons with Math.sign(). This block is the
+     prototype form only.
+     ============================================================ -->
+<script>
+(function(){
+  var root=document.querySelector('.sfh2');
+  var burger=root.querySelector('.burger');
+  var drawer=root.querySelector('.drawer');
+  var overlay=root.querySelector('.overlay');
+  function setDrawer(open){
+    burger.classList.toggle('is-active',open);
+    drawer.classList.toggle('is-active',open);
+    overlay.classList.toggle('is-active',open);
+    overlay.hidden=!open;
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  }
+  burger.addEventListener('click',function(){setDrawer(!drawer.classList.contains('is-active'));});
+  overlay.addEventListener('click',function(){setDrawer(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setDrawer(false);});
+  root.querySelectorAll('.acc-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.parentElement;
+      var open=item.classList.toggle('is-active');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+  root.querySelector('.ask-toggle').addEventListener('click',function(){
+    var target=document.getElementById('ask-anything');
+    if(target){
+      var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
+      var input=target.querySelector('input');
+      if(input)input.focus({preventScroll:true});
+    }
+  });
+})();
+</script>
+</body>
+</html>

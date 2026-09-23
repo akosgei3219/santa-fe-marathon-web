@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SFHM Mobile Nav Overlay — Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --sand:#f5ebd8;
+  --cream:#faf6ef;
+  --ink:#20140e;
+  --ink-2:#4a3a30;
+  --ink-soft:#6c5a4c;
+  --clay:#b9542f;
+  --coral:#e8623a;
+  --gold:#ffce6b;
+  --peach:#ffe2b0;
+  --turquoise:#1f9e94;
+  --line:rgba(32,20,14,.14);
+  --line-light:rgba(245,235,216,.16);
+  --display:'Anton','Arial Narrow',sans-serif;
+  --body:'Hanken Grotesk',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{
+  font-family:var(--body);
+  background:var(--sand);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- demo page behind the overlay ---------- */
+.page-hero{
+  min-height:100vh;
+  background:linear-gradient(160deg,#26265E 0%,#1c1440 55%,#20140e 100%);
+  color:var(--sand);
+  display:flex;flex-direction:column;
+  padding:clamp(24px,6vw,48px);
+  padding-top:120px;
+}
+.page-hero h1{
+  font-family:var(--display);
+  text-transform:uppercase;
+  font-size:clamp(44px,13vw,72px);
+  line-height:.92;
+  letter-spacing:.01em;
+  max-width:8ch;
+}
+.page-hero p{
+  margin-top:20px;
+  font-size:15px;line-height:1.65;
+  color:var(--peach);
+  max-width:34ch;
+}
+.hero-tag{
+  font-weight:700;font-size:11px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:18px;
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  /* must sit ABOVE the overlay (z 100): the topbar is a stacking context, so the
+     burger's own z-index can never escape it — the close button dies otherwise */
+  position:fixed;top:0;left:0;right:0;z-index:120;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,5vw,32px);
+  background:linear-gradient(rgba(32,20,14,.55),rgba(32,20,14,0));
+}
+.brand{
+  font-family:var(--display);
+  text-transform:uppercase;
+  color:var(--sand);
+  font-size:17px;letter-spacing:.05em;
+  text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+.brand .dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--coral);
+  box-shadow:0 0 0 3px rgba(232,98,58,.28);
+}
+
+/* ---------- hamburger ---------- */
+.burger{
+  --bar:var(--sand);
+  position:relative;z-index:120;
+  width:52px;height:52px;
+  display:grid;place-items:center;
+  background:rgba(32,20,14,.35);
+  border:1px solid var(--line-light);
+  border-radius:50%;
+  cursor:pointer;
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+.burger:hover{transform:scale(1.06)}
+.burger:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.burger .lines{width:22px;height:14px;position:relative}
+.burger .lines span{
+  position:absolute;left:0;width:100%;height:2px;border-radius:2px;
+  background:var(--bar);
+  transition:transform .42s var(--ease),opacity .25s var(--ease),top .42s var(--ease),background .3s;
+}
+.burger .lines span:nth-child(1){top:0}
+.burger .lines span:nth-child(2){top:6px}
+.burger .lines span:nth-child(3){top:12px}
+body.nav-open .burger{background:rgba(245,235,216,.1);border-color:rgba(245,235,216,.3)}
+/* while the drawer is open, its scrolled content must not collide with the brand */
+body.nav-open .topbar{background:linear-gradient(rgba(26,15,9,.96) 55%,rgba(26,15,9,0))}
+body.nav-open .burger .lines span:nth-child(1){top:6px;transform:rotate(45deg)}
+body.nav-open .burger .lines span:nth-child(2){opacity:0;transform:scaleX(.2)}
+body.nav-open .burger .lines span:nth-child(3){top:6px;transform:rotate(-45deg)}
+
+/* ---------- overlay ---------- */
+.overlay{
+  position:fixed;inset:0;z-index:100;
+  background:
+    radial-gradient(120% 60% at 85% -10%,rgba(232,98,58,.22),transparent 60%),
+    radial-gradient(90% 50% at -10% 110%,rgba(31,158,148,.14),transparent 55%),
+    #1a0f09;
+  display:flex;flex-direction:column;
+  visibility:hidden;
+  clip-path:circle(0% at calc(100% - 46px) 44px);
+  transition:clip-path .62s var(--ease),visibility 0s linear .62s;
+}
+body.nav-open .overlay{
+  visibility:visible;
+  clip-path:circle(150% at calc(100% - 46px) 44px);
+  transition:clip-path .62s var(--ease);
+}
+.overlay-scroll{
+  flex:1;overflow-y:auto;
+  padding:104px clamp(28px,8vw,44px) 28px;
+  display:flex;flex-direction:column;
+}
+.ov-eyebrow{
+  font-weight:700;font-size:10.5px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:26px;
+}
+
+/* staggered entrance for each row */
+.ov-item{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+body.nav-open .ov-item{opacity:1;transform:none}
+body.nav-open .ov-item:nth-child(1){transition-delay:.16s}
+body.nav-open .ov-item:nth-child(2){transition-delay:.22s}
+body.nav-open .ov-item:nth-child(3){transition-delay:.28s}
+body.nav-open .ov-item:nth-child(4){transition-delay:.34s}
+body.nav-open .ov-item:nth-child(5){transition-delay:.40s}
+body.nav-open .ov-item:nth-child(6){transition-delay:.46s}
+body.nav-open .ov-item:nth-child(7){transition-delay:.52s}
+
+.ov-item + .ov-item{border-top:1px solid var(--line-light)}
+
+/* top-level rows: plain links and accordion triggers share one look */
+.ov-link,.acc-trigger{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  width:100%;
+  padding:22px 0;
+  background:none;border:0;cursor:pointer;
+  text-decoration:none;text-align:left;
+  font-family:var(--display);
+  font-size:clamp(28px,7.4vw,34px);
+  line-height:1;
+  letter-spacing:.015em;
+  text-transform:uppercase;
+  color:var(--sand);
+  transition:color .25s var(--ease);
+}
+.ov-link:hover,.acc-trigger:hover{color:var(--gold)}
+.ov-link:focus-visible,.acc-trigger:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
+.ov-link .hint{
+  font-family:var(--body);font-weight:600;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  color:rgba(245,235,216,.42);
+}
+
+/* caret */
+.caret{
+  flex:none;
+  width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;
+  border:1.5px solid var(--line-light);
+  transition:transform .45s var(--ease),background .3s var(--ease),border-color .3s var(--ease);
+}
+.caret svg{display:block;transition:transform .45s var(--ease)}
+.acc-trigger[aria-expanded="true"]{color:var(--gold)}
+.acc-trigger[aria-expanded="true"] .caret{
+  background:var(--gold);border-color:var(--gold);
+}
+.acc-trigger[aria-expanded="true"] .caret svg{transform:rotate(180deg)}
+.acc-trigger[aria-expanded="true"] .caret svg path{stroke:#1a0f09}
+
+/* accordion panel: grid-rows trick = fluid height animation, no JS measuring */
+.acc-panel{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .5s var(--ease);
+}
+.acc-trigger[aria-expanded="true"] + .acc-panel{grid-template-rows:1fr}
+.acc-panel > div{overflow:hidden}
+.acc-list{
+  padding:2px 0 24px;
+  display:flex;flex-direction:column;gap:2px;
+}
+.acc-list a{
+  display:flex;align-items:baseline;gap:14px;
+  padding:11px 4px 11px 18px;
+  border-left:2px solid rgba(245,235,216,.14);
+  text-decoration:none;
+  font-weight:500;font-size:16.5px;letter-spacing:.01em;
+  color:rgba(245,235,216,.82);
+  transition:color .25s var(--ease),border-color .25s var(--ease),transform .3s var(--ease);
+}
+.acc-list a:hover{color:var(--gold);border-color:var(--gold);transform:translateX(4px)}
+.acc-list a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:2px}
+.acc-list .tag{
+  font-weight:700;font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--turquoise);
+  flex:none;min-width:52px;
+}
+
+/* ---------- register CTA, isolated at the bottom ---------- */
+.ov-cta-zone{
+  margin-top:auto;
+  padding-top:34px;
+  opacity:0;transform:translateY(24px);
+  transition:opacity .55s var(--ease),transform .55s var(--ease);
+}
+body.nav-open .ov-cta-zone{opacity:1;transform:none;transition-delay:.58s}
+.ov-cta-note{
+  font-weight:600;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(245,235,216,.5);
+  text-align:center;margin-bottom:12px;
+}
+.register-btn{
+  position:relative;
+  display:block;width:100%;
+  padding:21px 24px;
+  background:linear-gradient(115deg,var(--coral),var(--clay));
+  color:#fff5e9;
+  font-family:var(--display);
+  font-size:23px;letter-spacing:.06em;text-transform:uppercase;
+  text-align:center;text-decoration:none;
+  border-radius:6px;
+  transform:skewX(-8deg);
+  box-shadow:0 14px 34px -12px rgba(232,98,58,.55);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),filter .3s;
+  overflow:hidden;
+}
+.register-btn > span{display:block;transform:skewX(8deg)}
+.register-btn:hover{
+  transform:skewX(-8deg) translateY(-3px);
+  box-shadow:0 20px 42px -12px rgba(232,98,58,.7);
+  filter:saturate(1.1);
+}
+.register-btn:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.register-btn::after{
+  content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;
+  background:linear-gradient(100deg,transparent,rgba(255,226,176,.35),transparent);
+  transform:skewX(-12deg);
+  transition:left .6s var(--ease);
+}
+.register-btn:hover::after{left:120%}
+.ov-footer{
+  display:flex;justify-content:center;gap:22px;
+  padding:20px 0 6px;
+  font-weight:600;font-size:12px;letter-spacing:.06em;
+}
+.ov-footer a{color:rgba(245,235,216,.55);text-decoration:none;transition:color .25s}
+.ov-footer a:hover{color:var(--sand)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;transition-delay:0ms !important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#"><span class="dot" aria-hidden="true"></span>Santa Fe Intl Half</a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navOverlay">
+    <span class="lines" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+</header>
+
+<main class="page-hero">
+  <p class="hero-tag">Sunday, September 20, 2026</p>
+  <h1>Run the City Different.</h1>
+  <p>Prototype backdrop. Tap the round button top-right to open the navigation overlay, test the accordions, and close with the same button or Escape.</p>
+</main>
+
+<div class="overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="overlay-scroll">
+    <p class="ov-eyebrow">Santa Fe International Half Marathon</p>
+
+    <div class="ov-item">
+      <button class="acc-trigger" aria-expanded="false" aria-controls="accRaceInfo">
+        Race Info
+        <span class="caret" aria-hidden="true">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="#f5ebd8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="acc-panel" id="accRaceInfo">
+        <div>
+          <div class="acc-list">
+            <a href="#"><span class="tag">13.1 mi</span>Half Marathon Course</a>
+            <a href="#"><span class="tag">Relay</span>Exchange Zones</a>
+            <a href="#"><span class="tag">5K</span>Santa Fe 5K and Kids 1K Dash</a>
+            <a href="#"><span class="tag">Course</span>Highlights and Elevation</a>
+            <a href="#"><span class="tag">Fuel</span>Aid Stations</a>
+            <a href="#"><span class="tag">Finish</span>Awards and Medallions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ov-item">
+      <button class="acc-trigger" aria-expanded="false" aria-controls="accWeekend">
+        Race Weekend
+        <span class="caret" aria-hidden="true">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="#f5ebd8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="acc-panel" id="accWeekend">
+        <div>
+          <div class="acc-list">
+            <a href="#"><span class="tag">All</span>Event Schedule</a>
+            <a href="#"><span class="tag">Fri-Sat</span>Packet Pickup</a>
+            <a href="#"><span class="tag">Expo</span>Health and Wellness Expo</a>
+            <a href="#"><span class="tag">Sun</span>Shuttle and Parking</a>
+            <a href="#"><span class="tag">Sun</span>Gear and Bag Drop</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ov-item"><a class="ov-link" href="#">Results <span class="hint">2025 archive</span></a></div>
+    <div class="ov-item"><a class="ov-link" href="#">Stories</a></div>
+    <div class="ov-item"><a class="ov-link" href="#">Volunteer</a></div>
+
+    <div class="ov-cta-zone">
+      <p class="ov-cta-note">Prices hold through September 19</p>
+      <a class="register-btn" href="#"><span>Register Now</span></a>
+      <div class="ov-footer">
+        <a href="#">EN</a><a href="#">ES</a><a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var burger = document.getElementById('burger');
+  var overlay = document.getElementById('navOverlay');
+
+  function setOpen(open){
+    document.body.classList.toggle('nav-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (!open) collapseAll();
+  }
+  burger.addEventListener('click', function(){
+    setOpen(!document.body.classList.contains('nav-open'));
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  var triggers = Array.prototype.slice.call(document.querySelectorAll('.acc-trigger'));
+  function collapseAll(except){
+    triggers.forEach(function(t){
+      if (t !== except) t.setAttribute('aria-expanded','false');
+    });
+  }
+  triggers.forEach(function(t){
+    t.addEventListener('click', function(){
+      var open = t.getAttribute('aria-expanded') !== 'true';
+      collapseAll(t);               /* one open at a time keeps the drawer calm */
+      t.setAttribute('aria-expanded', String(open));
+    });
+  });
+
+  /* prototype links: close the drawer so the flow can be felt end to end */
+  Array.prototype.forEach.call(overlay.querySelectorAll('a'), function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      setOpen(false);
+    });
+  });
+})();
+</script>
+</body>
+</html>

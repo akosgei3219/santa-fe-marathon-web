@@ -1,0 +1,2135 @@
+<title>Run Santa Fe 2026</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SportsEvent","name":"Santa Fe International Half Marathon 2026","alternateName":"Capitol Ford Santa Fe International Half Marathon","sport":"Running","description":"5th annual Santa Fe International Half Marathon: a paved 13.1 through Agua Fria Village and the Santa Fe River corridor at 7,000 ft, plus the 3-Amigos Relay, Santa Fe 5K, and free Kids 1K Dash. Starts at Romero's Park, finishes at Reunity Resources Farm.","startDate":"2026-09-20T07:30:00-06:00","endDate":"2026-09-20T12:00:00-06:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","image":"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-startline.jpg","url":"https://santafehalfmarathon.com/","location":{"@type":"Place","name":"Romero's Park, Agua Fria (start) to Reunity Resources Farm (finish)","address":{"@type":"PostalAddress","streetAddress":"3901 Camino Carlos Rael","addressLocality":"Santa Fe","addressRegion":"NM","postalCode":"87507","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":35.65914276,"longitude":-106.02618269}},"organizer":{"@type":"Organization","name":"Santa Fe International Half Marathon","url":"https://santafehalfmarathon.com/","email":"info@santafehalfmarathon.com","telephone":"+15059209799"},"offers":[{"@type":"Offer","name":"Half Marathon (13.1 MI)","availability":"https://schema.org/SoldOut","validThrough":"2026-09-17T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=83604"},{"@type":"Offer","name":"3-Amigos Relay (team of 3)","availability":"https://schema.org/SoldOut","validThrough":"2026-09-17T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=83604"},{"@type":"Offer","name":"Santa Fe 5K (3.1 MI)","availability":"https://schema.org/SoldOut","validThrough":"2026-09-17T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=83604"},{"@type":"Offer","name":"Kids 1K Dash (ages 3-12)","availability":"https://schema.org/SoldOut","validThrough":"2026-09-17T23:59:00-06:00","url":"https://runsignup.com/Race/Register/?raceId=83604"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Martian+Mono:wght@400;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>window.react = window.React;</script>
+<script src="https://cdn.jsdelivr.net/npm/lucide-react@0.454.0/dist/umd/lucide-react.min.js"></script>
+<style>
+:root{
+  --sand:#FBF9F6; --sand-2:#F1EDE6; --ink:#222222; --ink-soft:#55514D;
+  --terra:#AD4A2E; --terra-deep:#8C3A24; --sunset:#E07B39; --indigo:#26265E; --indigo-soft:#3D3D8F;
+  --card:#FFFFFF; --line:#DCD6CE; --banner-bg:#26265E; --banner-fg:#FBF9F6;
+  --chip:#F1EDE7; --panel:#26265E; --panel-fg:#FBF9F6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --sand:#191A2E; --sand-2:#22233D; --ink:#F0E9DC; --ink-soft:#B7AE9D;
+    --terra:#E0703F; --terra-deep:#C85A2E; --sunset:#F19A55; --indigo:#E8E4F7; --indigo-soft:#A9A7E0;
+    --card:#22233D; --line:#3A3B5C; --banner-bg:#E07B39; --banner-fg:#191A2E;
+    --chip:#2C2D4A; --panel:#111228; --panel-fg:#F0E9DC;
+  }
+}
+:root[data-theme="dark"]{
+  --sand:#191A2E; --sand-2:#22233D; --ink:#F0E9DC; --ink-soft:#B7AE9D;
+  --terra:#E0703F; --terra-deep:#C85A2E; --sunset:#F19A55; --indigo:#E8E4F7; --indigo-soft:#A9A7E0;
+  --card:#22233D; --line:#3A3B5C; --banner-bg:#E07B39; --banner-fg:#191A2E;
+  --chip:#2C2D4A; --panel:#111228; --panel-fg:#F0E9DC;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;font-size:16px;line-height:1.55}
+h1,h2,h3{text-wrap:balance;line-height:1.05;margin:0}
+.display{font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-stretch:90%}
+a.display{font-weight:800} /* the Elementor kit's `.elementor-kit-5 a` (0-1-1) outweighs .display alone */
+/* IA v4 nav dropdowns + Store chip */
+.navgrp{position:relative}
+.navdd{position:absolute;top:100%;left:0;min-width:232px;background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:0 14px 34px -18px rgba(34,34,34,.4);padding:.45rem;display:none;flex-direction:column;z-index:60}
+.navgrp:hover .navdd,.navgrp:focus-within .navdd{display:flex}
+.navdd a{padding:.45rem .6rem;color:var(--ink);font-weight:600;font-size:.85rem;border-radius:4px;text-decoration:none}
+.navdd a:hover,.navdd a:focus-visible{background:var(--sand-2);color:var(--terra)}
+.nav-soon{opacity:.5;cursor:default;display:inline-flex;align-items:center;gap:5px}
+.soon-chip{font-size:.55rem;letter-spacing:.12em;border:1px solid var(--line);border-radius:999px;padding:.1rem .45rem;text-transform:uppercase}
+/* Race Concierge modal (client-side keyword router - no AI backend) */
+.cg-trigger{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s}
+.cg-trigger:hover,.cg-trigger:focus-visible{border-color:var(--terra)}
+.cg-overlay{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:1rem}
+.cg-card{width:100%;max-width:42rem;background:#fcfbfa;border:1px solid #eae6e1;border-radius:12px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);padding:1.5rem;display:flex;flex-direction:column;animation:cgin .18s ease}
+@keyframes cgin{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.cg-card{animation:none}}
+.cg-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eae6e1;padding-bottom:1rem;margin-bottom:1rem}
+.cg-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#C2593F;animation:cgpulse 1.6s ease infinite}
+@keyframes cgpulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.cg-dot{animation:none}}
+.cg-title{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#1a1a1a;margin:0}
+.cg-close{background:none;border:0;color:#66605a;cursor:pointer;padding:.25rem;transition:color .2s}
+.cg-close:hover,.cg-close:focus-visible{color:#1a1a1a}
+.cg-field{position:relative;display:flex;align-items:center;margin-bottom:1.4rem;color:#a19c96}
+.cg-field svg{position:absolute;left:.9rem}
+.cg-field input{width:100%;background:#fff;border:1px solid #eae6e1;border-radius:8px;padding:.85rem 1rem .85rem 2.6rem;font:inherit;font-size:1rem;font-weight:500;color:#1a1a1a;outline:none;transition:border-color .2s,box-shadow .2s}
+.cg-field input:focus{border-color:#C2593F;box-shadow:0 0 0 1px #C2593F}
+.cg-field input::placeholder{color:#a19c96}
+.cg-results{display:flex;flex-direction:column;gap:.75rem;min-height:120px;justify-content:center}
+.cg-sublabel{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#66605a;margin:0 0 .5rem}
+.cg-chip{background:#eae6e1;color:#1a1a1a;border:0;font:inherit;font-size:.75rem;font-weight:600;padding:.45rem .85rem;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.cg-chip:hover,.cg-chip:focus-visible{background:#AD4A2E;color:#fff}
+.cg-answer{display:flex;flex-direction:column;gap:.35rem;background:#fff;border:1px solid #eae6e1;border-left:3px solid #C2593F;border-radius:8px;padding:.85rem 1rem;text-decoration:none;transition:border-color .2s,transform .12s}
+.cg-answer:hover,.cg-answer:focus-visible{border-color:#AD4A2E;transform:translateY(-1px)}
+.cg-fact{color:#1a1a1a;font-size:.92rem;line-height:1.5;font-weight:500}
+.cg-go{color:#AD4A2E;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+@media (prefers-reduced-motion:reduce){.cg-answer:hover{transform:none}}
+/* the Elementor kit styles bare `button` (red #CC0033 pill) at 0-1-1 - element-qualify to win the tie */
+button.cg-trigger{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:50%}
+button.cg-trigger:hover,button.cg-trigger:focus-visible{border-color:var(--terra);background:var(--card)}
+button.cg-chip{background:#eae6e1;color:#1a1a1a;border:0;border-radius:999px}
+button.cg-chip:hover,button.cg-chip:focus-visible{background:#AD4A2E;color:#fff}
+button.cg-close{background:none;color:#66605a;border:0;border-radius:0}
+button.cg-close:hover,button.cg-close:focus-visible{color:#1a1a1a;background:none}
+.eyebrow{font-family:'Martian Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);font-weight:700}
+.mono{font-family:'Martian Mono',monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-block;padding:.8rem 1.5rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.85rem;border:2px solid transparent;border-radius:3px;cursor:pointer;text-decoration:none;transition:transform .12s ease,background .12s ease}
+.btn:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.btn,.hero-cta,.tab-btn{transition:none}.btn:hover{transform:none}.hero-cta:hover{transform:skewX(-10deg)}}
+.btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--sunset);outline-offset:2px}
+.btn-primary{background:var(--terra);color:#FFF8EF}
+.btn-primary:hover{background:var(--terra-deep)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px}
+.tab-btn{padding:.65rem 1.1rem;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;border-radius:3px}
+.tab-btn[aria-selected="true"]{background:var(--banner-bg);color:var(--banner-fg);border-color:var(--banner-bg)}
+.hero-grit{color:#C2593F;text-shadow:0 2px 18px rgba(0,0,0,.65)} /* brand terracotta accent row; heavier shadow keeps it legible over the photo */
+/* three-picture hero: background divs, immune to the sitewide img{height:auto!important} rescue rule */
+.hero-triptych{display:grid;grid-template-columns:1fr 1fr 1fr}
+.hero-triptych>div{background-size:cover;background-position:center}
+.hero-triptych>div+div{border-left:1px solid rgba(255,248,239,.18)}
+@media (max-width:767px){.hero-triptych{grid-template-columns:1fr}.hero-triptych>div:first-child,.hero-triptych>div:last-child{display:none}}
+.hero-river{font-style:italic;font-weight:300;font-size:clamp(1.25rem,3.2vw,2.25rem);color:#E6F7F8;letter-spacing:1px;border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);padding:.6rem 2rem;display:inline-block;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.hero-cta{display:inline-block;transform:skewX(-10deg);padding:1.15rem 2.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:clamp(.95rem,2vw,1.25rem);text-decoration:none}
+.hero-cta>span{display:inline-block;transform:skewX(10deg)}
+.hero-cta-solid{background:#FF5400;color:#0C0C0E}
+.hero-cta-solid:hover,.hero-cta-solid:focus-visible{background:#D94700}
+.hero-cta-outline{background:rgba(12,12,14,.45);color:#FFF8EF;box-shadow:inset 0 0 0 3px #FFF8EF}
+.hero-cta-outline:hover,.hero-cta-outline:focus-visible{background:#FFF8EF;color:#0C0C0E}
+.hero-cta:focus-visible{outline:3px solid #FFF8EF;outline-offset:4px}
+@media (prefers-reduced-motion:reduce){.hero-cta{transition:none}.hero-cta:hover,.hero-cta:focus-visible{transform:skewX(-10deg)}}
+.dot{width:14px;height:14px;border-radius:50%;border:1px solid var(--sand);background:transparent;cursor:pointer;padding:0;position:relative}
+.dot::after{content:"";position:absolute;inset:-14px}
+.dot[aria-current="true"]{background:var(--sunset);border-color:var(--sunset)}
+table{border-collapse:collapse;width:100%;min-width:520px}
+td,th{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;font-size:.9rem}
+th{font-family:'Martian Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+input,select{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:.7rem .9rem;border-radius:3px;font:inherit}
+.results-dark{background:var(--panel);color:var(--panel-fg);border:none}
+.results-dark th{color:rgba(240,233,220,.55)}
+.results-dark td,.results-dark th{border-color:rgba(255,255,255,.14)}
+.results-dark input{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:inherit}
+.results-dark input::placeholder{color:rgba(240,233,220,.5)}
+.faq-q{width:100%;text-align:left;background:none;border:none;color:var(--ink);font:inherit;font-weight:700;padding:1rem 0;display:flex;justify-content:space-between;gap:1rem;cursor:pointer;font-size:1rem}
+/* 2026-09-16: the sponsor ticker is gone (Kosgei). It was an infinite marquee that only paused
+   on mouse hover, so keyboard and touch visitors could not stop it -- WCAG 2.2.2. Its sponsors
+   now sit in a static Community Partners tier under the Gold/Silver row. */
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--terra);color:#FFF8EF;padding:.7rem 1rem;z-index:100;font-weight:700}
+.skip-link:focus{left:8px;top:8px}
+.below-fold{content-visibility:auto;contain-intrinsic-size:auto 600px}
+section[id]{scroll-margin-top:86px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* Theme reset for WordPress embedding: kit selectors (.elementor-kit-* a, heading rules)
+   outrank bare classes, so these pin the page's own palette at higher specificity.
+   Inline styles on elements still win over the non-!important rules, by design. */
+html body{background:var(--sand)!important;color:var(--ink)!important}
+html body #root h1,html body #root h2,html body #root h3{color:inherit;font-family:'Archivo',system-ui,sans-serif}
+html body #root a{color:inherit;text-decoration:none}
+html body #root a.btn-primary{background:var(--terra);color:#FFF8EF}
+html body #root a.btn-primary:hover{background:var(--terra-deep)}
+/* a sitewide snippet ships `html body img{height:auto!important}`; these outrank it */
+html body #root img.sponsor-logo-jirani{height:5rem!important;width:auto!important}
+/* One box height for every Community Partner logo so the row reads as a single object. The
+   sitewide "html body img{height:auto!important}" rule defeats a height, so the chip sets the
+   box and max-height caps the artwork inside it. */
+html body #root img.sponsor-chip-img{max-height:2.5rem;max-width:100%;width:auto!important;height:auto!important;object-fit:contain}
+html body #root img.amb-photo{height:220px!important}
+html body #root .results-dark input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:inherit}
+/* kit paints every <button> crimson at .elementor-kit-5 specificity; restate class-styled buttons above it */
+html body #root button.tab-btn{padding:.65rem 1.1rem;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;border-radius:3px;font-family:'Archivo',system-ui,sans-serif}
+html body #root button.tab-btn[aria-selected="true"]{background:var(--banner-bg);color:var(--banner-fg);border-color:var(--banner-bg)}
+html body #root button.dot{width:14px;height:14px;border-radius:50%;border:1px solid var(--sand);background:transparent;padding:0}
+html body #root button.dot[aria-current="true"]{background:var(--sunset);border-color:var(--sunset)}
+html body #root button.faq-q{background:none;border:0;border-radius:0;color:var(--ink);font-family:'Archivo',system-ui,sans-serif;font-weight:700;font-size:1rem;padding:1rem 0}
+/* 2026-09-13 homepage restructure (Kosgei): full-bleed hero, quick stats, race cards, community grid, logistics accordion */
+html body #root a.hero-cta-solid,html body #root a.hero-cta-solid:hover{color:#0C0C0E} /* the #root a{color:inherit} reset was turning this label cream at 3.06:1 */
+html body #root a.hero-cta:focus-visible{outline:3px solid #FFF8EF!important;outline-offset:4px}
+/* v5 Phase 2 (perks): terracotta top edge kept, box dropped -- same as races. */
+.perk{background:none;border:0;border-top:3px solid var(--terra);border-radius:0;padding:1.1rem 0 0}
+/* v5 Phase 2 (ambassador): photo + text on the ground, separated by a rule. */
+.amb-block{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:2rem 0 0}
+/* v5 Phase 2 (lodging): the dark panel ranked Concept above Pecos. The box goes; the ranking
+   stays, carried by rule weight and heading colour. Text recoloured to ink -- it was all light,
+   built for the dark ground. .on-panel removed so focus rings are not light-on-light. */
+.lodge-official{background:none;border:0;border-top:3px solid var(--terra);border-radius:0;padding:1.6rem 0 0}
+.lodge-also{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:1.4rem 0 0}
+html body #root span.lodge-prop{display:inline-block;padding:.15rem 0 .15rem .75rem;border-left:3px solid var(--terra);font-size:.88rem;font-weight:700;color:var(--ink)}
+html body #root span.lodge-code{font-family:'Martian Mono',monospace;font-size:.72rem;padding:.2rem 0;border-bottom:1px dashed var(--terra);color:var(--ink)}
+.travel-tip{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:1rem 0 0}
+/* v5 Phase 2 (quick bar): the fill existed to keep the tiles legible where they overlapped the
+   hero photo. The overlap goes with the fill; tiles sit on the ground, split by vertical rules. */
+html body #root .quick-bar{margin-top:0!important;padding-top:2.25rem!important}
+html body #root ul.qb-list{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+html body #root ul.qb-list>li+li{border-left:1px solid var(--line)}
+@media (max-width:900px){html body #root ul.qb-list>li+li{border-left:0;border-top:1px solid var(--line)}}
+/* 2026-09-23 flat nav: plain links plus one high-contrast anchor button. The button uses
+   the terracotta on cream pairing already used for primary CTAs, so it clears AA. */
+html body #root a.navflat{color:var(--ink);font-weight:700}
+html body #root a.navflat:hover,html body #root a.navflat:focus-visible{color:var(--terra)}
+html body #root a.nav-reg{display:inline-flex;align-items:center;padding:.5rem 1rem;border-radius:4px;background:var(--terra);color:#FFF8EF!important;font-weight:800;letter-spacing:.04em}
+html body #root a.nav-reg:hover,html body #root a.nav-reg:focus-visible{background:var(--ink);color:#FFF8EF!important}
+/* 2026-09-23 contour overlay (Kosgei): subtle vector contour lines behind the hero copy.
+   Opacity is pinned at .05 as specified -- high enough to read as topography, low enough
+   not to move the measured contrast. It sits ABOVE .hero3-shade and BELOW .hero3-copy, is
+   pointer-events:none and aria-hidden, and is generated rather than rastered, the same
+   reasoning as the .hero3::after grain layer. Contrast was RE-MEASURED after adding it;
+   see the v5 README. Do not raise the opacity without re-measuring. */
+.hero3-contour{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='360' viewBox='0 0 560 360'%3E%3Cg fill='none' stroke='%23FFF8EF' stroke-width='1.4'%3E%3Cpath d='M-40 96c90-46 180-46 268-2 88 44 178 46 272-6'/%3E%3Cpath d='M-40 132c96-50 190-48 280-2 90 46 176 44 260-10'/%3E%3Cpath d='M-40 170c104-54 198-50 288 0 90 50 172 46 252-14'/%3E%3Cpath d='M-40 210c110-58 206-52 296 2 90 54 168 48 244-18'/%3E%3Cpath d='M-40 252c116-60 214-54 304 4 90 58 164 50 236-22'/%3E%3C/g%3E%3C/svg%3E");background-repeat:repeat;background-size:560px 360px}
+@media (prefers-reduced-motion:reduce){.hero3-contour{opacity:.04}}
+/* 2026-09-22 distance badges. Desktop: inline with the card heading. Phones: .race-head
+   becomes display:contents so the badge and the h3 join the card's own flex column, then the
+   badge is ordered to sit directly above the registration control -- which is always the
+   card's last child, whichever REG_STATE branch rendered it. */
+.race-head{display:flex;align-items:center;gap:.6rem}
+html body #root svg.race-badge{flex:0 0 auto;color:var(--terra)}
+@media (max-width:640px){
+  .race-head{display:contents}
+  html body #root svg.race-badge{order:1;margin-top:.35rem}
+  .race-card>*:last-child{order:2}
+}
+/* v5 Phase 2 (shuttle legs): same shape as the guidelines rules -- keep the terracotta edge,
+   drop the box. The white .shuttle-fig panel is NOT touched: both images arrive on white and
+   need that ground in either colour scheme. */
+.shuttle-leg{background:none;border:0;border-top:3px solid var(--terra);border-radius:0;padding:1rem 0 0}
+html body #root .shuttle-leg strong{display:block;margin-bottom:.4rem;color:var(--terra);font-family:'Archivo',system-ui,sans-serif;font-weight:800;letter-spacing:.01em}
+/* v5 Phase 2 (kids): the translucent bordered panel goes, same as the river-voice section.
+   The section's own terracotta top border and the spacing carry it. */
+.kids-panel{background:none;border:0;border-radius:0;padding:1.25rem 0 0}
+/* v5 Phase 2 (plan): a day divider only needs a rule. */
+.sched-day{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:1.35rem 0 0}
+/* v5 Phase 2 (sponsors): the tier logos already sit on their own white plates, so the outer
+   translucent boxes were pure decoration. Tier identity = the label plus a rule.
+   The COMMUNITY row keeps its chips on purpose -- it is mixed-ground (five white plates plus
+   one light logo straight on the panel) and the chips are what make it read as one object. */
+.sp-tier{background:none;border:0;border-radius:0;padding:1.4rem 0 0;border-top:1px solid rgba(255,255,255,.3)}
+.sp-tier-title{padding-top:1.8rem;border-top:2px solid var(--sunset)}
+/* v5 Phase 2 (guidelines): the 4px terracotta edge was the only part doing work. Keep it,
+   drop the fill, frame and radius. */
+.guide-rule{background:none;border:0;border-left:3px solid var(--terra);border-radius:0;padding:.1rem 0 .1rem 1.15rem}
+html body #root .guide-rule strong{display:block;margin-bottom:.4rem;color:var(--terra);font-family:'Archivo',system-ui,sans-serif;font-weight:800;letter-spacing:.01em}
+/* v5 Phase 2 (course waypoints): still buttons, so they keep an affordance -- but it is a
+   left rule plus hairline separators, not four competing rectangles. Selection is carried by
+   the rule, the mile colour, the detail paragraph, and aria-pressed. */
+html body #root button.wp-item{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);border-left:3px solid transparent;border-radius:0;padding:.9rem 0 .9rem 1rem}
+html body #root button.wp-item.is-on{border-left-color:var(--terra)}
+html body #root button.wp-item:hover{border-left-color:var(--ink-soft)}
+html body #root button.wp-item:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+/* v5 Phase 2 (course chart): the chart's own gridlines give it structure; the box is redundant. */
+.course-chart{background:none;border:0;border-radius:0;padding:.25rem 0 0}
+/* v5 Phase 2: deboxed. No fill, frame, radius or shadow -- a rule does the separating. */
+.race-card,.part-card{background:none;border:0;border-radius:0;box-shadow:none}
+.race-card{padding-top:1.15rem!important}
+html body #root span.race-note{display:block;margin-top:.2rem;padding-top:.75rem;border-top:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+/* partner fallback: display type over a rule, not a filled block */
+.part-fallback{display:flex;align-items:flex-end;aspect-ratio:4 / 3;padding:0 0 .9rem;border-bottom:1px solid var(--line)}
+html body #root .part-fallback span{font-family:'Archivo',system-ui,sans-serif;font-weight:900;font-stretch:78%;font-size:clamp(1.4rem,2.6vw,2rem);line-height:.95;text-transform:uppercase;color:var(--ink);opacity:.22}
+.part-card>div:last-child{padding-left:0!important;padding-right:0!important}
+.part-card{overflow:hidden}
+.acc-q{width:100%;text-align:left;background:none;border:0;color:inherit;font:inherit;font-weight:800;padding:1.1rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;font-size:1rem;text-transform:uppercase;letter-spacing:.04em}
+html body #root button.acc-q{background:none;border:0;border-radius:0;color:var(--panel-fg);font-family:'Archivo',system-ui,sans-serif;font-weight:800;font-size:1rem;padding:1.1rem 0;text-transform:uppercase;letter-spacing:.04em}
+html body #root button.acc-q:focus-visible,html body #root .logistics [tabindex="0"]:focus-visible{outline:3px solid #FBF9F6!important;outline-offset:3px}
+.shuttle-fig{background:#FFFFFF;border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem .85rem;box-shadow:0 1px 2px rgba(34,34,34,.06),0 10px 28px -16px rgba(34,34,34,.28)}
+html body #root figure.shuttle-fig{margin:0}
+html body #root img.shuttle-bus{display:block;width:100%;height:auto;max-width:100%}
+.shuttle-cap{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.5rem;padding-top:.75rem;border-top:1px solid #E6E1DA}
+.shuttle-cap-lbl{font-family:'Martian Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#55514D}
+html body #root img.shuttle-logo{display:block;width:128px;height:auto}
+/* 2026-09-13 a11y: two sitewide !important link colors (theme kit on links in p, #B9461E; Customizer on links in main, #963312)
+   beat this page's inline link colors on navy bands at 1.83 to 2.60:1. Selectors through the #root id outrank both. */
+html body #root footer p a{color:inherit!important}
+html body #root footer p a[href^="mailto:"]{color:var(--sunset)!important}
+/* v5: this !important existed to beat the sitewide link colour on the DARK lodging panel.
+   The panel is gone, so it now forces light text onto a light ground -- the phone number
+   went near-invisible while every JSX-level check passed. Inline styles lose to !important. */
+html body #root a.lodge-phone{color:var(--ink)!important}
+/* the kit also forces a #B9461E focus ring, 2.60:1 on navy: dark bands get a light ring, the alert banner its own foreground */
+html body #root .on-panel a:focus-visible,html body #root .on-panel button:focus-visible,html body #root .on-panel input:focus-visible,html body #root .on-panel select:focus-visible,html body #root .on-panel [tabindex="0"]:focus-visible,html body #root #kids-race-info a:focus-visible,html body #root #kids-race-info button:focus-visible,html body #root #kids-race-info input:focus-visible,html body #root #kids-race-info select:focus-visible,html body #root #kids-race-info [tabindex="0"]:focus-visible,html body #root #sponsors a:focus-visible,html body #root #sponsors button:focus-visible,html body #root #sponsors input:focus-visible,html body #root #sponsors select:focus-visible,html body #root #sponsors [tabindex="0"]:focus-visible,html body #root .results-dark a:focus-visible,html body #root .results-dark button:focus-visible,html body #root .results-dark input:focus-visible,html body #root .results-dark select:focus-visible,html body #root .results-dark [tabindex="0"]:focus-visible,html body #root .logistics a:focus-visible,html body #root .logistics button:focus-visible,html body #root .logistics input:focus-visible,html body #root .logistics select:focus-visible,html body #root .logistics [tabindex="0"]:focus-visible{outline:3px solid var(--panel-fg)!important;outline-offset:3px}
+html body #root .on-banner a:focus-visible,html body #root .on-banner button:focus-visible{outline:3px solid var(--banner-fg)!important;outline-offset:3px}
+/* 2026-09-14: Sept 13 Indigo workshop recap photos inside the schedule card */
+html body #root figure.indigo-recap{margin:.25rem 0 0;display:grid;gap:.5rem}
+html body #root .indigo-recap img{display:block;width:100%;height:auto;border-radius:6px}
+.indigo-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.indigo-credit{font-family:'Martian Mono',monospace;font-size:.62rem;letter-spacing:.06em;color:var(--ink-soft)}
+/* 2026-09-15 hero v3 (Kosgei's layered-hero brief): slim top strip with a live countdown, full-bleed photo with the copy on
+   the left, value badges, two buttons, the title sponsor pinned to the bottom edge, and a quick-access bar overlapping the
+   photo. Kit traps: every p is forced to 16px at 540px and below, bare links and buttons get kit colors, and img height is
+   forced to auto, so rules that size text, links or images go through html body #root. */
+.top-strip{background:var(--banner-bg);color:var(--banner-fg);border-bottom:2px solid var(--terra)}
+.top-strip-in{max-width:1200px;margin:0 auto;padding:.45rem clamp(1rem,4vw,2.5rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:1.75rem;row-gap:.1rem;font-family:'Martian Mono',monospace;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.7}
+.ts-facts{display:inline-flex;flex-wrap:wrap;align-items:center;column-gap:.75em}
+.ts-dot{opacity:.6}
+.ts-count{display:inline-flex;align-items:baseline;gap:.75em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ts-count-lbl{opacity:.8}
+html body #root a.ts-link{color:var(--banner-fg)!important;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:1023px){.top-strip-in{justify-content:center;column-gap:1.25rem}.ts-notice{flex-basis:100%;text-align:center}}
+@media (max-width:639px){.ts-alt,.ts-place,.ts-count-lbl{display:none}.top-strip-in{column-gap:1rem;padding-top:.4rem;padding-bottom:.4rem}}
+/* the inner box fills the hero so the sponsor pill anchors to the hero bottom edge; the theme kit centers h1, sets link weight 400
+   and recolors links inside list items, so those properties are pinned through #root below */
+/* v5 texture: fractal noise as a data-URI. The brief asked for film grain; a raster overlay would re-add the weight just cut from phone load, so it is generated. */
+.hero3::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:reduce){.hero3::after{opacity:.1}}
+/* v5 editorial serif for narrative copy -- system stack, no extra webfont request. */
+:root{--sf-serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif}
+/* v5 asymmetric story: uneven columns + a vertical stagger, photo breaking the right edge. */
+.story-v5{background:var(--panel);color:var(--panel-fg);padding:5.5rem clamp(1.25rem,4vw,2.5rem)}
+.story-in{max-width:1120px;margin:0 auto}
+.story-head{display:flex;flex-direction:column;gap:.55rem;margin-bottom:3rem;max-width:22ch}
+html body #root span.story-kicker{font-family:'Martian Mono',monospace;font-size:.62rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--sunset)}
+html body #root h2.story-title{margin:0;font-family:'Archivo',system-ui,sans-serif;font-weight:900;font-stretch:78%;font-size:clamp(1.7rem,4vw,2.6rem)!important;line-height:1!important;letter-spacing:0;text-transform:uppercase;color:inherit;text-wrap:balance}
+.story-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.story-text{max-width:58ch}
+html body #root p.story-p{margin:0 0 1.2rem;font-family:var(--sf-serif);font-size:1rem!important;line-height:1.75!important;opacity:.92;text-wrap:pretty}
+/* the stagger: the side column starts lower, so the two blocks never align at the top */
+.story-side{margin-top:4.5rem}
+/* the photo breaks the grid's right edge -- a field-journal crop, not a tidy rectangle.
+   2026-09-22: the negative margin alone did nothing on the live page -- measured
+   figWidth == column width, so theme CSS was holding the figure to 100%. The artifact
+   itself sets no figure width, so the constraint arrives with the WordPress theme. Width
+   is therefore set explicitly at the `html body #root` specificity this file already uses
+   to beat theme rules, and reset on the stacked mobile layout. !important is required:
+   without it the theme's own figure rule still won and computed max-width stayed 100%,
+   which clamped the calc() straight back to the column width. Verified against the
+   real served CSS, not just the bare artifact. */
+.story-fig{margin:0 calc(-1 * clamp(0px,3.5vw,2.75rem)) 2.5rem 0}
+html body #root figure.story-fig{width:calc(100% + clamp(0px,3.5vw,2.75rem))!important;max-width:none!important}
+html body #root img.story-img{display:block;width:100%;height:auto!important;object-fit:cover;aspect-ratio:3/2;filter:saturate(.96)}
+html body #root figcaption.story-cap{margin-top:.6rem;font-family:'Martian Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+/* Phase 2 debox: filled, bordered chips become a hairline-ruled list */
+html body #root ul.story-charities{list-style:none;margin:1.9rem 0 0;padding:0;border-top:1px solid rgba(255,255,255,.22)}
+html body #root ul.story-charities li{margin:0;padding:.7rem 0;font-family:'Martian Mono',monospace;font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.85;border-bottom:1px solid rgba(255,255,255,.14)}
+html body #root ul.story-impact{list-style:none;margin:0;padding:0}
+html body #root ul.story-impact li{margin:0;display:flex;align-items:baseline;gap:1rem;padding:0 0 .75rem;margin-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.22)}
+.si-stat{font-family:'Martian Mono',monospace;font-size:1.7rem;font-weight:700;min-width:5.5ch;color:var(--sunset);line-height:1.1}
+.si-label{font-size:.9rem;opacity:.9}
+@media (max-width:900px){.story-grid{grid-template-columns:1fr;gap:2.5rem}.story-side{margin-top:0}.story-fig{margin-right:0}html body #root figure.story-fig{width:auto!important}.story-head{max-width:none}}
+/* v5 bilingual river-voice: unboxed, two languages separated by a stark rule. The old
+   treatment was a rounded tinted panel with a border -- the card look the brief drops. */
+.voice-v5{background:var(--panel);color:var(--panel-fg);border-top:2px solid var(--terra);padding:5rem clamp(1.25rem,4vw,2.5rem)}
+.voice-in{max-width:1100px;margin:0 auto}
+.voice-head{display:flex;flex-direction:column;gap:.55rem;margin-bottom:2.6rem}
+html body #root span.voice-eyebrow{font-family:'Martian Mono',monospace;font-size:.62rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--sunset)}
+html body #root h2.voice-title{margin:0;font-family:'Archivo',system-ui,sans-serif;font-weight:900;font-stretch:78%;font-size:clamp(1.5rem,3.4vw,2.3rem)!important;line-height:1.02!important;letter-spacing:0;text-transform:uppercase;color:inherit;text-wrap:balance}
+.voice-cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.voice-col{padding:0 2.4rem;min-width:0}
+.voice-col:first-child{padding-left:0}
+.voice-col:last-child{padding-right:0;border-left:1px solid rgba(255,255,255,.22)}
+html body #root span.voice-lang{display:block;margin-bottom:1.1rem;font-family:'Martian Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sunset);opacity:.9}
+html body #root p.voice-p{margin:0 0 1.15rem;font-family:var(--sf-serif);font-size:.95rem!important;line-height:1.75!important;opacity:.9;text-wrap:pretty}
+html body #root p.voice-p:last-child{margin-bottom:0}
+html body #root p.voice-foot{margin:2.6rem 0 0;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.14);font-family:'Martian Mono',monospace;font-size:.6rem!important;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+@media (max-width:820px){.voice-cols{grid-template-columns:1fr}.voice-col{padding:0}.voice-col:last-child{border-left:0;border-top:1px solid rgba(255,255,255,.22);margin-top:2rem;padding-top:2rem}}
+/* v5 relocated hero facts: stark rules, editorial spacing, no pills or shadows. */
+.hero-facts{background:#FBF9F6;border-bottom:1px solid rgba(34,34,34,.14)}
+html body #root ul.hf-list{list-style:none;margin:0 auto;padding:1.15rem clamp(1.25rem,4vw,2.5rem);max-width:1200px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+html body #root ul.hf-list li.hf-item{margin:0;display:flex;flex-direction:column;gap:.15rem;padding:0 1.25rem;border-left:1px solid rgba(34,34,34,.16)}
+html body #root ul.hf-list li.hf-item:first-child{border-left:0;padding-left:0}
+.hf-v{font-family:'Archivo',system-ui,sans-serif;font-weight:900;font-stretch:78%;font-size:1.5rem;line-height:1;letter-spacing:0;color:#222}
+.hf-l{font-family:'Martian Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#6B6257}
+@media (max-width:640px){html body #root ul.hf-list li.hf-item{padding:0 .7rem}.hf-v{font-size:1.15rem}.hf-l{font-size:.52rem;letter-spacing:.1em}}
+.hero3{position:relative;overflow:hidden;display:flex;align-items:stretch;min-height:clamp(560px,78vh,720px);background:#0C0C0E;color:#FFF8EF}
+/* hero v4 slideshow (2026-09-15): slides stack and crossfade over the dark ground, each zooming 5% while it shows. On wide
+   screens each crop keeps its subject right of the copy; below 1024px the slideshow is a photo band above the copy. */
+.hero-slides{position:absolute;inset:0;overflow:hidden;background:#0C0C0E}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;background-color:#0C0C0E;background-repeat:no-repeat;background-size:cover;background-position:50% 50%}
+.hero-slide.is-on{opacity:1}
+/* the zoom is an animation, not a transition, so the pause button freezes it where it is; the outgoing slide (was-on)
+   keeps zooming while it fades out instead of snapping back */
+.hero-slide.is-on,.hero-slide.was-on{animation:hero-zoom 8s linear forwards}
+.hero-slides.is-paused .hero-slide.is-on{animation-play-state:paused}
+@keyframes hero-zoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+html body #root .hero-slide video{position:absolute;inset:0;display:block;width:100%;height:100%!important;max-width:none;object-fit:cover;object-position:50% 45%}
+@media (min-width:1024px){
+  /* 2026-09-22: retuned for the 2026 slide set (start/field/bigsky/river/chamisa/medals).
+     All six photos are a uniform 2400x1350, so plain `cover` frames them and the old
+     background-size zooms are gone. Anchors chosen by screenshotting each slide. */
+  .hero-slide-start{background-position:50% 40%}
+  .hero-slide-field{background-position:50% 68%}
+  .hero-slide-chamisa{background-position:50% 38%}
+}
+@media (prefers-reduced-motion:reduce){.hero-slide{transition:none}.hero-slide.is-on,.hero-slide.was-on{animation:none}}
+/* 2026-09-22 contrast fix. A flat 40% overlay failed WCAG AA on 3 of 6 slides: headline
+   2.44:1 (needs 3.0) and sub-line 2.52:1 (11.5px, so normal text, needs 4.5). Raising the
+   flat value to .60 would have passed but darkens the whole photo and contradicts the
+   'subtle 40%' spec. Instead the 40% base is kept and a 90deg gradient darkens only the
+   copy column, leaving the subject on the right bright. Measured over the true text ink
+   rects on all six slides: headline >= 3.51, sub-line >= 5.84. Re-measure if the slide set
+   or the copy width changes. */
+.hero3-shade{position:absolute;inset:0;background-color:rgba(12,12,14,.40);background-image:linear-gradient(90deg,rgba(12,12,14,.60) 0%,rgba(12,12,14,.42) 45%,rgba(12,12,14,0) 75%)}.hero3-shade::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,14,0) 58%,rgba(12,12,14,.58) 100%)}
+.hero3-in{position:relative;width:100%;max-width:1200px;margin:0 auto;padding:3rem clamp(1.25rem,4vw,2.5rem) 9rem;display:flex;flex-direction:column;justify-content:center}
+.hero3-copy{max-width:48rem}
+html body #root .hero3-copy{text-align:left}
+html body #root p.hero3-date{margin:1.15rem 0 0;font-family:'Martian Mono',monospace;font-size:.72rem!important;line-height:1.5!important;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#FFF8EF;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+html body #root h1.hero3-title{margin:0;font-family:'Archivo',system-ui,sans-serif;font-size:clamp(2.25rem,4.4vw,4rem)!important;line-height:.92!important;text-align:left!important;font-weight:900;font-stretch:78%;letter-spacing:0;text-transform:uppercase;color:#FFF8EF;text-shadow:0 2px 26px rgba(0,0,0,.45);text-wrap:balance}
+html body #root p.hero3-tag{margin:1rem 0 0;font-size:clamp(1.05rem,2.2vw,1.55rem)!important;line-height:1.2!important;font-weight:700;font-stretch:115%;letter-spacing:.05em;text-transform:uppercase;color:#FFF8EF;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.hero3-tag .hero-grit{color:#FFC9A8}
+html body #root ul.hero-badges{list-style:none;margin:1.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+html body #root ul.hero-badges li{margin:0;display:inline-flex;align-items:center;gap:.5rem;padding:.42rem .85rem .42rem .65rem;border-radius:999px;background:rgba(12,12,14,.74);border:1px solid rgba(255,248,239,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-family:'Martian Mono',monospace;font-size:.64rem;font-weight:700;letter-spacing:.12em;line-height:1.2;text-transform:uppercase;color:#FFF8EF}
+.hero-badges b{font-weight:700;color:#FFC9A8}
+.hero-badges svg{flex-shrink:0;color:#FFC9A8}
+.hero3-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.25rem;margin-top:2rem}
+html body #root .hero3 a.hero-cta{padding:1rem 2.1rem;font-size:clamp(.9rem,1.4vw,1.05rem);font-family:'Archivo',system-ui,sans-serif;font-weight:800;letter-spacing:.08em}
+html body #root a.hero-cta-outline{color:#FFF8EF!important;background:rgba(12,12,14,.62);box-shadow:inset 0 0 0 3px #FFF8EF}
+html body #root a.hero-cta-outline:hover,html body #root a.hero-cta-outline:focus-visible{color:#0C0C0E!important;background:#FFF8EF}
+html body #root p.hero3-presented{position:absolute;left:clamp(1.25rem,4vw,2.5rem);bottom:5.5rem;margin:0;font-family:'Martian Mono',monospace;font-size:.62rem!important;line-height:1.4!important;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,248,239,.82);text-shadow:0 1px 10px rgba(0,0,0,.6)}.hero3-presented b{font-weight:700;color:#FFF8EF}
+.hs-lbl{font-family:'Martian Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E9DED0}
+html body #root img.hs-logo{display:block;width:38px;height:38px!important;border-radius:50%;background:#FFFFFF;object-fit:contain}
+.hs-name{font-weight:800;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;color:#FFF8EF;white-space:nowrap}
+/* slideshow controls: caption, a dot per slide and the pause button, in a pill that mirrors the sponsor pill */
+.hero-slidebar{position:absolute;right:clamp(1.25rem,4vw,2.5rem);bottom:5.5rem;z-index:2;display:flex;align-items:center;gap:.75rem;max-width:calc(100% - 22rem);padding:.3rem .35rem .3rem 1rem;border-radius:999px;background:rgba(12,12,14,.72);border:1px solid rgba(255,248,239,.26);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero-cap{min-width:0;font-family:'Martian Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.12em;line-height:1.35;text-transform:uppercase;color:#FFF8EF}
+.hero-dots{display:flex;align-items:center;flex-shrink:0}
+html body #root button.hero-dot{display:inline-flex;align-items:center;justify-content:center;width:24px;height:30px;min-width:0;min-height:0;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;cursor:pointer}
+.hero-dot>span{display:block;width:8px;height:8px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #FFF8EF;transition:transform .2s ease}
+html body #root button.hero-dot[aria-current="true"]>span{background:#FFC9A8;box-shadow:none;transform:scale(1.3)}
+html body #root button.hero-pause{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:34px;height:34px;min-width:0;min-height:0;margin:0;padding:0;border:1px solid rgba(255,248,239,.5);border-radius:50%;background:rgba(12,12,14,.35);color:#FFF8EF;box-shadow:none;cursor:pointer}
+html body #root button.hero-pause:hover{background:#FFF8EF;color:#0C0C0E}
+html body #root button.hero-dot:focus-visible,html body #root button.hero-pause:focus-visible{outline:3px solid #FFF8EF!important;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.hero-dot>span{transition:none}}
+.quick-bar{position:relative;z-index:3;max-width:1200px;margin:-3.75rem auto 0;padding:0 clamp(1.25rem,4vw,2.5rem)}
+html body #root ul.qb-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 26px 50px -30px rgba(12,12,14,.6),0 2px 6px rgba(12,12,14,.08)}
+html body #root ul.qb-list li.qb-item{position:relative;margin:0;display:grid;grid-template-columns:auto 1fr auto;column-gap:.75rem;row-gap:.35rem;align-content:start;padding:1.1rem 1.25rem 1.25rem;border-left:1px solid var(--line);transition:background-color .15s ease}
+html body #root ul.qb-list li.qb-item:first-child{border-left:0}
+.qb-ico{grid-column:1;grid-row:1;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--chip);color:var(--terra)}
+.qb-chev{grid-column:3;grid-row:1;align-self:center;display:inline-flex;color:var(--ink-soft);transition:transform .15s ease,color .15s ease}
+html body #root a.qb-link{grid-column:1/-1;grid-row:2;margin-top:.35rem;color:var(--ink)!important;font-weight:800;font-size:.86rem;line-height:1.25;letter-spacing:.03em;text-transform:uppercase;text-decoration:none}
+html body #root a.qb-link::after{content:"";position:absolute;inset:0}
+.qb-detail{grid-column:1/-1;font-size:.8rem;line-height:1.45;color:var(--ink-soft)}
+html body #root a.qb-sub{grid-column:1/-1;justify-self:start;position:relative;z-index:1;padding:.15rem 0;font-family:'Martian Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra)!important;text-decoration:underline;text-underline-offset:3px}
+html body #root ul.qb-list li.qb-item:hover{background:var(--sand-2)}
+html body #root ul.qb-list li.qb-item:hover a.qb-link{color:var(--terra)!important}
+html body #root ul.qb-list li.qb-item:hover .qb-chev{color:var(--terra);transform:translateX(3px)}
+/* the stretched tile link shows its focus as a ring around the whole tile */
+html body #root a.qb-link:focus-visible{outline:none!important}
+html body #root ul.qb-list li.qb-item:has(a.qb-link:focus-visible){box-shadow:inset 0 0 0 3px var(--terra)}
+@media (prefers-reduced-motion:reduce){html body #root ul.qb-list li.qb-item,.qb-chev{transition:none}html body #root ul.qb-list li.qb-item:hover .qb-chev{transform:none}}
+@media (max-width:1023px){
+  .hero3{display:block;min-height:0}
+  .hero3-in{position:static;display:flex;flex-direction:column;align-items:flex-start;padding:0 clamp(1.25rem,5vw,2.5rem) 4rem}
+  .hero3-copy{align-self:stretch;max-width:36rem}
+  html body #root p.hero3-presented{position:static;margin-top:1.5rem;bottom:auto;left:auto}
+  /* hero v4: the slideshow is a photo band above the copy, like runsignup.com on a phone. The caption bar sits under
+     the band and the dots sit on it; the copy no longer covers a photo, so the shade only darkens the band's bottom. */
+  .hero3{--hero-band:clamp(15rem,62vw,34rem)}
+  .hero-slides{position:relative;inset:auto;height:var(--hero-band)}
+  .hero3-shade{inset:0 0 auto 0;height:var(--hero-band);background:rgba(12,12,14,.40)}
+  .hero-slidebar{position:static;order:-1;align-self:stretch;max-width:none;margin:0 calc(-1 * clamp(1.25rem,5vw,2.5rem)) 1.75rem;padding:.5rem clamp(1.25rem,5vw,2.5rem);justify-content:space-between;border:0;border-bottom:1px solid rgba(255,248,239,.14);border-radius:0;background:#17171B;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .hero-dots{position:absolute;left:50%;top:calc(var(--hero-band) - 2.5rem);transform:translateX(-50%);padding:0 .4rem;border-radius:999px;background:rgba(12,12,14,.62)}
+  html body #root button.hero-pause{width:40px;height:40px}
+  .hero-slide-bigsky{background-position:62% 50%}
+  .hero-slide-medals{background-position:60% 50%}
+  html body #root ul.qb-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html body #root ul.qb-list li.qb-item:nth-child(odd){border-left:0}
+  html body #root ul.qb-list li.qb-item:nth-child(n+3){border-top:1px solid var(--line)}
+  .quick-bar{margin-top:-2rem}
+}
+@media (max-width:639px){
+  .hero3-ctas{flex-direction:column;align-items:stretch;gap:.85rem}
+  /* the kit forces h1 to 28px !important at 767px and below; this keeps the phone size ours */
+  html body #root h1.hero3-title{font-size:clamp(1.6rem,7.2vw,2.25rem)!important}
+  html body #root .hero3 a.hero-cta{display:block;text-align:center;padding:.95rem 1.5rem}
+  html body #root ul.qb-list{grid-template-columns:1fr}
+  html body #root ul.qb-list li.qb-item{border-left:0;padding:.95rem 1rem;row-gap:.2rem}
+  html body #root ul.qb-list li.qb-item+li.qb-item{border-top:1px solid var(--line)}
+  .qb-ico{grid-row:1/span 3}
+  html body #root a.qb-link{grid-column:2;grid-row:1;margin-top:.45rem}
+  .qb-detail,html body #root a.qb-sub{grid-column:2}
+  .quick-bar{margin-top:-1.5rem}
+}
+/* 2026-09-15: the theme kit paints every bare button crimson (#CC0033, 999px radius, 12px 18px padding), so the three desktop
+   nav group triggers showed as red pills with #222 text at 2.74:1 (9/13 a11y audit, still live 9/15). Plain text triggers again. */
+html body #root .navgrp>button{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:.5rem 0!important;color:var(--ink)!important}
+html body #root .navgrp>button:hover,html body #root .navgrp:focus-within>button{background:transparent!important;color:var(--terra)!important}
+/* the theme gives every button padding:12px 18px, which squeezed the 36px Ask button magnifier icon to 0px wide */
+html body #root button.cg-trigger{padding:0!important}
+html body #root button.cg-trigger svg{flex-shrink:0;width:16px;height:16px}
+</style>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+const {useState,useEffect,useMemo,useRef} = React;
+const LR = window.LucideReact || {};
+function Ic({name,size=22,color}){
+  const C = LR[name];
+  if(C) return <C size={size} strokeWidth={2} color={color||"currentColor"} aria-hidden="true"/>;
+  return <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>;
+}
+
+const RACE_START = new Date("2026-09-20T07:30:00-06:00");
+const REG_URL = "https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon";
+/* online registration closes Saturday Sept 19, 5:00 PM MDT for every race; register buttons switch to a closed state after it */
+const REG_CLOSE = new Date("2026-09-17T23:59:00-06:00");
+/* Kosgei 9/13: after the online close ONLY the Santa Fe 5K takes walk-up entries on race morning, $50, until 7:45 AM.
+   No location was given, so the copy names none. States: open, walkup (Sat 5 PM to Sun 7:45 AM), closed.
+   ?regnow=<epoch ms> previews a state for QA; it only changes these labels. */
+const WALKUP_CLOSE = new Date("2026-09-19T10:00:00-06:00");
+const REG_NOW = (()=>{try{const v=new URLSearchParams(location.search).get("regnow");if(v&&/^\d{13}$/.test(v))return Number(v);}catch(e){}return Date.now();})();
+const REG_STATE = REG_NOW<REG_CLOSE.getTime() ? "open" : (REG_NOW<WALKUP_CLOSE.getTime() ? "walkup" : "closed");
+/* 2026-09-23 (Kosgei): a FOURTH state for the nav anchor button -- on race day only, it
+   becomes "Live results" and points at the results page, which is where timing posts as
+   runners finish. Off race day it falls back to the three REG_STATE branches, so it never
+   promises live coverage when nothing is running. Window opens before the 7:25 wheelchair
+   start and closes at local midnight. Shares REG_NOW, so ?regnow=<epoch ms> previews it. */
+const RACE_DAY_OPEN = new Date("2026-09-20T05:00:00-06:00");
+const RACE_DAY_SHUT = new Date("2026-09-21T00:00:00-06:00");
+const IS_RACE_DAY = REG_NOW>=RACE_DAY_OPEN.getTime() && REG_NOW<RACE_DAY_SHUT.getTime();
+/* 2026-09-15 (Kosgei): race results moved off the homepage to /results-photos/ (live podiums + Find Your Time).
+   No redirect for old #results links: minified, that check became a double-ampersand expression right after a
+   less-than comparison, WordPress texturize rewrote it to entities at output, and the live page went blank (deploy 5023). */
+/* Race photos are injected at build time as data URIs (see build-images.js) */
+const IMGS = {hero:"%%IMG_HERO%%",arch:"%%IMG_ARCH%%",route:"%%IMG_ROUTE%%",podium:"%%IMG_PODIUM%%",tricia:"%%IMG_TRICIA%%",logo:"%%IMG_LOGO%%",capitol:"%%IMG_CAPITOL%%",econ:"%%IMG_ECON%%",jirani:"%%IMG_JIRANI%%",arts:"%%IMG_ARTS%%",county:"%%IMG_COUNTY%%",nuckolls:"%%IMG_NUCKOLLS%%",runhub:"%%IMG_RUNHUB%%",advanced:"%%IMG_ADVANCED%%"};
+/* charity partner images come straight from the media library (not build tokens) */
+/* 2026-09-16: the Lightning Boy logo was a 300x300 CMYK JPEG at 29.9 KB. CMYK is a print colour
+   space and browsers render it inconsistently, so this was a correctness problem as well as a
+   weight one. Now RGB at 320px, 22.6 KB, media 5054.
+   Sized 320 because the logo is drawn at 112px on desktop but **160px on a phone**, and 160 at
+   dpr 2 needs 320. A first pass sized it 224 against the desktop measurement alone and left it
+   soft on phones -- always take the LARGEST draw across breakpoints. Do not drop to the
+   -150x150 variant either, for the same reason. */
+const PARTNER_IMGS = {kitany:"https://santafehalfmarathon.com/wp-content/uploads/2026/08/kitany-youth-running.avif",lightning:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/lightning-boy-foundation-logo-rgb320.jpg"};
+/* 2026-09-13 (Kosgei): the hero photo carries the "Big Sky." of the tagline and is used nowhere else.
+   The shuttle section shows the operator's bus and logo; Santa Fe Trails runs the shuttle, it is not a partner or a photo credit. */
+/* 2026-09-15 (Kosgei): hero switched to the runner under the big sky (media 4977); CSS crop rules keep the runner clear of the text and Register button */
+const HERO_IMG = "https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-hero-big-sky.jpg";
+/* 2026-09-15 hero v4 (Kosgei: "add more photo on the hero's homepage. just like the runsignup.com hero homepage
+   style?"): a rotating slideshow. Kosgei chose a short silent clip of their 2025 race video as the first slide, used the
+   two OK Runner start photos labeled 2025, and asked for no photo credit line.
+   - The clip keeps only shots with no text on them. The video's logo, "Santa Fe Run" titles, photo collage and 2025
+     end card ("September 21st", expo "Sept 19th - 20th, Santa Fe Railyard") are cut out.
+   - k picks the crop class (hero-slide-<k>) and the caption (t.heroSlides[k]).
+   - ?heroslide=<1-7> opens that slide paused, for QA screenshots. */
+const HERO_SLIDES = [
+  /* 2026-09-16: the film slide and all its playback machinery were removed on request. Six
+     photo slides remain, each with a caption Kosgei already ruled on. The two MP4s and the
+     poster stay in the media library (ids 5064-5066) if it is ever wanted back. */
+  {k:"start",src:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2026-start-handcycles.jpg"},
+  {k:"field",src:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2026-race-morning.jpg"},
+  {k:"bigsky",src:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2026-big-sky.jpg"},
+  {k:"river",src:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2026-river-corridor.jpg"},
+  {k:"chamisa",src:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2026-chamisa.jpg"},
+  {k:"medals",src:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2026-finish-medals.jpg"}
+];
+const HERO_SLIDE_MS = 6500;
+const HERO_QA_SLIDE = (()=>{try{const v=new URLSearchParams(location.search).get("heroslide")||"";if(/^[1-9]$/.test(v)){if(HERO_SLIDES.length>=Number(v))return Number(v)-1;}}catch(e){}return -1;})();
+/* 2026-09-14: Sept 13 Kids Indigo Workshop recap photos, courtesy of Kerri Cottle; Kosgei confirmed the families agreed to posting */
+const INDIGO_IMGS = {group:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-2026-kids-indigo-workshop-group-3108.jpg",table:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-2026-kids-indigo-workshop-dye-table.jpg",shirt:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-2026-kids-indigo-workshop-finished-shirt.jpg",drying:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-2026-kids-indigo-workshop-drying.jpg"};
+const SHUTTLE_IMGS = {bus:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-shuttle-santa-fe-trails-bus.jpg",logo:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/santa-fe-trails-logo.jpg"};
+/* 2026-09-16: srcset for the only two images on the page that are genuinely responsive -- both
+   are drawn far smaller on a phone than the file they were downloading. Every other image here
+   is a fixed-size logo rendered identically at both breakpoints, where srcset buys nothing and
+   the fix is simply a correctly sized file (see the Lightning Boy logo above).
+   These widths are WordPress's own generated variants, all verified 200 before use, so this
+   needed no new uploads. The group photo alone was shipping 314.9 KB to a phone drawing it at
+   ~350 CSS px; at dpr 2 that now resolves to the 768w file at 130.1 KB. */
+const U9 = "https://santafehalfmarathon.com/wp-content/uploads/2026/09/";
+const SRCSET = {
+  bus: U9+"sfi-2026-shuttle-santa-fe-trails-bus-300x113.jpg 300w, "+U9+"sfi-2026-shuttle-santa-fe-trails-bus-768x290.jpg 768w, "+U9+"sfi-2026-shuttle-santa-fe-trails-bus-1024x387.jpg 1024w, "+U9+"sfi-2026-shuttle-santa-fe-trails-bus.jpg 1100w",
+  indigoGroup: U9+"sfhm-2026-kids-indigo-workshop-group-3108-300x225.jpg 300w, "+U9+"sfhm-2026-kids-indigo-workshop-group-3108-768x576.jpg 768w, "+U9+"sfhm-2026-kids-indigo-workshop-group-3108-1024x768.jpg 1024w, "+U9+"sfhm-2026-kids-indigo-workshop-group-3108.jpg 1200w",
+  /* The three workshop thumbnails are 327px wide on desktop but only 97px on a phone, and had
+     no small variant -- so each phone was pulling ~157 KB for a 97x130 thumbnail. The 300w
+     files below were generated and uploaded 9/16 (media 5058/5059/5060).
+     Note the "-1" in each filename: WordPress renamed the uploads because "-300x400" collides
+     with its own generated-variant naming. Always use the URL the upload returns, never the
+     name you chose, or the reference 404s silently. */
+  indigoTable:  U9+"sfhm-2026-kids-indigo-workshop-dye-table-300x400-1.jpg 300w, "+U9+"sfhm-2026-kids-indigo-workshop-dye-table.jpg 600w",
+  indigoShirt:  U9+"sfhm-2026-kids-indigo-workshop-finished-shirt-300x400-1.jpg 300w, "+U9+"sfhm-2026-kids-indigo-workshop-finished-shirt.jpg 600w",
+  indigoDrying: U9+"sfhm-2026-kids-indigo-workshop-drying-300x400-1.jpg 300w, "+U9+"sfhm-2026-kids-indigo-workshop-drying.jpg 600w"
+};
+
+/* 2026-09-17 v5: the story photo. Sized for the ~34vw slot at dpr 2 (~980px), so the srcset
+   tops out at the 1024 AVIF variant -- the 1536/2048 variants are JPEG and the 2400px
+   original would be the oversizing fixed on 9/16. Already in HERO_SLIDES, so usually cached. */
+const STORY_IMG = {
+  src: "https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2025-on-course-1024x683.avif",
+  srcset: "https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2025-on-course-768x512.avif 768w, "
+        + "https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2025-on-course-1024x683.avif 1024w"
+};
+
+/* ================= i18n ================= */
+const T = {
+en:{
+  nav:{liveResults:"Live results",fRace:"Race Info",fCourse:"Event & Courses",fTravel:"Travel & Lodging",races:"Event Info",results:"Results & Photos",plan:"Plan Your Race",story:"Our Story",guide:"Runner Guidelines",faq:"FAQ",sponsors:"Sponsors",register:"Register",
+    overview:"Overview",gRaces:"The Races",gInfo:"Runner Info",gExp:"Experience Santa Fe",store:"Store",soon:"Soon",
+    races2:"Races & Distances",courseMap:"Course Map",courseHi:"Highlights & Elevation",relay:"3-Amigos Relay",limits:"Time Limits",
+    sched:"Event Schedule",packet:"Packet Pickup",parking:"Parking & Shuttles",
+    hostcity:"Host City Guide",spectator:"Spectator Guide",festival:"Finish Line Festival",lodging:"Lodging & Travel",volunteer:"Volunteer"},
+  conciergeTitle:"Race Concierge",conciergeClose:"Close search",conciergeSuggest:"Suggested queries",
+  conciergePh:"Ask anything (shuttle schedule, altitude pacing, burritos...)",
+  conciergeOpen:"Open page",conciergeContact:"Contact us",
+  conciergeNone:"No match for that yet - the race team can answer directly.",
+  conciergeChip1:"Altitude strategy",conciergeChip2:"Where do I park?",conciergeChip3:"Post-race burritos",
+  conciergeBtn:"Ask anything",
+  skip:"Skip to content",
+  heroKicker:"5th Annual · Capitol Ford International Races",
+  heroTitle:"Santa Fe International Half Marathon",
+  heroAlt:"Experience 7,000 ft high-desert elevation",
+  heroSub:"5th Annual · Capitol Ford International Races · Sunday, September 20, 2026 · Santa Fe, New Mexico",
+  heroCta:"Register now",presentedBy:"Presented by Capitol Ford",
+  heroTagline:["Thin Air.","Big Sky.","True Grit."],
+  heroRiver:"Run the Santa Fe River.",
+  heroTracker:"September 20, 2026 · Santa Fe, New Mexico · 7,000 ft",
+  heroMeta:["Sept 20, 2026","Santa Fe, NM","7,000 ft"],
+  heroSubLine:"Next race: Sept 18–19, 2027 \u00b7 Santa Fe, New Mexico",
+  heroBadges:[["7,000 ft","Altitude"],["6th","Annual edition"]],
+  presentedLbl:"Presented by",
+  heroSlides:{start:"Adaptive athletes lead the 2026 start",field:"Race morning, 2026",bigsky:"Under the big sky",river:"The Santa Fe River corridor",chamisa:"Chamisa in bloom on the course",medals:"Handmade medals at the finish"},
+  heroSlidesLbl:"Race photos",heroSlidesRole:"carousel",heroSlideN:(i,n)=>"Slide "+i+" of "+n,heroPause:"Pause the slideshow",heroPlay:"Play the slideshow",
+  stripPlace:"Santa Fe, NM",stripAlt:"7,000 ft",stripStarts:"Starts in",stripRoads:"New for 2027: a Saturday 10K",
+  quickLabel:"Runner essentials",
+  quickTiles:[
+    ["Start times & locations","Half & Relay 7:30 AM at Romero's Park · 5K 8:00 AM at Reunity","/event-schedule/"],
+    ["Packet pickup","Fri 12–6 PM · Sat 10 AM–5 PM · The Running Hub, 1100 Don Diego Ave","/packet-pickup/"],
+    ["Course profile & maps","13.1 mi · +651 ft of climb · turnaround at mile 9","/course-map/"],
+    ["Kids Dash & charity partners","Free Kids 1K Dash, ages 3–12 · Sun 9:00 AM at Reunity","#kids-race-info","Charity partners","/charity-information/"]],
+  statsLabel:"Race at a glance",
+  ctaHalf:"Register for 2026",cta5k:"Explore the New Course",
+  ribbonLabel:"Presented with",
+  countdown:"Countdown to the 7:30 AM start",unitD:"d",unitH:"h",unitM:"m",unitS:"s",
+  slides:[
+    "The field lines up in golden morning light, wheelchair division up front",
+    "Runners stream through the start arch into the crisp early morning air",
+    "A lead runner and bike escort climb the open high-desert road",
+    "Award winners on the podium at the finish-line festival"
+  ],
+  photoTag:"Photo placeholder",
+  prevSlide:"Previous slide",nextSlide:"Next slide",slideLbl:"Slide",
+  racesKicker:"Pick your distance",racesTitle:"Event Info",
+  races:{
+    half:{name:"Half Marathon",dist:"13.1 MI",blurb:"The main event. A 100% paved loop through Agua Fría Village and along the Santa Fe River, with +651 ft of total climb topping out at the mile-9 turnaround (6,883 ft). Starts at Romero's Park, Sunday 7:30 AM.",note:"Start: Romero's Park · 7:30 AM"},
+    relay:{name:"3-Amigos Relay",dist:"13.1 MI · team of 3",blurb:"Split the half with two friends: three legs, exchange zones on course, and a ceremonial sash passed hand to hand instead of a baton. One team, one finish-line photo. Starts with the half at Romero's Park, 7:30 AM.",note:"Start: Romero's Park · 7:30 AM"},
+    fivek:{name:"Santa Fe 5K",dist:"5 KM",blurb:"A welcoming loop through Agua Fría Village — fast if you want it, friendly if you don't. Perfect for first-timers and shakeouts. Starts at Reunity Resources Farm, Sunday 8:00 AM.",note:"Start: Reunity Resources Farm · 8:00 AM"},
+    kids:{name:"Kids Dash",dist:"1 KM",blurb:"Ages 3–12, Sunday at 9:00 AM at Reunity Resources Farm — right in the middle of the race-day festival. Every kid gets a bib and a finish line to remember.",note:"Sun, Sept 20 · 9:00 AM · Reunity Resources Farm"}
+  },
+  register:"Register",
+  regClosed:"Sold out - registration closed",
+  walkup5k:"Walk-up entry at the start line Sunday until 7:45 AM",
+  walkupShort:"5K walk-ups until 7:45 AM",
+  registerFor:(n)=>"Register for the "+n,
+  courseKicker:"The 2026 course",courseTitle:"Romero's Park to Reunity, the long way round",
+  courseIntro:"The course is new for 2026 — tap a milestone to walk the route. The profile below tracks the +651 ft of total climb.",
+  waypoints:[
+    {mi:"Mile 0",name:"Romero's Park — Start",detail:"Roads close at 7:00 AM; the gun goes at 7:30. Ease in — the altitude does the pacing for you early."},
+    {mi:"Mile 4",name:"Agua Fría Village",detail:"Through the historic village and along the river corridor. Find your rhythm here; drink even if you don't feel like it."},
+    {mi:"Mile 9",name:"Turnaround · 6,883 ft",detail:"The high point of the day. It's a steady grade, not a wall — crest it and the hard work is behind you."},
+    {mi:"Mile 13.1",name:"Reunity Resources — Finish",detail:"A rolling run-in to the farm. Green chile brunch from Santa Fe YouthWorks is waiting."}
+  ],
+  climbLabel:"+651 ft total climb",
+  elevNote:"Profile is illustrative — the official course map and turn-by-turn come with your race guide.",
+  storyKicker:"More than a race",storyTitle:"Why we run this one",
+  storyBody1:"Three friends started this race — Abraham Kosgei, Joseph Karnes, and Antonio Lopez — with a borrowed timing clock and a conviction that Santa Fe deserved a road race worthy of the land we train on. Five editions in, it's still organized by runners, and it still puts the community first.",
+  storyBody2:"Every entry supports the Kitany Water Project, bringing clean water to Kitany, Kenya, and the Lightning Boy Foundation, carrying forward Valentino Tzigiwhaeno Rivera's legacy through Pueblo youth dance. The course is 100% paved, the brunch is cooked by Santa Fe YouthWorks, and the age-group medallions are custom made by Maasai artisans.",
+  storyPhotoAlt:"Runners on the Santa Fe River Trail corridor during the 2025 race",
+  storyPhotoCap:"On course, 2025",
+  charities:["Kitany Water Project","Lightning Boy Foundation"],
+  impact:[
+    {stat:"5th",label:"Annual edition in 2026"},
+    {stat:"100%",label:"Paved course, start to finish"},
+    {stat:"2",label:"Charities supported by every entry"}
+  ],
+  voiceEyebrow:"Official Event Narrative",
+  voiceTitle:"The Voice of the River Trail",
+  voiceParas:[
+    "I am more than dirt, gravel, and stone. I am the Santa Fe River Trail, a living corridor of history tracing a path through the ancient heart of the high desert. For centuries, my banks have witnessed the movement of peoples, the flow of vital waters, and the quiet resilience of our community. When you run here, you are stepping directly into a story written by the land itself.",
+    "My modern chapter began with three friends\u2014Abraham Kosgei, Joseph Karnes, and Antonio Lopez. Long before the race fields assembled, this corridor was their training ground. Driven by a shared conviction, they set out with a borrowed timing clock to design a premier distance race. What began as three friends moving along my banks quickly transformed into a powerful community movement. Five editions in, that foundational spirit remains untouched. The philosophy of the 3 Amigos has evolved to represent a profound alliance of three distinct global cultures joining together to uplift the human spirit through running, sustainable agriculture, and mutual support.",
+    "Along my banks, the circle of the 3 Amigos stretches across an ocean. Jirani Kahawa, our coffee partner, trades directly with small-scale agricultural cooperatives in Kenya, returning economic self-reliance to the farmers who grow every cup poured beside my finish line. And when the festival quiets, nothing is wasted: one hundred percent of the spent coffee grounds are captured from the race festival areas and folded back into living soil, closing a circle that begins on a Kenyan hillside and ends in high-desert earth.",
+    "Every footstep along my path ripples far beyond our high-desert horizon. Every entry directly supports the Kitany Water Project, bringing clean, life-sustaining water to agricultural communities in Kenya. Simultaneously, your stride carries forward the legacy of the Lightning Boy Foundation, honoring traditional Pueblo youth dance, while fueling local vocational training through Santa Fe YouthWorks and environmental composting cycles at Reunity Resources Farm."],
+  voiceFooter:"Global Unity \u2022 Environmental Sustainability \u2022 Cultural Preservation",
+  impactKicker:"Community & impact",
+  impactTitle:"Two charities. Two community partners.",
+  impactIntro:"Race registration supports two charity partners. Two community partners shape race day itself.",
+  impactCharityLbl:"Charity partner",
+  impactCommunityLbl:"Community & experience partner",
+  impactMission:"Read our mission",
+  partners:[
+    {kind:"charity",name:"Kitany Water Project",body:"Clean, sustainable water for the community of Kitany, Kenya.",href:"/charity-information/",cta:"Charity information",img:"kitany",alt:"Schoolchildren running together on a dirt ground in Kenya's Rift Valley"},
+    {kind:"charity",name:"Lightning Boy Foundation",body:"Carries Valentino Tzigiwhaeno Rivera's legacy forward through Pueblo youth dance.",href:"/charity-information/",cta:"Charity information",img:"lightning",alt:"Lightning Boy Foundation logo"},
+    {kind:"community",name:"Santa Fe YouthWorks",body:"Cooks the green chile brunch at the finish line festival.",href:"/finish-line-festival/",cta:"Finish line festival"},
+    {kind:"community",name:"Reunity Resources Farm",body:"Hosts the finish line and festival, and composts the organic waste from race day.",href:"/finish-line-festival/",cta:"Finish line festival"}
+  ],
+  logisticsKicker:"Race-day logistics",
+  logisticsTitle:"Closures, detours and aid stations",
+  logisticsIntro:"Open a panel for the full details.",
+  scheduleKicker:"Race week",scheduleTitle:"September 13–20, 2026",
+  schedule:[
+    {date:"Sun, Sept 13",items:[{time:"10 AM–1 PM",what:"Recap: Kids 1K Dash runners dyed their own indigo shirts with Gasali Adeyemo, the artist behind the 2026 shirt, at Reunity Resources."}],photos:{credit:"Photos courtesy of Kerri Cottle",group:"Workshop families under the big tree at Reunity Resources, holding up their indigo shirts",table:"Kids fold and tie their shirts at the dye table",shirt:"A young dyer holds up his finished indigo shirt",drying:"Freshly dyed indigo shirts drying on the gravel"}},
+    {date:"Fri, Sept 18",items:[{time:"12–6 PM",what:"Packet pickup at the Running Hub, 1100 Don Diego Ave, Suite B."}]},
+    {date:"Sat, Sept 19",items:[{time:"10 AM–5 PM",what:"Packet pickup at the Running Hub, day two. Tricia Downing speaks at 1:00 PM."}]},
+    {date:"Sun, Sept 20",items:[{time:"7:00 AM",what:"Course roads close."},{time:"7:30 AM",what:"Half Marathon + 3-Amigos Relay start at Romero's Park."},{time:"8:00 AM",what:"5K starts at Reunity Resources Farm."},{time:"9:00 AM",what:"Kids Dash at Reunity Resources Farm — ages 3–12, free, bibs for everyone."},{time:"All morning",what:"Finish-line brunch at Reunity: YouthWorks green chile, awards, music."}]}
+  ],
+  transitTitle:"Official 2026 Transit and Closure Timetable",
+  transitRows:[
+    ["Romero's Park Start Area","From 07:00 AM","Rolling Closure","Roads into the start close at 07:00 AM and reopen once the field has left the start. The Half Marathon and 3-Amigos Relay start at 07:30 AM."],
+    ["Agua Fria River Corridor","07:15 AM - 12:00 PM","Rolling Barricades","Supports active runner corridors throughout the early village loop miles."],
+    ["Caja del Oro Grant Road and Alameda Frontage Road","From 07:00 AM","Total Sector Diversion","Both roads run past Romero's Park at the start. Traffic is diverted from 07:00 AM, and both roads reopen once the field has left the start."],
+    ["Reunity Resources Farm Finish Precinct","06:00 AM - 01:00 PM","Local Access Only","Enforces 5K race initialization lines at 08:00 AM and supports post-race festival assemblies."]],
+  driveTitle:"Race Day Driving & Traffic Control Guide",
+  driveIntro:"Driving on race morning? Here is how to get around the course, not through it.",
+  driveCards:[
+    ["Agua Fria Corridor: Restricted","The Agua Fria corridor is the race course. From 7:15 AM until late morning, roads along it close and reopen in stages under a rolling closure while runners move from the Romero's Park start line toward the Reunity Resources Farm finish precinct. Local traffic will be held or escorted by traffic control."],
+    ["Use the Bypass Arteries","You cannot follow the race route by car. To travel between the start and finish zones, use the major municipal bypasses — Siler Road, Cerrillos Road, or NM-599 — and approach each hub from its outside edge. Allow extra time: intersections along the course open only under officer direction."]],
+  aidTitle:"Santa Fe River Trail Aid Stations",
+  aidIntro:"To maximize efficiency along the narrow river trail corridor, stations are built as dual-sided support nodes to serve athletes twice on the out-and-back course layout.",
+  aidCols:["Station Node","Course Locations","Supplies Provided","Access Type"],
+  aidRows:[
+    ["Station Alpha","Mile 6 (Outbound) & Mile 12 (Inbound)","Water, Electrolytes, Energy Gels","UTV Shuttle Only"],
+    ["Station Beta","Mile 8 (Outbound) & Mile 10 (Inbound)","Water, Electrolytes, Medical Kit","UTV Shuttle Only"]],
+  shuttleTitle:"Race Day Bus Shuttle",
+  shuttleIntro:"A Santa Fe Trails bus runs a continuous shuttle loop on race morning between the three parking areas: Reunity Resources Farm, the San Isidro Church lot across the street, and Romero's Park at the start line.",
+  shuttleLegs:[
+    ["To the start \u00b7 6:00\u20137:45 AM","Continuous service about every 15 minutes: Reunity Resources Farm, then the San Isidro Church lot, then Romero's Park. Half and Relay runners, ride early \u2014 roads into the start close at 7:00 AM. The final 7:30 AM bus loops back to Reunity in time for the 8:00 AM 5K start."],
+    ["Back to parking \u00b7 10:00\u201311:30 AM","The loop runs again after the race: Romero's Park, the church lot, then Reunity Resources Farm. Last pickup from Romero's Park at 11:15 AM."]],
+  shuttleNote:"Look for the SANTA FE TRAILS SHUTTLE PICK-UP signs at all three stops. The bus is ADA-accessible; if a bus is full, the next loop is about 15 minutes behind.",
+  shuttleOperatedBy:"Free shuttle provided by",
+  shuttleBusAlt:"Santa Fe Trails bus with its doors open",
+  ambKicker:"Athlete ambassador",ambTitle:"Tricia Downing",
+  ambAlt:"A wheelchair racing athlete powers up the course at dawn",
+  ambRole:"Wheelchair Division Athlete Ambassador",
+  ambBody:"Tricia is the first wheelchair athlete to take on the Santa Fe International Half — and she's chasing a Paralympic berth in shooting while she's at it. She'll be leading the wheelchair division out at Romero's Park and talking training at the Running Hub on Saturday at 1:00 PM. Come say hi.",
+  ambFacts:["First wheelchair athlete at the SFI Half","Paralympic shooting hopeful","Talk at the Running Hub, Saturday 1:00 PM"],
+  perksKicker:"What you get",perksTitle:"Race perks",
+  perks:[
+    {ic:"Award",name:"Custom made finishers medal",detail:"A finisher medal made to hang on a wall, not in a drawer — and age-group medallions, both custom made by Maasai artisans."},
+    {ic:"Shirt",name:"Indigo tee by Gasali Adeyemo",detail:"The 2026 official shirt carries an adire pattern by the Santa Fe–based Yoruba dye master. Dyed the slow way, credited the right way."},
+    {ic:"Soup",name:"Green-chile brunch",detail:"Post-race brunch cooked by Santa Fe YouthWorks. Green chile stew, not a granola bar."},
+    {ic:"Timer",name:"Chip timing",detail:"Live splits on race morning and full searchable results after."},
+    {ic:"Camera",name:"Free race photos",detail:"Course and finish-line photos, free to download. No watermark ransom."},
+    {ic:"Backpack",name:"Gear check",detail:"Drop a bag at the start, find it at the finish. Easy."}
+  ],
+  travelKicker:"Getting here",travelTitle:"Lodging + travel",
+  travelIntro:"Our Official Lodging Partner holds discounted race-rate rooms across four Santa Fe properties, and the Pecos Trail Inn offers a race-week rate of its own. September fills up; book early.",
+  lodgeEyebrow:"Official Lodging Partner",
+  lodgeName:"Concept Hotel Group",
+  lodgeStatement:"Concept Hotel Group is the Official Lodging Partner of the 2026 Santa Fe International Half Marathon.",
+  lodgeProps:["The Sage Hotel","Coyote South","Inn at Santa Fe","Guadalupe Inn"],
+  lodgeHow:"To secure discounted race rates, email starla@concepthotelgroup.com or call 505-772-0476 and use promo code SHM.",
+  pecosEyebrow:"Also offering race rates",pecosName:"Pecos Trail Inn",
+  pecosDetail:"Classic Santa Fe motor-court charm on the Old Pecos Trail. 15% off for race week, Wednesday September 16 to Tuesday September 22 \u2014 book direct.",
+  code:"Booking code",copy:"Copy code",copied:"Copied!",
+  travelTips:[
+    {name:"Altitude, honestly",detail:"Santa Fe sits at 7,000 ft. Arrive 2–3 days early if you can, drink way more water than feels normal, and go easy on your first runs here."},
+    {name:"Three lots, one shuttle",detail:"Half + Relay park at Romero's Park; 5K parks at Reunity Resources; the San Isidro Church lot across from Reunity is the third parking area. A Santa Fe Trails bus loops all three stops before the race (6:00–7:45 AM) and after it (10:00–11:30 AM)."}
+  ],
+  guideKicker:"Know before you go",
+  guideTitle:"Runner Guidelines",
+  guideRules:[
+    ["Arrive early","Course roads close at 7:00 AM sharp. Field assembly opens at 7:00 AM at Romero's Park; the Half and Relay start at 7:30, the 5K at 8:00 at Reunity Resources Farm."],
+    ["Wear your bib visibly","Your bib is chip-timed — pin it on your front. Never run under another person's bib; transfers closed September 10."],
+    ["Relay: the sash is the baton","The ceremonial sash carries the chip. Runner one wears it from the gun, hand it off at each exchange zone, and runner three must cross the line wearing it — no sash at the finish, no team time."],
+    ["Headphones: one ear out","Keep one ear open for course marshals and cyclists — and for the drums you don't want to miss."],
+    ["Strollers and dogs","Strollers are welcome in the 5K starting from the back. For everyone's safety, no dogs on any course — they're very welcome at the finish-line party."],
+    ["Respect the time limit","The half marathon course is fully supported for 4.5 hours after the 7:30 AM start; after that, roads reopen to traffic on schedule."],
+    ["Aid station etiquette","Approach every table on your right. The river-trail stations serve both directions — miles 6 & 12 and 8 & 10 — with restrooms at every station."],
+    ["Leave no trace","Drop cups and organics in the station bins — everything is captured and composted at Reunity Resources Farm. Pack out what you pack in."]],
+  kidsKicker:"Youth Wellness Event",
+  kidsTitle:"Kids 1K Dash",
+  kidsMeta:"Date: Sunday, September 20, 2026 · Time: 9:00 AM · Venue: Reunity Resources Farm",
+  kidsP1:"The Kids 1K Dash runs Sunday, September 20, from 9:00 to 10:00 AM at Reunity Resources Farm, 1829 San Ysidro Crossing \u2014 the same place every race finishes.",
+  kidsP2:"It\u2019s free for kids ages 3 to 12. Every kid gets a bib, and every finisher gets a medal. It isn\u2019t chip-timed.",
+  kidsTag:"Empowering Youth through Sport, Agriculture, and Community",
+  kidsCta:"Register Youth Athlete",
+  faqKicker:"Good to know",faqTitle:"FAQ",
+  faqs:[
+    {q:"How do I handle the altitude?",a:"Santa Fe sits at 7,000 feet, and it hits different if you're coming from sea level. Arrive two or three days early if you can, keep a water bottle glued to your hand all week, ease off the pace on the climbs, and don't judge your fitness by your first shakeout here. The air is thin; that's the point."},
+    {q:"Where is packet pickup?",a:"Friday, Sept 18 from 12–6 PM and Saturday, Sept 19 from 10 AM–5 PM. Pick up your bib and shirt at the Running Hub, 1100 Don Diego Ave, Suite B. The 2026 race is sold out, so no new entries are available. Half Marathon and 3-Amigos Relay runners can also pick up race morning, 6:00–7:00 AM at Romero's Park (the start line). 5K runners pick up at the Running Hub."},
+    {q:"How does the relay sash work?",a:"The 3-Amigos Relay uses a ceremonial sash instead of a baton. Runner one wears it from the start, hands it off at each exchange zone, and runner three wears it across the line. The sash is chip-timed — no sash at the finish, no team time."},
+    {q:"Is there a time limit?",a:"Yes — the half marathon course is fully supported for 4.5 hours after the 7:30 AM start. If you're near the back you'll still get a finish line; the course simply reopens to traffic on that schedule."},
+    {q:"When does registration close?",a:({open:"Online registration closes Saturday, September 19 at 5:00 PM for every race: the Half Marathon, the 3-Amigos Relay, the Santa Fe 5K and the free Kids 1K Dash. Sign up on RunSignup before then.",walkup:"Online registration closed Thursday, September 17. You can register in person for any race during packet pickup hours and pay on site. On race morning, the Santa Fe 5K also takes walk-up entries at the 5K start line at Reunity Resources Farm, until 7:45 AM.",closed:"The race is sold out. Registration is closed for every race, and there is no race-day or walk-up registration."})[REG_STATE]},
+    {q:"Can I defer or transfer my entry?",a:"Entries are non-refundable. The free deferral and bib-transfer window closed on September 10, 2026, so entries can no longer be deferred or transferred, and there are no race-day changes."}
+  ],
+  bannerDate:"Next race: Sept 18–19, 2027",
+  tierCommunity:"Community Partners",
+  sponsorsKicker:"Race partners",sponsorsTitle:"Thank You to Our 2026 Sponsors",
+  tierTitle:"Title Sponsor",tierGold:"Gold Sponsor",tierSilver:"Silver Sponsor",
+  sponsorCta:"Become a Bronze Sponsor",
+  sponsorCtaSub:"Join the local businesses behind race weekend.",
+  footerNews:"Get race updates",
+  footerNewsSub:"A monthly email with course news, pickup reminders, and race-week logistics. No spam.",
+  subscribe:"Subscribe",subscribing:"Sending...",subscribed:"You're on the list — see you in September.",subErr:"Something went wrong — try again, or email info@santafehalfmarathon.com.",legalPrivacy:"Privacy Policy",legalRefund:"Refund & Deferral Policy",
+  emailPh:"you@example.com",emailLbl:"Email address",
+  contact:"Contact",follow:"Follow along",
+  footerNote:"Santa Fe International Half Marathon · Capitol Ford International Races · Santa Fe, New Mexico",
+  demoNote:""
+},
+es:{
+  nav:{liveResults:"Resultados en vivo",fRace:"Información de la carrera",fCourse:"Evento y recorridos",fTravel:"Viaje y alojamiento",races:"Información del evento",results:"Resultados y fotos",plan:"Planea tu carrera",story:"Nuestra historia",guide:"Guía del corredor",faq:"Preguntas",sponsors:"Patrocinadores",register:"Inscríbete",
+    overview:"Resumen",gRaces:"Las carreras",gInfo:"Información del corredor",gExp:"Vive Santa Fe",store:"Tienda",soon:"Pronto",
+    races2:"Carreras y distancias",courseMap:"Mapa del recorrido",courseHi:"Atractivos y elevación",relay:"Relevos 3-Amigos",limits:"Límites de tiempo",
+    sched:"Horario del evento",packet:"Entrega de dorsales",parking:"Estacionamiento y shuttles",
+    hostcity:"Guía de la ciudad anfitriona",spectator:"Guía para espectadores",festival:"Festival en la meta",lodging:"Hospedaje y viaje",volunteer:"Voluntariado"},
+  conciergeTitle:"Asistente de carrera",conciergeClose:"Cerrar búsqueda",conciergeSuggest:"Consultas sugeridas",
+  conciergePh:"Pregunta lo que sea (shuttles, altitud, burritos...)",
+  conciergeOpen:"Abrir página",conciergeContact:"Contáctanos",
+  conciergeNone:"Aún no hay respuesta para eso: el equipo puede ayudarte directamente.",
+  conciergeChip1:"Estrategia de altitud",conciergeChip2:"¿Dónde estaciono?",conciergeChip3:"Burritos después de la carrera",
+  conciergeBtn:"Pregunta lo que sea",
+  skip:"Saltar al contenido",
+  heroKicker:"5ª Edición Anual · Capitol Ford International Races",
+  heroTitle:"Medio Maratón Internacional de Santa Fe",
+  heroAlt:"Vive los 7,000 pies del alto desierto",
+  heroSub:"5ª Edición Anual · Capitol Ford International Races · Domingo 20 de septiembre de 2026 · Santa Fe, Nuevo México",
+  heroCta:"Inscríbete ahora",presentedBy:"Presentado por Capitol Ford",
+  heroTagline:["Aire fino.","Cielo grande.","Pura garra."],
+  heroRiver:"Corre el río Santa Fe.",
+  heroTracker:"20 de septiembre de 2026 · Santa Fe, Nuevo México · 7,000 pies",
+  heroMeta:["20 sept 2026","Santa Fe, NM","7,000 pies"],
+  heroSubLine:"Pr\u00f3xima carrera: 18–19 sept 2027 \u00b7 Santa Fe, Nuevo M\u00e9xico",
+  heroBadges:[["7,000 pies","de altitud"],["6ª","edición anual"]],
+  presentedLbl:"Presentado por",
+  heroSlides:{start:"Atletas adaptados encabezan la salida de 2026",field:"Mañana de carrera, 2026",bigsky:"Bajo el cielo grande",river:"El corredor del río Santa Fe",chamisa:"Chamisa en flor en el recorrido",medals:"Medallas hechas a mano en la meta"},
+  heroSlidesLbl:"Fotos de la carrera",heroSlidesRole:"carrusel",heroSlideN:(i,n)=>"Diapositiva "+i+" de "+n,heroPause:"Pausar la presentación",heroPlay:"Reanudar la presentación",
+  stripPlace:"Santa Fe, NM",stripAlt:"7,000 pies",stripStarts:"Salida en",stripRoads:"Nuevo en 2027: un 10K el sábado",
+  quickLabel:"Lo esencial para correr",
+  quickTiles:[
+    ["Horarios y lugares de salida","Medio y Relevo 7:30 AM en Romero's Park · 5K 8:00 AM en Reunity","/event-schedule/"],
+    ["Entrega de dorsales","Vie 12–6 PM · Sáb 10 AM–5 PM · The Running Hub, 1100 Don Diego Ave","/packet-pickup/"],
+    ["Perfil y mapas del recorrido","13.1 mi · +651 pies de ascenso · retorno en la milla 9","/course-map/"],
+    ["Kids Dash y beneficencia","Kids 1K Dash gratis, de 3 a 12 años · dom 9:00 AM en Reunity","#kids-race-info","Organizaciones benéficas","/charity-information/"]],
+  statsLabel:"La carrera en cifras",
+  ctaHalf:"Inscríbete para 2026",cta5k:"Explora el nuevo recorrido",
+  ribbonLabel:"Con el apoyo de",
+  countdown:"Cuenta regresiva a la salida de 7:30 AM",unitD:"d",unitH:"h",unitM:"m",unitS:"s",
+  slides:[
+    "El grupo en la línea de salida con la luz dorada de la mañana, división en silla de ruedas al frente",
+    "Corredores cruzando el arco de salida en el aire fresco de la mañana",
+    "Un corredor líder con escolta en bici sube por la carretera del alto desierto",
+    "Ganadores en el podio de la fiesta de meta"
+  ],
+  photoTag:"Espacio para foto",
+  prevSlide:"Diapositiva anterior",nextSlide:"Siguiente diapositiva",slideLbl:"Diapositiva",
+  racesKicker:"Elige tu distancia",racesTitle:"Información del evento",
+  races:{
+    half:{name:"Medio Maratón",dist:"13.1 MI",blurb:"El evento principal. Un circuito 100% pavimentado por Agua Fría Village y junto al río Santa Fe, con +651 pies de ascenso total y punto máximo en el retorno de la milla 9 (6,883 pies). Salida en Romero's Park, domingo 7:30 AM.",note:"Salida: Romero's Park · 7:30 AM"},
+    relay:{name:"Relevo 3-Amigos",dist:"13.1 MI · equipo de 3",blurb:"Divide el medio maratón entre tres: tres tramos, zonas de cambio en la ruta, y una banda ceremonial que pasa de mano en mano en lugar de un testigo. Un equipo, una foto en la meta. Sale junto al medio en Romero's Park, 7:30 AM.",note:"Salida: Romero's Park · 7:30 AM"},
+    fivek:{name:"Santa Fe 5K",dist:"5 KM",blurb:"Un circuito acogedor por Agua Fría Village — rápido si quieres, tranquilo si no. Perfecto para debutantes y para soltar piernas. Salida en Reunity Resources Farm, domingo 8:00 AM.",note:"Salida: Reunity Resources Farm · 8:00 AM"},
+    kids:{name:"Kids Dash",dist:"1 KM",blurb:"De 3 a 12 años, el domingo a las 9:00 AM en Reunity Resources Farm — en pleno festival del día de la carrera. Cada niño recibe un número y una meta para recordar.",note:"Dom 20 sept · 9:00 AM · Reunity Resources Farm"}
+  },
+  register:"Inscríbete",
+  regClosed:"Agotado - inscripción cerrada",
+  walkup5k:"Inscripción en persona en la salida el domingo hasta las 7:45 AM",
+  walkupShort:"5K en persona hasta 7:45 AM",
+  registerFor:(n)=>"Inscríbete en el "+n,
+  courseKicker:"La ruta 2026",courseTitle:"De Romero's Park a Reunity, por el camino largo",
+  courseIntro:"La ruta es nueva en 2026 — toca un punto para recorrerla. El perfil muestra los +651 pies de ascenso total.",
+  waypoints:[
+    {mi:"Milla 0",name:"Romero's Park — Salida",detail:"Las calles cierran a las 7:00 AM; el disparo es a las 7:30. Empieza con calma — la altitud marca el ritmo al principio."},
+    {mi:"Milla 4",name:"Agua Fría Village",detail:"Por el pueblo histórico y el corredor del río. Encuentra tu ritmo aquí; hidrátate aunque no tengas sed."},
+    {mi:"Milla 9",name:"Retorno · 6,883 pies",detail:"El punto más alto del día. Es una pendiente constante, no un muro — pásala y lo difícil quedó atrás."},
+    {mi:"Milla 13.1",name:"Reunity Resources — Meta",detail:"Una llegada suave hasta la granja. Te espera brunch de chile verde de Santa Fe YouthWorks."}
+  ],
+  climbLabel:"+651 pies de ascenso total",
+  elevNote:"Perfil ilustrativo — el mapa oficial llega con tu guía de carrera.",
+  storyKicker:"Más que una carrera",storyTitle:"Por qué corremos esta",
+  storyBody1:"Tres amigos fundaron esta carrera — Abraham Kosgei, Joseph Karnes y Antonio Lopez — con un reloj prestado y la convicción de que Santa Fe merecía una carrera a la altura de la tierra donde entrenamos. Cinco ediciones después, la siguen organizando corredores, y la comunidad sigue primero.",
+  storyBody2:"Cada inscripción apoya al Kitany Water Project, que lleva agua limpia a Kitany, Kenia, y a la Lightning Boy Foundation, que honra el legado de Valentino Tzigiwhaeno Rivera a través de la danza de jóvenes Pueblo. La ruta es 100% pavimentada, el brunch lo cocina Santa Fe YouthWorks, y los medallones de grupo de edad están hechos a medida por artesanos masái.",
+  storyPhotoAlt:"Corredores en el corredor del Santa Fe River Trail durante la carrera de 2025",
+  storyPhotoCap:"En el recorrido, 2025",
+  charities:["Kitany Water Project","Lightning Boy Foundation"],
+  impact:[
+    {stat:"5ª",label:"Edición anual en 2026"},
+    {stat:"100%",label:"Ruta pavimentada, de salida a meta"},
+    {stat:"2",label:"Causas apoyadas con cada inscripción"}
+  ],
+  voiceEyebrow:"Narrativa oficial del evento",
+  voiceTitle:"La voz del River Trail",
+  voiceParas:[
+    "Soy m\u00e1s que tierra, grava y piedra. Soy el Santa Fe River Trail, un corredor vivo de historia que traza un camino por el antiguo coraz\u00f3n del alto desierto. Durante siglos, mis orillas han sido testigo del movimiento de los pueblos, del flujo de aguas vitales y de la callada resiliencia de nuestra comunidad. Cuando corres aqu\u00ed, entras directamente en una historia escrita por la tierra misma.",
+    "Mi cap\u00edtulo moderno comenz\u00f3 con tres amigos: Abraham Kosgei, Joseph Karnes y Antonio Lopez. Mucho antes de que se reunieran los grupos de corredores, este corredor era su terreno de entrenamiento. Movidos por una convicci\u00f3n compartida, salieron con un reloj prestado a dise\u00f1ar una carrera de fondo de primer nivel. Lo que empez\u00f3 como tres amigos avanzando por mis orillas se transform\u00f3 pronto en un poderoso movimiento comunitario. Cinco ediciones despu\u00e9s, ese esp\u00edritu fundacional sigue intacto. La filosof\u00eda de los 3 Amigos ha evolucionado hasta representar una profunda alianza de tres culturas globales distintas que se unen para elevar el esp\u00edritu humano a trav\u00e9s del running, la agricultura sostenible y el apoyo mutuo.",
+    "En mis orillas, el c\u00edrculo de los 3 Amigos se extiende a trav\u00e9s de un oc\u00e9ano. Jirani Kahawa, nuestro socio cafetero, comercia directamente con peque\u00f1as cooperativas agr\u00edcolas de Kenia, devolviendo autosuficiencia econ\u00f3mica a los caficultores que cultivan cada taza servida junto a mi meta. Y cuando la fiesta se apaga, nada se desperdicia: el cien por ciento de la borra de caf\u00e9 se recupera de las \u00e1reas del festival y vuelve a la tierra viva, cerrando un c\u00edrculo que comienza en una ladera keniana y termina en el suelo del alto desierto.",
+    "Cada pisada en mi camino resuena mucho m\u00e1s all\u00e1 de nuestro horizonte del alto desierto. Cada inscripci\u00f3n apoya directamente al Kitany Water Project, llevando agua limpia y vital a comunidades agr\u00edcolas de Kenia. Al mismo tiempo, tu zancada lleva adelante el legado de la Lightning Boy Foundation, honrando la danza tradicional juvenil Pueblo, mientras impulsa la formaci\u00f3n vocacional local con Santa Fe YouthWorks y los ciclos de compostaje ambiental en Reunity Resources Farm."],
+  voiceFooter:"Unidad global \u2022 Sostenibilidad ambiental \u2022 Preservaci\u00f3n cultural",
+  impactKicker:"Comunidad e impacto",
+  impactTitle:"Dos causas. Dos socios comunitarios.",
+  impactIntro:"Tu inscripción apoya a dos organizaciones benéficas. Dos socios comunitarios dan forma al día de la carrera.",
+  impactCharityLbl:"Organización benéfica",
+  impactCommunityLbl:"Socio comunitario y de experiencia",
+  impactMission:"Lee nuestra misión",
+  partners:[
+    {kind:"charity",name:"Kitany Water Project",body:"Agua limpia y sostenible para la comunidad de Kitany, Kenia.",href:"/charity-information/",cta:"Información benéfica",img:"kitany",alt:"Escolares corriendo juntos sobre tierra en el Valle del Rift de Kenia"},
+    {kind:"charity",name:"Lightning Boy Foundation",body:"Honra el legado de Valentino Tzigiwhaeno Rivera a través de la danza juvenil Pueblo.",href:"/charity-information/",cta:"Información benéfica",img:"lightning",alt:"Logotipo de la Lightning Boy Foundation"},
+    {kind:"community",name:"Santa Fe YouthWorks",body:"Cocina el brunch de chile verde en el festival de la meta.",href:"/finish-line-festival/",cta:"Festival en la meta"},
+    {kind:"community",name:"Reunity Resources Farm",body:"Recibe la meta y el festival, y composta los residuos orgánicos del día de la carrera.",href:"/finish-line-festival/",cta:"Festival en la meta"}
+  ],
+  logisticsKicker:"Logística del día de carrera",
+  logisticsTitle:"Cierres, desvíos y puestos de hidratación",
+  logisticsIntro:"Abre un panel para ver todos los detalles.",
+  scheduleKicker:"Semana de carrera",scheduleTitle:"13–20 de septiembre, 2026",
+  schedule:[
+    {date:"Dom 13 sept",items:[{time:"10 AM–1 PM",what:"Resumen: los corredores del Kids 1K Dash tiñeron sus propias playeras índigo con Gasali Adeyemo, el artista de la playera 2026, en Reunity Resources."}],photos:{credit:"Fotos cortesía de Kerri Cottle",group:"Familias del taller bajo el gran árbol de Reunity Resources, mostrando sus playeras índigo",table:"Niños doblan y atan sus playeras en la mesa de teñido",shirt:"Un joven tintorero muestra su playera índigo terminada",drying:"Playeras recién teñidas de índigo secándose sobre la grava"}},
+    {date:"Vie 18 sept",items:[{time:"12–6 PM",what:"Entrega de paquetes en The Running Hub, 1100 Don Diego Ave, Suite B."}]},
+    {date:"Sáb 19 sept",items:[{time:"10 AM–5 PM",what:"Entrega de paquetes en The Running Hub, segundo día. Charla de Tricia Downing a la 1:00 PM."}]},
+    {date:"Dom 20 sept",items:[{time:"7:00 AM",what:"Cierre de calles de la ruta."},{time:"7:30 AM",what:"Salida del Medio Maratón + Relevo 3-Amigos en Romero's Park."},{time:"8:00 AM",what:"Salida del 5K en Reunity Resources Farm."},{time:"9:00 AM",what:"Kids Dash en Reunity Resources Farm — de 3 a 12 años, gratis, números para todos."},{time:"Toda la mañana",what:"Brunch de meta en Reunity: chile verde de YouthWorks, premios, música."}]}
+  ],
+  transitTitle:"Horario oficial de tránsito y cierres 2026",
+  transitRows:[
+    ["Zona de salida Romero's Park","Desde las 07:00 AM","Cierre móvil","Las calles hacia la salida cierran a las 07:00 AM y reabren cuando todos los corredores han dejado la zona de salida. El Medio Maratón y el Relevo 3-Amigos salen a las 07:30 AM."],
+    ["Corredor del río Agua Fría","07:15 AM - 12:00 PM","Barricadas móviles","Protege los corredores activos en las primeras millas del circuito del pueblo."],
+    ["Caja del Oro Grant Road y Alameda Frontage Road","Desde las 07:00 AM","Desvío total del sector","Ambas vías pasan junto a la salida en Romero's Park. El tráfico se desvía desde las 07:00 AM y ambas reabren cuando todos los corredores han dejado la zona de salida."],
+    ["Recinto de meta Reunity Resources Farm","06:00 AM - 01:00 PM","Solo acceso local","Aplica las líneas de salida del 5K a las 08:00 AM y alberga el festival posterior a la carrera."]],
+  driveTitle:"Guía de manejo y control de tráfico el día de la carrera",
+  driveIntro:"¿Vas a manejar la mañana de la carrera? Así se rodea la ruta, no se atraviesa.",
+  driveCards:[
+    ["Corredor de Agua Fría: restringido","El corredor de Agua Fría es la ruta de la carrera. Desde las 7:15 AM hasta media mañana, las calles a lo largo del corredor cierran y reabren por tramos con un cierre móvil mientras los corredores avanzan de la salida en Romero's Park hacia el recinto de meta de Reunity Resources Farm. El tráfico local será detenido o escoltado por control de tráfico."],
+    ["Usa las arterias alternas","No puedes seguir la ruta de la carrera en auto. Para moverte entre las zonas de salida y meta, usa las vías principales de la ciudad — Siler Road, Cerrillos Road o la NM-599 — y acércate a cada punto desde su lado exterior. Da tiempo extra: las intersecciones de la ruta abren solo bajo indicación de los oficiales."]],
+  aidTitle:"Puestos de hidratación del Santa Fe River Trail",
+  aidIntro:"Para maximizar la eficiencia en el estrecho corredor del river trail, los puestos están construidos como nodos de apoyo de doble cara que atienden a los atletas dos veces en la ruta de ida y vuelta.",
+  aidCols:["Puesto","Ubicaciones en la ruta","Suministros","Tipo de acceso"],
+  aidRows:[
+    ["Puesto Alfa","Milla 6 (ida) & Milla 12 (vuelta)","Agua, electrolitos, geles energéticos","Solo shuttle UTV"],
+    ["Puesto Beta","Milla 8 (ida) & Milla 10 (vuelta)","Agua, electrolitos, botiquín médico","Solo shuttle UTV"]],
+  shuttleTitle:"Shuttle en bus el d\u00eda de la carrera",
+  shuttleIntro:"Un bus de Santa Fe Trails recorre un circuito continuo la ma\u00f1ana de la carrera entre las tres \u00e1reas de estacionamiento: Reunity Resources Farm, el lote de la iglesia San Isidro al cruzar la calle, y Romero's Park en la l\u00ednea de salida.",
+  shuttleLegs:[
+    ["Hacia la salida \u00b7 6:00\u20137:45 AM","Servicio continuo aproximadamente cada 15 minutos: Reunity Resources Farm, luego el lote de la iglesia San Isidro, luego Romero's Park. Corredores del Medio y el Relevo, suban temprano \u2014 las calles hacia la salida cierran a las 7:00 AM. El \u00faltimo bus de las 7:30 AM regresa a Reunity a tiempo para la salida del 5K a las 8:00 AM."],
+    ["De regreso al estacionamiento \u00b7 10:00\u201311:30 AM","El circuito corre de nuevo despu\u00e9s de la carrera: Romero's Park, el lote de la iglesia, y Reunity Resources Farm. \u00daltima recogida en Romero's Park a las 11:15 AM."]],
+  shuttleNote:"Busca los letreros SANTA FE TRAILS SHUTTLE PICK-UP en las tres paradas. El bus es accesible (ADA); si un bus va lleno, el siguiente pasa en unos 15 minutos.",
+  shuttleOperatedBy:"Shuttle gratuito ofrecido por",
+  shuttleBusAlt:"Autob\u00fas de Santa Fe Trails con las puertas abiertas",
+  ambKicker:"Atleta embajadora",ambTitle:"Tricia Downing",
+  ambAlt:"Una atleta en silla de carreras sube por la ruta al amanecer",
+  ambRole:"Embajadora de la División en Silla de Ruedas",
+  ambBody:"Tricia es la primera atleta en silla de ruedas en correr el Medio Internacional de Santa Fe — y mientras tanto busca un lugar paralímpico en tiro deportivo. Liderará la división en silla de ruedas desde Romero's Park y hablará de entrenamiento en The Running Hub a la 1:00 PM. Ven a saludarla.",
+  ambFacts:["Primera atleta en silla de ruedas del Medio SFI","Aspirante paralímpica en tiro deportivo","Charla en The Running Hub — sábado 1:00 PM"],
+  perksKicker:"Lo que recibes",perksTitle:"Beneficios",
+  perks:[
+    {ic:"Award",name:"Medalla de finisher personalizada",detail:"Una medalla de finisher hecha para colgarse en la pared, no en un cajón — y medallones de grupo de edad, ambos hechos a medida por artesanos masái."},
+    {ic:"Shirt",name:"Playera índigo de Gasali Adeyemo",detail:"La playera oficial 2026 lleva un diseño adire del maestro yoruba radicado en Santa Fe. Teñida a la manera lenta, con el crédito bien puesto."},
+    {ic:"Soup",name:"Brunch de chile verde",detail:"Brunch post-carrera cocinado por Santa Fe YouthWorks. Guiso de chile verde, no una barrita."},
+    {ic:"Timer",name:"Cronometraje con chip",detail:"Parciales en vivo la mañana de la carrera y resultados completos después."},
+    {ic:"Camera",name:"Fotos gratis",detail:"Fotos de ruta y de meta, gratis para descargar. Sin rescate de marca de agua."},
+    {ic:"Backpack",name:"Guardarropa",detail:"Deja tu mochila en la salida y recógela en la meta. Fácil."}
+  ],
+  travelKicker:"Cómo llegar",travelTitle:"Hospedaje + viaje",
+  travelIntro:"Nuestro socio oficial de hospedaje reserva habitaciones con tarifa de carrera en cuatro propiedades de Santa Fe, y el Pecos Trail Inn ofrece su propia tarifa para la semana de carrera. Septiembre se llena; reserva pronto.",
+  lodgeEyebrow:"Socio oficial de hospedaje",
+  lodgeName:"Concept Hotel Group",
+  lodgeStatement:"Concept Hotel Group es el socio oficial de hospedaje del Medio Maratón Internacional de Santa Fe 2026.",
+  lodgeProps:["The Sage Hotel","Coyote South","Inn at Santa Fe","Guadalupe Inn"],
+  lodgeHow:"Para asegurar tarifas de carrera con descuento, escribe a starla@concepthotelgroup.com o llama al 505-772-0476 y usa el código promocional SHM.",
+  pecosEyebrow:"Tambi\u00e9n con tarifa de carrera",pecosName:"Pecos Trail Inn",
+  pecosDetail:"Encanto clásico de motor-court en el Old Pecos Trail. 15% de descuento para la semana de carrera, del mi\u00e9rcoles 16 al martes 22 de septiembre \u2014 reserva directo.",
+  code:"Código de reserva",copy:"Copiar código",copied:"¡Copiado!",
+  travelTips:[
+    {name:"La altitud, sin rodeos",detail:"Santa Fe está a 7,000 pies. Llega 2–3 días antes si puedes, toma mucha más agua de lo normal, y corre suave tus primeros días aquí."},
+    {name:"Tres lotes, un shuttle",detail:"Medio + Relevo estacionan en Romero's Park; el 5K en Reunity Resources; el lote de la iglesia San Isidro frente a Reunity es la tercera área. Un bus de Santa Fe Trails recorre las tres paradas antes de la carrera (6:00–7:45 AM) y después (10:00–11:30 AM)."}
+  ],
+  guideKicker:"Antes de correr",
+  guideTitle:"Guía del corredor",
+  guideRules:[
+    ["Llega temprano","Las calles de la ruta cierran a las 7:00 AM en punto. La concentración abre a las 7:00 AM en Romero's Park; el Medio y el Relevo salen a las 7:30, el 5K a las 8:00 en Reunity Resources Farm."],
+    ["Lleva tu número visible","Tu número lleva el chip — préndelo al frente. Nunca corras con el número de otra persona; las transferencias cerraron el 10 de septiembre."],
+    ["Relevo: la banda es el testigo","La banda ceremonial lleva el chip. El primer corredor la usa desde el disparo, se entrega en cada zona de cambio, y el tercero debe cruzar la meta con ella puesta — sin banda en la meta, no hay tiempo de equipo."],
+    ["Audífonos: un oído libre","Mantén un oído atento a los oficiales de ruta y ciclistas — y a los tambores que no te quieres perder."],
+    ["Carriolas y perros","Las carriolas son bienvenidas en el 5K saliendo al final. Por seguridad, no se permiten perros en ninguna ruta — son muy bienvenidos en la fiesta de la meta."],
+    ["Respeta el límite de tiempo","El medio maratón tiene apoyo completo durante 4.5 horas desde la salida de 7:30 AM; después, las calles reabren al tráfico según lo programado."],
+    ["Etiqueta en los puestos","Acércate a cada mesa por tu derecha. Los puestos del river trail atienden en ambas direcciones — millas 6 y 12, y 8 y 10 — con baños en cada puesto."],
+    ["No dejes rastro","Deposita vasos y orgánicos en los botes de cada puesto — todo se recupera y se composta en Reunity Resources Farm. Llévate lo que traigas."]],
+  kidsKicker:"Evento de bienestar juvenil",
+  kidsTitle:"Kids 1K Dash",
+  kidsMeta:"Fecha: domingo 20 de septiembre de 2026 · Hora: 9:00 AM · Lugar: Reunity Resources Farm",
+  kidsP1:"El Kids 1K Dash es el domingo 20 de septiembre, de 9:00 a 10:00 AM, en Reunity Resources Farm, 1829 San Ysidro Crossing \u2014 el mismo lugar donde terminan todas las carreras.",
+  kidsP2:"Es gratis para ni\u00f1os de 3 a 12 a\u00f1os. Cada ni\u00f1o recibe un dorsal y, al llegar a la meta, una medalla. No se cronometra con chip.",
+  kidsTag:"Impulsando a la juventud con deporte, agricultura y comunidad",
+  kidsCta:"Inscribe a tu atleta juvenil",
+  faqKicker:"Bueno saberlo",faqTitle:"Preguntas frecuentes",
+  faqs:[
+    {q:"¿Cómo manejo la altitud?",a:"Santa Fe está a 7,000 pies, y se siente distinto si vienes del nivel del mar. Llega dos o tres días antes si puedes, trae una botella de agua pegada a la mano toda la semana, baja el ritmo en las subidas, y no juzgues tu condición por tu primer trote aquí. El aire es delgado; de eso se trata."},
+    {q:"¿Dónde es la entrega de paquetes?",a:"Viernes 18 de sept de 12–6 PM y sábado 19 de sept de 10 AM–5 PM. Recoge tu número y playera en The Running Hub, 1100 Don Diego Ave, Suite B. La carrera 2026 está agotada, así que ya no hay inscripciones disponibles. Los corredores del Medio Maratón y del Relevo 3-Amigos también pueden recogerlo la mañana de la carrera, de 6:00 a 7:00 AM en Romero's Park (la salida). Los del 5K lo recogen en The Running Hub."},
+    {q:"¿Cómo funciona la banda del relevo?",a:"El Relevo 3-Amigos usa una banda ceremonial en lugar de testigo. El primer corredor la lleva desde la salida, la entrega en cada zona de cambio, y el tercero cruza la meta con ella puesta. La banda lleva el chip — sin banda en la meta, no hay tiempo de equipo."},
+    {q:"¿Hay límite de tiempo?",a:"Sí — el medio maratón tiene apoyo completo durante 4.5 horas desde la salida de 7:30 AM. Si vas al final, igual tendrás tu meta; la ruta simplemente se reabre al tráfico en ese horario."},
+    {q:"¿Cuándo cierra la inscripción?",a:({open:"La inscripción en línea cierra el sábado 19 de septiembre a las 5:00 PM para todas las carreras: el Medio Maratón, el Relevo 3-Amigos, el Santa Fe 5K y el Kids 1K Dash gratuito. Inscríbete en RunSignup antes de esa hora.",walkup:"La inscripción en línea cerró el jueves 17 de septiembre. Puedes inscribirte en persona para cualquier carrera durante el horario de entrega de paquetes y pagar ahí mismo. La mañana de la carrera, el Santa Fe 5K también acepta inscripciones en la salida del 5K en Reunity Resources Farm, hasta las 7:45 AM.",closed:"La carrera está agotada. La inscripción está cerrada para todas las carreras y no habrá inscripciones el día de la carrera."})[REG_STATE]},
+    {q:"¿Puedo transferir o diferir mi inscripción?",a:"Las inscripciones no son reembolsables. El plazo gratuito para diferir la inscripción o transferir el número cerró el 10 de septiembre de 2026, así que ya no se aceptan aplazamientos ni transferencias, y no hay cambios el día de la carrera."}
+  ],
+  bannerDate:"Próxima carrera: 18–19 sept 2027",
+  tierCommunity:"Aliados Comunitarios",
+  sponsorsKicker:"Aliados de la carrera",sponsorsTitle:"Gracias a nuestros patrocinadores 2026",
+  tierTitle:"Patrocinador Titular",tierGold:"Patrocinador Oro",tierSilver:"Patrocinador Plata",
+  sponsorCta:"Conviértete en Patrocinador Bronce",
+  sponsorCtaSub:"Súmate a los negocios locales detrás del fin de semana de carrera.",
+  footerNews:"Recibe noticias de la carrera",
+  footerNewsSub:"Un correo al mes con novedades de la ruta, recordatorios de la entrega de paquetes y logística de la semana de carrera. Sin spam.",
+  subscribe:"Suscribirme",subscribing:"Enviando...",subscribed:"Ya estás en la lista — nos vemos en septiembre.",subErr:"Algo salió mal — inténtalo de nuevo o escribe a info@santafehalfmarathon.com.",legalPrivacy:"Política de privacidad",legalRefund:"Política de reembolsos y aplazamientos",
+  emailPh:"tu@correo.com",emailLbl:"Correo electrónico",
+  contact:"Contacto",follow:"Síguenos",
+  footerNote:"Medio Maratón Internacional de Santa Fe · Capitol Ford International Races · Santa Fe, Nuevo México",
+  demoNote:""
+}
+};
+
+/* ================= shared ================= */
+function SectionHead({kicker,title,light}){
+  return (
+    <div className="flex flex-col gap-2 mb-9">
+      <span className="eyebrow" style={light?{color:"var(--sunset)"}:{}}>{kicker}</span>
+      <h2 className="display text-[clamp(1.7rem,4vw,2.6rem)]" style={light?{color:"inherit"}:{}}>{title}</h2>
+    </div>
+  );
+}
+
+/* ================= top strip (2026-09-15 hero v3) =================
+   Kosgei's layered-hero brief: one slim bar with the date, place and altitude, a live countdown to the 7:30 AM start,
+   and the road-closure notice (it opens the closures panel in the logistics accordion). After the start the countdown
+   becomes a results link. ?regnow=<epoch ms> shifts this clock too, so race-morning states can be previewed. */
+const NOW_SHIFT = REG_NOW - Date.now();
+function useNow(){
+  const [now,setNow]=useState(Date.now()+NOW_SHIFT);
+  useEffect(()=>{const id=setInterval(()=>setNow(Date.now()+NOW_SHIFT),1000);return ()=>clearInterval(id);},[]);
+  return now;
+}
+/* line icons for the hero badges and quick-access tiles: inline SVG, since the site allows no emoji or arrow characters */
+const GLYPHS={
+  road:<React.Fragment><path d="M8 3 4 21"/><path d="m16 3 4 18"/><path d="M12 4v3"/><path d="M12 11v2"/><path d="M12 17v3"/></React.Fragment>,
+  mountain:<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>,
+  award:<React.Fragment><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></React.Fragment>,
+  clock:<React.Fragment><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></React.Fragment>,
+  bag:<React.Fragment><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></React.Fragment>,
+  map:<React.Fragment><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z"/><path d="M9 3v15"/><path d="M15 6v15"/></React.Fragment>,
+  heart:<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/>,
+  chev:<path d="m9 18 6-6-6-6"/>
+};
+function Glyph({name,size=16}){
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{GLYPHS[name]}</svg>;
+}
+function TopStrip({t}){
+  const now=useNow();
+  const started=now>=RACE_START.getTime();
+  let diff=Math.max(0,RACE_START.getTime()-now);
+  const d=Math.floor(diff/86400000); diff-=d*86400000;
+  const h=Math.floor(diff/3600000); diff-=h*3600000;
+  const m=Math.floor(diff/60000); const sec=Math.floor((diff-m*60000)/1000);
+  const pad=v=>String(v).padStart(2,"0");
+  return (
+    <div className="top-strip on-banner">
+      <div className="top-strip-in">
+        <span className="ts-facts">
+          <span>{t.bannerDate}</span>
+          <span className="ts-dot ts-place" aria-hidden="true">·</span>
+          <span className="ts-place">{t.stripPlace}</span>
+          <span className="ts-dot ts-alt" aria-hidden="true">·</span>
+          <span className="ts-alt">{t.stripAlt}</span>
+        </span>
+        {started
+          ? null
+          : <span className="ts-count" role="timer" aria-label={t.countdown}>
+              <span className="ts-count-lbl" aria-hidden="true">{t.stripStarts}</span>
+              <span>{pad(d)+t.unitD+" "+pad(h)+t.unitH+" "+pad(m)+t.unitM+" "+pad(sec)+t.unitS}</span>
+            </span>}
+        <span className="ts-notice">{t.stripRoads}</span>
+      </div>
+    </div>
+  );
+}
+
+/* ================= concierge =================
+   Client-side keyword router - the "Ask anything" modal. Answers are grounded
+   facts with links, matched locally; there is NO AI backend. Keep the routes
+   in sync with landing-src/data/ask-sync-map.json (source of truth). */
+const CONCIERGE_ROUTES=[
+ {k:["register","sign up","signup","entry","inscrib","registro","registration","deadline","closes","inscripci"],p:(REG_STATE==="open"?"https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon":"/event-schedule/"),f:({open:"Registration is on RunSignup and closes Saturday, September 19 at 5:00 PM for every race. Race day is Sunday, September 20, 2026.",walkup:"Online registration closed Thursday, September 17. You can register in person for any race during packet pickup hours and pay on site. On race morning, the Santa Fe 5K also takes walk-up entries at the 5K start line at Reunity Resources Farm, until 7:45 AM.",closed:"The race is sold out - registration is closed for every race, with no race-day or walk-up entries. Race day is Sunday, September 20, 2026."})[REG_STATE],fs:({open:"La inscripci\u00f3n es en RunSignup y cierra el s\u00e1bado 19 de septiembre a las 5:00 PM para todas las carreras. La carrera es el domingo 20 de septiembre de 2026.",walkup:"La inscripci\u00f3n en l\u00ednea cerr\u00f3 el jueves 17 de septiembre. Puedes inscribirte en persona para cualquier carrera durante el horario de entrega de paquetes y pagar ah\u00ed mismo. La ma\u00f1ana de la carrera, el Santa Fe 5K tambi\u00e9n acepta inscripciones en la salida del 5K en Reunity Resources Farm, hasta las 7:45 AM.",closed:"La carrera est\u00e1 agotada. La inscripci\u00f3n est\u00e1 cerrada para todas las carreras y no habr\u00e1 inscripciones el d\u00eda de la carrera. La carrera es el domingo 20 de septiembre de 2026."})[REG_STATE]},
+ {k:["spectat","watch","cheer","espectador"],p:"/spectator-guide/",f:"Half and Relay start 7:30 AM at Romero's Park; every race finishes at Reunity Resources. Best viewing: the Santa Fe River trail crossings and the finish-line festival.",fs:"El Medio y el Relevo salen a las 7:30 AM en Romero's Park; todas las carreras terminan en Reunity Resources. Las mejores zonas: los cruces del sendero del r\u00edo Santa Fe y el festival de la meta."},
+ {k:["festival","music","party","celebra","happy hour","nuckolls","brew","beer","burrito","breakfast","chile","food","eat","lunch"],p:"/finish-line-festival/",f:"Post-race celebration and awards at Reunity Resources Farm, 1829 San Ysidro Crossing, 9:00 AM-1:00 PM: live New Mexico music and a green chile brunch from Santa Fe YouthWorks, then happy hour at Nuckolls Brewing Company.",fs:"Celebraci\u00f3n y premiaci\u00f3n en Reunity Resources Farm, 1829 San Ysidro Crossing, de 9:00 AM a 1:00 PM: m\u00fasica en vivo de Nuevo M\u00e9xico y un brunch de chile verde de Santa Fe YouthWorks; despu\u00e9s, happy hour en Nuckolls Brewing Company."},
+ {k:["city","visit","things to do","hotel","stay","lodging","hospeda"],p:"/host-city-guide/",f:"The Host City Guide covers altitude, lodging, and race week in Santa Fe.",fs:"La Gu\u00eda de la ciudad anfitriona cubre la altitud, el hospedaje y la semana de carrera en Santa Fe."},
+ {k:["packet","pickup","expo","bib","dorsal","paquete"],p:"/packet-pickup/",f:"Packet pickup: the Running Hub, 1100 Don Diego Ave, Suite B, Friday 12-6 PM and Saturday 10 AM-5 PM. Half Marathon and 3-Amigos Relay runners can also pick up race morning, 6:00-7:00 AM at Romero's Park, the start line. 5K runners pick up at the Running Hub.",fs:"Entrega de paquetes: The Running Hub, 1100 Don Diego Ave, Suite B, viernes 12-6 PM y s\u00e1bado 10 AM-5 PM. Los corredores del Medio Marat\u00f3n y del Relevo 3-Amigos tambi\u00e9n pueden recogerlo la ma\u00f1ana de la carrera, de 6:00 a 7:00 AM en Romero's Park, la salida. Los del 5K lo recogen en The Running Hub."},
+ {k:["shuttle","parking","bus","drive","road clos","estaciona","direction"],p:"/transportation-parking/",f:"The free shuttle, provided by Santa Fe Trails, loops the 3 lots about every 15 minutes, 6:00-7:45 AM to the start (returns 10:00-11:30 AM). Roads into the start close at 7:00 AM. Parking split: Half/Relay at Romero's Park, 5K at Reunity Resources. It is a single bus - if it is full, it returns on the next loop, so leave a cushion. ADA boarding assistance provided.",fs:"El shuttle gratuito, ofrecido por Santa Fe Trails, recorre los 3 estacionamientos cada 15 minutos aprox., de 6:00 a 7:45 AM hacia la salida (regresos 10:00-11:30 AM). Las calles hacia la salida cierran a las 7:00 AM. Estacionamiento: Medio/Relevo en Romero's Park, 5K en Reunity Resources. Es un solo autob\u00fas: si va lleno, regresa en el siguiente circuito, as\u00ed que deja margen. Hay asistencia ADA para abordar."},
+ {k:["schedule","start time","when","what time","horario"],p:"/event-schedule/",f:"Half and Relay start 7:30 AM at Romero's Park; the Santa Fe 5K starts 8:00 AM at Reunity; the free Kids 1K Dash is Sunday 9:00 AM at Reunity.",fs:"El Medio y el Relevo salen a las 7:30 AM en Romero's Park; el Santa Fe 5K a las 8:00 AM en Reunity; el Kids 1K Dash gratuito es el domingo a las 9:00 AM en Reunity."},
+ {k:["course","map","elevation","route","recorrido","turnaround"],p:"/course-highlights/",f:"High-desert course with a 6,883 ft turnaround at mile 9 and +651 ft of climbing. Maps at /course-map/.",fs:"Ruta de alto desierto con un punto m\u00e1ximo de 6,883 pies en la milla 9 y +651 pies de ascenso. Mapas en /course-map/."},
+ {k:["altitude","altitud","7,000","7000","thin air","pacing","pace"],p:"/training-for-7000-feet/",f:"Santa Fe sits at 7,000 feet. Arrive 2-3 days early if you can, hydrate all week, and expect a slower pace than at sea level.",fs:"Santa Fe est\u00e1 a 7,000 pies. Llega 2-3 d\u00edas antes si puedes, hidr\u00e1tate toda la semana y espera un ritmo m\u00e1s lento que al nivel del mar."},
+ {k:["relay","team","amigos","relevo"],p:"/relays-exchange-zones/",f:"The 3-Amigos Relay starts 7:30 AM at Romero's Park alongside the half. Teams hand off a sash at Corridor Entry (mile 4.9) and the mile-9 turnaround, and Runner 3 finishes at Reunity Resources.",fs:"El Relevo 3-Amigos sale a las 7:30 AM en Romero's Park junto con el medio marat\u00f3n. Los equipos entregan una banda en Corridor Entry (milla 4.9) y en el retorno de la milla 9; el Corredor 3 termina en Reunity Resources."},
+ {k:["kids","dash","1k","children","family"],p:"/event-schedule/",f:"The free Kids 1K Dash starts Sunday at 9:00 AM at Reunity Resources.",fs:"El Kids 1K Dash gratuito es el domingo a las 9:00 AM en Reunity Resources."},
+ {k:["result","photo","finish time","resultado","foto"],p:"/race-information/results-photos/",f:"Live results post as runners finish, and official race photos are posted on the Results & Photos page after the race.",fs:"Los resultados se publican en vivo y las fotos oficiales aparecen en la p\u00e1gina de Resultados y Fotos despu\u00e9s de la carrera."},
+ {k:["refund","deferral","transfer","cancel","reembolso"],p:"/refund-policy/",f:"Registrations are non-refundable. The free deferral and bib-transfer window closed on September 10, 2026.",fs:"Las inscripciones no son reembolsables. El plazo gratuito de aplazamiento y transferencia de dorsal cerr\u00f3 el 10 de septiembre de 2026."},
+ {k:["gear","bag","drop","guarda"],p:"/gear-bag-drop/",f:"Gear bag drop is 6:00-7:00 AM at Romero's Park - details on the Gear Bag Drop page.",fs:"La entrega de guardarropa es de 6:00 a 7:00 AM en Romero's Park; detalles en la p\u00e1gina de Gear Bag Drop."},
+ {k:["time limit","cutoff","cut-off","limite","how long","sweep","swept","too slow"],p:"/time-limits/",f:"The half marathon has a 4 hour 30 minute course limit.",fs:"El medio marat\u00f3n tiene un l\u00edmite de 4 horas 30 minutos."},
+ {k:["aid","water","hydration","electrolyte","fuel","hidrata","agua"],p:"/aid-stations/",f:"Five aid stations cover the 13.1-mile course, with water at miles 2, 4, 6, 8, 9, 10 and 12.",fs:"Cinco puestos de hidrataci\u00f3n cubren la ruta de 13.1 millas, con agua en las millas 2, 4, 6, 8, 9, 10 y 12."},
+ {k:["medal","award","podium","trophy","medalla","premi"],p:"/awards/",f:"Finisher medals and age-group medallions are both handmade by Maasai artisans - every finisher in the Half, Relay and 5K receives one. Awards: 5K at 9:45 AM, Half and Relay at 10:45 AM.",fs:"Las medallas de finalista y los medallones por grupo de edad son hechos a mano por artesanos maas\u00e1i; cada finalista del Medio, Relevo y 5K recibe una. Premiaci\u00f3n: 5K a las 9:45 AM, Medio y Relevo a las 10:45 AM."},
+ {k:["weather","temperature","cold","hot","clima","temperatura","wear","layers"],p:"/gear-bag-drop/",f:"Expect crisp high-desert mornings, often around 45 F, warming toward the low 70s by midday - dress in layers you can leave in your gear bag.",fs:"Espera ma\u00f1anas frescas de alto desierto, a menudo cerca de 45 F, subiendo a unos 70 F al mediod\u00eda; v\u00edstete en capas que puedas dejar en el guardarropa."},
+ {k:["charity","donate","cause","benefic"],p:"/charity-information/",f:"Charity partners and fundraising details are on the Charity Information page.",fs:"Los detalles de las organizaciones ben\u00e9ficas est\u00e1n en la p\u00e1gina de Charity Information."},
+ {k:["volunteer","voluntari","help out"],p:"/volunteer/",f:"Volunteer sign-up for race weekend roles is open.",fs:"La inscripci\u00f3n de voluntarios para el fin de semana de carrera est\u00e1 abierta."},
+ {k:["heritage","history","historic","agua fria","culture","tradition","maasai","youthworks","local"],p:"/course-highlights/",f:"The start line sits in the historic village of Agua Fria and the course follows the Santa Fe River trail corridor. Post-race food is a green chile brunch prepared by Santa Fe YouthWorks, and the medallions are handmade by Maasai artisans.",fs:"La salida est\u00e1 en el hist\u00f3rico pueblo de Agua Fr\u00eda y la ruta sigue el corredor del sendero del r\u00edo Santa Fe. La comida post-carrera es un brunch de chile verde preparado por Santa Fe YouthWorks, y los medallones son hechos a mano por artesanos maas\u00e1i."},
+ {k:["river","ecology","environment","nature","landscape","desert","scenery","scenic"],p:"/course-highlights/",f:"The race runs the Santa Fe River corridor - the river the city is named for - through high desert at 7,000 feet, topping out at 6,883 feet at the mile-9 turnaround with 651 feet of climbing.",fs:"La carrera recorre el corredor del r\u00edo Santa Fe, el r\u00edo que da nombre a la ciudad, por alto desierto a 7,000 pies, con un punto m\u00e1ximo de 6,883 pies en el retorno de la milla 9 y 651 pies de ascenso."},
+ {k:["contact","email","question","support","ayuda"],p:"/contact-us/",f:"Reach the race team through the contact page.",fs:"Comun\u00edcate con el equipo de la carrera en la p\u00e1gina de contacto."}
+];
+function Concierge({t,lang,open,onClose}){
+  const [q,setQ]=useState("");
+  const inputRef=useRef(null);
+  useEffect(()=>{if(open){setQ("");var id=setTimeout(function(){if(inputRef.current)inputRef.current.focus();},60);return ()=>clearTimeout(id);}},[open]);
+  useEffect(()=>{
+    if(!open)return;
+    const h=e=>{if(e.key==="Escape")onClose();};
+    document.addEventListener("keydown",h);
+    return ()=>document.removeEventListener("keydown",h);
+  },[open,onClose]);
+  if(!open)return null;
+  const ql=q.trim().toLowerCase();
+  /* match both directions: a whole-phrase hit scores 2, a word that prefixes a
+     keyword (or vice versa) scores 1 - so "park" still finds "parking" */
+  const toks=ql.split(/[^a-z0-9]+/).filter(t=>t.length>=3);
+  const score=r=>r.k.reduce((a,kw)=>{
+    if(ql.includes(kw))return a+2;
+    return a+(toks.some(t=>kw.indexOf(t)===0||t.indexOf(kw)===0)?1:0);
+  },0);
+  const hits=ql?CONCIERGE_ROUTES.map(r=>({r,s:score(r)}))
+    .filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,3):[];
+  const chips=[[t.conciergeChip1,"altitude pacing"],[t.conciergeChip2,"parking shuttle"],[t.conciergeChip3,"burritos festival"]];
+  return (
+    <div className="cg-overlay" role="dialog" aria-modal="true" aria-label={t.conciergeTitle} onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}>
+      <div className="cg-card">
+        <div className="cg-head">
+          <div className="flex items-center gap-2">
+            <span className="cg-dot" aria-hidden="true"></span>
+            <h3 className="cg-title">{t.conciergeTitle}</h3>
+          </div>
+          <button type="button" className="cg-close" aria-label={t.conciergeClose} onClick={onClose}>
+            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div className="cg-field">
+          <svg aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
+          <input ref={inputRef} type="text" value={q} onChange={e=>setQ(e.target.value)} placeholder={t.conciergePh} autoComplete="off" aria-label={t.conciergePh}/>
+        </div>
+        <div className="cg-results" aria-live="polite">
+          {!ql && (
+            <div>
+              <p className="cg-sublabel">{t.conciergeSuggest}</p>
+              <div className="flex flex-wrap gap-2">
+                {chips.map(([label,query])=>(<button key={label} type="button" className="cg-chip" onClick={()=>setQ(query)}>{label}</button>))}
+              </div>
+            </div>
+          )}
+          {ql && hits.length>0 && hits.map(({r})=>(
+            <a key={r.p} className="cg-answer" href={r.p} target={r.p.indexOf("http")===0?"_blank":undefined} rel={r.p.indexOf("http")===0?"noopener":undefined}>
+              <span className="cg-fact">{lang==="es"&&r.fs?r.fs:r.f}</span>
+              <span className="cg-go">{t.conciergeOpen}</span>
+            </a>
+          ))}
+          {ql && hits.length===0 && (
+            <a className="cg-answer" href="/contact-us/">
+              <span className="cg-fact">{t.conciergeNone}</span>
+              <span className="cg-go">{t.conciergeContact}</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ================= nav ================= */
+function Nav({t,lang,setLang}){
+  const [open,setOpen]=useState(false);
+  const [ask,setAsk]=useState(false);
+  /* IA v4 (matches template 2365): three grouped dropdowns + disabled Store chip.
+     Every pre-v4 anchor destination is preserved inside the groups - zero drops. */
+  /* 2026-09-23 flat IA (Kosgei): four explicit top-level links, no dropdowns.
+     The fourth is the high-contrast anchor button. It is NOT a bare "Register": the race is
+     SOLD OUT and CLAUDE.md rule 9 requires this control to branch on all three registration
+     states, so it renders Register only when REG_STATE is actually open. Shipping a Register
+     button today would tell runners they can enter a race that is closed. */
+  /* 2026-09-23: Results & Photos added as a FIFTH link (Kosgei). The first flat build
+     dropped it -- the 21 dropdown links collapsed to four and this was the only route to
+     the results page anywhere on the homepage (the footer carries just mailto and tel).
+     Four days after the race that is the page people arrive for, so it is explicit. */
+  const FLAT_NAV=[["#races",t.nav.fRace],["#course",t.nav.fCourse],["/lodging-travel/",t.nav.fTravel],["/race-information/results-photos/",t.nav.results]];
+  const REG_HREF = IS_RACE_DAY ? "/race-information/results-photos/"
+    : REG_STATE==="open" ? REG_URL : REG_STATE==="walkup" ? "#races" : "/news/newsletter/";
+  const REG_LABEL = IS_RACE_DAY ? t.nav.liveResults
+    : REG_STATE==="open" ? t.nav.register : REG_STATE==="walkup" ? t.walkupShort : t.footerNews;
+  const groups=[
+    {key:"races",label:t.nav.gRaces,items:[["/the-races/",t.nav.overview],["#races",t.nav.races2],["/course-map/",t.nav.courseMap],["/course-highlights/",t.nav.courseHi],["/relays-exchange-zones/",t.nav.relay],["/time-limits/",t.nav.limits]]},
+    {key:"info",label:t.nav.gInfo,items:[["#plan",t.nav.plan],["#guidelines",t.nav.guide],["#faq",t.nav.faq],["/event-schedule/",t.nav.sched],["/packet-pickup/",t.nav.packet],["/transportation-parking/",t.nav.parking],["/race-information/results-photos/",t.nav.results]]},
+    {key:"exp",label:t.nav.gExp,items:[["/experience-santa-fe/",t.nav.overview],["#story",t.nav.story],["#sponsors",t.nav.sponsors],["/host-city-guide/",t.nav.hostcity],["/spectator-guide/",t.nav.spectator],["/finish-line-festival/",t.nav.festival],["/lodging-travel/",t.nav.lodging],["/volunteer/",t.nav.volunteer]]}
+  ];
+  return (
+    <div className="sticky top-0 z-50 border-b" style={{background:"var(--sand-2)",borderColor:"var(--line)"}}>
+      <nav aria-label="Main" className="max-w-[1080px] mx-auto px-5 py-3 flex items-center justify-between gap-4">
+        <a href="#top" className="flex items-center gap-2.5 no-underline" style={{color:"var(--ink)"}}>
+          <img src={IMGS.logo} alt="Santa Fe International Half Marathon" className="h-11 w-11 shrink-0 object-contain rounded-full" style={{background:"#FFFFFF",border:"1px solid var(--line)"}}/>
+          <span className="display text-[.95rem] tracking-[.02em] whitespace-nowrap hidden min-[430px]:inline">Santa Fe Intl Half</span>
+        </a>
+        <div className="flex items-center gap-2 shrink-0">
+          <div className="hidden md:flex gap-5 items-center">
+            {FLAT_NAV.map(([h,l])=>(
+              <a key={h} href={h} className="navflat display no-underline text-[.8rem] py-2 whitespace-nowrap">{l}</a>
+            ))}
+            <a className="nav-reg display no-underline text-[.8rem] whitespace-nowrap" href={REG_HREF}>{REG_LABEL}</a>
+            <span className="nav-soon display text-[.8rem] whitespace-nowrap" aria-disabled="true">{t.nav.store}<span className="soon-chip">{t.nav.soon}</span></span>
+          </div>
+          <button type="button" onClick={()=>setAsk(true)} className="cg-trigger" aria-label={t.conciergeBtn} aria-haspopup="dialog">
+            <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
+          </button>
+          <button onClick={()=>setLang(lang==="en"?"es":"en")} className="mono rounded-[3px] px-2.5 py-1.5 text-[.68rem] font-bold cursor-pointer border"
+            style={{background:"var(--chip)",color:"var(--ink)",borderColor:"var(--line)"}}
+            aria-label={lang==="en"?"Cambiar a español":"Switch to English"}>
+            {lang==="en"?"ES":"EN"}
+          </button>
+          {REG_STATE==="open"
+            ? <a className="btn btn-primary !px-3.5 !py-2 !text-[.75rem]" href={REG_URL} target="_blank" rel="noopener">{t.nav.register}</a>
+            : null}
+          <button className="md:hidden rounded-[3px] px-2.5 py-2 cursor-pointer border inline-flex" aria-label="Menu" aria-expanded={open} aria-controls="mobile-menu"
+            onClick={()=>setOpen(!open)} style={{background:"var(--card)",color:"var(--ink)",borderColor:"var(--line)"}}>
+            <Ic name={open?"X":"Menu"} size={18}/>
+          </button>
+        </div>
+      </nav>
+      <Concierge t={t} lang={lang} open={ask} onClose={()=>setAsk(false)}/>
+      {open && (
+        <div id="mobile-menu" className="border-t md:hidden" style={{borderColor:"var(--line)",background:"var(--sand-2)"}}>
+          <div className="max-w-[1080px] mx-auto px-5 py-2 flex flex-col">
+            {groups.map(g=>(
+              <div key={g.key} className="flex flex-col">
+                <p className="display m-0 mt-3 mb-1 text-[.72rem] opacity-60" style={{color:"var(--ink)"}}>{g.label}</p>
+                {g.items.map(([h,l])=>(<a key={h} href={h} onClick={()=>setOpen(false)} className="no-underline font-semibold py-2 pl-2 border-b text-[.95rem]" style={{color:"var(--ink)",borderColor:"var(--line)"}}>{l}</a>))}
+              </div>
+            ))}
+            <p className="nav-soon display m-0 mt-3 mb-2 text-[.72rem]" aria-disabled="true">{t.nav.store}<span className="soon-chip">{t.nav.soon}</span></p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ================= hero (2026-09-15 hero v3) =================
+   Kosgei's 9/15 brief, which revises the 9/13 one-button hero: full-bleed photo (the runner under the big sky,
+   media 4977) under a left-weighted dark gradient, the copy on the left, three value badges, the register button
+   plus an outline button to the 2025 results (Results & Photos once the race starts), and the title sponsor pinned to
+   the bottom edge.
+   The photos stay background divs because the sitewide "html body img{height:auto!important}" rule defeats
+   height-based image sizing.
+   2026-09-15 hero v4 (Kosgei): the single photo became a RunSignup-style slideshow (useHeroSlides, below). On phones
+   and tablets the slideshow is a photo band above the copy, with the caption and pause button just under it. */
+function Hero({t}){
+  const started=REG_NOW>=RACE_START.getTime();
+  const sl=useHeroSlides();
+  const n=HERO_SLIDES.length;
+  return (
+    <header id="top" className="hero3" aria-labelledby="hero-h">
+      <div className={"hero-slides"+(sl.paused?" is-paused":"")} aria-hidden="true" onTouchStart={sl.touchStart} onTouchEnd={sl.touchEnd}>
+        {HERO_SLIDES.map((s,i)=>(
+          <div key={s.k} className={"hero-slide hero-slide-"+s.k+(i===sl.idx?" is-on":(i===sl.prev?" was-on":""))} data-src={s.src}
+            style={sl.seen[i]?{backgroundImage:"url('"+s.src+"')"}:undefined}></div>
+        ))}
+      </div>
+      <div aria-hidden="true" className="hero3-shade"></div>
+      <div aria-hidden="true" className="hero3-contour"></div>
+      <div className="hero3-in">
+        <div className="hero3-copy">
+          <h1 id="hero-h" className="hero3-title">{t.heroTitle}</h1>
+          <p className="hero3-tag">{t.heroTagline.map((ln,i)=>(<span key={i} className={i===t.heroTagline.length-1?"hero-grit":undefined}>{(i?" ":"")+ln}</span>))}</p>
+          <p className="hero3-date">{t.heroSubLine}</p>
+          <div className="hero3-ctas">
+            {REG_STATE==="open"
+              ? <a className="hero-cta hero-cta-solid" href={REG_URL} target="_blank" rel="noopener"><span>{t.ctaHalf}</span></a>
+              : REG_STATE==="walkup"
+                ? <a className="hero-cta hero-cta-solid" href="#races"><span>{t.walkupShort}</span></a>
+                : <a className="hero-cta hero-cta-solid" href="/news/newsletter/"><span>{t.footerNews}</span></a>}
+          </div>
+        </div>
+        <p className="hero3-presented">{t.presentedLbl} <b>Capitol Ford</b></p>
+        <div className="hero-slidebar" role="group" aria-roledescription={t.heroSlidesRole} aria-label={t.heroSlidesLbl}>
+          <div className="hero-cap" aria-live={sl.paused||sl.userNav?"polite":"off"}>{t.heroSlides[HERO_SLIDES[sl.idx].k]}</div>
+          <div className="hero-dots" onMouseEnter={sl.holdOn} onMouseLeave={sl.holdOff} onFocus={sl.holdOn} onBlur={sl.holdBlur}>
+            {HERO_SLIDES.map((s,i)=>(
+              <button key={s.k} type="button" className="hero-dot" aria-label={t.heroSlideN(i+1,n)} aria-current={i===sl.idx?"true":undefined} onClick={()=>sl.go(i,true)}><span></span></button>
+            ))}
+          </div>
+          <button type="button" className="hero-pause" aria-label={sl.paused?t.heroPlay:t.heroPause} onClick={sl.toggle}>
+            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              {sl.paused
+                ? <path d="M7 4.5v15l13-7.5z" fill="currentColor"/>
+                : <React.Fragment><rect x="6" y="4.5" width="4" height="15" rx="1" fill="currentColor"/><rect x="14" y="4.5" width="4" height="15" rx="1" fill="currentColor"/></React.Fragment>}
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+/* 2026-09-15 hero v4: slideshow state shared by the photo stack and the controls under the copy.
+   - Photos advance every HERO_SLIDE_MS. The race-video clip plays once, then the next photo follows. If the clip
+     cannot play (autoplay refused, load error, data saver on) its poster stands in as a normal slide, and a clip that
+     never ends still moves on after 20 seconds.
+   - Visitors who ask for reduced motion start paused. The pause button stops rotation for everyone (WCAG 2.2.2).
+     Pointer or keyboard focus on the dots holds the current slide, and a swipe on the photo band changes it.
+   - A photo's background is set only once its slide is current or next, so the first view loads two images. */
+function useHeroSlides(){
+  const n=HERO_SLIDES.length;
+  const qa=HERO_QA_SLIDE>=0;
+  const first=qa?HERO_QA_SLIDE:0;
+  const env=useMemo(()=>{
+    const e={reduce:false,save:false,wide:true};
+    try{e.reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(x){}
+    try{e.save=!!(navigator.connection||{}).saveData;}catch(x){}
+    try{e.wide=window.matchMedia("(min-width: 1024px)").matches;}catch(x){}
+    return e;
+  },[]);
+  const [idx,setIdx]=useState(first);
+  const [paused,setPaused]=useState(qa||env.reduce);
+  const [hold,setHold]=useState(false);
+  const [seen,setSeen]=useState(()=>{const o={};o[first]=true;o[(first+1)%n]=true;return o;});
+  const [prev,setPrev]=useState(-1);
+  /* Drives the caption's live region. An auto-advance every 6.5s must NOT be announced -- a
+     screen reader would talk over the page indefinitely -- but a dot press, a swipe or a pause
+     is a deliberate request and the new caption should be read out. */
+  const [userNav,setUserNav]=useState(false);
+  const touchX=useRef(null);
+  const go=(i,byUser)=>{
+    const j=(i+n)%n;
+    if(j!==idx) setPrev(idx);
+    setIdx(j);
+    setUserNav(!!byUser);
+    setSeen(s=>{const o=Object.assign({},s);o[j]=true;o[(j+1)%n]=true;return o;});
+  };
+  useEffect(()=>{
+    if(paused||hold) return undefined;
+    const id=setTimeout(()=>go(idx+1),HERO_SLIDE_MS);
+    return ()=>clearTimeout(id);
+  },[idx,paused,hold]);
+  return {
+    idx,prev,paused,seen,userNav,
+    go,
+    toggle:()=>{setUserNav(true);setPaused(p=>!p);},
+    holdOn:()=>setHold(true),
+    holdOff:()=>setHold(false),
+    holdBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setHold(false);},
+    touchStart:(e)=>{touchX.current=e.touches[0].clientX;},
+    touchEnd:(e)=>{
+      const x0=touchX.current;
+      touchX.current=null;
+      if(x0===null) return;
+      const dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>40) go(dx>0?idx-1:idx+1,true);
+    }
+  };
+}
+
+/* 2026-09-16 v5: the hero badges, relocated out of the top fold per Kosgei's three-element
+   rule. Rendered as an editorial measure-band -- rules and spacing, no pills, no shadows. */
+function HeroFacts({t}){
+  return (
+    <aside className="hero-facts" aria-label={t.statsLabel}>
+      <ul className="hf-list">
+        {t.heroBadges.map(([v,l],i)=>(
+          <li key={i} className="hf-item"><b className="hf-v">{v}</b><span className="hf-l">{l}</span></li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+/* ================= quick-access bar (2026-09-15 hero v3) =================
+   Four runner priorities directly under the hero, overlapping its bottom edge. Replaces the 9/13 stats strip (its
+   values are the hero badges now), the countdown band (now in the top strip) and the "Know before you go" tiles
+   (road closures moved to the top-strip notice). Tile 4 carries a second link. */
+function QuickBar({t}){
+  const icons=["clock","bag","map","heart"];
+  return (
+    <nav className="quick-bar" aria-label={t.quickLabel}>
+      <ul className="qb-list">
+        {t.quickTiles.map(([title,detail,href,subLabel,subHref],i)=>(
+          <li key={i} className="qb-item">
+            <span className="qb-ico" aria-hidden="true"><Glyph name={icons[i]} size={18}/></span>
+            <span className="qb-chev" aria-hidden="true"><Glyph name="chev" size={16}/></span>
+            <a className="qb-link" href={href}>{title}</a>
+            <span className="qb-detail">{detail}</span>
+            {subHref ? <a className="qb-sub" href={subHref}>{subLabel}</a> : null}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+/* ================= races ================= */
+function Races({t}){
+  /* 2026-09-13 restructure (Kosgei): four distance cards, each with its own register button (replaces
+     the tab selector). After online registration closes the button becomes a status line, so
+     race-weekend visitors never land on a closed RunSignup form.
+     2026-09-15 (Kosgei): no registration fees on the homepage, so the cards carry no price line. */
+  /* 2026-09-22 distance badges (Kosgei): modern geometric shapes, inline with the card
+     heading on desktop and moved above the registration control on phones. Stroke-only so
+     they read on any ground, aria-hidden because the distance is already in text beside them.
+     NOTE: the third race is the Santa Fe 5K. The brief said "4K" -- that is the RETIRED name
+     and CLAUDE.md lists "4K" among strings that must never appear. Using 5K. */
+  const RACE_SHAPE={
+    half:  <circle cx="12" cy="12" r="9"/>,
+    relay: <polygon points="12,3 19.8,7.5 19.8,16.5 12,21 4.2,16.5 4.2,7.5"/>,
+    fivek: <polygon points="12,3.5 21,19.5 3,19.5"/>
+  };
+  const RaceBadge=({k})=>RACE_SHAPE[k]
+    ? <svg className="race-badge" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"
+           fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round">{RACE_SHAPE[k]}</svg>
+    : null;
+  const keys=["half","relay","fivek","kids"];
+  const closed=REG_STATE!=="open";
+  return (
+    <section id="races" className="py-16 below-fold" aria-labelledby="races-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-9">
+          <span className="eyebrow">{t.racesKicker}</span>
+          <h2 id="races-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.racesTitle}</h2>
+        </div>
+        <div role="list" className="grid gap-x-11 gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {keys.map(k=>{
+            const r=t.races[k];
+            return (
+              <article role="listitem" key={k} className="race-card flex flex-col gap-3" style={{borderTop:"3px solid var(--terra)"}}>
+                <div className="race-head">
+                  <RaceBadge k={k}/>
+                  <h3 className="display text-[1.35rem]">{r.name}</h3>
+                </div>
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="mono font-bold text-[.8rem]" style={{color:"var(--terra)"}}>{r.dist}</span>
+                </div>
+                <p className="m-0 text-[.88rem] flex-1" style={{color:"var(--ink-soft)"}}>{r.blurb}</p>
+                <span className="race-note">{r.note}</span>
+                {!closed
+                  ? <a className="btn btn-primary text-center !py-2.5 !text-[.78rem]" href={REG_URL} target="_blank" rel="noopener" aria-label={t.registerFor(r.name)}>{t.register}</a>
+                  : (k==="fivek"&&REG_STATE==="walkup")
+                    ? <span className="mono text-[.72rem] font-bold uppercase tracking-[.08em] py-2.5" style={{color:"var(--terra)"}}>{t.walkup5k}</span>
+                    : <span className="mono text-[.72rem] font-bold uppercase tracking-[.08em] py-2.5" style={{color:"var(--ink-soft)"}}>{t.regClosed}</span>}
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= course ================= */
+const PROFILE=[6760,6768,6780,6775,6790,6802,6818,6838,6862,6883,6860,6828,6800,6788];
+function Course({t}){
+  const [wp,setWp]=useState(2);
+  const wpMiles=[0,4,9,13.1];
+  const wpElev=[PROFILE[0],PROFILE[4],PROFILE[9],PROFILE[13]];
+  const W=640,H=200,PADL=52,PADR=16,PADT=18,PADB=28;
+  const minE=6740,maxE=6900;
+  const x=m=>PADL+(m/13.1)*(W-PADL-PADR);
+  const y=e=>PADT+(1-(e-minE)/(maxE-minE))*(H-PADT-PADB);
+  const pts=PROFILE.map((e,i)=>[x(i===13?13.1:i),y(e)]);
+  const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
+  const area=line+` L${x(13.1).toFixed(1)},${y(minE)} L${x(0)},${y(minE)} Z`;
+  return (
+    <section id="course" className="py-16 below-fold" style={{background:"var(--sand-2)"}} aria-labelledby="course-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-4">
+          <span className="eyebrow">{t.courseKicker}</span>
+          <h2 id="course-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.courseTitle}</h2>
+        </div>
+        <p className="max-w-[60ch] mb-6">{t.courseIntro}</p>
+        <div className="grid gap-5 grid-cols-1 lg:grid-cols-2">
+          <div className="flex flex-col">
+            {t.waypoints.map((w,i)=>(
+              <button key={i} onClick={()=>setWp(i)} aria-pressed={wp===i}
+                className={"wp-item cursor-pointer"+(wp===i?" is-on":"")}
+                style={{font:"inherit",color:"var(--ink)"}}>
+                <div className="flex items-center gap-2.5">
+                  <span className="mono text-[.68rem] font-bold min-w-[7ch]" style={{color:wp===i?"var(--terra)":"var(--ink-soft)"}}>{w.mi}</span>
+                  <strong className="text-[.92rem]">{w.name}</strong>
+                </div>
+                {wp===i && <p className="mt-2 mb-0 text-[.88rem]" style={{color:"var(--ink-soft)"}}>{w.detail}</p>}
+              </button>
+            ))}
+          </div>
+          <div className="course-chart overflow-x-auto">
+            <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={t.climbLabel+" — 6,883 ft, mile 9"}>
+              {[6760,6820,6880].map(e=>(
+                <g key={e}>
+                  <line x1={PADL} x2={W-PADR} y1={y(e)} y2={y(e)} stroke="var(--line)" strokeWidth="1"/>
+                  <text x={PADL-6} y={y(e)+3} textAnchor="end" fontSize="9" fill="var(--ink-soft)" fontFamily="'Martian Mono',monospace">{e.toLocaleString()}</text>
+                </g>
+              ))}
+              <path d={area} fill="var(--sunset)" opacity="0.22"/>
+              <path d={line} fill="none" stroke="var(--terra)" strokeWidth="2.5" strokeLinejoin="round"/>
+              <circle cx={x(wpMiles[wp])} cy={y(wpElev[wp])} r="5" fill="var(--indigo-soft)" stroke="var(--sand)" strokeWidth="2"/>
+              <text x={x(9)} y={y(6883)-8} textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--ink)" fontFamily="'Martian Mono',monospace">6,883 ft</text>
+              <text x={x(2.2)} y={y(6810)} textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--terra)" fontFamily="'Martian Mono',monospace">{t.climbLabel}</text>
+              {[0,4,9,13.1].map(m=>(
+                <text key={m} x={x(m)} y={H-8} textAnchor="middle" fontSize="9" fill="var(--ink-soft)" fontFamily="'Martian Mono',monospace">{m===0?"Mi 0":m}</text>
+              ))}
+            </svg>
+            <p className="mono text-[.62rem] mt-2.5 mb-0 tracking-[.04em]" style={{color:"var(--ink-soft)"}}>{t.elevNote}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= story ================= */
+function Story({t}){
+  /* v5: deliberately asymmetric -- uneven columns AND a vertical stagger. Equal columns that
+     start at the same y read as a grid no matter how they are styled. */
+  return (
+    <section id="story" className="story-v5 below-fold" aria-labelledby="story-h">
+      <div className="story-in">
+        <div className="story-head">
+          <span className="story-kicker">{t.storyKicker}</span>
+          <h2 id="story-h" className="story-title">{t.storyTitle}</h2>
+        </div>
+        <div className="story-grid">
+          <div className="story-text">
+            <p className="story-p">{t.storyBody1}</p>
+            <p className="story-p">{t.storyBody2}</p>
+            <ul className="story-charities">
+              {t.charities.map(c=>(<li key={c}>{c}</li>))}
+            </ul>
+          </div>
+          <div className="story-side">
+            <figure className="story-fig">
+              <img className="story-img" src={STORY_IMG.src} srcSet={STORY_IMG.srcset}
+                   sizes="(max-width:900px) 92vw, 34vw" alt={t.storyPhotoAlt}
+                   loading="lazy" decoding="async"/>
+              <figcaption className="story-cap">{t.storyPhotoCap}</figcaption>
+            </figure>
+            <ul className="story-impact">
+              {t.impact.map((x,i)=>(
+                <li key={i}><span className="si-stat">{x.stat}</span><span className="si-label">{x.label}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= voice of the river ================= */
+function VoiceOfRiver({t}){
+  /* 2026-09-17 v5: the narrative runs in BOTH languages side by side rather than following the
+     toggle. New Mexico is genuinely bilingual and showing that is the point -- but it only works
+     if each column carries its own lang attribute, or a screen reader voices the Spanish with
+     English phonetics. The heading and footer still follow the toggle so the page's heading
+     structure stays coherent in the visitor's chosen language. */
+  const cols=[["en","English",T.en],["es","Espa\u00f1ol",T.es]];
+  return (
+    <section className="voice-v5 below-fold" aria-label={t.voiceTitle}>
+      <div className="voice-in">
+        <div className="voice-head">
+          <span className="voice-eyebrow">{t.voiceEyebrow}</span>
+          <h2 className="voice-title">{t.voiceTitle}</h2>
+        </div>
+        <div className="voice-cols">
+          {cols.map(([code,label,tt])=>(
+            <div key={code} className="voice-col" lang={code}>
+              <span className="voice-lang" aria-hidden="true">{label}</span>
+              {tt.voiceParas.map((p,i)=>(<p key={i} className="voice-p">{p}</p>))}
+            </div>
+          ))}
+        </div>
+        <p className="voice-foot">{t.voiceFooter}</p>
+      </div>
+    </section>
+  );
+}
+
+/* ================= community & impact (2026-09-13: replaces the MAC framework, which moved to /about/) ================= */
+function CommunityImpact({t}){
+  return (
+    <section id="impact" className="py-16 below-fold" style={{background:"var(--sand-2)"}} aria-labelledby="impact-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-4">
+          <span className="eyebrow">{t.impactKicker}</span>
+          <h2 id="impact-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.impactTitle}</h2>
+        </div>
+        <p className="m-0 mb-9 max-w-[62ch] text-[.95rem]" style={{color:"var(--ink-soft)"}}>{t.impactIntro}</p>
+        <div role="list" className="grid gap-x-11 gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {t.partners.map(p=>(
+            <article role="listitem" key={p.name} className="part-card flex flex-col">
+              {p.img==="kitany" && <div role="img" aria-label={p.alt} className="hero-photo" style={{backgroundImage:"url('"+PARTNER_IMGS.kitany+"')",aspectRatio:"4 / 3"}}></div>}
+              {p.img==="lightning" && <div className="flex items-center justify-center" style={{aspectRatio:"4 / 3",background:"#FFFFFF",borderBottom:"1px solid var(--line)"}}><img src={PARTNER_IMGS.lightning} alt={p.alt} loading="lazy" style={{width:"46%",height:"auto"}}/></div>}
+              {!p.img && <div aria-hidden="true" className="part-fallback"><span>{p.name}</span></div>}
+              <div className="pt-4 flex flex-col gap-2 flex-1">
+                <span className="mono text-[.62rem] font-bold uppercase tracking-[.12em]" style={{color:p.kind==="charity"?"var(--terra)":"var(--indigo-soft)"}}>{p.kind==="charity"?t.impactCharityLbl:t.impactCommunityLbl}</span>
+                <h3 className="display text-[1.15rem]">{p.name}</h3>
+                <p className="m-0 text-[.88rem] flex-1" style={{color:"var(--ink-soft)"}}>{p.body}</p>
+                <a className="btn btn-ghost !px-3 !py-2 !text-[.7rem] self-start" href={p.href}>{p.cta}</a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="mt-8"><a className="btn btn-ghost !text-[.75rem]" href="/about/">{t.impactMission}</a></div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= schedule ================= */
+function Schedule({t}){
+  return (
+    <section id="plan" className="py-16 below-fold" style={{background:"var(--sand-2)"}} aria-labelledby="plan-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-9">
+          <span className="eyebrow">{t.scheduleKicker}</span>
+          <h2 id="plan-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.scheduleTitle}</h2>
+        </div>
+        <ol className="list-none m-0 p-0 flex flex-col gap-9">
+          {t.schedule.map((day,i)=>(
+            <li key={i} className="sched-day grid gap-4 grid-cols-1 sm:grid-cols-[150px_1fr]">
+              <div className="display text-[1rem]" style={{color:"var(--terra)"}}>{day.date}</div>
+              <div className="flex flex-col gap-2.5">
+                {day.items.map((it,j)=>(
+                  <div key={j} className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="mono text-[.7rem] font-bold min-w-[7.5ch]" style={{color:"var(--indigo-soft)"}}>{it.time}</span>
+                    <span className="text-[.92rem] flex-1 basis-[30ch]">{it.what}</span>
+                  </div>
+                ))}
+              </div>
+              {day.photos && (
+                <figure className="indigo-recap sm:col-span-2">
+                  <img className="indigo-group" src={INDIGO_IMGS.group} srcSet={SRCSET.indigoGroup} sizes="(min-width: 768px) 1000px, 92vw" alt={day.photos.group} width="1200" height="900" loading="lazy" decoding="async"/>
+                  <div className="indigo-row">
+                    <img src={INDIGO_IMGS.table} srcSet={SRCSET.indigoTable} sizes="(min-width: 768px) 327px, 30vw" alt={day.photos.table} width="600" height="800" loading="lazy" decoding="async"/>
+                    <img src={INDIGO_IMGS.shirt} srcSet={SRCSET.indigoShirt} sizes="(min-width: 768px) 327px, 30vw" alt={day.photos.shirt} width="600" height="800" loading="lazy" decoding="async"/>
+                    <img src={INDIGO_IMGS.drying} srcSet={SRCSET.indigoDrying} sizes="(min-width: 768px) 327px, 30vw" alt={day.photos.drying} width="600" height="800" loading="lazy" decoding="async"/>
+                  </div>
+                  <figcaption className="indigo-credit">{day.photos.credit}</figcaption>
+                </figure>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+/* ================= race-day logistics accordion (2026-09-13 restructure) =================
+   Closures, driving and aid-station detail collapse into disclosure panels. Each item keeps an anchor
+   id (#closures and #driving are linked from the nav, KnowB4 and inner pages; #aid-stations is new)
+   and arriving on one of those hashes opens that panel. */
+function TransitBody({t}){
+  return (
+    <div className="flex flex-col gap-3">
+      {t.transitRows.map(([name,time,impact,note],i)=>(
+        <div key={i} className="px-4 py-3.5" style={{background:"rgba(255,255,255,.03)",borderLeft:"3px solid var(--terra)"}}>
+          <div className="flex flex-wrap justify-between items-center gap-x-4 gap-y-1">
+            <span className="font-bold text-[.88rem]">{name}</span>
+            <span className="mono text-[.8rem] opacity-70">{time}</span>
+          </div>
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mt-1.5">
+            <span className="mono text-[10px] font-bold uppercase tracking-[.12em]" style={{color:"#F19A55"}}>{impact}</span>
+            <span className="text-[.78rem] opacity-75 flex-1 basis-[24ch]">{note}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+function DrivingBody({t}){
+  return (
+    <div>
+      <p className="text-[.88rem] opacity-85 m-0 mb-5" style={{color:"inherit"}}>{t.driveIntro}</p>
+      <div className="flex flex-col gap-4">
+        {t.driveCards.map(([label,body],i)=>(
+          <div key={i} className="rounded-sm px-5 py-4" style={{background:"rgba(224,123,57,.08)",border:"2px solid var(--terra)"}}>
+            <div className="mono text-[.7rem] font-black tracking-[.15em] uppercase mb-2" style={{color:"#F19A55"}}>{label}</div>
+            <p className="m-0 text-[.85rem] leading-relaxed opacity-90" style={{color:"inherit"}}>{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function AidBody({t}){
+  return (
+    <div>
+      <p className="text-[.85rem] m-0 mb-5 leading-relaxed opacity-85 max-w-[62ch]" style={{color:"inherit"}}>{t.aidIntro}</p>
+      <div className="w-full overflow-x-auto rounded" role="region" aria-label={t.aidTitle} tabIndex={0} style={{border:"1px solid rgba(255,255,255,.1)",WebkitOverflowScrolling:"touch"}}>
+        <table className="results-dark w-full min-w-[600px] text-left" style={{background:"transparent"}}>
+          <thead>
+            <tr style={{background:"rgba(255,255,255,.05)",borderBottom:"2px solid var(--terra)"}}>
+              {t.aidCols.map(c=><th key={c} className="p-4 text-[11px] font-extrabold uppercase tracking-[.08em]" style={{color:"var(--panel-fg)"}}>{c}</th>)}
+            </tr>
+          </thead>
+          <tbody className="text-[.82rem]">
+            {t.aidRows.map(([node,loc,supplies,access],i)=>(
+              <tr key={i} style={{borderBottom:i===0?"1px solid rgba(255,255,255,.05)":"none"}}>
+                <td className="p-4 font-extrabold" style={{color:"var(--panel-fg)"}}>{node}</td>
+                <td className="p-4 opacity-85">{loc}</td>
+                <td className="p-4 opacity-85">{supplies}</td>
+                <td className="p-4 opacity-60">{access}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+function Logistics({t}){
+  const ids=["closures","driving","aid-stations"];
+  const hashId=()=>{try{return decodeURIComponent(location.hash.slice(1));}catch(e){return "";}};
+  const [open,setOpen]=useState(()=>{const h=hashId();return ids.indexOf(h)>-1?h:"";});
+  useEffect(()=>{
+    const on=()=>{const h=hashId();if(ids.indexOf(h)>-1)setOpen(h);};
+    window.addEventListener("hashchange",on);
+    return ()=>window.removeEventListener("hashchange",on);
+  },[]);
+  const items=[[ids[0],t.transitTitle,<TransitBody t={t}/>],[ids[1],t.driveTitle,<DrivingBody t={t}/>],[ids[2],t.aidTitle,<AidBody t={t}/>]];
+  return (
+    <section className="logistics py-14 px-5 below-fold" style={{background:"var(--panel)",color:"var(--panel-fg)",borderTop:"2px solid var(--terra)"}} aria-labelledby="logistics-h">
+      <div className="max-w-[880px] mx-auto">
+        <div className="flex flex-col gap-2 mb-3">
+          <span className="eyebrow" style={{color:"#F19A55"}}>{t.logisticsKicker}</span>
+          <h2 id="logistics-h" className="display text-[clamp(1.5rem,3.5vw,2.2rem)]" style={{color:"inherit"}}>{t.logisticsTitle}</h2>
+        </div>
+        <p className="m-0 mb-6 text-[.9rem] opacity-85" style={{color:"inherit"}}>{t.logisticsIntro}</p>
+        <div style={{borderTop:"1px solid rgba(255,255,255,.18)"}}>
+          {items.map(([id,title,body])=>(
+            <div key={id} id={id} style={{borderBottom:"1px solid rgba(255,255,255,.18)",scrollMarginTop:"86px"}}>
+              <h3 className="m-0">
+                <button type="button" className="acc-q" aria-expanded={open===id} aria-controls={id+"-panel"} onClick={()=>setOpen(open===id?"":id)}>
+                  <span>{title}</span>
+                  <span aria-hidden="true" style={{color:"#F19A55",transform:open===id?"rotate(180deg)":"none",transition:"transform .15s ease",display:"inline-flex"}}><Ic name="ChevronDown" size={20}/></span>
+                </button>
+              </h3>
+              <div id={id+"-panel"} hidden={open!==id} className="pb-6">{body}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= race day shuttle ================= */
+function Shuttle({t}){
+  /* 2026-09-13: the operator's bus and logo sit beside the intro. Both images arrive on white, so they share
+     one white panel in either colour scheme, with fixed dark text inside it. */
+  return (
+    <section id="shuttle" className="py-14 px-4 below-fold" style={{background:"var(--sand-2)"}} aria-labelledby="shuttle-h">
+      <div className="max-w-[1080px] mx-auto">
+        <div className="grid gap-6 lg:gap-10 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] items-center mb-7">
+          <div>
+            <h2 id="shuttle-h" className="display text-[clamp(1.5rem,3.5vw,2.2rem)] mb-3">{t.shuttleTitle}</h2>
+            <p className="text-[.95rem] m-0 max-w-[62ch]" style={{color:"var(--ink-soft)"}}>{t.shuttleIntro}</p>
+          </div>
+          <figure className="shuttle-fig">
+            <img className="shuttle-bus" src={SHUTTLE_IMGS.bus} srcSet={SRCSET.bus} sizes="(min-width: 768px) 403px, 92vw" alt={t.shuttleBusAlt} width="1100" height="416" loading="lazy" decoding="async"/>
+            <figcaption className="shuttle-cap">
+              <span className="shuttle-cap-lbl">{t.shuttleOperatedBy}</span>
+              <img className="shuttle-logo" src={SHUTTLE_IMGS.logo} alt="Santa Fe Trails" width="320" height="168" loading="lazy" decoding="async"/>
+            </figcaption>
+          </figure>
+        </div>
+        <div className="grid gap-x-12 gap-y-8 grid-cols-1 sm:grid-cols-2 mb-7">
+          {t.shuttleLegs.map(([name,body],i)=>(
+            <div key={i} className="shuttle-leg">
+              <strong className="block mb-1.5" style={{color:"var(--terra)"}}>{name}</strong>
+              <p className="m-0 text-[.88rem]" style={{color:"var(--ink-soft)"}}>{body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mono text-[.72rem] m-0 max-w-[80ch]" style={{color:"var(--ink-soft)"}}>{t.shuttleNote}</p>
+      </div>
+    </section>
+  );
+}
+
+/* ================= ambassador ================= */
+function Ambassador({t}){
+  return (
+    <section className="py-16 below-fold" aria-labelledby="amb-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-9">
+          <span className="eyebrow">{t.ambKicker}</span>
+          <h2 id="amb-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.ambTitle}</h2>
+        </div>
+        <div className="amb-block grid gap-8 grid-cols-1 md:grid-cols-[260px_1fr] items-start">
+          <img src={IMGS.tricia} alt={t.ambAlt} loading="lazy" className="amb-photo rounded w-full h-[220px] object-cover"/>
+          <div className="flex flex-col gap-3">
+            <span className="mono text-[.72rem] font-bold inline-flex items-center gap-1.5" style={{color:"var(--terra)"}}>
+              <Ic name="Accessibility" size={15}/>{t.ambRole}
+            </span>
+            <p className="m-0 max-w-[58ch]">{t.ambBody}</p>
+            <ul className="list-none m-0 p-0 flex flex-col gap-1.5">
+              {t.ambFacts.map(f=>(
+                <li key={f} className="text-[.88rem] flex gap-2 items-center" style={{color:"var(--ink-soft)"}}>
+                  <span aria-hidden="true" className="inline-flex" style={{color:"var(--sunset)"}}><Ic name="ChevronRight" size={14}/></span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= perks ================= */
+function Perks({t}){
+  return (
+    <section className="pb-16 below-fold" aria-labelledby="perks-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-9">
+          <span className="eyebrow">{t.perksKicker}</span>
+          <h2 id="perks-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.perksTitle}</h2>
+        </div>
+        <div className="grid gap-x-12 gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {t.perks.map((p,i)=>(
+            <div key={i} className="perk">
+              <div className="mb-2.5" style={{color:"var(--terra)"}}><Ic name={p.ic} size={26}/></div>
+              <strong className="block mb-1.5">{p.name}</strong>
+              <p className="m-0 text-[.88rem]" style={{color:"var(--ink-soft)"}}>{p.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= travel ================= */
+function Travel({t}){
+  const [copiedIdx,setCopiedIdx]=useState(-1);
+  const copy=(i,code)=>{
+    try{navigator.clipboard.writeText(code).then(()=>setCopiedIdx(i)).catch(()=>setCopiedIdx(i));}
+    catch(e){setCopiedIdx(i);}
+  };
+  return (
+    <section className="py-16 below-fold" style={{background:"var(--sand-2)"}} aria-labelledby="travel-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-4">
+          <span className="eyebrow">{t.travelKicker}</span>
+          <h2 id="travel-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.travelTitle}</h2>
+        </div>
+        <p className="max-w-[58ch] mb-6">{t.travelIntro}</p>
+        <div className="lodge-official mb-10">
+          <span className="mono text-[11px] font-extrabold tracking-[.18em] uppercase" style={{color:"var(--terra)"}}>{t.lodgeEyebrow}</span>
+          <h3 className="text-[1.5rem] font-black uppercase tracking-[.03em] mt-2 mb-3" style={{color:"var(--terra)"}}>{t.lodgeName}</h3>
+          <p className="m-0 mb-5 text-[.9rem] max-w-[62ch]" style={{color:"var(--ink-soft)"}}>{t.lodgeStatement}</p>
+          <div className="flex flex-wrap gap-3 mb-6">
+            {t.lodgeProps.map(p=>(
+              <span key={p} className="lodge-prop">{p}</span>
+            ))}
+          </div>
+          <p className="m-0 mb-4 text-[.85rem] max-w-[62ch]" style={{color:"var(--ink-soft)"}}>{t.lodgeHow}</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <a className="btn !py-2.5 !px-4 !text-[.75rem]" style={{background:"var(--terra)",color:"#FFF8EF"}} href="mailto:starla@concepthotelgroup.com">starla@concepthotelgroup.com</a>
+            <a className="mono text-[.85rem] font-bold lodge-phone" style={{color:"var(--ink)",textDecoration:"none"}} href="tel:+15057720476">505-772-0476</a>
+            <span className="lodge-code">{t.code}: <strong>SHM</strong></span>
+            <button className="mono text-[.62rem] font-bold uppercase tracking-[.06em] rounded-[3px] px-2.5 py-1.5 cursor-pointer"
+              style={{background:"transparent",color:"var(--terra)",border:"1.5px solid var(--terra)"}} onClick={()=>copy(0,"SHM")}>
+              {copiedIdx===0? t.copied : t.copy}
+            </button>
+          </div>
+        </div>
+        <div className="lodge-also mb-10">
+          <span className="mono text-[11px] font-extrabold tracking-[.18em] uppercase" style={{color:"var(--terra)"}}>{t.pecosEyebrow}</span>
+          <h3 className="text-[1.15rem] font-black uppercase tracking-[.03em] mt-2 mb-2">{t.pecosName}</h3>
+          <p className="m-0 mb-4 text-[.9rem] max-w-[62ch]" style={{color:"var(--ink-soft)"}}>{t.pecosDetail}</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <a className="btn !py-2.5 !px-4 !text-[.75rem]" style={{background:"var(--terra)",color:"#FFF8EF"}} href="https://thepecostrailinn.com" target="_blank" rel="noopener noreferrer">thepecostrailinn.com</a>
+            <a className="mono text-[.85rem] font-bold" style={{color:"var(--ink)",textDecoration:"none"}} href="tel:+15059821943">(505) 982-1943</a>
+            <span className="lodge-code">{t.code}: <strong>RUNSANTAFE26</strong></span>
+            <button className="mono text-[.62rem] font-bold uppercase tracking-[.06em] rounded-[3px] px-2.5 py-1.5 cursor-pointer"
+              style={{background:"transparent",color:"var(--terra)",border:"1.5px solid var(--terra)"}} onClick={()=>copy(1,"RUNSANTAFE26")}>
+              {copiedIdx===1? t.copied : t.copy}
+            </button>
+          </div>
+        </div>
+        <div className="grid gap-x-12 gap-y-8 grid-cols-1 sm:grid-cols-2">
+          {t.travelTips.map((p,i)=>(
+            <div key={i} className="travel-tip">
+              <strong className="block mb-1.5" style={{color:"var(--terra)"}}>{p.name}</strong>
+              <p className="m-0 text-[.9rem]">{p.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= runner guidelines ================= */
+function Guidelines({t}){
+  return (
+    <section id="guidelines" className="py-16 below-fold" style={{background:"var(--sand-2)"}} aria-labelledby="guide-h">
+      <div className="max-w-[1080px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-9">
+          <span className="eyebrow">{t.guideKicker}</span>
+          <h2 id="guide-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.guideTitle}</h2>
+        </div>
+        <div className="grid gap-x-12 gap-y-8 grid-cols-1 sm:grid-cols-2">
+          {t.guideRules.map(([name,body],i)=>(
+            <div key={i} className="guide-rule">
+              <strong className="block mb-1.5" style={{color:"var(--terra)"}}>{name}</strong>
+              <p className="m-0 text-[.88rem]" style={{color:"var(--ink-soft)"}}>{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= kids race detail ================= */
+function KidsRace({t}){
+  return (
+    <section id="kids-race-info" className="w-full py-14 px-5 below-fold" style={{background:"var(--panel)",borderTop:"2px solid var(--terra)"}} aria-labelledby="kids-h">
+      <div className="kids-panel max-w-[750px] mx-auto" style={{color:"var(--panel-fg)"}}>
+        <span className="mono text-[11px] font-extrabold tracking-[.18em] uppercase" style={{color:"var(--sunset)"}}>{t.kidsKicker}</span>
+        <h3 id="kids-h" className="text-[1.35rem] font-black uppercase tracking-[.03em] mt-2 mb-1" style={{color:"#fff"}}>{t.kidsTitle}</h3>
+        <p className="mono text-[.72rem] font-semibold uppercase tracking-[.06em] mb-5" style={{color:"rgba(255,255,255,.6)"}}>{t.kidsMeta}</p>
+        <p className="m-0 mb-4 text-[.9rem] leading-relaxed" style={{color:"rgba(255,255,255,.82)"}}>{t.kidsP1}</p>
+        <p className="m-0 mb-6 text-[.9rem] leading-relaxed" style={{color:"rgba(255,255,255,.82)"}}>{t.kidsP2}</p>
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-5" style={{borderTop:"1px solid rgba(255,255,255,.1)"}}>
+          <span className="mono text-[.68rem] font-bold uppercase tracking-[.1em]" style={{color:"rgba(255,255,255,.6)"}}>{t.kidsTag}</span>
+          {REG_STATE==="open"
+            ? <a className="btn !py-3 !px-6 !text-[.72rem]" style={{background:"var(--terra)",color:"#FFF8EF"}} href="https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon">{t.kidsCta}</a>
+            : <span className="mono text-[.72rem] font-bold uppercase tracking-[.08em]" style={{color:"var(--sunset)"}}>{t.regClosed}</span>}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= FAQ ================= */
+function Faq({t}){
+  const [open,setOpen]=useState(0);
+  return (
+    <section id="faq" className="py-16 below-fold" aria-labelledby="faq-h">
+      <div className="max-w-[760px] mx-auto px-5">
+        <div className="flex flex-col gap-2 mb-9">
+          <span className="eyebrow">{t.faqKicker}</span>
+          <h2 id="faq-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]">{t.faqTitle}</h2>
+        </div>
+        <div style={{borderTop:"1px solid var(--line)"}}>
+          {t.faqs.map((f,i)=>(
+            <div key={i} style={{borderBottom:"1px solid var(--line)"}}>
+              <h3 className="m-0">
+                <button className="faq-q" aria-expanded={open===i} aria-controls={"faq-a-"+i} onClick={()=>setOpen(open===i?-1:i)}>
+                  <span>{f.q}</span>
+                  <span aria-hidden="true" style={{color:"var(--terra)",transform:open===i?"rotate(180deg)":"none",transition:"transform .15s ease",display:"inline-flex"}}>
+                    <Ic name="ChevronDown" size={18}/>
+                  </span>
+                </button>
+              </h3>
+              <div id={"faq-a-"+i} hidden={open!==i}>
+                <p className="mt-0 mb-4 text-[.92rem] max-w-[62ch]" style={{color:"var(--ink-soft)"}}>{f.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================= sponsors ================= */
+function Sponsors({t}){
+  const tierLabel="mono text-[.62rem] font-bold uppercase tracking-[.2em] mb-2";
+  return (
+    <section id="sponsors" className="py-16 below-fold" style={{background:"var(--panel)",color:"var(--panel-fg)"}} aria-labelledby="sponsors-h">
+      <div className="max-w-[1080px] mx-auto px-5 text-center">
+        <div className="flex flex-col items-center gap-2 mb-10">
+          <span className="eyebrow" style={{color:"var(--sunset)"}}>{t.sponsorsKicker}</span>
+          <h2 id="sponsors-h" className="display text-[clamp(1.7rem,4vw,2.6rem)]" style={{color:"inherit"}}>{t.sponsorsTitle}</h2>
+        </div>
+        <div className="sp-tier sp-tier-title mx-auto max-w-[560px] mb-8">
+          <div className={tierLabel} style={{color:"var(--sunset)"}}>{t.tierTitle}</div>
+          <img src={IMGS.capitol} alt="" loading="lazy" width="300" height="300" className="w-24 h-24 mx-auto mb-3 rounded-full bg-white object-contain"/>
+          <div className="display leading-none text-[clamp(1.9rem,5vw,2.9rem)]">Capitol Ford</div>
+        </div>
+        <div className="grid gap-x-12 gap-y-9 grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto mb-10">
+          <div className="sp-tier flex flex-col items-center justify-center gap-3">
+            <div className={tierLabel} style={{color:"#E7C36A"}}>{t.tierGold}</div>
+            <div className="bg-white rounded px-4 py-3 w-full max-w-[280px]">
+              <img src={IMGS.econ} alt="City of Santa Fe Economic Development" loading="lazy" width="500" height="108" className="w-full h-auto"/>
+            </div>
+          </div>
+          <div className="sp-tier flex flex-col items-center justify-center gap-3">
+            <div className={tierLabel} style={{color:"#C9CFD8"}}>{t.tierSilver}</div>
+            <div className="bg-white rounded px-4 py-3">
+              <img src={IMGS.jirani} alt="Jirani Kahawa" loading="lazy" width="300" height="286" className="sponsor-logo-jirani mx-auto"/>
+            </div>
+          </div>
+        </div>
+        {/* 2026-09-16 (Kosgei): the five sponsors that used to scroll past in the ticker, now
+            static. Advanced Prosthetics' logo is LIGHT artwork (mean brightness 162/255), so it
+            sits straight on the dark panel -- on the white chip the others need it would be
+            almost invisible. Same outer card and the same 2.5rem cap on every logo, so the row
+            still reads as one object. */}
+        <div className={tierLabel} style={{color:"var(--panel-fg)",opacity:.7}}>{t.tierCommunity}</div>
+        <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 max-w-[1080px] mx-auto mb-9">
+          {[{img:IMGS.arts,name:"Santa Fe Arts & Culture"},
+            {img:IMGS.county,name:"Santa Fe County"},
+            {img:IMGS.nuckolls,name:"Nuckolls Brewing Co."},
+            {img:IMGS.runhub,name:"The Running Hub"},
+            /* 2026-09-16: added by Kosgei from a pasted logo. The name is read off the artwork
+               itself; no website or description is published because neither is verified. */
+            {img:"https://santafehalfmarathon.com/wp-content/uploads/2026/09/nahn-enchantment-chapter-nm-logo.jpg",
+             name:"National Association of Hispanic Nurses, Enchantment Chapter of New Mexico"},
+            {img:IMGS.advanced,name:"Advanced Prosthetics & Orthotics",onDark:true}].map(c=>(
+            <div key={c.name} className="rounded-md px-3 py-3 flex items-center justify-center"
+              style={{border:"1px solid rgba(255,255,255,.35)",background:"rgba(255,255,255,.04)",minHeight:"5rem"}}>
+              {c.onDark
+                ? <img className="sponsor-chip-img" src={c.img} alt={c.name} loading="lazy"/>
+                : <span className="bg-white rounded w-full flex items-center justify-center px-3 py-2" style={{minHeight:"3.5rem"}}>
+                    <img className="sponsor-chip-img" src={c.img} alt={c.name} loading="lazy"/>
+                  </span>}
+            </div>
+          ))}
+        </div>
+        <a className="btn btn-ghost" style={{borderColor:"var(--panel-fg)",color:"var(--panel-fg)"}} href="/sponsors/">{t.sponsorCta}</a>
+        <p className="mono text-[.68rem] mt-3 mb-0 opacity-70">{t.sponsorCtaSub}</p>
+      </div>
+    </section>
+  );
+}
+
+/* ================= footer ================= */
+function Footer({t}){
+  const [email,setEmail]=useState("");
+  const [done,setDone]=useState(false);
+  const [busy,setBusy]=useState(false);
+  const [err,setErr]=useState(false);
+  const submit=e=>{
+    e.preventDefault();
+    if(busy||!email.includes("@"))return;
+    setBusy(true);setErr(false);
+    const body=new URLSearchParams();
+    body.set("action","fluentform_submit");
+    body.set("form_id","3");
+    body.set("data","email="+encodeURIComponent(email)+"&item_3__fluent_sf=");
+    fetch("/wp-admin/admin-ajax.php",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body.toString()})
+      .then(r=>r.json()).then(j=>{if(j&&j.success)setDone(true);else setErr(true);})
+      .catch(()=>setErr(true)).finally(()=>setBusy(false));
+  };
+  const socials=[["Facebook","https://www.facebook.com/RunSantaFe"],["Instagram","https://www.instagram.com/runsantafe"]];
+  return (
+    <footer className="pt-16 pb-10 on-panel" style={{background:"var(--panel)",color:"var(--panel-fg)"}}>
+      <div className="max-w-[1080px] mx-auto px-5 grid gap-10 grid-cols-1 md:grid-cols-2">
+        <div>
+          <h2 className="display text-[1.4rem] mb-2" style={{color:"inherit"}}>{t.footerNews}</h2>
+          <p className="text-[.88rem] mb-4 max-w-[42ch] opacity-85">{t.footerNewsSub}</p>
+          {done ? (
+            <p className="mono text-[.8rem] font-bold" style={{color:"var(--sunset)"}} aria-live="polite">{t.subscribed}</p>
+          ) : (
+            <form onSubmit={submit} className="flex flex-wrap gap-2">
+              <label className="flex-1 basis-[200px]">
+                <span className="sr-only">{t.emailLbl}</span>
+                <input type="email" required placeholder={t.emailPh} value={email} onChange={e=>setEmail(e.target.value)}
+                  className="w-full" style={{background:"rgba(255,255,255,.1)",border:"1px solid rgba(245,237,224,.35)",color:"inherit"}}/>
+              </label>
+              <button className="btn" style={{background:"var(--sunset)",color:"#1E1530"}} type="submit" disabled={busy}>{busy? t.subscribing : t.subscribe}</button>
+            </form>
+          )}
+          {err && <p className="mono text-[.7rem] mt-3" role="alert" style={{color:"var(--sunset)"}}>{t.subErr}</p>}
+        </div>
+        <div>
+          <img src={IMGS.logo} alt="Santa Fe International Half Marathon - Capitol Ford International Races" loading="lazy"
+            className="w-24 h-24 object-contain rounded mb-4 p-1" style={{background:"#FFFFFF"}}/>
+          <h3 className="display text-[1rem] mb-3" style={{color:"inherit"}}>{t.contact}</h3>
+          <p className="m-0 mb-1.5 text-[.9rem]"><a href="mailto:info@santafehalfmarathon.com" style={{color:"var(--sunset)"}}>info@santafehalfmarathon.com</a></p>
+          <p className="mono m-0 mb-4 text-[.85rem]"><a href="tel:+15059209799" style={{color:"inherit",textDecoration:"none"}}>505-920-9799</a></p>
+          <h3 className="display text-[1rem] mb-2" style={{color:"inherit"}}>{t.follow}</h3>
+          <div className="flex gap-3 mb-4">
+            {socials.map(([n,href])=>(
+              <a key={n} href={href} target="_blank" rel="noopener" aria-label={n}
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full"
+                style={{border:"1px solid rgba(245,237,224,.4)",color:"inherit"}}>
+                <Ic name={n} size={16}/>
+              </a>
+            ))}
+          </div>
+          <p className="m-0 text-[.8rem] opacity-75 max-w-[40ch]">{t.footerNote}</p>
+        </div>
+      </div>
+      <div className="max-w-[1080px] mx-auto px-5 mt-10 pt-5" style={{borderTop:"1px solid rgba(245,237,224,.2)"}}>
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          <p className="mono text-[.62rem] opacity-60 m-0">© 2026 Santa Fe International Half Marathon</p>
+          <p className="mono text-[.62rem] m-0 flex gap-5">
+            <a href="/privacy-policy/" style={{color:"inherit",opacity:.75}}>{t.legalPrivacy}</a>
+            <a href="/refund-policy/" style={{color:"inherit",opacity:.75}}>{t.legalRefund}</a>
+          </p>
+        </div>
+        <div className="h-14 md:hidden" aria-hidden="true"></div>
+      </div>
+    </footer>
+  );
+}
+
+/* ================= mobile bottom cta ================= */
+function MobileCta({t}){
+  const [show,setShow]=useState(false);
+  useEffect(()=>{
+    const on=()=>setShow(window.scrollY>600);
+    window.addEventListener("scroll",on,{passive:true});
+    on();
+    return ()=>window.removeEventListener("scroll",on);
+  },[]);
+  if(!show) return null;
+  return (
+    <div className="fixed bottom-0 inset-x-0 z-50 md:hidden flex items-center justify-between gap-3 px-4 py-2.5" style={{background:"var(--terra)",paddingBottom:"calc(.625rem + env(safe-area-inset-bottom))"}}>
+      <span className="mono text-[.72rem] font-bold uppercase tracking-[.08em]" style={{color:"#FFF8EF"}}>{REG_STATE==="walkup" ? t.walkupShort : t.bannerDate}</span>
+      {REG_STATE==="open"
+        ? <a className="btn !py-2.5 !px-5" style={{background:"#FFF8EF",color:"#8C3A24"}} href={REG_URL} target="_blank" rel="noopener">{t.heroCta}</a>
+        : null}
+    </div>
+  );
+}
+
+/* ================= app ================= */
+function App(){
+  const [lang,setLang]=useState("en");
+  const t=T[lang];
+  useEffect(()=>{document.documentElement.lang=lang;},[lang]);
+  useEffect(()=>{
+    let iv=null;
+    const settle=()=>{
+      if(iv)clearInterval(iv);
+      const id=decodeURIComponent(location.hash.slice(1));if(!id)return;
+      let ticks=0,stable=0;
+      iv=setInterval(()=>{
+        const el=document.getElementById(id);
+        if(!el||++ticks>22){clearInterval(iv);iv=null;return;}
+        const top=el.getBoundingClientRect().top;
+        if(Math.abs(top-86)>6){el.scrollIntoView({behavior:"instant",block:"start"});stable=0;}
+        else if(++stable>2){clearInterval(iv);iv=null;}
+      },80);
+    };
+    const t=setTimeout(settle,300);
+    window.addEventListener('hashchange',settle);
+    return ()=>{clearTimeout(t);if(iv)clearInterval(iv);window.removeEventListener('hashchange',settle);};
+  },[]);
+  return (
+    <React.Fragment>
+      <a href="#main" className="skip-link">{t.skip}</a>
+      <TopStrip t={t}/>
+      <Nav t={t} lang={lang} setLang={setLang}/>
+      <Hero t={t}/>
+      <QuickBar t={t}/>
+      <HeroFacts t={t}/>
+      <main id="main">
+        <Races t={t}/>
+        <KidsRace t={t}/>
+        <Course t={t}/>
+        <Story t={t}/>
+        <VoiceOfRiver t={t}/>
+        <CommunityImpact t={t}/>
+        <Schedule t={t}/>
+        <Logistics t={t}/>
+        <Shuttle t={t}/>
+        <Ambassador t={t}/>
+        <Perks t={t}/>
+        <Travel t={t}/>
+        <Guidelines t={t}/>
+        <Faq t={t}/>
+        <Sponsors t={t}/>
+      </main>
+      <Footer t={t}/>
+      <MobileCta t={t}/>
+    </React.Fragment>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>

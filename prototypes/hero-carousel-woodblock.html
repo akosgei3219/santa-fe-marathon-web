@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santa Fe River Run — Woodblock Hero Carousel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { bone: '#FAF9F6', charcoal: '#2D2D2D', volcanic: '#AD4A2E' },
+      fontFamily: {
+        display: ['"Bebas Neue"', 'sans-serif'],
+        grotesk: ['"Space Grotesk"', 'monospace'],
+      },
+    },
+  },
+};
+</script>
+<style>
+  html { background: #FAF9F6; }
+  .title-set { line-height: .82; letter-spacing: -0.02em; }
+  .micro { letter-spacing: .15em; }
+  /* zero transitions anywhere in this component -- switching is a hard cut */
+  #carousel *, #carousel *::before, #carousel *::after { transition: none !important; animation: none !important; }
+  .slide[hidden] { display: none !important; }
+  .tab[aria-selected="true"] { border-color: #AD4A2E; background: #2D2D2D; color: #FAF9F6; }
+  .tab[aria-selected="true"] .tab-index { color: #AD4A2E; }
+  .tab:focus-visible { outline: 3px solid #AD4A2E; outline-offset: 3px; }
+</style>
+</head>
+<body class="bg-bone text-charcoal font-grotesk">
+
+<section id="carousel" class="mx-auto max-w-6xl px-5 py-12 md:py-20" aria-label="Race imagery">
+
+  <!-- global header label -->
+  <div class="flex flex-wrap items-baseline justify-between gap-3 border-b-4 border-charcoal pb-3">
+    <p class="micro text-[11px] font-500 uppercase">// CORE IMAGERY ARCHIVE&nbsp;&nbsp;// DATA SOURCE: SANTA FE TRAILS</p>
+    <p class="micro text-[11px] uppercase" aria-hidden="true">
+      TRACK&nbsp;<span id="trackNow" class="font-700 text-volcanic">01</span>&nbsp;/&nbsp;03
+    </p>
+  </div>
+
+  <h1 class="font-display title-set uppercase text-[17vw] md:text-[7.5rem] mt-8 mb-2">
+    5th Annual<br>Santa Fe River Run
+  </h1>
+
+  <!-- hard-edged display frame -->
+  <div class="mt-8 border-4 border-charcoal bg-charcoal shadow-[8px_8px_0px_#2D2D2D]">
+
+    <div class="slide" id="slide-1" role="group" aria-roledescription="slide" aria-label="1 of 3">
+      <div class="relative">
+        <img src="https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-startline.jpg"
+             alt="A packed field of runners in race bibs surging through the start corrals"
+             class="w-full aspect-[16/9] object-cover grayscale contrast-125 mix-blend-luminosity opacity-90">
+        <p class="absolute bottom-0 left-0 micro bg-bone px-4 py-2 text-[11px] uppercase border-t-4 border-r-4 border-charcoal">
+          FIG. 01 — THE ANCHOR SURGE
+        </p>
+      </div>
+      <div class="bg-bone border-t-4 border-charcoal px-5 py-4 md:flex md:items-baseline md:gap-8">
+        <h2 class="font-display title-set uppercase text-4xl md:text-5xl shrink-0">The Anchor Surge</h2>
+        <p class="mt-2 md:mt-0 text-sm leading-relaxed max-w-prose">
+          The pack of competitive athletes in official technical race bibs — numbers 026 and 239 riding
+          the front edge — surging past the starting loop corrals.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide" id="slide-2" role="group" aria-roledescription="slide" aria-label="2 of 3" hidden>
+      <div class="relative">
+        <!-- PLACEHOLDER IMAGE: no Kudu-horn photo exists in the media library yet.
+             Swap src when the real frame is uploaded. -->
+        <img src="https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-startarch.jpg"
+             alt="The start is sounded on the traditional African Kudu horn to launch the field"
+             class="w-full aspect-[16/9] object-cover grayscale contrast-125 mix-blend-luminosity opacity-90">
+        <p class="absolute bottom-0 left-0 micro bg-bone px-4 py-2 text-[11px] uppercase border-t-4 border-r-4 border-charcoal">
+          FIG. 02 — THE PRIMAL CALL
+        </p>
+      </div>
+      <div class="bg-bone border-t-4 border-charcoal px-5 py-4 md:flex md:items-baseline md:gap-8">
+        <h2 class="font-display title-set uppercase text-4xl md:text-5xl shrink-0">The Primal Call</h2>
+        <p class="mt-2 md:mt-0 text-sm leading-relaxed max-w-prose">
+          Standing tall in the open vehicle, the operational director sounds the traditional African
+          Kudu horn — and the field launches at 7:30 AM.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide" id="slide-3" role="group" aria-roledescription="slide" aria-label="3 of 3" hidden>
+      <div class="relative">
+        <img src="https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-oncourse.jpg"
+             alt="Runners on the paved Santa Fe River Trail corridor between village paths and cottonwoods"
+             class="w-full aspect-[16/9] object-cover grayscale contrast-125 mix-blend-luminosity opacity-90">
+        <p class="absolute bottom-0 left-0 micro bg-bone px-4 py-2 text-[11px] uppercase border-t-4 border-r-4 border-charcoal">
+          FIG. 03 — THE GREENWAY CORRIDOR
+        </p>
+      </div>
+      <div class="bg-bone border-t-4 border-charcoal px-5 py-4 md:flex md:items-baseline md:gap-8">
+        <h2 class="font-display title-set uppercase text-4xl md:text-5xl shrink-0">The Greenway Corridor</h2>
+        <p class="mt-2 md:mt-0 text-sm leading-relaxed max-w-prose">
+          The continuous 8-foot-wide paved concrete corridor of the Santa Fe River Trail, flanking the
+          village paths and the cottonwoods.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- manual block toggle tabs: hard cut, no motion -->
+  <div role="tablist" aria-label="Choose image" class="mt-8 grid gap-4 md:grid-cols-3">
+    <button role="tab" class="tab micro border-4 border-charcoal bg-bone px-4 py-4 text-left text-[12px] font-700 uppercase cursor-pointer"
+            aria-selected="true" aria-controls="slide-1" data-slide="1">
+      <span class="tab-index">[ LINK TRACK 01</span> // SURGE AXIS ]
+    </button>
+    <button role="tab" class="tab micro border-4 border-charcoal bg-bone px-4 py-4 text-left text-[12px] font-700 uppercase cursor-pointer"
+            aria-selected="false" aria-controls="slide-2" data-slide="2">
+      <span class="tab-index">[ LINK TRACK 02</span> // KUDU ACOUSTIC ]
+    </button>
+    <button role="tab" class="tab micro border-4 border-charcoal bg-bone px-4 py-4 text-left text-[12px] font-700 uppercase cursor-pointer"
+            aria-selected="false" aria-controls="slide-3" data-slide="3">
+      <span class="tab-index">[ LINK TRACK 03</span> // PAVED CORRIDOR ]
+    </button>
+  </div>
+
+  <!-- slogan block -->
+  <figure class="mt-12 border-l-4 border-volcanic pl-6 max-w-2xl">
+    <blockquote class="font-display title-set uppercase text-3xl md:text-4xl">
+      &ldquo;The Santa Fe River trail will dance your shadows like the water dancers by a river&hellip;
+      and will tell times on the loop course.&rdquo;
+    </blockquote>
+    <figcaption class="micro mt-4 text-[11px] uppercase">// FIELD NOTE — LOOP COURSE, 7,000 FT</figcaption>
+  </figure>
+
+</section>
+
+<script>
+(function () {
+  "use strict";
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('#carousel [role="tab"]'));
+  var slides = Array.prototype.slice.call(document.querySelectorAll('#carousel .slide'));
+  var counter = document.getElementById('trackNow');
+
+  function select(n) {
+    slides.forEach(function (s, i) { s.hidden = (i !== n - 1); });
+    tabs.forEach(function (t) {
+      t.setAttribute('aria-selected', String(t.dataset.slide === String(n)));
+    });
+    counter.textContent = '0' + n;
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { select(Number(t.dataset.slide)); });
+  });
+
+  /* roving arrow keys across the tablist, still zero motion */
+  document.querySelector('#carousel [role="tablist"]').addEventListener('keydown', function (e) {
+    var i = tabs.findIndex(function (t) { return t.getAttribute('aria-selected') === 'true'; });
+    if (e.key === 'ArrowRight') { i = (i + 1) % tabs.length; }
+    else if (e.key === 'ArrowLeft') { i = (i + tabs.length - 1) % tabs.length; }
+    else { return; }
+    tabs[i].focus();
+    select(i + 1);
+  });
+})();
+</script>
+</body>
+</html>

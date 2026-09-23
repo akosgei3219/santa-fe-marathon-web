@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFHM Hero — Light High-Desert Concept (prototype, not deployed)</title>
+<style>
+:root{
+  --sand:#FBF9F6;          /* brand High-Desert Sand */
+  --sand-2:#F1EDE6;
+  --ink:#222222;           /* brand Earth Charcoal */
+  --ink-soft:#55514D;
+  --terra:#C2593F;         /* brand New Mexico Terracotta — display sizes only */
+  --terra-text:#AD4A2E;    /* AA-safe terracotta for small text on sand */
+  --peach:#F7D9C4;
+  --clay:#D98E6A;
+  --line:#DCD6CE;
+  --font-display:'Archivo','Arial Narrow',sans-serif;
+  --font-body:'Hanken Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--sand);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+.hero{
+  position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;
+}
+/* soft abstract high-desert wash: terracotta / clay / peach blooms on sand */
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(560px 420px at 84% 18%, rgba(194,89,63,.16), transparent 65%),
+    radial-gradient(680px 520px at 96% 72%, rgba(217,142,106,.22), transparent 70%),
+    radial-gradient(520px 460px at 68% 96%, rgba(247,217,196,.55), transparent 72%),
+    radial-gradient(420px 380px at 8% 88%, rgba(241,237,230,.9), transparent 70%);
+}
+/* faint ridge line, pure decoration */
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:34vh;pointer-events:none;opacity:.14;
+  background:linear-gradient(178deg, transparent 52%, var(--clay) 52.4%, transparent 53.5%),
+             linear-gradient(176deg, transparent 64%, var(--terra) 64.5%, transparent 66%);
+}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:7rem 2rem 5rem}
+.tag{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);
+  margin-bottom:2.2rem;
+}
+.tag .dot{width:7px;height:7px;border-radius:50%;background:var(--terra);flex:none}
+h1{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(2.6rem,7vw,5.4rem);line-height:.97;letter-spacing:.012em;font-stretch:90%;
+  max-width:16ch;
+}
+h1 .row{display:block}
+h1 .river{color:var(--terra);font-size:.62em;letter-spacing:.02em;margin-top:.35em}
+.desc{
+  max-width:52ch;margin:2.2rem 0 3rem;font-size:clamp(1rem,1.6vw,1.17rem);line-height:1.65;color:var(--ink-soft);
+}
+/* "Ask anything" — VISUAL MOCK ONLY, no backend wired */
+.ask{
+  display:flex;align-items:center;gap:.9rem;max-width:560px;
+  background:#FFFFFF;border:1px solid var(--line);border-radius:999px;
+  padding:.55rem .7rem;box-shadow:0 1px 2px rgba(34,34,34,.05),0 16px 40px -24px rgba(34,34,34,.35);
+}
+.ask .plus{
+  width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--line);
+  background:var(--sand-2);color:var(--terra-text);font-size:1.4rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--font-body);
+}
+.ask .field{position:relative;flex:1}
+.ask input{
+  width:100%;border:0;outline:none;background:transparent;font:inherit;font-size:1rem;color:var(--ink);
+  padding:.65rem .25rem .3rem;
+}
+.ask label{
+  position:absolute;left:.25rem;top:50%;transform:translateY(-50%);
+  color:var(--ink-soft);font-size:1rem;pointer-events:none;transition:all .18s ease;
+}
+.ask input:focus + label,.ask input:not(:placeholder-shown) + label{
+  top:.1rem;transform:none;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-text);
+}
+.note{
+  margin-top:3.5rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);opacity:.7;
+}
+@media (max-width:640px){.wrap{padding:5rem 1.4rem 4rem}}
+</style>
+</head>
+<body>
+<section class="hero" aria-label="Santa Fe International Half Marathon">
+  <div class="wrap">
+    <p class="tag"><span class="dot" aria-hidden="true"></span>7,000 Feet Altitude Challenge</p>
+    <h1>
+      <span class="row">Thin Air.</span>
+      <span class="row">Big Sky.</span>
+      <span class="row">True Grit.</span>
+      <span class="row river">Run the Santa Fe River.</span>
+    </h1>
+    <p class="desc">Conquer the premier high-desert route. An unforgettable running narrative framed by rich New Mexico terracotta peaks and pure mountain atmosphere.</p>
+    <form class="ask" onsubmit="return false" aria-label="Ask anything (concept mock)">
+      <button type="button" class="plus" aria-label="Add">+</button>
+      <span class="field">
+        <input id="ask" type="text" placeholder=" ">
+        <label for="ask">Ask anything about race weekend</label>
+      </span>
+    </form>
+    <p class="note">Concept prototype — not deployed. "Ask anything" is a visual mock; no AI backend exists yet.</p>
+  </div>
+</section>
+</body>
+</html>

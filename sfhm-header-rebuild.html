@@ -1,0 +1,268 @@
+<!-- ============================================================
+     SFHM header rebuild — announcement banner + branding + megamenu
+     Vanilla CSS only (grid + flexbox), no JS required.
+     Desktop: megamenus open on :hover and :focus-within.
+     Mobile (< 900px): nav stacks and megamenu columns render inline.
+     No emoji, no text arrows (site rule) — SVG chevron only.
+     Swap the href values for the live nav targets before deploying.
+     ============================================================ -->
+
+<style>
+  /* ---------- Tokens ---------- */
+  .sfhm-header-wrap {
+    --sfhm-green: #2C6E49;
+    --sfhm-ink: #1C2321;
+    --sfhm-gold: #C9A227;
+    --sfhm-paper: #FFFFFF;
+    --sfhm-line: #E4E1DA;
+    --sfhm-muted: #5C6662;
+    --sfhm-font-display: 'Oswald', 'Arial Narrow', sans-serif;
+    --sfhm-font-body: Inter, Helvetica, Arial, sans-serif;
+    font-family: var(--sfhm-font-body);
+    color: var(--sfhm-ink);
+  }
+  .sfhm-header-wrap *, .sfhm-header-wrap *::before, .sfhm-header-wrap *::after {
+    box-sizing: border-box;
+  }
+
+  /* ---------- Announcement banner ---------- */
+  .sfhm-notice-bar {
+    background: var(--sfhm-green);
+    padding: 10px 16px;
+  }
+
+  /* ---------- Branding header ---------- */
+  .sfhm-masthead {
+    background: var(--sfhm-paper);
+    border-bottom: 1px solid var(--sfhm-line);
+    position: relative;
+    z-index: 50;
+  }
+  .sfhm-masthead-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 72px;
+  }
+  .sfhm-brand {
+    font-family: var(--sfhm-font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-decoration: none;
+    color: var(--sfhm-ink);
+    white-space: nowrap;
+  }
+  .sfhm-brand span { color: var(--sfhm-green); }
+
+  /* ---------- Primary nav ---------- */
+  .sfhm-nav > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .sfhm-nav > ul > li { position: static; }
+  .sfhm-nav > ul > li > a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 26px 14px;
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--sfhm-ink);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+  }
+  .sfhm-nav > ul > li > a:hover,
+  .sfhm-nav > ul > li > a:focus-visible {
+    color: var(--sfhm-green);
+    border-bottom-color: var(--sfhm-gold);
+  }
+  .sfhm-caret { width: 12px; height: 12px; flex: none; }
+
+  /* ---------- Megamenu panel ---------- */
+  .sfhm-mega {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--sfhm-paper);
+    border-top: 3px solid var(--sfhm-gold);
+    border-bottom: 1px solid var(--sfhm-line);
+    box-shadow: 0 18px 32px rgba(28, 35, 33, .14);
+    /* hidden by default; visibility+opacity keep it focusable when open */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  }
+  .sfhm-nav li.sfhm-has-mega:hover > .sfhm-mega,
+  .sfhm-nav li.sfhm-has-mega:focus-within > .sfhm-mega {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+  .sfhm-mega-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 20px 32px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+  }
+  .sfhm-mega-col h3 {
+    margin: 0 0 12px;
+    font-family: var(--sfhm-font-display);
+    font-size: .82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--sfhm-muted);
+    border-bottom: 1px solid var(--sfhm-line);
+    padding-bottom: 8px;
+  }
+  .sfhm-mega-col ul { list-style: none; margin: 0; padding: 0; }
+  .sfhm-mega-col li + li { margin-top: 2px; }
+  .sfhm-mega-col a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: .95rem;
+    color: var(--sfhm-ink);
+    text-decoration: none;
+  }
+  .sfhm-mega-col a:hover,
+  .sfhm-mega-col a:focus-visible {
+    background: #F3F1EB;
+    color: var(--sfhm-green);
+  }
+
+  /* ---------- Mobile: stack nav, render megamenu columns inline ---------- */
+  @media (max-width: 900px) {
+    .sfhm-masthead-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 14px 20px;
+      gap: 8px;
+    }
+    .sfhm-nav { width: 100%; }
+    .sfhm-nav > ul { flex-direction: column; gap: 0; }
+    .sfhm-nav > ul > li > a {
+      padding: 12px 4px;
+      border-bottom: 1px solid var(--sfhm-line);
+    }
+    .sfhm-caret { display: none; }
+    .sfhm-mega {
+      position: static;
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+      box-shadow: none;
+      border-top: 0;
+      border-bottom: 0;
+      transition: none;
+    }
+    .sfhm-mega-inner {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 6px 4px 14px 18px;
+    }
+  }
+</style>
+
+<div class="sfhm-header-wrap">
+
+  <!-- 1. Top announcement banner (corrected style attribute) -->
+  <div class="sfhm-notice-bar" role="region" aria-label="Race day notice">
+    <p style="display:block; color:#fff; font-family:'Oswald', sans-serif; font-size:1.08rem; font-weight:700; letter-spacing:.06em; text-align:center; margin:0;">
+      Notice: Main race fields convene Sunday, September 20, 2026. Roads into the start close at 7:00 AM.
+    </p>
+  </div>
+
+  <!-- 2. Branding + primary navigation -->
+  <header class="sfhm-masthead">
+    <div class="sfhm-masthead-inner">
+      <a class="sfhm-brand" href="/">SANTA FE <span>INTL HALF</span></a>
+
+      <nav class="sfhm-nav" aria-label="Primary">
+        <ul>
+          <!-- 3a. Event Info megamenu -->
+          <li class="sfhm-has-mega">
+            <a href="/races/" aria-haspopup="true">
+              Event Info
+              <svg class="sfhm-caret" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="sfhm-mega">
+              <div class="sfhm-mega-inner">
+                <div class="sfhm-mega-col">
+                  <h3>Choose your distance</h3>
+                  <ul>
+                    <li><a href="/half-marathon/">Half Marathon</a></li>
+                    <li><a href="/3-amigos-relay/">3-Amigos Relay</a></li>
+                    <li><a href="/5k-fitness/">5K Fitness</a></li>
+                    <li><a href="/kids-dash/">Kids Dash</a></li>
+                  </ul>
+                </div>
+                <div class="sfhm-mega-col">
+                  <h3>Race Weekend</h3>
+                  <ul>
+                    <li><a href="/schedule/">Full schedule</a></li>
+                    <li><a href="/packet-pickup/">Packet Pickup</a></li>
+                    <li><a href="/course-highlights/">Course Map</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li><a href="/results/">Results</a></li>
+          <li><a href="/our-story/">Story</a></li>
+
+          <!-- 3b. Plan megamenu -->
+          <li class="sfhm-has-mega">
+            <a href="/plan/" aria-haspopup="true">
+              Plan
+              <svg class="sfhm-caret" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="sfhm-mega">
+              <div class="sfhm-mega-inner">
+                <div class="sfhm-mega-col">
+                  <h3>The Route</h3>
+                  <ul>
+                    <li><a href="/start-line/">Start Line</a></li>
+                    <li><a href="/getting-there/">Getting there</a></li>
+                    <li><a href="/parking/">Parking</a></li>
+                    <li><a href="/logistics/">Logistics</a></li>
+                    <li><a href="/gear-bag-drop/">Gear &amp; Bag Drop</a></li>
+                  </ul>
+                </div>
+                <div class="sfhm-mega-col">
+                  <h3>On Course</h3>
+                  <ul>
+                    <li><a href="/safety-support/">Safety &amp; Support</a></li>
+                    <li><a href="/finish-line/">Finish line</a></li>
+                    <li><a href="/results-photos/">Results &amp; Photos</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li><a href="/runner-guidelines/">Runner Guidelines</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/sponsors/">Sponsors</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+</div>

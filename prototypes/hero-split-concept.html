@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFHM Hero — Split-Screen Concept (prototype, not deployed)</title>
+<style>
+:root{
+  --sand:#FBF9F6;--sand-2:#F1EDE6;--ink:#222222;--ink-soft:#55514D;
+  --terra:#C2593F;--terra-text:#AD4A2E;--line:#DCD6CE;
+  --font-display:'Archivo','Arial Narrow',sans-serif;--font-body:'Hanken Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--sand);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+.hero{display:grid;grid-template-columns:minmax(0,46%) minmax(0,54%);min-height:100vh}
+.content{display:flex;align-items:center;padding:clamp(2.5rem,6vw,6rem) clamp(1.5rem,4.5vw,5rem)}
+.inner{max-width:560px}
+.tag{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2rem}
+.tag .dot{width:7px;height:7px;border-radius:50%;background:var(--terra);flex:none}
+h1{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.4rem,4.6vw,4.4rem);line-height:.97;letter-spacing:.012em;font-stretch:90%}
+h1 .row{display:block}
+h1 .river{color:var(--terra);font-size:.6em;letter-spacing:.02em;margin-top:.4em}
+.desc{max-width:46ch;margin:2rem 0 2.6rem;font-size:clamp(.98rem,1.4vw,1.12rem);line-height:1.65;color:var(--ink-soft)}
+.ask{display:flex;align-items:center;gap:.9rem;max-width:520px;background:#FFF;border:1px solid var(--line);border-radius:999px;padding:.5rem .65rem;box-shadow:0 1px 2px rgba(34,34,34,.05),0 16px 40px -24px rgba(34,34,34,.35)}
+.ask .plus{width:42px;height:42px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--sand-2);color:var(--terra-text);font-size:1.35rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.ask .field{position:relative;flex:1}
+.ask input{width:100%;border:0;outline:none;background:transparent;font:inherit;font-size:.98rem;color:var(--ink);padding:.62rem .25rem .28rem}
+.ask label{position:absolute;left:.25rem;top:50%;transform:translateY(-50%);color:var(--ink-soft);font-size:.98rem;pointer-events:none;transition:all .18s ease}
+.ask input:focus + label,.ask input:not(:placeholder-shown) + label{top:.05rem;transform:none;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-text)}
+.photo{position:relative;min-height:46vh;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--sand) 0%,rgba(251,249,246,0) 7%),linear-gradient(0deg,rgba(34,34,34,.14),transparent 30%)}
+.note{margin-top:2.6rem;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);opacity:.7}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;grid-template-rows:auto minmax(46vh,1fr)}
+  .photo::after{background:linear-gradient(180deg,var(--sand) 0%,rgba(251,249,246,0) 8%)}
+}
+</style>
+</head>
+<body>
+<section class="hero" aria-label="Santa Fe International Half Marathon">
+  <div class="content">
+    <div class="inner">
+      <p class="tag"><span class="dot" aria-hidden="true"></span>7,000 Feet Altitude Challenge</p>
+      <h1>
+        <span class="row">Thin Air.</span>
+        <span class="row">Big Sky.</span>
+        <span class="row">True Grit.</span>
+        <span class="row river">Run the Santa Fe River.</span>
+      </h1>
+      <p class="desc">Conquer the premier high-desert route. An unforgettable running narrative framed by rich New Mexico terracotta peaks and pure mountain atmosphere.</p>
+      <form class="ask" onsubmit="return false" aria-label="Ask anything (concept mock)">
+        <button type="button" class="plus" aria-label="Add">+</button>
+        <span class="field">
+          <input id="ask" type="text" placeholder=" ">
+          <label for="ask">Ask anything about race weekend</label>
+        </span>
+      </form>
+      <p class="note">Concept prototype — not deployed. "Ask anything" is a visual mock.</p>
+    </div>
+  </div>
+  <div class="photo">
+    <img src="https://santafehalfmarathon.com/wp-content/uploads/2026/02/DSC_5598-scaled.webp" alt="Runners on the high-desert course in Santa Fe">
+  </div>
+</section>
+</body>
+</html>

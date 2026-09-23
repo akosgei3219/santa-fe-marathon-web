@@ -1,0 +1,197 @@
+<!-- ============================================================
+  Santa Fe Half Marathon — Live Results section (serverless)
+  Paste this whole file into ONE Elementor HTML widget or a
+  Gutenberg "Custom HTML" block. No server required: the
+  leaderboard and bib search read RunSignup's public results
+  API directly from the browser (CORS-open, no key).
+  Source: github.com/akosgei3219/santa-fe-results (adapted to
+  run without the Render results server).
+============================================================ -->
+<style>
+.sfhm{--bg:#0A0A0A;--card-bg:#121212;--border-gray:#1E1E1E;--text:#ffffff;--text-muted:#A3A3A3;--nm-gold:#FFB800;--nm-crimson:#D6221D;--nm-turquoise:#00A896;--row:#161616;
+  background:var(--bg);color:var(--text);line-height:1.55;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+.sfhm *{box-sizing:border-box;}
+.sfhm a{color:var(--nm-gold);}
+.sfhm .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+.sfhm .eyebrow{color:var(--nm-gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem;margin:0 0 8px;}
+.sfhm h2,.sfhm h3{color:var(--text);}
+.sfhm h2{font-size:2rem;font-weight:900;margin:0 0 8px;}
+.sfhm .section{padding:64px 0;}
+.sfhm .section-sub{color:var(--text-muted);max-width:640px;margin:0 0 28px;}
+.sfhm .card{background:var(--card-bg);border:1px solid var(--border-gray);border-radius:16px;overflow:hidden;}
+.sfhm .btn{display:inline-block;background:var(--nm-gold);color:#0A0A0A;font-weight:800;text-decoration:none;border-radius:10px;padding:10px 20px;font-size:.95rem;border:0;cursor:pointer;}
+.sfhm .btn:hover,.sfhm .btn:focus{filter:brightness(1.08);}
+.sfhm :focus-visible{outline:2px solid var(--nm-gold);outline-offset:2px;}
+.sfhm [id]{scroll-margin-top:84px;}
+.sfhm .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;}
+.sfhm .results-links{padding:24px;}
+.sfhm .results-links ul{list-style:none;padding:0;margin:12px 0 0;}
+.sfhm .results-links li{padding:10px 0;border-top:1px solid var(--border-gray);font-size:.95rem;}
+.sfhm .results-links li:first-child{border-top:0;}
+.sfhm .footnote{color:var(--text-muted);font-size:.8rem;margin:16px 0 0;}
+/* leaderboard */
+.sfhm .lb{padding:18px 18px 14px;}
+.sfhm .lb .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 12px;}
+.sfhm .lb select,.sfhm .lb input,.sfhm .lb button{background:var(--bg);color:var(--text);border:1px solid var(--border-gray);border-radius:8px;padding:6px 10px;font-size:13px;font-family:inherit;}
+.sfhm .lb button{cursor:pointer;}
+.sfhm .lb label{color:var(--text-muted);font-size:12px;}
+.sfhm .lb table{width:100%;border-collapse:collapse;border-radius:10px;overflow:hidden;}
+.sfhm .lb th,.sfhm .lb td{text-align:left;padding:9px 10px;font-size:14px;}
+.sfhm .lb thead th{background:var(--border-gray);color:var(--text-muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}
+.sfhm .lb tbody tr{border-top:1px solid var(--border-gray);}
+.sfhm .lb tbody tr:nth-child(odd){background:var(--row);}
+.sfhm .lb .place{width:42px;font-weight:700;color:var(--nm-gold);}
+.sfhm .lb .time{font-variant-numeric:tabular-nums;text-align:right;}
+.sfhm .lb .pace{color:var(--text-muted);text-align:right;font-variant-numeric:tabular-nums;}
+.sfhm .lb .name{font-weight:600;}
+.sfhm .lb .meta{color:var(--text-muted);font-size:12px;}
+.sfhm .lb .status{color:var(--text-muted);font-size:13px;padding:16px 6px;text-align:center;}
+.sfhm .lb .foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:var(--text-muted);font-size:12px;flex-wrap:wrap;gap:6px;}
+.sfhm .lb .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--nm-turquoise);margin-right:6px;vertical-align:middle;}
+</style>
+<div class="sfhm">
+<section id="results" class="section">
+  <div class="container">
+    <p class="eyebrow">Race day</p>
+    <h2>Live Results</h2>
+    <p class="section-sub">
+      Top finishers update automatically as runners cross the line at Railyard Park.
+      Type your bib number to find your own time the moment it posts.
+    </p>
+    <div class="results-grid">
+      <div class="card lb" id="sfhm-lb">
+        <div class="controls">
+          <label>Year
+            <select id="sfhm-year"></select>
+          </label>
+          <label>Show
+            <select id="sfhm-topn">
+              <option>5</option><option selected>10</option><option>25</option>
+            </select>
+          </label>
+          <button id="sfhm-refresh" type="button">Refresh</button>
+        </div>
+        <div class="controls">
+          <input id="sfhm-bib" type="number" inputmode="numeric" placeholder="Your bib #"
+                 style="width:110px" aria-label="Bib number">
+          <button id="sfhm-findbtn" type="button">Find my time</button>
+          <span id="sfhm-findout" class="meta"></span>
+        </div>
+        <table>
+          <thead>
+            <tr><th class="place">#</th><th>Runner</th><th class="time">Time</th><th class="pace">Pace</th></tr>
+          </thead>
+          <tbody id="sfhm-rows"><tr><td colspan="4" class="status">Loading…</td></tr></tbody>
+        </table>
+        <div class="foot">
+          <span><span class="dot"></span>auto-refresh 30s on race day</span>
+          <span id="sfhm-stamp"></span>
+        </div>
+      </div>
+      <div class="card results-links">
+        <h3 style="margin:0 0 4px;">How results work</h3>
+        <ul>
+          <li><strong style="color:var(--text)">On race day</strong> — chip times post live as you finish; the leaderboard refreshes every 30 seconds.</li>
+          <li><strong style="color:var(--text)">Find your time</strong> — search by bib number the moment your result posts.</li>
+          <li><strong style="color:var(--text)">Full official results</strong> — every finisher, splits and divisions on
+            <a href="https://runsignup.com/Race/Results/83604" target="_blank" rel="noopener">RunSignup</a>.</li>
+          <li><strong style="color:var(--text)">Questions?</strong> — results are official once posted by timing. Find us at the results tent by the finish.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footnote">Results provided by RunSignup &middot; times are unofficial until finalized by timing.</p>
+  </div>
+</section>
+</div>
+<script>
+(function(){
+  // Reads RunSignup's public results API directly (CORS-open, no key, no server).
+  var RACE_ID = 83604;
+  var EVENTS = { "2026": 1056101, "2025": 904960, "2023": 681853 };
+  var RACE_DAY_2026 = new Date("2026-09-20T00:00:00-06:00");
+  var API = "https://runsignup.com/rest/race/" + RACE_ID + "/results/get-results";
+
+  var yearSel = document.getElementById("sfhm-year");
+  var topnSel = document.getElementById("sfhm-topn");
+  var tbody = document.getElementById("sfhm-rows");
+  var stamp = document.getElementById("sfhm-stamp");
+
+  // 2026 becomes the default (and auto-refreshes) once race day arrives.
+  var raceDay = new Date() >= RACE_DAY_2026;
+  Object.keys(EVENTS).sort(function(a,b){ return b - a; }).forEach(function(y){
+    var o = document.createElement("option");
+    o.value = y; o.textContent = y;
+    if ((raceDay && y === "2026") || (!raceDay && y === "2025")) o.selected = true;
+    yearSel.appendChild(o);
+  });
+
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function fetchPage(year, perPage, page){
+    var u = API + "?event_id=" + EVENTS[year] + "&format=json&results_per_page=" + perPage + "&page=" + page;
+    return fetch(u, {cache:"no-store"}).then(function(r){ return r.json(); });
+  }
+
+  function rowsOf(data){
+    var sets = data.individual_results_sets || [];
+    return sets.length ? (sets[0].results || []) : [];
+  }
+
+  function load(){
+    var year = yearSel.value, topn = topnSel.value;
+    fetchPage(year, topn, 1).then(function(data){
+      var rows = rowsOf(data);
+      if (!rows.length){
+        tbody.innerHTML = '<tr><td colspan="4" class="status">Results haven’t posted yet for ' + esc(year) + ' — check back on race day.</td></tr>';
+      } else {
+        tbody.innerHTML = rows.map(function(r){
+          var finish = r.chip_time || r.clock_time || "—";
+          return '<tr><td class="place">' + esc(r.place) + '</td>' +
+            '<td><span class="name">' + esc((r.first_name||"") + " " + (r.last_name||"")) + '</span>' +
+            '<div class="meta">bib #' + esc(r.bib) + (r.gender ? ' · ' + esc(r.gender) : '') + (r.age ? ' · ' + esc(r.age) : '') + '</div></td>' +
+            '<td class="time">' + esc(finish) + '</td>' +
+            '<td class="pace">' + esc(r.pace||"") + (r.pace ? "/mi" : "") + '</td></tr>';
+        }).join("");
+      }
+      stamp.textContent = "updated " + new Date().toLocaleTimeString();
+    }).catch(function(){
+      tbody.innerHTML = '<tr><td colspan="4" class="status">Couldn’t reach the results feed — see <a href="https://runsignup.com/Race/Results/83604">official results</a>.</td></tr>';
+    });
+  }
+
+  function findMe(){
+    var bib = document.getElementById("sfhm-bib").value.trim();
+    var year = yearSel.value;
+    var out = document.getElementById("sfhm-findout");
+    if (!bib){ out.textContent = "Enter a bib number."; return; }
+    out.textContent = "Looking…";
+    var page = 1;
+    function step(){
+      fetchPage(year, 1000, page).then(function(data){
+        var rows = rowsOf(data);
+        for (var i = 0; i < rows.length; i++){
+          if (String(rows[i].bib) === bib){
+            var r = rows[i], finish = r.chip_time || r.clock_time || "—";
+            out.textContent = (r.first_name||"") + " " + (r.last_name||"") + ": " + finish +
+              " · place " + r.place + (r.pace ? " · " + r.pace + "/mi" : "");
+            return;
+          }
+        }
+        if (rows.length === 1000 && page < 50){ page++; step(); }
+        else { out.textContent = "No " + year + " result for bib #" + bib + "."; }
+      }).catch(function(){ out.textContent = "Couldn’t reach the results feed."; });
+    }
+    step();
+  }
+
+  document.getElementById("sfhm-refresh").addEventListener("click", load);
+  yearSel.addEventListener("change", load);
+  topnSel.addEventListener("change", load);
+  document.getElementById("sfhm-findbtn").addEventListener("click", findMe);
+  document.getElementById("sfhm-bib").addEventListener("keydown", function(e){ if (e.key === "Enter") findMe(); });
+  load();
+  if (raceDay) setInterval(load, 30000);
+})();
+</script>

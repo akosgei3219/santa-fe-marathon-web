@@ -1,0 +1,62 @@
+{
+  "skill_name": "mwangaza-copy-check",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "conflated-homepage-brief",
+      "prompt": "got this text from a web designer for the mwangaza athletics homepage. check it and fix it before i put it on the site. Save your check to the outputs directory as copy-check.md. Do not modify any website or project files, this is a review task.\n\n---\nRUN TOGETHER. RISE TOGETHER. 🏃\nMwangaza Athletics Club trains at 7,000 feet in beautiful Santa Fe. We're a 100% volunteer-led club supporting 250+ youth athletes every year, with proud community partners Santa Fe YouthWorks and local run shops.\nGroup runs are open to all ages, and our Kenya training trips are open to runners of all ages too, so bring the whole family!\nLearn more →",
+      "expected_output": "Catches: the emoji; 7,000 feet (club is 7,200); 100% volunteer-led (unsettled); 250+ youth athletes (unsettled, open question); Santa Fe YouthWorks as a club partner (race brunch caterer, not a club partner) and local run shops (invented); Kenya trips open to all ages / bring the whole family (trips are adults only); the arrow in 'Learn more'. Does NOT flag: group runs open to all ages (settled). Returns corrected text, a change table and questions. The fix must be subtractive plus the two factual corrections: it must not answer invented claims with different unsettled ones.",
+      "files": [],
+      "expectations": [
+        "The corrected text block contains no emoji and no arrow characters (quoting the original inside a change table is fine)",
+        "Corrected text gives the club's elevation as 7,200 feet, not 7,000",
+        "Corrected text drops the '100% volunteer-led' claim or replaces it with a placeholder",
+        "Corrected text drops the '250+ youth athletes' figure or replaces it with a placeholder",
+        "Corrected text does not present Santa Fe YouthWorks as a club partner",
+        "Corrected text does not present 'local run shops' as partners",
+        "Corrected text says the Kenya trips are for adults and removes 'bring the whole family'",
+        "Corrected text keeps that group runs are open to all ages",
+        "Corrected text introduces no new factual claim that was absent from the draft and is not on the settled-facts list",
+        "Exactly one corrected version is offered, rather than options for the reader to choose between",
+        "Report lists the changes with reasons and asks Coach Kosgei about the unsettled facts"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "kenya-trip-booking-copy",
+      "prompt": "This is for the Train in Kenya page on mwangazaathletics.com. Can you check it and fix anything wrong? Save your check to the outputs directory as copy-check.md. Do not modify any website or project files, this is a review task.\n\n---\nTrain in Kenya with Mwangaza\nSpend 12 days at the Kip Keino High Altitude Training Centre in Eldoret, running every morning with two-time Olympian Daniel Kiprotich, who ran 2:06 in Berlin, and our other former elite athletes. Trips depart March 2027, from $2,400 per person, all meals and lodging included. Open to adults and to teens aged 16 and up.\nTrips are run by Mwangaza, and every trip is led by Coach Kosgei.\nBook your trip today!",
+      "expected_output": "Catches: the named training centre and Eldoret (unsettled camp/place); the named athlete, 'two-time Olympian' and the 2:06 Berlin time (unsettled name plus the no-race-times rule); 12 days, March 2027, $2,400 and 'all meals and lodging included' (all open questions); teens 16 and up (contradicts adults only); 'every trip is led by Coach Kosgei' (unsettled); 'Book your trip today!' (the button must stay an enquiry). Does NOT flag: 'Trips are run by Mwangaza' and 'former elite athletes' as a generic phrase (both settled), or adults.",
+      "files": [],
+      "expectations": [
+        "Corrected text does not state the Kip Keino centre or Eldoret as the trip location",
+        "Corrected text does not name Daniel Kiprotich",
+        "Corrected text contains no race time, 'Olympian' title or other elite credential",
+        "Corrected text removes or placeholders 12 days, March 2027, $2,400 and 'all meals and lodging included'",
+        "Corrected text says the trips are for adults and drops 'teens aged 16 and up'",
+        "Corrected text removes or placeholders 'every trip is led by Coach Kosgei', or the report raises it as a question",
+        "The call to action is an enquiry, not 'Book your trip today'",
+        "Corrected text keeps that Mwangaza runs the trips and that runners train alongside former elite athletes",
+        "Corrected text introduces no new factual claim that was absent from the draft and is not on the settled-facts list",
+        "Exactly one corrected version is offered, rather than options for the reader to choose between"
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "coach-page-resume-intro",
+      "prompt": "A volunteer drafted this intro for the Coach Kosgei page on the Mwangaza site. Please check it and fix it before it goes up. Save your check to the outputs directory as copy-check.md. Do not modify any website or project files, this is a review task.\n\n---\nMeet Coach Kosgei\nCoach Kosgei grew up in Kenya's Rift Valley, in the Kalenjin running tradition, and now lives in Albuquerque. He ran a 2:11 marathon and won the Chicago Half Marathon before founding Mwangaza. Today he coaches young runners aged 8 to 18, and adults too, at 7,200 feet in Santa Fe, using the Kalenjin principles of rhythm, patience, community and joyous discipline. USATF-certified. Mwangaza is the only club in New Mexico where kids train the Kenyan way, and unlike Gaynor Train, we put joy first.",
+      "expected_output": "Catches: 'now lives in Albuquerque' (never state where Kosgei lives); he/his pronouns added by a volunteer (use the name or first person); the 2:11 marathon and Chicago win (no race times or results); USATF-certified (unsettled certification); 'the only club in New Mexico' (unsettled superlative); the Gaynor Train comparison. Does NOT flag: Rift Valley and Kalenjin heritage, ages 8 to 18, adults too, 7,200 feet, Santa Fe, or the four principles.",
+      "files": [],
+      "expectations": [
+        "Corrected text does not say where Coach Kosgei lives",
+        "Corrected text uses no he, him or his for Coach Kosgei",
+        "Corrected text contains no race time, race win or results",
+        "Corrected text removes or placeholders 'USATF-certified' until it is confirmed",
+        "Corrected text removes the claim that Mwangaza is the only such club in New Mexico",
+        "Corrected text does not mention Gaynor Train",
+        "Corrected text keeps the Rift Valley and Kalenjin heritage, ages 8 to 18, adults, 7,200 feet, Santa Fe and the four principles",
+        "Corrected text introduces no new factual claim that was absent from the draft and is not on the settled-facts list, and does not widen the page's scope to other programs",
+        "Exactly one corrected version is offered, rather than options for the reader to choose between"
+      ]
+    }
+  ]
+}

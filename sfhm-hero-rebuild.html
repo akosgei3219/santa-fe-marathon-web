@@ -1,0 +1,227 @@
+<!-- ============================================================
+     SFHM Homepage Hero — full-viewport video, dual CTA, sponsor ribbon
+     Vanilla HTML5 + CSS (flexbox), CSS custom properties, no frameworks.
+     FACT AUDIT vs. the brief (corrected here):
+       - Date was "October 2026" in the brief; the race is Sunday,
+         September 20, 2026.
+       - "5K Run & Walk" renamed to the official "Santa Fe 5K".
+       - Sponsor placeholders replaced with the five real partners.
+       - Altitude line added: the brand sells 7,000 ft, per site voice.
+     Video src is a placeholder — swap for the real loop before use.
+     ============================================================ -->
+
+<style>
+  :root {
+    --race-orange: #ff5400;
+    --ink-black: #0c0c0e;
+    --pure-white: #ffffff;
+    --gray-muted: #8e8e93;
+    --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+    --font-body: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  }
+  .sfhm-hero *, .sfhm-hero *::before, .sfhm-hero *::after { box-sizing: border-box; }
+
+  /* ---------- 1. Fullscreen video stage ---------- */
+  .sfhm-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 560px;
+    width: 100%;
+    overflow: hidden;
+    background: var(--ink-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+  }
+  .sfhm-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  /* static image fallback wins on small screens: video is hidden, bg shows */
+  .sfhm-hero__fallback {
+    position: absolute;
+    inset: 0;
+    background: url('https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-logo.png') center / cover no-repeat var(--ink-black);
+    z-index: 0;
+    display: none;
+  }
+  @media (max-width: 767px) {
+    .sfhm-hero__video { display: none; }
+    .sfhm-hero__fallback { display: block; }
+  }
+  .sfhm-hero__vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse at center, rgba(12,12,14,.15) 0%, rgba(12,12,14,.55) 100%),
+      linear-gradient(180deg, rgba(12,12,14,.35) 0%, rgba(12,12,14,.25) 55%, rgba(12,12,14,.6) 100%);
+  }
+
+  /* ---------- 2. Typography stack ---------- */
+  .sfhm-hero__stack {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    max-width: 1100px;
+  }
+  .sfhm-hero__h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(2.6rem, 8vw, 6.5rem);
+    line-height: .96;
+    letter-spacing: .015em;
+    color: var(--pure-white);
+    text-wrap: balance;
+  }
+  .sfhm-hero__h1 em {
+    font-style: normal;
+    color: var(--race-orange);
+  }
+  .sfhm-hero__tracker {
+    margin: 22px 0 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: clamp(.8rem, 1.6vw, 1.05rem);
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--pure-white);
+  }
+  .sfhm-hero__tracker span { color: var(--gray-muted); padding: 0 .35em; }
+
+  /* ---------- 3. Dual distance CTAs ---------- */
+  .sfhm-hero__ctas {
+    margin-top: 44px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .sfhm-hero__cta {
+    display: inline-block;
+    transform: skewX(-10deg);
+    padding: 20px 42px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform .18s cubic-bezier(.2,.8,.2,1), background-color .18s, color .18s;
+  }
+  .sfhm-hero__cta > span { display: inline-block; transform: skewX(10deg); }
+  .sfhm-hero__cta--solid {
+    background: var(--race-orange);
+    color: var(--ink-black);
+  }
+  .sfhm-hero__cta--outline {
+    background: rgba(12,12,14,.35);
+    color: var(--pure-white);
+    box-shadow: inset 0 0 0 2px var(--pure-white);
+  }
+  .sfhm-hero__cta:hover,
+  .sfhm-hero__cta:focus-visible {
+    transform: skewX(-10deg) scale(1.05);
+  }
+  .sfhm-hero__cta--outline:hover,
+  .sfhm-hero__cta--outline:focus-visible {
+    background: var(--pure-white);
+    color: var(--ink-black);
+  }
+  .sfhm-hero__cta:focus-visible { outline: 3px solid var(--race-orange); outline-offset: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    .sfhm-hero__cta { transition: none; }
+    .sfhm-hero__cta:hover, .sfhm-hero__cta:focus-visible { transform: skewX(-10deg); }
+  }
+
+  /* ---------- 4. Pinned sponsor ribbon ---------- */
+  .sfhm-hero__ribbon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: rgba(12,12,14,.72);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding: 16px 24px;
+  }
+  .sfhm-hero__ribbon-row {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 4vw, 56px);
+    flex-wrap: wrap;
+  }
+  .sfhm-hero__ribbon-label {
+    flex: 100% 0 0;
+    text-align: center;
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gray-muted);
+    margin-bottom: 6px;
+  }
+  /* Real partner logos go here as <img>; the filter locks them to clean
+     white/grayscale so mixed brand colors never break the stage. */
+  .sfhm-hero__ribbon img {
+    height: 34px;
+    width: auto;
+    filter: grayscale(1) brightness(0) invert(1);
+    opacity: .85;
+  }
+  .sfhm-hero__ribbon .logo-text {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: .95rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--pure-white);
+    opacity: .85;
+    white-space: nowrap;
+  }
+</style>
+
+<section class="sfhm-hero" aria-label="Santa Fe International Half Marathon">
+  <video class="sfhm-hero__video" autoplay muted loop playsinline
+         poster="https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfi-2026-landing-logo.png"
+         src="https://cdn.example.com/placeholder/sfhm-sunrise-run-loop.mp4"></video>
+  <div class="sfhm-hero__fallback" role="presentation"></div>
+  <div class="sfhm-hero__vignette" role="presentation"></div>
+
+  <div class="sfhm-hero__stack">
+    <h1 class="sfhm-hero__h1">Run the City <em>Different</em>.</h1>
+    <p class="sfhm-hero__tracker">
+      September 20, 2026 <span>&bull;</span> Santa Fe, New Mexico <span>&bull;</span> 7,000 FT
+    </p>
+    <div class="sfhm-hero__ctas">
+      <a class="sfhm-hero__cta sfhm-hero__cta--solid"
+         href="https://runsignup.com/Race/Register/?raceId=83604"><span>Half Marathon (13.1 MI)</span></a>
+      <a class="sfhm-hero__cta sfhm-hero__cta--outline"
+         href="https://runsignup.com/Race/Register/?raceId=83604"><span>Santa Fe 5K (3.1 MI)</span></a>
+    </div>
+  </div>
+
+  <div class="sfhm-hero__ribbon">
+    <div class="sfhm-hero__ribbon-row">
+      <div class="sfhm-hero__ribbon-label">Presented with</div>
+      <span class="logo-text">Capitol Ford</span>
+      <span class="logo-text">City of Santa Fe</span>
+      <span class="logo-text">Jirani Kenyan Coffee</span>
+      <span class="logo-text">Reunity Resources</span>
+      <span class="logo-text">Santa Fe YouthWorks</span>
+    </div>
+  </div>
+</section>

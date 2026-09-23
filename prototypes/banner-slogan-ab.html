@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFHM Banner - Slogan Stack A/B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#FBF9F6; --ink:#222222; --ink-soft:#55514D;
+  --clay:#AD4A2E; --adobe:#C2593F;
+  --display:'Bebas Neue','Arial Narrow',sans-serif;
+  --body:'Space Grotesk',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--sand);font-family:var(--body);color:var(--ink)}
+.ab-label{
+  font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-soft);
+  padding:20px clamp(1.25rem,4vw,3rem) 0;
+}
+.ab-label b{color:var(--clay)}
+
+.sfhm-river-band{
+  position:relative;
+  padding:clamp(2.5rem,6vw,4.5rem) clamp(1.25rem,4vw,3rem);
+  text-align:center;
+  border-top:8px solid var(--ink);
+  border-bottom:8px solid var(--ink);
+  background-color:var(--sand);
+  background-image:
+    radial-gradient(rgba(34,34,34,.55) .5px, transparent .5px),
+    radial-gradient(rgba(34,34,34,.55) .5px, transparent .5px);
+  background-size:40px 40px;
+  background-position:0 0, 20px 20px;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+.sfhm-river-band .rb-tag{
+  font-family:var(--body);font-size:clamp(.62rem,1.3vw,.78rem);font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--ink);
+  margin:0 0 clamp(1.25rem,2.5vw,2rem);
+}
+/* ONE heading carries the whole slogan; the lines are spans. */
+.sfhm-river-band h2{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  line-height:.84;letter-spacing:-.005em;margin:0 auto;
+}
+.sfhm-river-band h2 span{display:block;white-space:nowrap}
+/* Sizes are tuned to each line's LENGTH so nothing overflows:
+   a 29-character line cannot take the same size as a 19-character one. */
+.rb-long {font-size:clamp(1.55rem,5.6vw,4.6rem);color:var(--ink)}
+.rb-mid  {font-size:clamp(1.5rem,5.4vw,4.4rem);color:var(--ink-soft);margin:.1em 0}
+.rb-climax{font-size:clamp(2.3rem,8.6vw,7rem)}
+/* gradient river fill with a solid fallback so it can never vanish */
+.rb-climax{color:var(--clay)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .rb-climax{
+    background:linear-gradient(135deg,var(--clay) 0%,var(--adobe) 45%,var(--ink) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+}
+.sfhm-river-band .rb-note{
+  max-width:60ch;margin:clamp(1.5rem,3vw,2.25rem) auto 0;
+  padding-top:1.25rem;border-top:2px solid var(--ink);
+  font-family:var(--body);font-size:clamp(.95rem,1.6vw,1.08rem);
+  line-height:1.65;color:var(--ink);
+}
+.sfhm-river-band .rb-note strong{color:var(--clay);font-weight:700}
+@media (prefers-reduced-motion:reduce){.sfhm-river-band *{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<p class="ab-label">Version <b>A</b> &mdash; exactly as supplied</p>
+<section class="sfhm-river-band" aria-labelledby="a-h">
+  <p class="rb-tag">September 20, 2026 &middot; Santa Fe, New Mexico &middot; 7,000 ft</p>
+  <h2 id="a-h">
+    <span class="rb-long">Thin Air. Big Sky. True Grit.</span>
+    <span class="rb-mid">Santa Fe Half Marathon Run.</span>
+    <span class="rb-climax">Run Santa Fe River.</span>
+  </h2>
+</section>
+
+<p class="ab-label">Version <b>B</b> &mdash; recommended: event name corrected, "the" restored</p>
+<section class="sfhm-river-band" aria-labelledby="b-h">
+  <p class="rb-tag">September 20, 2026 &middot; Santa Fe, New Mexico &middot; 7,000 ft</p>
+  <h2 id="b-h">
+    <span class="rb-long">Thin Air. Big Sky. True Grit.</span>
+    <span class="rb-mid">Santa Fe International Half.</span>
+    <span class="rb-climax">Run the Santa Fe River.</span>
+  </h2>
+  <p class="rb-note">
+    13.1 miles on the roads of <strong>Agua Fr&iacute;a</strong> and out the
+    <strong>Santa Fe River Trail</strong> &mdash; the path the restoration built &mdash; to a
+    6,883 ft turnaround and back.
+  </p>
+</section>
+
+</body>
+</html>

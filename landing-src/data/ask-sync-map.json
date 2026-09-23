@@ -1,0 +1,310 @@
+{
+ "_comment": "GENERATED from CONCIERGE_ROUTES - do not hand-edit.",
+ "version": "2026-09-11.4",
+ "routes": [
+  {
+   "keywords": [
+    "register",
+    "sign up",
+    "signup",
+    "entry",
+    "inscrib",
+    "registro"
+   ],
+   "path": "https://runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon",
+   "fact": "Registration is on RunSignup. Race day is Sunday, September 20, 2026.",
+   "fact_es": "La inscripción es en RunSignup. La carrera es el domingo 20 de septiembre de 2026."
+  },
+  {
+   "keywords": [
+    "spectat",
+    "watch",
+    "cheer",
+    "espectador"
+   ],
+   "path": "/spectator-guide/",
+   "fact": "Half and Relay start 7:30 AM at Romero's Park; every race finishes at Reunity Resources. Best viewing: the Santa Fe River trail crossings and the finish-line festival.",
+   "fact_es": "El Medio y el Relevo salen a las 7:30 AM en Romero's Park; todas las carreras terminan en Reunity Resources. Las mejores zonas: los cruces del sendero del río Santa Fe y el festival de la meta."
+  },
+  {
+   "keywords": [
+    "festival",
+    "music",
+    "party",
+    "celebra",
+    "happy hour",
+    "nuckolls",
+    "brew",
+    "beer",
+    "burrito",
+    "breakfast",
+    "chile",
+    "food",
+    "eat",
+    "lunch"
+   ],
+   "path": "/finish-line-festival/",
+   "fact": "Post-race celebration and awards at Reunity Resources Farm, 1829 San Ysidro Crossing, 9:00 AM-1:00 PM: live New Mexico music and a green chile brunch from Santa Fe YouthWorks, then happy hour at Nuckolls Brewing Company.",
+   "fact_es": "Celebración y premiación en Reunity Resources Farm, 1829 San Ysidro Crossing, de 9:00 AM a 1:00 PM: música en vivo de Nuevo México y un brunch de chile verde de Santa Fe YouthWorks; después, happy hour en Nuckolls Brewing Company."
+  },
+  {
+   "keywords": [
+    "city",
+    "visit",
+    "things to do",
+    "hotel",
+    "stay",
+    "lodging",
+    "hospeda"
+   ],
+   "path": "/host-city-guide/",
+   "fact": "The Host City Guide covers altitude, lodging, and race week in Santa Fe.",
+   "fact_es": "La Guía de la ciudad anfitriona cubre la altitud, el hospedaje y la semana de carrera en Santa Fe."
+  },
+  {
+   "keywords": [
+    "packet",
+    "pickup",
+    "expo",
+    "bib",
+    "dorsal",
+    "paquete"
+   ],
+   "path": "/packet-pickup/",
+   "fact": "Packet pickup and expo: Warehouse 21 in the Railyard, Friday 12-6 PM and Saturday 10 AM-5 PM. Race-morning pickup for the Half Marathon and 3-Amigos Relay is 6:00-7:00 AM at Romero's Park - the start line, not the Railyard.",
+   "fact_es": "Entrega de paquetes y expo: Warehouse 21 en el Railyard, viernes 12-6 PM y sábado 10 AM-5 PM. La entrega la mañana de la carrera para el Medio Maratón y el Relevo 3-Amigos es de 6:00 a 7:00 AM en Romero's Park, la salida, no el Railyard."
+  },
+  {
+   "keywords": [
+    "shuttle",
+    "parking",
+    "bus",
+    "drive",
+    "road clos",
+    "estaciona",
+    "direction"
+   ],
+   "path": "/transportation-parking/",
+   "fact": "The free shuttle, provided by Santa Fe Trails, loops the 3 lots about every 15 minutes, 6:00-7:45 AM to the start (returns 10:00-11:30 AM). Roads into the start close at 7:00 AM. Parking split: Half/Relay at Romero's Park, 5K at Reunity Resources. It is a single bus - if it is full, it returns on the next loop, so leave a cushion. ADA boarding assistance provided.",
+   "fact_es": "El shuttle gratuito, ofrecido por Santa Fe Trails, recorre los 3 estacionamientos cada 15 minutos aprox., de 6:00 a 7:45 AM hacia la salida (regresos 10:00-11:30 AM). Las calles hacia la salida cierran a las 7:00 AM. Estacionamiento: Medio/Relevo en Romero's Park, 5K en Reunity Resources. Es un solo autobús: si va lleno, regresa en el siguiente circuito, así que deja margen. Hay asistencia ADA para abordar."
+  },
+  {
+   "keywords": [
+    "schedule",
+    "start time",
+    "when",
+    "what time",
+    "horario"
+   ],
+   "path": "/event-schedule/",
+   "fact": "Half and Relay start 7:30 AM at Romero's Park; the Santa Fe 5K starts 8:00 AM at Reunity; the free Kids 1K Dash is Sunday 9:00 AM at Reunity.",
+   "fact_es": "El Medio y el Relevo salen a las 7:30 AM en Romero's Park; el Santa Fe 5K a las 8:00 AM en Reunity; el Kids 1K Dash gratuito es el domingo a las 9:00 AM en Reunity."
+  },
+  {
+   "keywords": [
+    "course",
+    "map",
+    "elevation",
+    "route",
+    "recorrido",
+    "turnaround"
+   ],
+   "path": "/course-highlights/",
+   "fact": "High-desert course with a 6,883 ft turnaround at mile 9 and +651 ft of climbing. Maps at /course-map/.",
+   "fact_es": "Ruta de alto desierto con un punto máximo de 6,883 pies en la milla 9 y +651 pies de ascenso. Mapas en /course-map/."
+  },
+  {
+   "keywords": [
+    "altitude",
+    "altitud",
+    "7,000",
+    "7000",
+    "thin air",
+    "pacing",
+    "pace"
+   ],
+   "path": "/training-for-7000-feet/",
+   "fact": "Santa Fe sits at 7,000 feet. Arrive 2-3 days early if you can, hydrate all week, and expect a slower pace than at sea level.",
+   "fact_es": "Santa Fe está a 7,000 pies. Llega 2-3 días antes si puedes, hidrátate toda la semana y espera un ritmo más lento que al nivel del mar."
+  },
+  {
+   "keywords": [
+    "relay",
+    "team",
+    "amigos",
+    "relevo"
+   ],
+   "path": "/relays-exchange-zones/",
+   "fact": "The 3-Amigos Relay starts 7:30 AM at Romero's Park alongside the half. Teams hand off a sash at Corridor Entry (mile 4.9) and the mile-9 turnaround, and Runner 3 finishes at Reunity Resources.",
+   "fact_es": "El Relevo 3-Amigos sale a las 7:30 AM en Romero's Park junto con el medio maratón. Los equipos entregan una banda en Corridor Entry (milla 4.9) y en el retorno de la milla 9; el Corredor 3 termina en Reunity Resources."
+  },
+  {
+   "keywords": [
+    "kids",
+    "dash",
+    "1k",
+    "children",
+    "family"
+   ],
+   "path": "/event-schedule/",
+   "fact": "The free Kids 1K Dash starts Sunday at 9:00 AM at Reunity Resources.",
+   "fact_es": "El Kids 1K Dash gratuito es el domingo a las 9:00 AM en Reunity Resources."
+  },
+  {
+   "keywords": [
+    "result",
+    "photo",
+    "finish time",
+    "resultado",
+    "foto"
+   ],
+   "path": "/results-photos/",
+   "fact": "Live results post as runners finish, and official race photos are posted on the Results & Photos page after the race.",
+   "fact_es": "Los resultados se publican en vivo y las fotos oficiales aparecen en la página de Resultados y Fotos después de la carrera."
+  },
+  {
+   "keywords": [
+    "refund",
+    "deferral",
+    "transfer",
+    "cancel",
+    "reembolso"
+   ],
+   "path": "/refund-policy/",
+   "fact": "Registrations are non-refundable. The free deferral and bib-transfer window closed on September 10, 2026.",
+   "fact_es": "Las inscripciones no son reembolsables. El plazo gratuito de aplazamiento y transferencia de dorsal cerró el 10 de septiembre de 2026."
+  },
+  {
+   "keywords": [
+    "gear",
+    "bag",
+    "drop",
+    "guarda"
+   ],
+   "path": "/gear-bag-drop/",
+   "fact": "Gear bag drop is 6:00-7:00 AM at Romero's Park - details on the Gear Bag Drop page.",
+   "fact_es": "La entrega de guardarropa es de 6:00 a 7:00 AM en Romero's Park; detalles en la página de Gear Bag Drop."
+  },
+  {
+   "keywords": [
+    "time limit",
+    "cutoff",
+    "cut-off",
+    "limite",
+    "how long",
+    "sweep",
+    "swept",
+    "too slow"
+   ],
+   "path": "/time-limits/",
+   "fact": "The half marathon has a 4 hour 30 minute course limit.",
+   "fact_es": "El medio maratón tiene un límite de 4 horas 30 minutos."
+  },
+  {
+   "keywords": [
+    "aid",
+    "water",
+    "hydration",
+    "electrolyte",
+    "fuel",
+    "hidrata",
+    "agua"
+   ],
+   "path": "/aid-stations/",
+   "fact": "Five aid stations cover the 13.1-mile course, with water at miles 2, 4, 6, 8, 9, 10 and 12.",
+   "fact_es": "Cinco puestos de hidratación cubren la ruta de 13.1 millas, con agua en las millas 2, 4, 6, 8, 9, 10 y 12."
+  },
+  {
+   "keywords": [
+    "medal",
+    "award",
+    "podium",
+    "trophy",
+    "medalla",
+    "premi"
+   ],
+   "path": "/awards/",
+   "fact": "Finisher medals and age-group medallions are both handmade by Maasai artisans - every finisher in the Half, Relay and 5K receives one. Awards: 5K at 9:45 AM, Half and Relay at 10:45 AM.",
+   "fact_es": "Las medallas de finalista y los medallones por grupo de edad son hechos a mano por artesanos maasái; cada finalista del Medio, Relevo y 5K recibe una. Premiación: 5K a las 9:45 AM, Medio y Relevo a las 10:45 AM."
+  },
+  {
+   "keywords": [
+    "weather",
+    "temperature",
+    "cold",
+    "hot",
+    "clima",
+    "temperatura",
+    "wear",
+    "layers"
+   ],
+   "path": "/gear-bag-drop/",
+   "fact": "Expect crisp high-desert mornings, often around 45 F, warming toward the low 70s by midday - dress in layers you can leave in your gear bag.",
+   "fact_es": "Espera mañanas frescas de alto desierto, a menudo cerca de 45 F, subiendo a unos 70 F al mediodía; vístete en capas que puedas dejar en el guardarropa."
+  },
+  {
+   "keywords": [
+    "charity",
+    "donate",
+    "cause",
+    "benefic"
+   ],
+   "path": "/charity-information/",
+   "fact": "Charity partners and fundraising details are on the Charity Information page.",
+   "fact_es": "Los detalles de las organizaciones benéficas están en la página de Charity Information."
+  },
+  {
+   "keywords": [
+    "volunteer",
+    "voluntari",
+    "help out"
+   ],
+   "path": "/volunteer/",
+   "fact": "Volunteer sign-up for race weekend roles is open.",
+   "fact_es": "La inscripción de voluntarios para el fin de semana de carrera está abierta."
+  },
+  {
+   "keywords": [
+    "heritage",
+    "history",
+    "historic",
+    "agua fria",
+    "culture",
+    "tradition",
+    "maasai",
+    "youthworks",
+    "local"
+   ],
+   "path": "/course-highlights/",
+   "fact": "The start line sits in the historic village of Agua Fria and the course follows the Santa Fe River trail corridor. Post-race food is a green chile brunch prepared by Santa Fe YouthWorks, and the medallions are handmade by Maasai artisans.",
+   "fact_es": "La salida está en el histórico pueblo de Agua Fría y la ruta sigue el corredor del sendero del río Santa Fe. La comida post-carrera es un brunch de chile verde preparado por Santa Fe YouthWorks, y los medallones son hechos a mano por artesanos maasái."
+  },
+  {
+   "keywords": [
+    "river",
+    "ecology",
+    "environment",
+    "nature",
+    "landscape",
+    "desert",
+    "scenery",
+    "scenic"
+   ],
+   "path": "/course-highlights/",
+   "fact": "The race runs the Santa Fe River corridor - the river the city is named for - through high desert at 7,000 feet, topping out at 6,883 feet at the mile-9 turnaround with 651 feet of climbing.",
+   "fact_es": "La carrera recorre el corredor del río Santa Fe, el río que da nombre a la ciudad, por alto desierto a 7,000 pies, con un punto máximo de 6,883 pies en el retorno de la milla 9 y 651 pies de ascenso."
+  },
+  {
+   "keywords": [
+    "contact",
+    "email",
+    "question",
+    "support",
+    "ayuda"
+   ],
+   "path": "/contact-us/",
+   "fact": "Reach the race team through the contact page.",
+   "fact_es": "Comunícate con el equipo de la carrera en la página de contacto."
+  }
+ ]
+}

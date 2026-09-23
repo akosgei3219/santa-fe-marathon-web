@@ -1,0 +1,606 @@
+<title>Santa Fe Half Homepage Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#FBF9F6;
+  --surface:#FFFFFF;
+  --surface-2:#F3EFE8;
+  --ink:#222222;
+  --ink-soft:#55514D;
+  --ink-faint:#86817A;
+  --accent:#26265E;
+  --accent-soft:rgba(38,38,94,.07);
+  --line:rgba(34,34,34,.14);
+  --line-strong:rgba(34,34,34,.32);
+  --crit:#A4262C;
+  --crit-tint:rgba(164,38,44,.07);
+  --major:#8A5A00;
+  --major-tint:rgba(138,90,0,.07);
+  --minor:#3E5C76;
+  --minor-tint:rgba(62,92,118,.07);
+  --pass:#2F6B4F;
+  --pass-tint:rgba(47,107,79,.07);
+  --code-bg:#F1EDE6;
+  --font-display:'Anton','Arial Narrow',Impact,sans-serif;
+  --font-body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,'Cascadia Mono',Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#14141D;
+    --surface:#1D1E2B;
+    --surface-2:#232435;
+    --ink:#ECE8E1;
+    --ink-soft:#ADA8B4;
+    --ink-faint:#837E8A;
+    --accent:#B7BAEE;
+    --accent-soft:rgba(183,186,238,.09);
+    --line:rgba(236,232,225,.14);
+    --line-strong:rgba(236,232,225,.32);
+    --crit:#FF8C85;
+    --crit-tint:rgba(255,140,133,.09);
+    --major:#F0B347;
+    --major-tint:rgba(240,179,71,.09);
+    --minor:#9CC4E8;
+    --minor-tint:rgba(156,196,232,.09);
+    --pass:#7ED3A8;
+    --pass-tint:rgba(126,211,168,.09);
+    --code-bg:#101019;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#14141D;
+  --surface:#1D1E2B;
+  --surface-2:#232435;
+  --ink:#ECE8E1;
+  --ink-soft:#ADA8B4;
+  --ink-faint:#837E8A;
+  --accent:#B7BAEE;
+  --accent-soft:rgba(183,186,238,.09);
+  --line:rgba(236,232,225,.14);
+  --line-strong:rgba(236,232,225,.32);
+  --crit:#FF8C85;
+  --crit-tint:rgba(255,140,133,.09);
+  --major:#F0B347;
+  --major-tint:rgba(240,179,71,.09);
+  --minor:#9CC4E8;
+  --minor-tint:rgba(156,196,232,.09);
+  --pass:#7ED3A8;
+  --pass-tint:rgba(126,211,168,.09);
+  --code-bg:#101019;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{max-width:940px;margin:0 auto;padding:40px 28px 96px}
+@media (max-width:640px){.sheet{padding:28px 16px 72px}}
+
+a{color:var(--accent);text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+p{margin:0 0 12px;max-width:70ch}
+code{
+  font-family:var(--font-mono);font-size:.86em;background:var(--code-bg);
+  padding:1px 5px;border-radius:2px;color:var(--ink);word-break:break-word
+}
+
+/* masthead */
+.mast{border-bottom:3px solid var(--accent);padding-bottom:18px}
+.eyebrow{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px
+}
+h1{
+  font-family:var(--font-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(36px,6.4vw,58px);line-height:.94;letter-spacing:.005em;
+  margin:0;color:var(--ink);text-wrap:balance
+}
+.dek{font-size:16px;color:var(--ink-soft);margin:12px 0 0;max-width:64ch}
+.meta{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0 0
+}
+.meta div{background:var(--ground);padding:10px 12px}
+.meta dt{
+  font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);margin:0 0 2px
+}
+.meta dd{margin:0;font-family:var(--font-mono);font-size:12.5px;font-weight:500;font-variant-numeric:tabular-nums}
+
+/* tally */
+.tally{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:28px 0 0;
+  border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)
+}
+.tally div{padding:14px 14px 12px;border-left:1px solid var(--line)}
+.tally div:first-child{border-left:0}
+.tally .n{font-family:var(--font-display);font-size:38px;line-height:1;display:block;font-variant-numeric:tabular-nums}
+.tally .l{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.tally .crit .n{color:var(--crit)}
+.tally .major .n{color:var(--major)}
+.tally .minor .n{color:var(--minor)}
+.tally .adv .n{color:var(--ink-faint)}
+@media (max-width:520px){.tally{grid-template-columns:repeat(2,1fr)}.tally div:nth-child(3){border-left:0}.tally div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+.notice{
+  margin:22px 0 0;padding:13px 15px;background:var(--surface-2);
+  border:1px solid var(--line);font-size:14px
+}
+.notice strong{font-weight:700}
+
+/* sections */
+section{margin-top:54px}
+.sec-head{border-top:1px solid var(--line-strong);padding-top:12px;margin-bottom:6px}
+.sec-kicker{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:4px
+}
+h2{
+  font-family:var(--font-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(22px,3.4vw,30px);line-height:1.02;letter-spacing:.01em;margin:0;
+  color:var(--ink);text-wrap:balance
+}
+.sec-intro{color:var(--ink-soft);margin:10px 0 18px}
+
+/* fix-first */
+ol.first{margin:14px 0 0;padding:0;list-style:none;counter-reset:f}
+ol.first li{
+  counter-increment:f;display:grid;grid-template-columns:2.4rem 1fr;gap:10px;
+  padding:11px 0;border-bottom:1px solid var(--line)
+}
+ol.first li::before{
+  content:counter(f);font-family:var(--font-display);font-size:24px;line-height:1;
+  color:var(--accent);font-variant-numeric:tabular-nums
+}
+ol.first li strong{font-weight:700}
+ol.first li span{color:var(--ink-soft)}
+
+/* findings */
+.finding{
+  display:grid;grid-template-columns:9.5rem 1fr;gap:6px 22px;
+  padding:18px 0;border-bottom:1px solid var(--line)
+}
+.finding:first-of-type{border-top:1px solid var(--line)}
+.finding.is-crit{background:linear-gradient(90deg,var(--crit-tint),transparent 70%)}
+.finding aside{display:flex;flex-direction:column;gap:7px;align-items:flex-start;padding-left:2px}
+.finding h3{font-size:16.5px;font-weight:700;line-height:1.35;margin:0 0 6px;text-wrap:balance}
+.finding p{font-size:14.5px;color:var(--ink-soft);margin:0 0 8px}
+.finding p.fix{color:var(--ink)}
+.finding p.fix b{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-right:6px}
+.crit-codes{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-soft);line-height:1.5}
+@media (max-width:640px){
+  .finding{grid-template-columns:1fr}
+  .finding aside{flex-direction:row;flex-wrap:wrap;align-items:center}
+}
+
+.sev{
+  font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;padding:2px 7px;border:1px solid currentColor;border-radius:2px;
+  white-space:nowrap;display:inline-block
+}
+.sev-crit{color:var(--crit);background:var(--crit-tint)}
+.sev-major{color:var(--major)}
+.sev-minor{color:var(--minor)}
+.sev-pass{color:var(--pass)}
+.sev-adv{color:var(--ink-faint)}
+
+/* tables */
+.scroll{overflow-x:auto;border:1px solid var(--line);margin:0 0 18px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+th{
+  text-align:left;font-weight:700;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);padding:9px 11px;border-bottom:1px solid var(--line-strong);
+  background:var(--surface-2);white-space:nowrap;vertical-align:bottom
+}
+td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+td.mono{font-family:var(--font-mono);font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.num{font-family:var(--font-mono);font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+td.wide{min-width:220px}
+tr.sub td{background:var(--accent-soft)}
+.spec{
+  display:inline-block;padding:4px 9px;font-family:var(--font-body);font-weight:700;
+  font-size:13px;border-radius:2px;white-space:nowrap
+}
+.spec.sm{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.ring{display:inline-block;padding:4px 9px;border-radius:2px;font-size:12px;font-weight:600}
+
+/* passes */
+ul.passes{list-style:none;margin:0;padding:0;columns:2 320px;column-gap:28px}
+ul.passes li{break-inside:avoid;padding:7px 0 7px 18px;position:relative;font-size:14px;border-bottom:1px solid var(--line)}
+ul.passes li::before{content:"";position:absolute;left:2px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--pass)}
+
+ul.plain{margin:0;padding-left:18px}
+ul.plain li{margin:0 0 8px;font-size:14.5px}
+ul.plain li::marker{color:var(--ink-faint)}
+
+.verdict{
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;margin:14px 0 16px;
+  padding:12px 14px;border:1px solid var(--line-strong);background:var(--surface)
+}
+.verdict .big{font-family:var(--font-display);font-size:28px;line-height:1;color:var(--crit);text-transform:uppercase}
+.verdict span{font-size:14px;color:var(--ink-soft)}
+
+.colophon{
+  margin-top:60px;border-top:3px solid var(--accent);padding-top:12px;
+  font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);
+  display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between
+}
+</style>
+
+<div class="sheet">
+
+<header class="mast">
+  <p class="eyebrow">santafehalfmarathon.com &middot; WCAG 2.1 AA</p>
+  <h1>Homepage Accessibility Audit</h1>
+  <p class="dek">The live homepage, measured one week before race day: contrast on every visible text element, a full keyboard pass, the Race Concierge dialog, menus, tabs, reflow and text spacing. Part two checks the pasted restructure plan against verified race facts.</p>
+  <dl class="meta">
+    <div><dt>Audited</dt><dd>Sept 13, 2026</dd></div>
+    <div><dt>Widths</dt><dd>1280 / 375 / 320 px</dd></div>
+    <div><dt>Text checked</dt><dd>390 elements</dd></div>
+    <div><dt>Tab stops</dt><dd>68 desktop</dd></div>
+    <div><dt>Session</dt><dd>logged out</dd></div>
+  </dl>
+</header>
+
+<div class="tally" role="list" aria-label="Issue counts">
+  <div class="crit" role="listitem"><span class="n">1</span><span class="l">Critical</span></div>
+  <div class="major" role="listitem"><span class="n">7</span><span class="l">Major</span></div>
+  <div class="minor" role="listitem"><span class="n">8</span><span class="l">Minor</span></div>
+  <div class="adv" role="listitem"><span class="n">5</span><span class="l">Advisories</span></div>
+</div>
+
+<p class="notice"><strong>The page changed during the audit.</strong> A sixth FAQ, "When does registration close?", appeared between the desktop and mobile passes, so a deploy landed mid-audit. None of the findings below depend on that section.</p>
+
+<section>
+  <div class="sec-head"><span class="sec-kicker">In order</span><h2>Fix first</h2></div>
+  <ol class="first">
+    <li><div><strong>Keep two sitewide link rules off the homepage.</strong> <span>They override the page's own link colors and leave contact details and policy links at 1.8 to 2.6 to 1. The colors the page asks for already pass.</span></div></li>
+    <li><div><strong>Win two cascade fights.</strong> <span>One CSS rule each restores readable navigation labels and the designed hero button label. Both are already specified in the site's own stylesheet and lose on specificity.</span></div></li>
+    <li><div><strong>Give the focus ring a light color on navy.</strong> <span>Seventeen of the 68 keyboard stops show a ring below 3 to 1, forced by the same kit stylesheet.</span></div></li>
+    <li><div><strong>Trap and return focus in the Race Concierge.</strong> <span>Keyboard users currently fall out of the dialog, then land at the top of the page.</span></div></li>
+    <li><div><strong>Add a pause to the sponsor ticker and state to the dropdowns.</strong> <span>Both are Level A or AA failures on high-traffic parts of the page.</span></div></li>
+    <li><div><strong>Fix the 320 px header.</strong> <span>The menu button is half off-screen at 400 percent zoom and on the narrowest phones.</span></div></li>
+  </ol>
+</section>
+
+<!-- PERCEIVABLE -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Principle 1</span><h2>Perceivable</h2></div>
+
+  <article class="finding is-crit">
+    <aside><span class="sev sev-crit">Critical</span><span class="crit-codes">1.4.3 Contrast</span></aside>
+    <div>
+      <h3>Sitewide link rules repaint the homepage's contact and policy links nearly invisible</h3>
+      <p>The page sets its own colors on these links: the footer email and phone use the sunset token, the policy links inherit sand, and the hotel phone uses cream. Two <code>!important</code> rules written for WordPress content on light pages override all of them. The Elementor kit stylesheet's <code>html body p a:not(...)</code> rule forces <code>#B9461E</code>, and a rule in the WordPress Customizer's Additional CSS, <code>html body main a:not(...)</code>, forces <code>#963312</code>. On navy <code>#26265E</code> the hotel phone measures 1.83 to 1, the Privacy Policy and Refund &amp; Deferral Policy links 1.96 to 1, and the footer email and race phone 2.60 to 1. All of this was re-checked on a fresh load with no running transitions.</p>
+      <p class="fix"><b>Fix</b>Scope both rules to inner pages by prefixing them with <code>html body:not(.home)</code>. The homepage's intended colors then return: footer email and phone at 4.64 to 1, policy links at 8.0 to 1, hotel phone at 13.1 to 1.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-major">Major</span><span class="crit-codes">1.4.3 Contrast</span></aside>
+    <div>
+      <h3>Desktop navigation labels sit on crimson pills at 2.74 to 1</h3>
+      <p>The Elementor kit rule <code>.elementor-kit-5 button {background-color:#CC0033; border-radius:999px}</code> outranks the React button's <code>bg-transparent</code> class. The Races, Runner Info and Experience Santa Fe render as crimson pills with <code>#222222</code> text. <code>#CC0033</code> is also the retired pre-rebrand crimson.</p>
+      <p class="fix"><b>Fix</b>Add <code>#root .navgrp &gt; button {background-color:transparent; border-radius:0}</code> to <code>custom.css</code>.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-major">Major</span><span class="crit-codes">1.4.3 Contrast</span></aside>
+    <div>
+      <h3>The hero "Register for 2026" label measures 3.06 to 1</h3>
+      <p>Cream <code>#FFF8EF</code> text sits on orange <code>#FF5400</code> at 20 px regular, which needs 4.5 to 1. The stylesheet already sets <code>.hero-cta-solid {color:#0C0C0E}</code>, which would measure 6.07 to 1. The rescue rule <code>html body #root a {color:inherit}</code> wins on specificity, so the label inherits cream from the hero.</p>
+      <p class="fix"><b>Fix</b>Add <code>html body #root a.hero-cta-solid {color:#0C0C0E}</code>.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-major">Major</span><span class="crit-codes">1.4.11 Non-text contrast</span></aside>
+    <div>
+      <h3>The focus ring drops below 3 to 1 on every navy band</h3>
+      <p>Every control gets a 2 px <code>#B9461E</code> ring with a soft halo. On light bands it measures 4.55 to 5.31 to 1. On navy it measures 2.60 to 1, and 2.37 to 1 on <code>#2D2D63</code>. That covers 17 of 68 stops: both hero buttons, results search and pagination, the hotel contacts and code buttons, Register Youth Athlete, the sponsor button, the newsletter form and every footer link.</p>
+      <p class="fix"><b>Fix</b>The link ring comes from the kit rule <code>a:focus, a:focus-visible {outline-color:#B9461E !important}</code>. Inside navy sections, override it with <code>outline-color:#FBF9F6 !important</code>, which measures 13.1 to 1, and give buttons the same light ring.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-major">Major</span><span class="crit-codes">1.4.10 Reflow</span></aside>
+    <div>
+      <h3>At 320 px the menu button and two cards are cut off</h3>
+      <p>At 320 px wide, which matches 1280 px at 400 percent zoom, the header controls end at 349 px. The menu button shows 29 of its 58 px. The MAC Framework cards "The Mission" and "The Vision" carry <code>min-w-[320px]</code> and end at 340 px. The page suppresses horizontal scrolling, so the cut-off parts cannot be reached.</p>
+      <p class="fix"><b>Fix</b>Hide the header Register button below 360 px, since the hero button and the bottom Register bar already cover it. Change <code>min-w-[320px]</code> to <code>min-w-0</code> on those cards.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">1.4.3 Contrast</span></aside>
+    <div>
+      <h3>Orange tier labels and road tags miss by a hair</h3>
+      <p><code>#E07B39</code> at 10 to 11 px bold measures 4.01 to 1 on <code>#313166</code> for the Title, Gold and Silver Sponsor labels, 17 instances. It measures 4.21 to 4.24 to 1 on <code>#352D5B</code> and <code>#2D2D63</code> for driving-guide tags such as "Strict Vehicle Lockdown", 8 instances.</p>
+      <p class="fix"><b>Fix</b>Use <code>#F19A55</code>, which measures 5.4 to 5.7 to 1 on those grounds.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">1.3.1 Info and relationships</span></aside>
+    <div>
+      <h3>The page banner is the hero, not the navigation</h3>
+      <p>The hero is the page's <code>&lt;header&gt;</code>, labelled with the same words as the h1. The navigation sits in a separate sticky container outside it, so the banner landmark skips the site's own menu.</p>
+      <p class="fix"><b>Fix</b>Wrap the sticky bar in <code>&lt;header&gt;</code> and make the hero a <code>&lt;section aria-labelledby&gt;</code> that points at the h1.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-major">Major</span><span class="crit-codes">1.4.13 Hover or focus<br>4.1.2 Name, role, value</span></aside>
+    <div>
+      <h3>Desktop dropdowns can't be dismissed and don't report their state</h3>
+      <p>The three menus open on hover or focus through CSS alone. With focus on "The Races", a real Escape keypress left the panel open over the hero. Clicking the button does nothing, and it carries no <code>aria-expanded</code> or <code>aria-controls</code>, so screen readers never hear "expanded" or "collapsed". Keyboard users also pass through all 21 dropdown links before reaching the page.</p>
+      <p class="fix"><b>Fix</b>Drive each panel from state: click toggles it, <code>aria-expanded</code> mirrors it, Escape closes it and leaves focus on the trigger. The skip link already covers the long tab path.</p>
+    </div>
+  </article>
+</section>
+
+<!-- OPERABLE -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Principle 2</span><h2>Operable</h2></div>
+
+  <article class="finding">
+    <aside><span class="sev sev-major">Major</span><span class="crit-codes">2.4.3 Focus order</span></aside>
+    <div>
+      <h3>The Race Concierge lets focus escape, then loses it on close</h3>
+      <p>The dialog declares <code>aria-modal="true"</code>, but Tab from the last suggestion, "Post-race burritos", moved to "Register for 2026" behind the overlay and kept going through the page. After Escape closed the dialog, focus sat on <code>&lt;body&gt;</code> instead of the magnifier button.</p>
+      <p class="fix"><b>Fix</b>In the <code>Concierge</code> component, wrap Tab and Shift+Tab inside the dialog card. Store the focused element when the dialog opens and return focus to it on close.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-major">Major</span><span class="crit-codes">2.2.2 Pause, stop, hide</span></aside>
+    <div>
+      <h3>The sponsor ticker never stops for keyboard or touch users</h3>
+      <p>The strip scrolls on a 26-second infinite loop and pauses only under a hovering mouse. The reduced-motion setting does stop it, but there is no control on the page. This is a Level A criterion.</p>
+      <p class="fix"><b>Fix</b>Add a Pause button with <code>aria-pressed</code>, and pause on <code>:focus-within</code> as well as <code>:hover</code>.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">2.2.2 Pause, stop, hide</span></aside>
+    <div>
+      <h3>The countdown ticks every second with no way to pause</h3>
+      <p><code>role="timer"</code> correctly keeps screen readers quiet, but the seconds digit changes continuously beside the hero content.</p>
+      <p class="fix"><b>Fix</b>Show days, hours and minutes only, which also makes the update infrequent enough to stop drawing the eye.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">2.4.3 Focus order</span></aside>
+    <div>
+      <h3>On phones, the notice "Details" button hides itself and drops focus</h3>
+      <p>Activating "Race Day Notice Details" reveals the notice text and removes the button, so keyboard and screen reader focus falls back to the top of the document.</p>
+      <p class="fix"><b>Fix</b>In <code>AlertBanner</code>, move focus to the revealed notice with <code>tabindex="-1"</code>, or keep the button as a show and hide toggle.</p>
+    </div>
+  </article>
+</section>
+
+<!-- UNDERSTANDABLE -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Principle 3</span><h2>Understandable</h2></div>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">2.5.3 Label in name<br>3.1.2 Language of parts</span></aside>
+    <div>
+      <h3>The language button's spoken name doesn't contain "ES"</h3>
+      <p>The button shows "ES" but is named "Cambiar a español", and "Switch to English" when it shows "EN". Speech-input users who say "click ES" may get no match. The Spanish phrase has no <code>lang</code> attribute, so screen readers pronounce it with the English voice. The page language itself switches correctly.</p>
+      <p class="fix"><b>Fix</b>Name it <code>aria-label="ES, cambiar a español"</code> with <code>lang="es"</code>, and use the matching English pattern in the EN state.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ROBUST -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Principle 4</span><h2>Robust</h2></div>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">4.1.2 Name, role, value</span></aside>
+    <div>
+      <h3>Race tabs ignore arrow keys and point at panels that don't exist</h3>
+      <p>The four race buttons use <code>role="tab"</code>, which tells screen reader users to use arrow keys, but ArrowRight did nothing. Each is a separate Tab stop. The three unselected tabs point <code>aria-controls</code> at panels React has not rendered.</p>
+      <p class="fix"><b>Fix</b>Add a roving tabindex with arrow-key selection, or drop the tab roles and use buttons with <code>aria-pressed</code>.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">4.1.2 Name, role, value</span></aside>
+    <div>
+      <h3>The menu button points at a menu that exists only when open</h3>
+      <p><code>aria-controls="mobile-menu"</code> refers to an element React renders only after the button is pressed, so the reference is broken while the menu is closed.</p>
+      <p class="fix"><b>Fix</b>Always render the menu container and toggle its <code>hidden</code> attribute.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <aside><span class="sev sev-minor">Minor</span><span class="crit-codes">4.1.2 Name, role, value</span></aside>
+    <div>
+      <h3>The mobile aid-station table is a tab stop with no name</h3>
+      <p>On phones the table scrolls sideways, and the browser makes its scroll container a keyboard stop. It has no role or label, so screen readers can't say what it is.</p>
+      <p class="fix"><b>Fix</b>Give the scroll container <code>role="region"</code>, <code>aria-label="Aid stations"</code> and <code>tabindex="0"</code>.</p>
+    </div>
+  </article>
+</section>
+
+<!-- CONTRAST TABLE -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Measured</span><h2>Color contrast check</h2></div>
+  <p class="sec-intro">Each specimen is drawn in the exact colors the browser computed, so the failures look here as they do on the page. Shaded rows show the colors the page itself asks for, or a proposed fix.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Element</th><th>Specimen</th><th>Foreground</th><th>Background</th><th>Ratio</th><th>Needs</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Hotel phone, lodging band</td><td><span class="spec" style="color:#963312;background:#26265E">505-772-0476</span></td><td class="mono">#963312</td><td class="mono">#26265E</td><td class="num">1.83</td><td class="num">4.5</td><td><span class="sev sev-crit">Fail</span></td></tr>
+        <tr><td>Footer policy links</td><td><span class="spec sm" style="color:#943E2E;background:#26265E">Privacy Policy</span></td><td class="mono">#943E2E</td><td class="mono">#26265E</td><td class="num">1.96</td><td class="num">4.5</td><td><span class="sev sev-crit">Fail</span></td></tr>
+        <tr><td>Footer email and phone</td><td><span class="spec" style="color:#B9461E;background:#26265E">505-920-9799</span></td><td class="mono">#B9461E</td><td class="mono">#26265E</td><td class="num">2.60</td><td class="num">4.5</td><td><span class="sev sev-crit">Fail</span></td></tr>
+        <tr><td>Desktop nav labels</td><td><span class="spec" style="color:#222222;background:#CC0033;border-radius:999px">The Races</span></td><td class="mono">#222222</td><td class="mono">#CC0033</td><td class="num">2.74</td><td class="num">4.5</td><td><span class="sev sev-major">Fail</span></td></tr>
+        <tr><td>Hero Register button</td><td><span class="spec" style="color:#FFF8EF;background:#FF5400;font-weight:400">Register for 2026</span></td><td class="mono">#FFF8EF</td><td class="mono">#FF5400</td><td class="num">3.06</td><td class="num">4.5</td><td><span class="sev sev-major">Fail</span></td></tr>
+        <tr><td>Sponsor tier labels</td><td><span class="spec sm" style="color:#E07B39;background:#313166">Gold Sponsor</span></td><td class="mono">#E07B39</td><td class="mono">#313166</td><td class="num">4.01</td><td class="num">4.5</td><td><span class="sev sev-minor">Fail</span></td></tr>
+        <tr><td>Driving-guide tags</td><td><span class="spec sm" style="color:#E07B39;background:#2D2D63">Strict Vehicle Lockdown</span></td><td class="mono">#E07B39</td><td class="mono">#2D2D63</td><td class="num">4.24</td><td class="num">4.5</td><td><span class="sev sev-minor">Fail</span></td></tr>
+        <tr><td>Focus ring on navy</td><td><span class="ring" style="color:#FBF9F6;background:#26265E;outline:2px solid #B9461E;outline-offset:2px">Subscribe</span></td><td class="mono">#B9461E</td><td class="mono">#26265E</td><td class="num">2.60</td><td class="num">3.0</td><td><span class="sev sev-major">Fail</span></td></tr>
+        <tr><td>Focus ring on sand</td><td><span class="ring" style="color:#222222;background:#FBF9F6;outline:2px solid #B9461E;outline-offset:2px">FAQ</span></td><td class="mono">#B9461E</td><td class="mono">#FBF9F6</td><td class="num">5.05</td><td class="num">3.0</td><td><span class="sev sev-pass">Pass</span></td></tr>
+        <tr><td>Store "Soon" chip</td><td><span class="spec sm" style="color:#8A8884;background:#F1EDE6">Store Soon</span></td><td class="mono">#8A8884</td><td class="mono">#F1EDE6</td><td class="num">3.03</td><td class="num">n/a</td><td><span class="sev sev-adv">Exempt</span></td></tr>
+        <tr><td>Results "Prev", disabled</td><td><span class="spec" style="color:#70484F;background:#26265E">Prev</span></td><td class="mono">#70484F</td><td class="mono">#26265E</td><td class="num">1.79</td><td class="num">n/a</td><td><span class="sev sev-adv">Exempt</span></td></tr>
+        <tr class="sub"><td>Intended: footer email and phone</td><td><span class="spec" style="color:#E07B39;background:#26265E">505-920-9799</span></td><td class="mono">#E07B39</td><td class="mono">#26265E</td><td class="num">4.64</td><td class="num">4.5</td><td><span class="sev sev-pass">Pass</span></td></tr>
+        <tr class="sub"><td>Intended: hotel phone</td><td><span class="spec" style="color:#FBF9F6;background:#26265E">505-772-0476</span></td><td class="mono">#FBF9F6</td><td class="mono">#26265E</td><td class="num">13.1</td><td class="num">4.5</td><td><span class="sev sev-pass">Pass</span></td></tr>
+        <tr class="sub"><td>Proposed: hero label</td><td><span class="spec" style="color:#0C0C0E;background:#FF5400;font-weight:400">Register for 2026</span></td><td class="mono">#0C0C0E</td><td class="mono">#FF5400</td><td class="num">6.07</td><td class="num">4.5</td><td><span class="sev sev-pass">Pass</span></td></tr>
+        <tr class="sub"><td>Proposed: ring on navy</td><td><span class="ring" style="color:#FBF9F6;background:#26265E;outline:2px solid #FBF9F6;outline-offset:2px">Subscribe</span></td><td class="mono">#FBF9F6</td><td class="mono">#26265E</td><td class="num">13.1</td><td class="num">3.0</td><td><span class="sev sev-pass">Pass</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- KEYBOARD -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Tested</span><h2>Keyboard navigation</h2></div>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Element</th><th>Tab order</th><th>Enter or Space</th><th>Escape</th><th>Arrow keys</th></tr></thead>
+      <tbody>
+        <tr><td>Skip to content</td><td>First stop</td><td class="wide">Jumps to main</td><td>n/a</td><td>n/a</td></tr>
+        <tr><td>Nav menus, 3 buttons</td><td>Third, tenth, eighteenth</td><td class="wide">No action; the panel opens on focus instead</td><td>Panel stays open</td><td>n/a</td></tr>
+        <tr><td>Dropdown links, 21</td><td>Straight after each button</td><td class="wide">Navigate</td><td>Panel stays open</td><td>n/a</td></tr>
+        <tr><td>Ask anything</td><td>After the menus</td><td class="wide">Opens the dialog and focuses its input</td><td>Closes, focus lost to body</td><td>n/a</td></tr>
+        <tr><td>Concierge dialog</td><td>Close, input, 3 suggestions</td><td class="wide">Answers appear</td><td>Closes</td><td>Tab escapes the dialog</td></tr>
+        <tr><td>ES or EN</td><td>After Ask anything</td><td class="wide">Switches language and sets <code>lang</code></td><td>n/a</td><td>n/a</td></tr>
+        <tr><td>Race tabs, 4</td><td>Four separate stops</td><td class="wide">Selects the race</td><td>n/a</td><td>No effect</td></tr>
+        <tr><td>FAQ, 5</td><td>Five stops</td><td class="wide">Expands, state exposed</td><td>n/a</td><td>n/a</td></tr>
+        <tr><td>Mobile menu</td><td>After Register</td><td class="wide">Opens; focus stays and Tab walks into it</td><td>Stays open</td><td>n/a</td></tr>
+        <tr><td>Race Day Notice, mobile</td><td>Near the top</td><td class="wide">Reveals notice, focus lost</td><td>n/a</td><td>n/a</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SCREEN READER -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Computed</span><h2>Screen reader output</h2></div>
+  <p class="sec-intro">Derived from each element's role, name and state in the live page. This is not a VoiceOver or NVDA recording.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Element</th><th>Announced as</th><th>Issue</th></tr></thead>
+      <tbody>
+        <tr><td>Hero heading</td><td class="wide">"Santa Fe International Half Marathon: Thin Air. Big Sky. True Grit.", heading level 1</td><td>None</td></tr>
+        <tr><td>Nav menu button</td><td class="wide">"The Races, button"</td><td>No expanded or collapsed state</td></tr>
+        <tr><td>Magnifier</td><td class="wide">"Ask anything, button, opens dialog"</td><td>None</td></tr>
+        <tr><td>Race Concierge</td><td class="wide">"Race Concierge, dialog"; answers read through a polite live region</td><td>Page behind it stays reachable</td></tr>
+        <tr><td>Language button</td><td class="wide">"Cambiar a español, button", in the English voice</td><td>Name omits "ES"</td></tr>
+        <tr><td>Countdown</td><td class="wide">"Countdown to the 7:30 AM start, timer"</td><td>None; ticks stay silent</td></tr>
+        <tr><td>Race tabs</td><td class="wide">"Half Marathon $95, tab, selected, 1 of 4"</td><td>Arrow keys don't move</td></tr>
+        <tr><td>Results pagination</td><td class="wide">"Page 1 of 43", announced politely</td><td>None</td></tr>
+        <tr><td>Sponsor ticker</td><td class="wide">Each sponsor name once</td><td>None; the loop copy is hidden</td></tr>
+        <tr><td>Aid-station table, mobile</td><td class="wide">A focus stop with no role or name</td><td>Unlabelled</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PASSES + ADVISORIES -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Verified</span><h2>What already works</h2></div>
+  <ul class="passes">
+    <li>One h1, no skipped heading levels, and the event name is in the h1 for screen readers.</li>
+    <li>All 27 images carry alt text; sponsor logos are correctly empty where the name is printed beside them.</li>
+    <li>The skip link is the first stop, appears on focus, and lands on main.</li>
+    <li>Every control shows a visible focus ring, and tab order follows the visual order.</li>
+    <li>Results search, newsletter email and the Concierge input all have labels.</li>
+    <li>The FAQ accordion uses buttons with <code>aria-expanded</code> and <code>aria-controls</code>.</li>
+    <li>The Concierge is a labelled dialog that moves focus in and closes on Escape.</li>
+    <li>Switching to Spanish sets the page language to <code>es</code>.</li>
+    <li>The countdown uses <code>role="timer"</code>, and pagination announces its page politely.</li>
+    <li>Text-spacing overrides clip nothing, and nothing scrolls sideways at 375 px.</li>
+    <li>Pinch zoom is allowed, and the reduced-motion setting stops all animation.</li>
+    <li>The open mobile menu keeps all 21 links reachable even though it is taller than the screen.</li>
+  </ul>
+
+  <h3 style="font-size:16px;margin:30px 0 10px">Advisories, not counted as failures</h3>
+  <ul class="plain">
+    <li><strong>Hero text sits on photographs.</strong> The mobile crop puts the date line over a runner's white shirt. Contrast over photos needs a manual check.</li>
+    <li><strong>No scroll padding for the sticky bars.</strong> The 72 px header and the 69 px mobile Register bar can cover focused elements and anchor targets, which WCAG 2.2 treats as a failure.</li>
+    <li><strong>The mobile menu doesn't close on Escape.</strong> Not required for an inline disclosure menu, but expected.</li>
+    <li><strong>Seven links open new tabs without saying so.</strong> The Register buttons send runners to RunSignup in a new tab.</li>
+    <li><strong>Six targets are under 44 px.</strong> The race tabs are 39 px tall and the hotel phone links 26 px. All pass WCAG 2.2's 24 px minimum; 44 px is an AAA goal in 2.1.</li>
+  </ul>
+</section>
+
+<!-- PART 2 -->
+<section>
+  <div class="sec-head"><span class="sec-kicker">Part two</span><h2>Before the restructure ships</h2></div>
+  <p class="sec-intro">Every factual claim in the pasted hero and content-band plan, checked against rulings, CLAUDE.md, the live site and RunSignup, in that order.</p>
+
+  <div class="verdict">
+    <span class="big">Fail</span>
+    <span>5 corrections &middot; 1 unverifiable claim held &middot; 2 conditions</span>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Claim</th><th>Verdict</th><th>Settled by</th><th>Correction</th></tr></thead>
+      <tbody>
+        <tr><td>Hero heading "Santa Fe International Half Marathon"</td><td><span class="sev sev-pass">Verified</span></td><td>CLAUDE.md; live h1</td><td class="wide">Keep. Today it is in the h1 for screen readers only.</td></tr>
+        <tr><td>Sub-heading "Thin Air. Big Sky. True Grit."</td><td><span class="sev sev-pass">Verified</span></td><td>Live homepage hero</td><td class="wide">Already the visible hero headline.</td></tr>
+        <tr><td>"Sept 20, 2026 | Santa Fe, NM | 7,000 FT"</td><td><span class="sev sev-pass">Verified</span></td><td>CLAUDE.md</td><td class="wide">Keep.</td></tr>
+        <tr><td>Hero button to <code>https://runsignup.com</code></td><td><span class="sev sev-crit">Contradicts</span></td><td>Live registration links</td><td class="wide">Use <code>runsignup.com/Race/NM/SantaFe/SantaFeInternationalHalfMarathon</code>. The bare domain drops runners on RunSignup's front page.</td></tr>
+        <tr><td>Photo of "runners on the Santa Fe River Trail", or a video loop</td><td><span class="sev sev-major">Unverifiable</span></td><td>No source has this photo</td><td class="wide">Held. The course is a road race along the river corridor, not a trail race. Use an existing start-line or on-course photo.</td></tr>
+        <tr><td>"7,000 FT Altitude"</td><td><span class="sev sev-pass">Verified</span></td><td>CLAUDE.md</td><td class="wide">Keep.</td></tr>
+        <tr><td>"100% Paved"</td><td><span class="sev sev-pass">Verified</span></td><td>Kosgei's Sept 4 fact spec</td><td class="wide">Keep.</td></tr>
+        <tr><td>"5th Annual"</td><td><span class="sev sev-pass">Verified</span></td><td>CLAUDE.md; edition ruling</td><td class="wide">Keep.</td></tr>
+        <tr><td>"2 Local Charities"</td><td><span class="sev sev-crit">Contradicts</span></td><td>Kosgei's Sept 4 fact spec</td><td class="wide">Kitany Water Project serves Kitany, Kenya. Say "2 Charity Partners".</td></tr>
+        <tr><td>"$95 Half", "$45 5K", "Free Kids Dash"</td><td><span class="sev sev-pass">Verified</span></td><td>RunSignup check, Sept 12</td><td class="wide">Keep.</td></tr>
+        <tr><td>"$255 Relay"</td><td><span class="sev sev-minor">Condition</span></td><td>RunSignup check, Sept 12</td><td class="wide">The relay is $85 per runner. The card must read "$255 / team", as the site does.</td></tr>
+        <tr><td>A Register button in every card</td><td><span class="sev sev-minor">Condition</span></td><td>Kosgei ruling, Sept 12</td><td class="wide">Registration closes Saturday Sept 19 at 5 PM MDT. The cards need a closed state by then.</td></tr>
+        <tr><td>Accordions for closures, detours and aid stations</td><td><span class="sev sev-pass">Verified</span></td><td>Live homepage sections</td><td class="wide">Reuse the homepage's FAQ accordion, which is already accessible.</td></tr>
+        <tr><td>Move the MAC Framework off the homepage</td><td><span class="sev sev-pass">Verified</span></td><td>Live homepage</td><td class="wide">Your call. Its two cards are the ones clipping at 320 px.</td></tr>
+        <tr><td>Charity grid: Kitany Water Project, Lightning Boy Foundation</td><td><span class="sev sev-pass">Verified</span></td><td>Kosgei's Sept 4 fact spec</td><td class="wide">Keep.</td></tr>
+        <tr><td>Charity grid: "YouthWorks"</td><td><span class="sev sev-crit">Contradicts</span></td><td>CLAUDE.md content rules</td><td class="wide">Santa Fe YouthWorks cooks the post-race green chile brunch. It is not a charity partner. Credit it by full name for the food.</td></tr>
+        <tr><td>Charity grid: "Reunity Resources"</td><td><span class="sev sev-crit">Contradicts</span></td><td>CLAUDE.md event facts</td><td class="wide">Reunity Resources Farm is the finish venue, not a charity partner.</td></tr>
+        <tr><td>Edit the Home page "with Elementor"</td><td><span class="sev sev-crit">Contradicts</span></td><td>Project memory</td><td class="wide">The homepage is a compiled React app. There is no Elementor hero section to select. Changes go through the landing source, a rebuild and a deploy.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Rule gates.</strong> No discount codes, emoji or arrows. The pipe separators are fine. Attribution fails twice, on YouthWorks and Reunity Resources, both under the rule against inventing partner programs.</p>
+
+  <h3 style="font-size:16px;margin:30px 0 10px">If the redesign goes ahead</h3>
+  <ul class="plain">
+    <li><strong>Prefer a still photo.</strong> A background video loop needs a visible pause control under 2.2.2.</li>
+    <li><strong>Measure the overlay, don't assume it.</strong> A 0.4 to 0.6 black overlay does not guarantee 4.5 to 1 for white text over the brightest part of a photo.</li>
+    <li><strong>Keep the hero button label dark on orange.</strong> Near-black on <code>#FF5400</code> measures 6.07 to 1; cream on <code>#AD4A2E</code> terracotta measures 5.26 to 1. Cream on orange is today's 3.06 failure.</li>
+    <li><strong>Name the four Register buttons per race.</strong> "Register for the Santa Fe 5K" keeps screen reader link lists from showing four identical entries.</li>
+    <li><strong>Put the stats in real text.</strong> Numbers stay readable and translatable; decorative icons get <code>aria-hidden</code>.</li>
+    <li><strong>Name each organization in the charity grid's alt text.</strong> A logo alone tells a screen reader nothing.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-kicker">Scope</span><h2>Method and limits</h2></div>
+  <ul class="plain">
+    <li>Live homepage, logged out, in Chromium at 1280 by 800, 375 by 812 and 320 by 640.</li>
+    <li>Contrast was computed for 390 visible text elements, and focus-ring contrast for every desktop tab stop. The failing links, nav buttons and hero button were re-checked on a fresh load with no running CSS transitions, because frozen transitions have produced false contrast readings on this site before.</li>
+    <li>Tab, Shift+Tab, Escape and arrow keys were sent as real keypresses. The test browser could not send Enter or Space, so activation was confirmed with clicks.</li>
+    <li>Not measured: text contrast over the hero photographs, and whether sticky bars cover focused elements, because the test browser did not scroll on Tab. Both need a manual pass.</li>
+    <li>Real assistive technology was not used. A VoiceOver pass on an iPhone is the highest-value follow-up before race day.</li>
+  </ul>
+</section>
+
+<div class="colophon">
+  <span>santafehalfmarathon.com &middot; homepage &middot; WCAG 2.1 AA</span>
+  <span>Audited Sept 13, 2026</span>
+</div>
+
+</div>

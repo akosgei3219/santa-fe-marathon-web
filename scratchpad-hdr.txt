@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Wed, 16 Sep 2026 16:40:38 GMT
+Server: Apache
+Link: <https://santafehalfmarathon.com/wp-json/>; rel="https://api.w.org/", <https://santafehalfmarathon.com/wp-json/wp/v2/pages/2539>; rel="alternate"; title="JSON"; type="application/json", <https://santafehalfmarathon.com/?p=2539>; rel=shortlink
+Cache-Control: no-cache
+WPO-Cache-Status: saving to cache
+Upgrade: h2,h2c
+Connection: Upgrade
+Last-Modified: Wed, 16 Sep 2026 10:40:38 GMT
+Cache-Control: max-age=7200
+Expires: Wed, 16 Sep 2026 18:40:38 GMT
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+

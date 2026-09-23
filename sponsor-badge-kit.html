@@ -1,0 +1,99 @@
+<title>Sponsor Badge Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Martian+Mono:wght@400;700&display=swap">
+<style>
+:root{
+  --sand:#F5EDE0; --sand-2:#EDE1CC; --ink:#201812; --ink-soft:#5C4E40;
+  --terra:#B34A26; --sunset:#E07B39; --indigo:#26265E;
+  --card:#FBF6EC; --line:#D9C9B0; --chip:#EFE3CF; --code-bg:#26265E; --code-fg:#E8E4F7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --sand:#191A2E; --sand-2:#22233D; --ink:#F0E9DC; --ink-soft:#B7AE9D;
+    --terra:#E0703F; --sunset:#F19A55; --indigo:#E8E4F7;
+    --card:#22233D; --line:#3A3B5C; --chip:#2C2D4A; --code-bg:#111228; --code-fg:#C9CFF2;
+  }
+}
+:root[data-theme="dark"]{
+  --sand:#191A2E; --sand-2:#22233D; --ink:#F0E9DC; --ink-soft:#B7AE9D;
+  --terra:#E0703F; --sunset:#F19A55; --indigo:#E8E4F7;
+  --card:#22233D; --line:#3A3B5C; --chip:#2C2D4A; --code-bg:#111228; --code-fg:#C9CFF2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;line-height:1.5;padding:0 20px 64px}
+.wrap{max-width:960px;margin:0 auto}
+header{padding:56px 0 12px}
+.eyebrow{font-family:'Martian Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);font-weight:700}
+h1{font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(1.8rem,4.5vw,2.6rem);margin:.3rem 0 .4rem;text-wrap:balance}
+.sub{color:var(--ink-soft);max-width:60ch;margin:0 0 2.2rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.6rem;margin-bottom:1.6rem}
+.card-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.card-head h2{margin:0;font-size:1.15rem;font-weight:800;text-transform:uppercase}
+.tier{font-family:'Martian Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:var(--chip);padding:.3rem .6rem;border-radius:3px}
+.preview{display:flex;justify-content:center;padding:1.6rem;background:var(--sand-2);border:1px solid var(--line);border-radius:6px;margin-bottom:1rem}
+.preview svg{max-width:100%;height:auto}
+pre{background:var(--code-bg);color:var(--code-fg);border-radius:6px;padding:1rem;overflow-x:auto;font-family:'Martian Mono',monospace;font-size:.68rem;line-height:1.55;margin:0 0 .8rem;max-height:260px}
+button.copy{font:inherit;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;background:var(--terra);color:#FFF8EF;border:none;border-radius:3px;padding:.6rem 1.1rem;cursor:pointer}
+button.copy:focus-visible{outline:3px solid var(--sunset);outline-offset:2px}
+.note{font-family:'Martian Mono',monospace;font-size:.64rem;color:var(--ink-soft);margin-top:.6rem}
+</style>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Santa Fe International Half Marathon</span>
+    <h1>2026 Sponsor Badge Kit</h1>
+    <p class="sub">Three flat, scalable SVG wordmarks in the race palette. Each renders at any size with zero image files. Copy the code block and paste it anywhere HTML is accepted; fonts fall back cleanly to system sans when Archivo is not loaded. These are original typographic stand-ins, not reproductions of any sponsor's trademarked logo.</p>
+  </header>
+  <div id="cards"></div>
+  <p class="note">Tip: to drop a badge into the landing page sponsor tiers, replace the text lockup inside a tier card with the SVG. Width is fluid; the viewBox keeps proportions.</p>
+</div>
+<script>
+var BADGES = [
+  {
+    name: "Capitol Ford",
+    tier: "Title Sponsor",
+    svg: '<svg viewBox="0 0 360 120" width="360" height="120" role="img" aria-label="Capitol Ford" xmlns="http://www.w3.org/2000/svg">\n  <rect x="0" y="0" width="360" height="120" rx="12" fill="#26265E"/>\n  <rect x="24" y="40" width="88" height="7" rx="3.5" fill="#E07B39"/>\n  <rect x="40" y="54" width="72" height="7" rx="3.5" fill="#C85A2E"/>\n  <rect x="56" y="68" width="56" height="7" rx="3.5" fill="#B34A26"/>\n  <text x="126" y="70" font-family="Archivo, Arial, sans-serif" font-size="27" font-weight="800" font-style="italic" letter-spacing="0.5" fill="#F5EDE0">CAPITOL <tspan fill="#E07B39">FORD</tspan></text>\n  <line x1="24" y1="94" x2="336" y2="94" stroke="#3D3D8F" stroke-width="3"/>\n  <line x1="24" y1="94" x2="336" y2="94" stroke="#E7C36A" stroke-width="1.5" stroke-dasharray="14 10"/>\n</svg>'
+  },
+  {
+    name: "City of Santa Fe Economic Development",
+    tier: "Gold Sponsor",
+    svg: '<svg viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="City of Santa Fe Economic Development" xmlns="http://www.w3.org/2000/svg">\n  <circle cx="100" cy="100" r="96" fill="#F5EDE0" stroke="#26265E" stroke-width="4"/>\n  <circle cx="100" cy="100" r="80" fill="none" stroke="#26265E" stroke-width="1.5"/>\n  <path id="sealTop" d="M 32,100 A 68,68 0 0 1 168,100" fill="none"/>\n  <text font-family="Archivo, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2.5" fill="#26265E"><textPath href="#sealTop" startOffset="50%" text-anchor="middle">CITY OF SANTA FE</textPath></text>\n  <circle cx="100" cy="86" r="11" fill="#E07B39"/>\n  <polygon points="62,124 88,88 106,112 118,98 138,124" fill="#26265E"/>\n  <line x1="58" y1="128" x2="142" y2="128" stroke="#B34A26" stroke-width="3"/>\n  <text x="100" y="152" font-family="Archivo, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.6" fill="#26265E" text-anchor="middle">ECONOMIC</text>\n  <text x="100" y="166" font-family="Archivo, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.6" fill="#26265E" text-anchor="middle">DEVELOPMENT</text>\n  <rect x="55" y="145" width="7" height="7" fill="#E07B39" transform="rotate(45 58.5 148.5)"/>\n  <rect x="138" y="145" width="7" height="7" fill="#E07B39" transform="rotate(45 141.5 148.5)"/>\n</svg>'
+  },
+  {
+    name: "Jirani",
+    tier: "Silver Sponsor",
+    svg: '<svg viewBox="0 0 300 120" width="300" height="120" role="img" aria-label="Jirani" xmlns="http://www.w3.org/2000/svg">\n  <rect x="0" y="0" width="300" height="120" rx="12" fill="#F5EDE0" stroke="#D9C9B0" stroke-width="1.5"/>\n  <circle cx="64" cy="44" r="19" fill="#B34A26" opacity="0.9"/>\n  <circle cx="88" cy="44" r="19" fill="#E07B39" opacity="0.85"/>\n  <circle cx="112" cy="44" r="19" fill="#26265E" opacity="0.85"/>\n  <text x="150" y="56" font-family="Archivo, Arial, sans-serif" font-size="40" font-weight="800" letter-spacing="-0.5" fill="#26265E">jirani</text>\n  <text x="64" y="92" font-family="Archivo, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="3" fill="#5C4E40">KENYAN COFFEE</text>\n</svg>'
+  }
+];
+var wrap = document.getElementById("cards");
+BADGES.forEach(function (b, i) {
+  var card = document.createElement("div");
+  card.className = "card";
+  var head = document.createElement("div");
+  head.className = "card-head";
+  var h2 = document.createElement("h2");
+  h2.textContent = b.name;
+  var tier = document.createElement("span");
+  tier.className = "tier";
+  tier.textContent = b.tier;
+  head.appendChild(h2); head.appendChild(tier);
+  var prev = document.createElement("div");
+  prev.className = "preview";
+  prev.innerHTML = b.svg;
+  var pre = document.createElement("pre");
+  var code = document.createElement("code");
+  code.textContent = b.svg;
+  pre.appendChild(code);
+  var btn = document.createElement("button");
+  btn.className = "copy";
+  btn.type = "button";
+  btn.textContent = "Copy SVG";
+  btn.addEventListener("click", function () {
+    function done(ok) { btn.textContent = ok ? "Copied" : "Select the code and copy manually"; setTimeout(function () { btn.textContent = "Copy SVG"; }, 1800); }
+    try { navigator.clipboard.writeText(b.svg).then(function () { done(true); }, function () { done(false); }); }
+    catch (e) { done(false); }
+  });
+  card.appendChild(head); card.appendChild(prev); card.appendChild(pre); card.appendChild(btn);
+  wrap.appendChild(card);
+});
+</script>

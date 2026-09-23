@@ -1,0 +1,315 @@
+<!-- ============================================================================
+     SANTA FE INTERNATIONAL HALF MARATHON  —  WORDPRESS PASTE BUNDLE
+     ============================================================================
+
+     This file contains BOTH front-page sections, ready for WordPress:
+        1. HERO          (headline, presenter, CTAs, 4-race stat row)
+        2. RACE GRID     (4 events, single always-visible pricing)
+
+     ────────────────────────────────────────────────────────────────────────
+     HOW TO USE — two options:
+     ────────────────────────────────────────────────────────────────────────
+     OPTION A (fastest):  paste this ENTIRE file into ONE "Custom HTML" block.
+         Both sections render stacked (hero on top, races below). The CSS is
+         scoped (.sfm-hero / .sfm-grid), so nothing clashes with your theme.
+
+     OPTION B (separate blocks): copy each section individually. The dividers
+         below marked  >>> PASTE THIS HERE <<<  show where each block starts/ends.
+
+     STEPS in WordPress:
+         1. Edit the page → click + → search "Custom HTML" → add the block.
+         2. Paste → click "Preview" in the block toolbar to see it render.
+         3. Update / Publish.
+
+     4 RACES & PRICING (must match the live homepage):
+         • Half Marathon ........ 13.1 mi ............. $95 / runner
+         • 3-Amigos Relay ....... 3 x 4.4 mi (team) ... $255 / team
+         • 4K Fitness ........... 4 km ................ $45 / runner
+         • Kids Dash ............ 1 km ................ Free
+
+     BEFORE GOING LIVE — see README.md for the full checklist:
+         • All "Register / Enter / Sign Up" buttons point to https://runsignup.com/Race/Register/?raceId=83604
+         • Swap the gradient photo slots for real images when ready (optional).
+         • "See the Course" points to RunSignup — repoint to your route page
+           once the course map is uploaded.
+     ============================================================================ -->
+
+
+<!-- ==========================================================================
+     >>> PASTE THIS HERE <<<   BLOCK 1 of 2 — HERO
+     Copy from this line down to the "END OF BLOCK 1" marker.
+     ========================================================================== -->
+<style>
+  .sfm-hero * { box-sizing: border-box; }
+  .sfm-hero {
+    position: relative;
+    overflow: hidden;
+    background: #1c1917;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .sfm-hero__bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom right, #1c1917, #292524, #042f2e);
+  }
+  .sfm-hero__blob { position: absolute; height: 24rem; width: 24rem; border-radius: 9999px; filter: blur(64px); }
+  .sfm-hero__blob--amber { right: -6rem; top: -6rem; background: rgba(245, 158, 11, 0.20); }
+  .sfm-hero__blob--teal  { bottom: -8rem; left: -4rem; background: rgba(20, 184, 166, 0.20); }
+  .sfm-hero__inner {
+    position: relative; margin: 0 auto; max-width: 64rem;
+    padding: 6rem 1.5rem; text-align: center;
+  }
+  @media (min-width: 640px) { .sfm-hero__inner { padding: 8rem 1.5rem; } }
+  .sfm-hero__badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border-radius: 9999px; background: rgba(20, 184, 166, 0.10);
+    padding: 0.375rem 1rem; font-size: 0.875rem; font-weight: 500;
+    color: #5eead4; box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.30);
+  }
+  .sfm-hero__dot { height: 0.5rem; width: 0.5rem; border-radius: 9999px; background: #fbbf24; }
+  .sfm-hero__title {
+    margin: 1.5rem 0 0; font-size: 2.25rem; line-height: 1.1;
+    font-weight: 800; letter-spacing: -0.025em; color: #fafaf9;
+  }
+  @media (min-width: 640px) { .sfm-hero__title { font-size: 3.75rem; } }
+  .sfm-hero__presenter {
+    margin: 0.75rem 0 0; font-size: 0.875rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase; color: #5eead4;
+  }
+  .sfm-hero__lede {
+    margin: 1.25rem auto 0; max-width: 42rem;
+    font-size: 1.125rem; color: #d6d3d1;
+  }
+  @media (min-width: 640px) { .sfm-hero__lede { font-size: 1.25rem; } }
+  .sfm-hero__cta { margin-top: 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+  @media (min-width: 640px) { .sfm-hero__cta { flex-direction: row; } }
+  .sfm-hero__btn {
+    display: inline-block; border-radius: 0.75rem; padding: 0.875rem 2rem;
+    font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.15s ease;
+  }
+  .sfm-hero__btn--primary { background: #f59e0b; color: #1c1917; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+  .sfm-hero__btn--primary:hover { background: #fbbf24; }
+  .sfm-hero__btn--ghost { border: 1px solid #57534e; color: #f5f5f4; }
+  .sfm-hero__btn--ghost:hover { border-color: #2dd4bf; color: #5eead4; }
+  .sfm-hero__stats {
+    margin: 4rem auto 0; display: grid; max-width: 42rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem;
+    border-top: 1px solid rgba(68, 64, 60, 0.6); padding-top: 2rem;
+  }
+  .sfm-hero__stat-num { font-size: 1.5rem; font-weight: 700; color: #fbbf24; }
+  @media (min-width: 640px) { .sfm-hero__stat-num { font-size: 1.875rem; } }
+  .sfm-hero__stat-label { margin-top: 0.25rem; font-size: 0.875rem; color: #a8a29e; }
+  .sfm-hero__stat-list { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+  .sfm-hero__stat-list li { font-size: 0.8rem; line-height: 1.6; font-weight: 600; color: #d6d3d1; }
+</style>
+
+<section class="sfm-hero">
+  <div class="sfm-hero__bg"></div>
+  <div class="sfm-hero__blob sfm-hero__blob--amber"></div>
+  <div class="sfm-hero__blob sfm-hero__blob--teal"></div>
+
+  <div class="sfm-hero__inner">
+    <span class="sfm-hero__badge">
+      <span class="sfm-hero__dot"></span>
+      Santa Fe, New Mexico &middot; 7,000 ft
+    </span>
+
+    <h1 class="sfm-hero__title">Santa Fe International Half Marathon</h1>
+
+    <p class="sfm-hero__presenter">Presented by Capitol Ford</p>
+
+    <p class="sfm-hero__lede">
+      High desert air, drums along the route, and a finish line at Railyard
+      Park. Four ways to run the City Different over race weekend, September 19–20, 2026.
+    </p>
+
+    <div class="sfm-hero__cta">
+      <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-hero__btn sfm-hero__btn--primary">Register Now</a>
+      <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-hero__btn sfm-hero__btn--ghost">See the Course</a>
+    </div>
+
+    <dl class="sfm-hero__stats">
+      <div>
+        <dt class="sfm-hero__stat-num">Sep 20</dt>
+        <dd class="sfm-hero__stat-label">Race Day 2026</dd>
+      </div>
+      <div>
+        <dt class="sfm-hero__stat-num">4 Races</dt>
+        <dd>
+          <ul class="sfm-hero__stat-list">
+            <li>13.1 MI Half Marathon</li>
+            <li>3-Amigos Relay</li>
+            <li>4K Fitness Walk/Jog/Run</li>
+            <li>Kids 1K Dash</li>
+          </ul>
+        </dd>
+      </div>
+      <div>
+        <dt class="sfm-hero__stat-num">7,000 ft</dt>
+        <dd class="sfm-hero__stat-label">Run the High Desert</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+<!-- ====================  END OF BLOCK 1 (HERO)  ==================== -->
+
+
+<!-- ==========================================================================
+     >>> PASTE THIS HERE <<<   BLOCK 2 of 2 — RACE GRID
+     Copy from this line down to the "END OF BLOCK 2" marker.
+     ========================================================================== -->
+<style>
+  .sfm-grid * { box-sizing: border-box; }
+  .sfm-grid {
+    width: 100%; background: #1c1917; color: #fafaf9;
+    padding: 4rem 1rem;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .sfm-grid__inner { max-width: 72rem; margin: 0 auto; }
+
+  .sfm-grid__head { text-align: center; margin-bottom: 3rem; }
+  .sfm-grid__title {
+    font-size: 1.875rem; font-weight: 900; letter-spacing: -0.025em;
+    color: #f59e0b; margin: 0 0 1rem;
+  }
+  @media (min-width: 768px) { .sfm-grid__title { font-size: 2.25rem; } }
+  .sfm-grid__sub {
+    font-size: 1.125rem; color: #d6d3d1; max-width: 42rem;
+    margin: 0 auto; line-height: 1.7;
+  }
+
+  .sfm-grid__cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 640px) { .sfm-grid__cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .sfm-grid__cards { grid-template-columns: repeat(4, 1fr); } }
+
+  .sfm-card {
+    display: flex; flex-direction: column;
+    border-radius: 1rem; overflow: hidden;
+    background: #262626; border: 1px solid #404040;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    transition: transform .2s ease;
+  }
+  .sfm-card:hover { transform: translateY(-0.5rem); }
+
+  .sfm-card__art {
+    position: relative; height: 8.5rem;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 0.75rem; background-size: cover; background-position: center;
+    background-image: linear-gradient(135deg, #292524, #44403c 55%, #042f2e);
+  }
+  .sfm-card__art--relay   { background-image: linear-gradient(135deg, #292524, #0f766e 95%); }
+  .sfm-card__art--fitness { background-image: linear-gradient(135deg, #292524, #f59e0b 130%); }
+  .sfm-card__art--kids    { background-image: linear-gradient(135deg, #0f766e, #f59e0b 135%); }
+  .sfm-card__art-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(250,250,249,0.92);
+  }
+  .sfm-card__badge {
+    position: absolute; top: 0.75rem; left: 0.75rem;
+    background: rgba(12,10,9,0.55); color: #fafaf9;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; border-radius: 9999px;
+  }
+
+  .sfm-card__body { display: flex; flex-direction: column; flex-grow: 1; padding: 1.4rem; }
+  .sfm-card__name { margin: 0; font-size: 1.35rem; font-weight: 800; color: #fafaf9; }
+  .sfm-card__dist { margin: 0.2rem 0 0; font-size: 0.85rem; font-weight: 600; color: #2dd4bf; }
+  .sfm-card__desc { margin: 0.8rem 0 1.2rem; font-size: 0.9rem; color: #a8a29e; line-height: 1.6; flex-grow: 1; }
+
+  .sfm-card__price { display: flex; align-items: baseline; gap: 0.45rem; margin-bottom: 1.2rem; }
+  .sfm-card__price b { font-size: 2.1rem; font-weight: 900; line-height: 1; color: #fafaf9; }
+  .sfm-card__price--free b { color: #2dd4bf; }
+  .sfm-card__price span { font-size: 0.8rem; font-weight: 600; color: #78716c; }
+
+  .sfm-card__cta {
+    margin-top: auto; width: 100%; padding: 0.8rem; border-radius: 0.75rem;
+    background: #fafaf9; color: #1c1917; border: 2px solid #fafaf9;
+    font-weight: 800; letter-spacing: 0.02em; font-size: 0.9rem;
+    text-decoration: none; text-align: center; display: block; transition: all .2s ease;
+  }
+  .sfm-card__cta:hover { background: transparent; color: #fafaf9; }
+
+  .sfm-grid__note { margin: 2.4rem auto 0; text-align: center; font-size: 0.85rem; color: #78716c; max-width: 38rem; }
+</style>
+
+<div class="sfm-grid">
+  <div class="sfm-grid__inner">
+
+    <div class="sfm-grid__head">
+      <h2 class="sfm-grid__title">Find Your Distance. Bring Your Crew.</h2>
+      <p class="sfm-grid__sub">
+        Four races across one unforgettable weekend at 7,000 feet. From a goal half
+        marathon to a free dash for the kids&mdash;there's a start line here for everyone.
+      </p>
+    </div>
+
+    <div class="sfm-grid__cards">
+
+      <!-- Half Marathon -->
+      <div class="sfm-card">
+        <div class="sfm-card__art">
+          <span class="sfm-card__badge">13.1 MI</span>
+          <span class="sfm-card__art-label">Past finishers on Canyon Road</span>
+        </div>
+        <div class="sfm-card__body">
+          <h3 class="sfm-card__name">Half Marathon</h3>
+          <p class="sfm-card__dist">13.1 miles &middot; point-to-point</p>
+          <p class="sfm-card__desc">The main event. Through the oldest streets in the country and downhill to the drums at Railyard Park.</p>
+          <div class="sfm-card__price"><b>$95</b><span>per runner</span></div>
+          <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-card__cta">Enter &rarr;</a>
+        </div>
+      </div>
+
+      <!-- 3-Amigos Relay -->
+      <div class="sfm-card">
+        <div class="sfm-card__art sfm-card__art--relay">
+          <span class="sfm-card__badge">3 &times; 4.4 MI</span>
+          <span class="sfm-card__art-label">Relay teams at the exchange zone</span>
+        </div>
+        <div class="sfm-card__body">
+          <h3 class="sfm-card__name">3-Amigos Relay</h3>
+          <p class="sfm-card__dist">3 &times; 4.4 miles &middot; team of three</p>
+          <p class="sfm-card__desc">Split the 13.1 with two friends. Three legs, one finish line, all the bragging rights.</p>
+          <div class="sfm-card__price"><b>$255</b><span>per team (3)</span></div>
+          <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-card__cta">Enter &rarr;</a>
+        </div>
+      </div>
+
+      <!-- 4K Fitness -->
+      <div class="sfm-card">
+        <div class="sfm-card__art sfm-card__art--fitness">
+          <span class="sfm-card__badge">4 KM</span>
+          <span class="sfm-card__art-label">4K runners at the Railyard</span>
+        </div>
+        <div class="sfm-card__body">
+          <h3 class="sfm-card__name">4K Fitness</h3>
+          <p class="sfm-card__dist">4 kilometers &middot; 2.5 miles</p>
+          <p class="sfm-card__desc">A friendly loop through town built for a first race, a PR, or a smiling walk with friends.</p>
+          <div class="sfm-card__price"><b>$45</b><span>per runner</span></div>
+          <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-card__cta">Enter &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Kids Dash -->
+      <div class="sfm-card">
+        <div class="sfm-card__art sfm-card__art--kids">
+          <span class="sfm-card__badge">1 KM</span>
+          <span class="sfm-card__art-label">Kids charging the finish line</span>
+        </div>
+        <div class="sfm-card__body">
+          <h3 class="sfm-card__name">Kids Dash</h3>
+          <p class="sfm-card__dist">1 kilometer &middot; Saturday &middot; ages 12 &amp; under</p>
+          <p class="sfm-card__desc">A 1K just for our youngest runners. Every kid gets a medal. Zero entry fee, all heart.</p>
+          <div class="sfm-card__price sfm-card__price--free"><b>Free</b><span>medal included</span></div>
+          <a href="https://runsignup.com/Race/Register/?raceId=83604" target="_blank" rel="noopener noreferrer" class="sfm-card__cta">Sign Up &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="sfm-grid__note">
+      Prices are locked&mdash;no surprise jumps. Bring a partner and your referral discount applies automatically when they register with your link. Hydrate early; 7,000 feet hits different.
+    </p>
+
+  </div>
+</div>
+<!-- ====================  END OF BLOCK 2 (RACE GRID)  ==================== -->

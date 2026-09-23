@@ -1,0 +1,26 @@
+{
+  "skill_name": "sfhm-fact-preflight",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "social-caption-gates",
+      "prompt": "Here's a Facebook caption I want to post tonight for the Santa Fe International Half Marathon. Check it before I post it, and give me a corrected version if anything's off. Save your assessment to the outputs directory as preflight-report.md. Do not modify the live website — this is a review task.\n\n---\nRace week is HERE! 🏜️ The 5K Fitness kicks off at 7:00 AM sharp at Reunity Resources Farm, and the free Kids 1K Dash follows Sunday at 9:00 AM. Use code NM2026 for 15% off your entry before it's gone! #SantaFeHalfMarathon #RunSantaFe",
+      "expected_output": "Catches: '5K Fitness' (stale name, should be Santa Fe 5K), 7:00 AM (5K starts 8:00), discount code in a social post (email-only rule). Does NOT flag: the emoji (allowed on social), Kids Dash Sunday 9:00 AM (correct), hashtag order (correct). Produces corrected caption without the code.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "eval_name": "vendor-email-times",
+      "prompt": "I'm about to email this paragraph to our water-station vendor so they can plan their morning. Check it first and fix anything wrong. Save your assessment to the outputs directory as preflight-report.md. Do not modify the live website — this is a review task.\n\n---\nQuick logistics recap for Sunday: the first shuttle bus leaves at 5:30 AM so your crew can ride up early. Packet pickup runs Friday 12-6 PM at Warehouse 21 if any of your folks still need bibs. Gear bags must be dropped by 7:15 AM. Runners have to clear the mile-9 checkpoint by 9:54 AM, and awards wrap by 10:30 AM, so plan teardown after that.",
+      "expected_output": "Catches: 5:30 AM first shuttle (loops start 6:00), gear by 7:15 (window is 6:00-7:00), mile-9 checkpoint 9:54 AM (no such cutoff exists — phantom fact, must be removed not corrected), awards 10:30 (Half/Relay awards are 10:45; 5K 9:45). Does NOT flag: Friday 12-6 packet pickup at Warehouse 21 (correct).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "sponsor-page-blurb",
+      "prompt": "Please add this paragraph to the sponsors page copy deck — but first check it over, since it came from an old doc. Save your assessment to the outputs directory as preflight-report.md. Do not modify the live website — this is a review task.\n\n---\nJoin us Sunday, September 20 for the 5th Annual race! Runners climb to a 7,450 ft peak before descending to the historic Railyard finish, where every finisher earns a hand-thrown ceramic medal. Sponsors get logo placement at the finish festival. Register → santafehalfmarathon.com",
+      "expected_output": "Catches: 7,450 ft peak (old course; current turnaround is 6,883 ft, branding 7,000 ft), Railyard finish (old course; finish is Reunity Resources Farm), hand-thrown ceramic medal (retired attribution; medal is by Maasai artisans), the arrow character (banned on the website). Does NOT flag: Sunday September 20 (correct), 5th Annual (correct — deliberate, 2020 virtual uncounted).",
+      "files": []
+    }
+  ]
+}

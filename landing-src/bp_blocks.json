@@ -1,0 +1,737 @@
+[
+ {
+  "tag": "insert",
+  "stale": [],
+  "good": [
+   "",
+   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E",
+   "Iowan Old Style",
+   "Palatino Linotype",
+   "Book Antiqua",
+   ""
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "%%IMG_ADVANCED%%"
+  ],
+  "good": [
+   "https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-sponsor-advanced-prosthetics-logo.png"
+  ]
+ },
+ {
+  "tag": "insert",
+  "stale": [],
+  "good": [
+   "https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2025-on-course-1024x683.avif",
+   "https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2025-on-course-768x512.avif 768w, https://santafehalfmarathon.com/wp-content/uploads/2026/09/sfhm-hero-2025-on-course-1024x683.avif 1024w"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "Next race: Sept 18–19, 2027"
+  ],
+  "good": [
+   "Next race: Sept 18–19, 2027 · Santa Fe, New Mexico"
+  ]
+ },
+ {
+  "tag": "insert",
+  "stale": [],
+  "good": [
+   "Runners on the Santa Fe River Trail corridor during the 2025 race",
+   "On course, 2025"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "Próxima carrera: 18–19 sept 2027"
+  ],
+  "good": [
+   "Próxima carrera: 18–19 sept 2027 · Santa Fe, Nuevo México"
+  ]
+ },
+ {
+  "tag": "insert",
+  "stale": [],
+  "good": [
+   "Corredores en el corredor del Santa Fe River Trail durante la carrera de 2025",
+   "En el recorrido, 2025"
+  ]
+ },
+ {
+  "tag": "insert",
+  "stale": [],
+  "good": [
+   "result",
+   "photo",
+   "finish time",
+   "resultado",
+   "foto",
+   "/race-information/results-photos/",
+   "Live results post as runners finish, and official race photos are posted on the Results & Photos page after the race.",
+   "Los resultados se publican en vivo y las fotos oficiales aparecen en la página de Resultados y Fotos después de la carrera."
+  ]
+ },
+ {
+  "tag": "delete",
+  "stale": [
+   "mountain",
+   "award"
+  ],
+  "good": []
+ },
+ {
+  "tag": "delete",
+  "stale": [
+   "p",
+   "hero3-date"
+  ],
+  "good": []
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "ul",
+   "hero-badges",
+   "aria-label",
+   "li",
+   "span",
+   "b",
+   " "
+  ],
+  "good": [
+   "p",
+   "hero3-date"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "div",
+   "hero3-sponsor",
+   "span",
+   "hs-lbl",
+   "img",
+   "hs-logo",
+   "",
+   "38",
+   "38",
+   "span",
+   "hs-name"
+  ],
+  "good": [
+   "p",
+   "hero3-presented",
+   " ",
+   "b"
+  ]
+ },
+ {
+  "tag": "insert",
+  "stale": [],
+  "good": [
+   "aside",
+   "hero-facts",
+   "aria-label",
+   "ul",
+   "hf-list",
+   "li",
+   "hf-item",
+   "b",
+   "hf-v",
+   "span",
+   "hf-l"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+  ],
+  "good": [
+   "grid gap-x-11 gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "race-card p-5 flex flex-col gap-3"
+  ],
+  "good": [
+   "race-card flex flex-col gap-3"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "mono text-[.64rem] tracking-[.04em] rounded-[3px] px-2.5 py-1.5 self-start",
+   "var(--chip)",
+   "var(--ink)"
+  ],
+  "good": [
+   "race-note"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "flex flex-col gap-2"
+  ],
+  "good": [
+   "flex flex-col"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "text-left rounded p-3.5 cursor-pointer",
+   "1px solid ",
+   "var(--terra)",
+   "var(--line)",
+   "var(--card)",
+   "transparent"
+  ],
+  "good": [
+   "wp-item cursor-pointer",
+   " is-on",
+   "",
+   "inherit"
+  ]
+ },
+ {
+  "tag": "delete",
+  "stale": [
+   "inherit"
+  ],
+  "good": []
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-4 overflow-x-auto"
+  ],
+  "good": [
+   "course-chart overflow-x-auto"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "py-16 below-fold",
+   "var(--panel)",
+   "var(--panel-fg)"
+  ],
+  "good": [
+   "story-v5 below-fold"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "max-w-[1080px] mx-auto px-5"
+  ],
+  "good": [
+   "story-in"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "flex flex-col gap-2 mb-9"
+  ],
+  "good": [
+   "story-head"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "eyebrow",
+   "var(--sunset)"
+  ],
+  "good": [
+   "story-kicker"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "display text-[clamp(1.7rem,4vw,2.6rem)]"
+  ],
+  "good": [
+   "story-title"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-8 grid-cols-1 lg:grid-cols-2 items-start"
+  ],
+  "good": [
+   "story-grid"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "flex flex-col gap-4 max-w-[58ch]"
+  ],
+  "good": [
+   "story-text"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "m-0"
+  ],
+  "good": [
+   "story-p"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "m-0"
+  ],
+  "good": [
+   "story-p",
+   "ul",
+   "story-charities",
+   "li"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "flex flex-wrap gap-2"
+  ],
+  "good": [
+   "story-side",
+   "figure",
+   "story-fig",
+   "img",
+   "story-img",
+   "(max-width:900px) 92vw, 34vw",
+   "lazy",
+   "async",
+   "figcaption",
+   "story-cap",
+   "ul",
+   "story-impact",
+   "li"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "mono text-[.68rem] font-bold rounded-[3px] px-2.5 py-1.5",
+   "rgba(0,0,0,.25)",
+   "1px solid rgba(255,255,255,.25)",
+   "div",
+   "flex flex-col gap-3",
+   "div",
+   "flex items-baseline gap-4 pb-3",
+   "1px solid rgba(255,255,255,.25)"
+  ],
+  "good": [
+   "si-stat"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "mono text-[1.7rem] font-bold min-w-[5.5ch]",
+   "var(--sunset)",
+   "span",
+   "text-[.9rem]"
+  ],
+  "good": [
+   "si-label",
+   "en",
+   "English",
+   "es",
+   "Español"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "px-5 below-fold",
+   "var(--panel)",
+   "var(--panel-fg)",
+   "2px solid var(--terra)",
+   "5rem",
+   "5rem"
+  ],
+  "good": [
+   "voice-v5 below-fold"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "max-w-[800px] mx-auto p-8 sm:p-10 rounded",
+   "rgba(255,255,255,.03)",
+   "1px solid rgba(255,255,255,.12)",
+   "4px solid var(--terra)"
+  ],
+  "good": [
+   "voice-in",
+   "div",
+   "voice-head"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "mono text-[11px] font-extrabold tracking-[.18em] uppercase",
+   "var(--sunset)"
+  ],
+  "good": [
+   "voice-eyebrow"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "text-[clamp(1.25rem,3.2vw,1.5rem)] font-black tracking-[.02em] uppercase mt-2.5 mb-6",
+   "inherit"
+  ],
+  "good": [
+   "voice-title",
+   "div",
+   "voice-cols",
+   "div",
+   "voice-col",
+   "span",
+   "voice-lang",
+   "aria-hidden",
+   "true"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "text-[.88rem] leading-[1.7] opacity-85",
+   "1rem",
+   "1.6rem",
+   "div",
+   "pt-5 flex flex-wrap justify-between items-center gap-4",
+   "1px solid rgba(255,255,255,.1)",
+   "span",
+   "mono text-[11px] font-bold uppercase tracking-[.1em] opacity-60"
+  ],
+  "good": [
+   "voice-p",
+   "p",
+   "voice-foot"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+  ],
+  "good": [
+   "grid gap-x-11 gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "flex items-end p-4",
+   "4 / 3",
+   "var(--panel)",
+   "var(--panel-fg)"
+  ],
+  "good": [
+   "part-fallback"
+  ]
+ },
+ {
+  "tag": "delete",
+  "stale": [
+   "display text-[1.5rem] leading-none"
+  ],
+  "good": []
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "p-5 flex flex-col gap-2 flex-1"
+  ],
+  "good": [
+   "pt-4 flex flex-col gap-2 flex-1"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "list-none m-0 p-0 flex flex-col gap-4"
+  ],
+  "good": [
+   "list-none m-0 p-0 flex flex-col gap-9"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-5 grid gap-4 grid-cols-1 sm:grid-cols-[150px_1fr]"
+  ],
+  "good": [
+   "sched-day grid gap-4 grid-cols-1 sm:grid-cols-[150px_1fr]"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-4 grid-cols-1 sm:grid-cols-2 mb-5"
+  ],
+  "good": [
+   "grid gap-x-12 gap-y-8 grid-cols-1 sm:grid-cols-2 mb-7"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-5",
+   "3px solid var(--terra)"
+  ],
+  "good": [
+   "shuttle-leg"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-6 grid gap-6 grid-cols-1 md:grid-cols-[260px_1fr] items-start"
+  ],
+  "good": [
+   "amb-block grid gap-8 grid-cols-1 md:grid-cols-[260px_1fr] items-start"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+  ],
+  "good": [
+   "grid gap-x-12 gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-5",
+   "4px solid var(--terra)"
+  ],
+  "good": [
+   "perk"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "rounded p-7 sm:p-9 mb-6 on-panel",
+   "var(--panel)",
+   "var(--panel-fg)",
+   "2px solid var(--terra)"
+  ],
+  "good": [
+   "lodge-official mb-10"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "var(--sunset)"
+  ],
+  "good": [
+   "var(--terra)"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "text-[1.3rem] font-black uppercase tracking-[.03em] mt-2 mb-3",
+   "var(--sunset)"
+  ],
+  "good": [
+   "text-[1.5rem] font-black uppercase tracking-[.03em] mt-2 mb-3",
+   "var(--terra)"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "m-0 mb-5 text-[.9rem] opacity-90 max-w-[62ch]"
+  ],
+  "good": [
+   "m-0 mb-5 text-[.9rem] max-w-[62ch]",
+   "var(--ink-soft)"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "text-[.85rem] font-bold px-4 py-2.5 rounded-sm",
+   "rgba(255,255,255,.05)",
+   "3px solid var(--terra)"
+  ],
+  "good": [
+   "lodge-prop"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "m-0 mb-4 text-[.85rem] opacity-85 max-w-[62ch]"
+  ],
+  "good": [
+   "m-0 mb-4 text-[.85rem] max-w-[62ch]",
+   "var(--ink-soft)"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "var(--panel-fg)"
+  ],
+  "good": [
+   "var(--ink)"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "mono text-[.7rem] rounded-[3px] px-2.5 py-1.5",
+   "rgba(255,255,255,.1)"
+  ],
+  "good": [
+   "lodge-code"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "var(--sunset)"
+  ],
+  "good": [
+   "var(--terra)"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-6 sm:p-7 mb-6"
+  ],
+  "good": [
+   "lodge-also mb-10"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "mono text-[.7rem] rounded-[3px] px-2.5 py-1.5",
+   "var(--chip)"
+  ],
+  "good": [
+   "lodge-code"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-4 grid-cols-1 sm:grid-cols-2"
+  ],
+  "good": [
+   "grid gap-x-12 gap-y-8 grid-cols-1 sm:grid-cols-2"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-5"
+  ],
+  "good": [
+   "travel-tip"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-4 grid-cols-1 sm:grid-cols-2"
+  ],
+  "good": [
+   "grid gap-x-12 gap-y-8 grid-cols-1 sm:grid-cols-2"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "card p-5",
+   "4px solid var(--terra)"
+  ],
+  "good": [
+   "guide-rule"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "max-w-[750px] mx-auto rounded p-7 sm:p-9",
+   "rgba(255,255,255,.03)",
+   "1px solid rgba(255,255,255,.12)"
+  ],
+  "good": [
+   "kids-panel max-w-[750px] mx-auto"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "mx-auto max-w-[560px] rounded-md px-8 py-8 mb-5",
+   "2px solid var(--sunset)",
+   "rgba(255,255,255,.05)"
+  ],
+  "good": [
+   "sp-tier sp-tier-title mx-auto max-w-[560px] mb-8"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "grid gap-4 grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto mb-9"
+  ],
+  "good": [
+   "grid gap-x-12 gap-y-9 grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto mb-10"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "rounded-md px-6 py-6 flex flex-col items-center justify-center gap-3",
+   "1px solid rgba(255,255,255,.35)",
+   "rgba(255,255,255,.04)"
+  ],
+  "good": [
+   "sp-tier flex flex-col items-center justify-center gap-3"
+  ]
+ },
+ {
+  "tag": "replace",
+  "stale": [
+   "rounded-md px-6 py-6 flex flex-col items-center justify-center gap-3",
+   "1px solid rgba(255,255,255,.35)",
+   "rgba(255,255,255,.04)"
+  ],
+  "good": [
+   "sp-tier flex flex-col items-center justify-center gap-3"
+  ]
+ }
+]

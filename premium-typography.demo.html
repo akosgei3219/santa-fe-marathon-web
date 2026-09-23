@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>premium-typography.css — specimen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="premium-typography.css">
+<style>
+  /* Specimen page chrome only — not part of the component. */
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--pt-grad-ground); }
+  .spec-swatches { display: flex; flex-wrap: wrap; gap: var(--pt-space-2xs); margin: 0; padding: 0; list-style: none; }
+  .spec-swatches li { flex: 1 1 8rem; border-radius: var(--pt-radius-soft); padding: var(--pt-space-sm) var(--pt-space-xs); border: 1px solid var(--pt-line); }
+  .spec-grid { display: grid; gap: var(--pt-space-sm); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .spec-scale li { list-style: none; }
+  .spec-scale { padding: 0; margin: 0; }
+</style>
+</head>
+<body>
+
+<main class="pt-section pt-grain">
+  <div class="pt-container pt-flow">
+
+    <p class="pt-eyebrow">Global stylesheet component</p>
+    <h1 class="pt-display pt-grad-text">Premium Typography</h1>
+    <p class="pt-lede">A warm, organic type system built on earth-toned gradients, fluid
+      hierarchies and deliberate breathing space — sized in <code>clamp()</code> so every
+      step scales with the viewport instead of snapping at breakpoints.</p>
+
+    <hr class="pt-rule">
+
+    <h2 class="pt-subtitle">The fluid scale</h2>
+    <p class="pt-body">Each step pairs a size with the leading and tracking that suit it.
+      Resize the window: nothing jumps, and nothing runs away past roughly 1240px.</p>
+
+    <ul class="spec-scale pt-flow pt-flow--tight">
+      <li><span class="pt-display">Display</span></li>
+      <li><span class="pt-title">Title</span></li>
+      <li><span class="pt-subtitle">Subtitle</span></li>
+      <li><span class="pt-heading">Heading</span></li>
+      <li><span class="pt-lede">Lede — the standfirst paragraph, set looser and short.</span></li>
+      <li><span class="pt-body">Body — the workhorse, capped at a 66ch measure.</span></li>
+      <li><span class="pt-fine">Fine print — footnotes, captions, credits.</span></li>
+      <li><span class="pt-mono">Mono 00:00:00 · tabular figures</span></li>
+    </ul>
+
+    <hr class="pt-rule">
+
+    <h2 class="pt-subtitle">Earth-toned gradients</h2>
+    <p class="pt-body">Three gradient texts, each gated to display sizes. Below that
+      threshold the guard drops them back to solid ink-safe terracotta, because a
+      gradient cannot be contrast-tested.</p>
+
+    <div class="pt-flow pt-flow--tight">
+      <p class="pt-title pt-grad-text">Ember</p>
+      <p class="pt-title pt-grad-text pt-grad-text--dune">Dune</p>
+      <p class="pt-title pt-grad-text pt-grad-text--mesa">Mesa</p>
+      <p class="pt-body pt-grad-text">Body text with the gradient class applied — the guard
+        forces it back to solid, on purpose.</p>
+    </div>
+
+    <ul class="spec-swatches" style="margin-top: var(--pt-space-md)">
+      <li class="pt-ground--ember"><span class="pt-mono">ember</span></li>
+      <li class="pt-ground--mesa"><span class="pt-mono">mesa</span></li>
+      <li style="background: var(--pt-clay)"><span class="pt-mono" style="color:#3a2d24">clay</span></li>
+      <li style="background: var(--pt-sand-deep)"><span class="pt-mono" style="color:#3a2d24">sand</span></li>
+    </ul>
+
+    <hr class="pt-rule">
+
+    <h2 class="pt-subtitle">Breathing space</h2>
+    <div class="spec-grid">
+      <div class="pt-card pt-flow pt-flow--tight">
+        <h3 class="pt-heading">The owl</h3>
+        <p class="pt-body"><code>.pt-flow</code> spaces siblings without touching the first
+          or last child, so a section's outer padding stays yours.</p>
+        <p class="pt-fine">Headings automatically claim more air than paragraphs.</p>
+      </div>
+      <div class="pt-card pt-flow pt-flow--tight">
+        <h3 class="pt-heading">Organic corners</h3>
+        <p class="pt-body">Four different radii per card. The asymmetry reads as drawn
+          rather than generated — a uniform radius is the corporate tell.</p>
+        <p class="pt-fine">14px · 9px · 16px · 10px</p>
+      </div>
+    </div>
+
+    <blockquote class="pt-quote">
+      A gradient runs out of contrast at its light end, so it belongs on display type
+      and nowhere near body copy.
+      <cite>— the one rule this file enforces in code, not comments</cite>
+    </blockquote>
+
+    <hr class="pt-rule">
+
+    <h2 class="pt-subtitle">Prose scope</h2>
+    <article class="pt-prose">
+      <h3>Drop it around raw HTML</h3>
+      <p class="pt-dropcap">Everything inside <code>.pt-prose</code> inherits the system
+        without a single class on the child elements, which is what makes this safe to
+        paste into a page that already has its own stylesheet. Nothing leaks outward.</p>
+      <p>Links get an <a href="#" class="pt-link">inked underline</a> that sits below the
+        baseline, skips descenders, and thickens on hover.</p>
+      <ul>
+        <li>Markers pick up the accent colour</li>
+        <li>List items breathe without extra markup</li>
+        <li>Long words wrap rather than causing horizontal scroll</li>
+      </ul>
+      <h4>Smaller heading</h4>
+      <p>Measure caps at 66ch so long-form copy never sprawls. <small>Fine print sits at
+        the faint ink, which clears AA on both the page and card grounds.</small></p>
+    </article>
+
+  </div>
+</main>
+
+</body>
+</html>

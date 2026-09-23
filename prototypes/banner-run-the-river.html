@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFHM Banner - Run the River (corrected build)</title>
+<!-- Real Google Fonts endpoint. The host in the supplied drafts, https://googleapis.com,
+     is not a font endpoint and returns nothing, so neither face ever loaded. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SFHM "RUN THE RIVER" BANNER
+   Self-contained plain CSS - no Tailwind dependency, so this
+   drops into an Elementor HTML widget on any inner page.
+   ============================================================ */
+.sfhm-river-band{
+  --sand:#FBF9F6;        /* brand High-Desert Sand (not #FAF9F6) */
+  --ink:#222222;         /* brand Earth Charcoal (not #2D2D2D) */
+  --ink-soft:#55514D;    /* brand soft ink (not #4A4A4A) */
+  --clay:#AD4A2E;        /* AA-safe terracotta for text */
+  --adobe:#C2593F;       /* display/accent terracotta */
+  --display:'Bebas Neue','Arial Narrow',sans-serif;
+  --body:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  position:relative;
+  padding:clamp(3rem,7vw,6rem) clamp(1.25rem,4vw,3rem);
+  text-align:center;
+  border-top:8px solid var(--ink);
+  border-bottom:8px solid var(--ink);
+  background-color:var(--sand);
+  background-image:
+    radial-gradient(rgba(34,34,34,.55) .5px, transparent .5px),
+    radial-gradient(rgba(34,34,34,.55) .5px, transparent .5px);
+  background-size:40px 40px;
+  background-position:0 0, 20px 20px;
+  overflow:hidden;
+}
+.sfhm-river-band .rb-tag{
+  font-family:var(--body);
+  font-size:clamp(.66rem,1.4vw,.8rem);
+  font-weight:700;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin:0 0 clamp(1.5rem,3vw,2.5rem);
+}
+/* One real heading carries the slogan, so search engines and screen
+   readers see it. The supplied drafts used spans only. */
+.sfhm-river-band h2{
+  font-family:var(--display);
+  font-weight:400;              /* Bebas ships a single weight; font-black faked it */
+  text-transform:uppercase;
+  line-height:.82;
+  letter-spacing:-.005em;
+  margin:0 auto;
+}
+/* each line holds together on one row; the clamp() sizes below keep the
+   longest line inside a 320px viewport, so nowrap never causes overflow */
+.sfhm-river-band .rb-l1,
+.sfhm-river-band .rb-l2,
+.sfhm-river-band .rb-l3{display:block;white-space:nowrap}
+/* clamp() instead of text-[13rem]: 208px fixed overflowed the band and
+   was then clipped by overflow:hidden. */
+.sfhm-river-band .rb-l1{font-size:clamp(2.6rem,10vw,8.5rem);color:var(--ink)}
+.sfhm-river-band .rb-l2{font-size:clamp(3rem,12vw,10.5rem);color:var(--ink-soft);margin:.06em 0}
+.sfhm-river-band .rb-l3{font-size:clamp(3rem,12vw,10.5rem)}
+
+/* Gradient "river" fill, with a solid fallback so the line can never
+   render invisible where background-clip:text is unsupported. */
+.sfhm-river-band .rb-l3{color:var(--clay)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .sfhm-river-band .rb-l3{
+    background:linear-gradient(135deg,var(--clay) 0%,var(--adobe) 45%,var(--ink) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+}
+.sfhm-river-band .rb-note{
+  max-width:60ch;margin:clamp(2rem,4vw,3rem) auto 0;
+  padding-top:1.5rem;border-top:2px solid var(--ink);
+  font-family:var(--body);font-size:clamp(1rem,1.7vw,1.12rem);
+  line-height:1.65;color:var(--ink);
+}
+.sfhm-river-band .rb-note strong{color:var(--clay);font-weight:700}
+@media (prefers-reduced-motion:reduce){
+  .sfhm-river-band *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body style="margin:0;background:#FBF9F6">
+
+<section class="sfhm-river-band" aria-labelledby="rb-heading">
+  <p class="rb-tag">September 20, 2026 &middot; Santa Fe International Half Marathon</p>
+
+  <h2 id="rb-heading">
+    <span class="rb-l1">Thin Air. Big Sky.</span>
+    <span class="rb-l2">Run Santa Fe.</span>
+    <span class="rb-l3">Run the River.</span>
+  </h2>
+
+  <p class="rb-note">
+    13.1 miles on the roads of <strong>Agua Fr&iacute;a</strong> and out the
+    <strong>Santa Fe River Trail</strong> &mdash; the path the restoration built &mdash; to a
+    6,883 ft turnaround and back. Not a closed-off spectacle: a working village of homes,
+    acequias and small farms that opens its streets for one morning.
+  </p>
+</section>
+
+</body>
+</html>

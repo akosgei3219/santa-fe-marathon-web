@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nested mega menu — Santa Fe International Half Marathon</title>
+<style>
+/* ============================================================================
+   NESTED MEGA MENU
+   Four single-word parents: Register / Details / Impact / Archive.
+   Each opens a panel of *grouped* columns — that grouping is the "nested" part.
+
+   Accent: --nm-turquoise-sky #40A4B4.
+     Measured 6.41:1 on the #121212 panel and 6.78:1 on #0A0A0A, so it clears
+     AA for text on every dark surface here. It is only 2.8:1 on sand/white,
+     so --nm-accent-on-light carries a darker value for light grounds.
+
+   Canon rule 2 (no emoji, no arrows on the website) is why the disclosure
+   chevron is an inline SVG and not a text glyph.
+
+   Behaviour
+     desktop (>=900px) : hover or keyboard focus opens a panel; click toggles
+     mobile  (<900px)  : hamburger opens a drawer, parents become accordions
+     both              : Escape closes, outside click closes, aria stays in sync
+========================================================================== */
+
+:root {
+  --nm-turquoise-sky: #40a4b4;        /* the requested accent */
+  --nm-accent-on-light: #10707f;      /* AA-safe stand-in on sand/white */
+  --nm-gold: #ffb800;
+  --mm-bar: #0a0a0a;
+  --mm-panel: #121212;
+  --mm-panel-2: #171717;
+  --mm-line: #262626;
+  --mm-ink: #ffffff;
+  --mm-ink-soft: #a9a9a9;
+  --mm-bar-h: 64px;
+  --mm-radius: 12px;
+  --mm-ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ---------- bar ---------------------------------------------------------- */
+.mm-header {
+  position: sticky; top: 0; z-index: 900;
+  background: var(--mm-bar);
+  border-bottom: 1px solid var(--mm-line);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.mm-skip {
+  position: absolute; left: 8px; top: -60px;
+  background: var(--nm-turquoise-sky); color: #04252a;
+  padding: 10px 16px; border-radius: 8px; font-weight: 700; text-decoration: none;
+  transition: top 140ms var(--mm-ease);
+}
+.mm-skip:focus { top: 8px; }
+
+.mm-bar {
+  max-width: 1240px; margin: 0 auto; min-height: var(--mm-bar-h);
+  padding: 0 20px;
+  display: flex; align-items: center; gap: 20px;
+}
+.mm-brand {
+  color: var(--mm-ink); text-decoration: none;
+  font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;
+  font-size: 1rem; white-space: nowrap; margin-right: auto;
+}
+.mm-brand span { color: var(--nm-turquoise-sky); }
+
+/* ---------- hamburger ----------------------------------------------------- */
+.mm-burger {
+  display: none;
+  width: 44px; height: 44px;           /* 44px: comfortable touch target */
+  align-items: center; justify-content: center;
+  background: none; border: 1px solid var(--mm-line); border-radius: 10px;
+  cursor: pointer; padding: 0;
+}
+.mm-burger-box { display: block; width: 20px; height: 14px; position: relative; }
+.mm-burger-box span {
+  position: absolute; left: 0; width: 100%; height: 2px; border-radius: 2px;
+  background: var(--mm-ink);
+  transition: transform 220ms var(--mm-ease), opacity 160ms linear, background-color 160ms linear;
+}
+.mm-burger-box span:nth-child(1) { top: 0; }
+.mm-burger-box span:nth-child(2) { top: 6px; }
+.mm-burger-box span:nth-child(3) { top: 12px; }
+.mm-burger[aria-expanded="true"] .mm-burger-box span { background: var(--nm-turquoise-sky); }
+.mm-burger[aria-expanded="true"] .mm-burger-box span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.mm-burger[aria-expanded="true"] .mm-burger-box span:nth-child(2) { opacity: 0; }
+.mm-burger[aria-expanded="true"] .mm-burger-box span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ---------- top level ----------------------------------------------------- */
+.mm-list { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 4px; }
+.mm-item { position: relative; }
+
+.mm-top {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: none; border: 0; cursor: pointer;
+  font: inherit; font-weight: 700; font-size: 0.82rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--mm-ink);
+  padding: 10px 14px; border-radius: 8px;
+  transition: color 140ms linear, background-color 140ms linear;
+}
+.mm-chev { width: 10px; height: 10px; flex: none; transition: transform 200ms var(--mm-ease); }
+.mm-chev path { stroke: currentColor; stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+/* THE HOVER ACCENT */
+.mm-top:hover,
+.mm-top:focus-visible,
+.mm-item:hover > .mm-top,
+.mm-item:focus-within > .mm-top,
+.mm-top[aria-expanded="true"] { color: var(--nm-turquoise-sky); background: #141414; }
+.mm-item:hover > .mm-top .mm-chev,
+.mm-item:focus-within > .mm-top .mm-chev,
+.mm-top[aria-expanded="true"] .mm-chev { transform: rotate(180deg); }
+
+.mm-cta {
+  margin-left: 8px; text-decoration: none;
+  font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #04252a; background: var(--nm-turquoise-sky);
+  padding: 10px 16px; border-radius: 999px; white-space: nowrap;
+  transition: background-color 140ms linear;
+}
+.mm-cta:hover, .mm-cta:focus-visible { background: #5bbccb; }
+
+/* ---------- panel --------------------------------------------------------- */
+.mm-panel {
+  position: absolute; top: calc(100% + 12px); right: 0; left: auto;
+  min-width: 460px; max-width: calc(100vw - 32px);
+  background: var(--mm-panel);
+  border: 1px solid var(--mm-line);
+  border-top: 2px solid var(--nm-turquoise-sky);
+  border-radius: var(--mm-radius);
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  padding: 22px;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 160ms linear, transform 200ms var(--mm-ease), visibility 0s linear 200ms;
+}
+/* an invisible bridge across the 12px gap: without it, moving the pointer from
+   the button to the panel leaves both and the panel snaps shut */
+.mm-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }
+
+.mm-item:hover > .mm-panel,
+.mm-item:focus-within > .mm-panel,
+.mm-top[aria-expanded="true"] + .mm-panel {
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.mm-panel-in { display: grid; gap: 26px 26px;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  /* --mm-cols caps the count; auto-fit lets them reflow when space is tight */
+  max-width: calc(var(--mm-cols, 2) * 232px); }
+.mm-col-h {
+  margin: 0 0 10px; font-size: 0.68rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.16em; color: var(--mm-ink-soft);
+  padding-bottom: 8px; border-bottom: 1px solid var(--mm-line);
+}
+.mm-sub { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+.mm-sub a {
+  display: block; padding: 7px 10px; margin-left: -10px;
+  color: var(--mm-ink); text-decoration: none;
+  font-size: 0.9rem; line-height: 1.3; border-radius: 7px;
+  border-left: 2px solid transparent;
+  transition: color 130ms linear, background-color 130ms linear, border-color 130ms linear;
+}
+/* THE HOVER ACCENT */
+.mm-sub a:hover,
+.mm-sub a:focus-visible {
+  color: var(--nm-turquoise-sky);
+  background: var(--mm-panel-2);
+  border-left-color: var(--nm-turquoise-sky);
+}
+.mm-note {
+  grid-column: 1 / -1; margin: 4px 0 0; padding-top: 14px;
+  border-top: 1px solid var(--mm-line);
+  color: var(--mm-ink-soft); font-size: 0.8rem; line-height: 1.5;
+}
+.mm-note b { color: var(--mm-ink); font-weight: 700; }
+
+/* one shared focus ring */
+.mm-top:focus-visible, .mm-sub a:focus-visible, .mm-burger:focus-visible,
+.mm-cta:focus-visible, .mm-brand:focus-visible {
+  outline: 2px solid var(--nm-turquoise-sky); outline-offset: 2px;
+}
+
+/* ---------- mobile -------------------------------------------------------- */
+@media (max-width: 899px) {
+  .mm-burger { display: inline-flex; }
+  .mm-nav {
+    position: fixed; inset: var(--mm-bar-h) 0 0 0;
+    background: var(--mm-bar);
+    padding: 12px 16px 32px;
+    overflow-y: auto; overscroll-behavior: contain;
+    display: none;
+  }
+  .mm-nav.is-open { display: block; }
+  .mm-list { flex-direction: column; align-items: stretch; gap: 2px; }
+  .mm-item { position: static; }
+
+  .mm-top {
+    width: 100%; justify-content: space-between;
+    padding: 16px 12px; font-size: 0.95rem;
+    border-bottom: 1px solid var(--mm-line); border-radius: 0;
+  }
+  /* hover-to-open is wrong on touch: only the explicit toggle opens a panel */
+  .mm-item:hover > .mm-panel,
+  .mm-item:focus-within > .mm-panel { opacity: 0; visibility: hidden; transform: none; }
+  .mm-panel {
+    position: static; min-width: 0; inset: auto;
+    border: 0; border-radius: 0; box-shadow: none;
+    background: #0f0f0f;
+    padding: 0; margin: 0;
+    display: none; opacity: 1; visibility: visible; transform: none; transition: none;
+  }
+  .mm-panel::before { display: none; }
+  .mm-top[aria-expanded="true"] + .mm-panel { display: block; padding: 14px 12px 18px; }
+  .mm-panel-in { grid-template-columns: 1fr; gap: 18px; }
+  .mm-cta { display: block; margin: 18px 0 0; text-align: center; }
+  .mm-sub a { padding: 10px; font-size: 0.95rem; }
+}
+
+@media (min-width: 900px) {
+  .mm-nav { display: flex !important; align-items: center; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-panel, .mm-chev, .mm-burger-box span, .mm-top, .mm-sub a, .mm-skip { transition: none; }
+}
+
+/* ---------- demo page chrome (not part of the component) ------------------ */
+body { margin: 0; background: #0d0d0d; color: #e9e9e9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.demo { max-width: 1240px; margin: 0 auto; padding: 48px 20px 120px; }
+.demo h1 { font-size: 1.5rem; }
+.demo p { color: #a9a9a9; max-width: 60ch; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<header class="mm-header">
+  <a class="mm-skip" href="#main">Skip to content</a>
+  <div class="mm-bar">
+    <a class="mm-brand" href="/">Santa Fe <span>International</span> Half</a>
+
+    <button class="mm-burger" id="mm-burger" type="button"
+            aria-expanded="false" aria-controls="mm-nav" aria-label="Menu">
+      <span class="mm-burger-box" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+
+    <nav class="mm-nav" id="mm-nav" aria-label="Main">
+      <ul class="mm-list">
+
+        <!-- ============ 1. REGISTER ============ -->
+        <li class="mm-item">
+          <button class="mm-top" type="button" aria-expanded="false" aria-controls="mm-p-register">
+            Register
+            <svg class="mm-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 4.5 L6 8.5 L10 4.5"/></svg>
+          </button>
+          <div class="mm-panel" id="mm-p-register" style="--mm-cols:2">
+            <div class="mm-panel-in">
+              <div class="mm-col">
+                <p class="mm-col-h">Entry</p>
+                <ul class="mm-sub">
+                  <li><a href="/the-races/">The Races</a></li>
+                  <li><a href="/event-schedule/">Event Schedule</a></li>
+                  <li><a href="/packet-pickup/">Packet Pickup</a></li>
+                </ul>
+              </div>
+              <div class="mm-col">
+                <p class="mm-col-h">Before you enter</p>
+                <ul class="mm-sub">
+                  <li><a href="/refund-policy/">Refund &amp; Deferral Policy</a></li>
+                  <li><a href="/news/newsletter/">Newsletter</a></li>
+                  <li><a href="/contact-us/">Contact Us</a></li>
+                </ul>
+              </div>
+              <p class="mm-note"><b>2026 sold out</b> and entry closed on 17 September. The next race is
+                18&ndash;19 September 2027 &mdash; the newsletter goes out the day entry opens.</p>
+            </div>
+          </div>
+        </li>
+
+        <!-- ============ 2. DETAILS ============ -->
+        <li class="mm-item">
+          <button class="mm-top" type="button" aria-expanded="false" aria-controls="mm-p-details">
+            Details
+            <svg class="mm-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 4.5 L6 8.5 L10 4.5"/></svg>
+          </button>
+          <div class="mm-panel" id="mm-p-details" style="--mm-cols:3">
+            <div class="mm-panel-in">
+              <div class="mm-col">
+                <p class="mm-col-h">Course</p>
+                <ul class="mm-sub">
+                  <li><a href="/course-map/">Course Map</a></li>
+                  <li><a href="/course-highlights/">Course Highlights</a></li>
+                  <li><a href="/aid-stations/">Aid Stations</a></li>
+                  <li><a href="/time-limits/">Time Limits &amp; Cut-offs</a></li>
+                </ul>
+              </div>
+              <div class="mm-col">
+                <p class="mm-col-h">Race morning</p>
+                <ul class="mm-sub">
+                  <li><a href="/start-line-procedures/">Start Line Procedures</a></li>
+                  <li><a href="/relays-exchange-zones/">Relays &amp; Exchange Zones</a></li>
+                  <li><a href="/gear-bag-drop/">Gear Bag Drop</a></li>
+                  <li><a href="/safety-support/">Safety &amp; Support</a></li>
+                </ul>
+              </div>
+              <div class="mm-col">
+                <p class="mm-col-h">Getting there</p>
+                <ul class="mm-sub">
+                  <li><a href="/transportation-parking/">Transportation &amp; Parking</a></li>
+                  <li><a href="/lodging-travel/">Lodging &amp; Travel</a></li>
+                  <li><a href="/host-city-guide/">Host City Guide</a></li>
+                  <li><a href="/spectator-guide/">Spectator Guide</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- ============ 3. IMPACT ============ -->
+        <li class="mm-item">
+          <button class="mm-top" type="button" aria-expanded="false" aria-controls="mm-p-impact">
+            Impact
+            <svg class="mm-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 4.5 L6 8.5 L10 4.5"/></svg>
+          </button>
+          <div class="mm-panel" id="mm-p-impact" style="--mm-cols:2">
+            <div class="mm-panel-in">
+              <div class="mm-col">
+                <p class="mm-col-h">Our people</p>
+                <ul class="mm-sub">
+                  <li><a href="/about/">About Us</a></li>
+                  <li><a href="/abraham-kosgei/">Abraham Kosgei</a></li>
+                  <li><a href="/volunteer/">Volunteer</a></li>
+                </ul>
+              </div>
+              <div class="mm-col">
+                <p class="mm-col-h">Community</p>
+                <ul class="mm-sub">
+                  <li><a href="/charity-information/">Charity Information</a></li>
+                  <li><a href="/sponsors/">Sponsors</a></li>
+                  <li><a href="/finish-line-festival/">Finish Line Festival</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- ============ 4. ARCHIVE ============ -->
+        <li class="mm-item">
+          <button class="mm-top" type="button" aria-expanded="false" aria-controls="mm-p-archive">
+            Archive
+            <svg class="mm-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 4.5 L6 8.5 L10 4.5"/></svg>
+          </button>
+          <div class="mm-panel" id="mm-p-archive" style="--mm-cols:2">
+            <div class="mm-panel-in">
+              <div class="mm-col">
+                <p class="mm-col-h">2026</p>
+                <ul class="mm-sub">
+                  <li><a href="/race-information/results-photos/">Results &amp; Photos</a></li>
+                  <li><a href="/awards/">Race Awards &amp; Categories</a></li>
+                  <li><a href="/race-information/">Race Information</a></li>
+                </ul>
+              </div>
+              <div class="mm-col">
+                <p class="mm-col-h">History</p>
+                <ul class="mm-sub">
+                  <li><a href="/race-history/">The Run Santa Fe Story</a></li>
+                  <li><a href="/race-history/rwaik/">RWAIK</a></li>
+                  <li><a href="/news/">News</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <a class="mm-cta" href="/race-information/results-photos/">2026 results</a>
+    </nav>
+  </div>
+</header>
+
+<main class="demo" id="main">
+  <h1>Nested mega menu</h1>
+  <p>Four single-word parents, each opening grouped columns. Hover or tab to a parent on
+     desktop; below 900px the hamburger opens a drawer and the parents become accordions.
+     Escape closes an open panel, and a click outside closes it too.</p>
+</main>
+
+<script>
+(function () {
+  var nav     = document.getElementById('mm-nav');
+  var burger  = document.getElementById('mm-burger');
+  var tops    = Array.prototype.slice.call(nav.querySelectorAll('.mm-top'));
+  var desktop = window.matchMedia('(min-width: 900px)');
+  var hoverable = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  function setOpen(btn, open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function closeAll(except) {
+    tops.forEach(function (b) { if (b !== except) setOpen(b, false); });
+  }
+
+  // --- click / tap toggles (works on both layouts) ---
+  tops.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      closeAll(btn);
+      setOpen(btn, !open);
+    });
+  });
+
+  // --- desktop: keep aria in sync with hover, since CSS opens the panel ---
+  nav.querySelectorAll('.mm-item').forEach(function (item) {
+    var btn = item.querySelector('.mm-top');
+    item.addEventListener('pointerenter', function () {
+      if (desktop.matches && hoverable.matches) { closeAll(btn); setOpen(btn, true); }
+    });
+    item.addEventListener('pointerleave', function () {
+      if (desktop.matches && hoverable.matches) setOpen(btn, false);
+    });
+    item.addEventListener('focusout', function (e) {
+      if (desktop.matches && !item.contains(e.relatedTarget)) setOpen(btn, false);
+    });
+  });
+
+  // --- hamburger ---
+  burger.addEventListener('click', function () {
+    var open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', open ? 'false' : 'true');
+    nav.classList.toggle('is-open', !open);
+    if (open) closeAll();
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  // --- escape closes, returning focus sensibly ---
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var openTop = tops.filter(function (b) { return b.getAttribute('aria-expanded') === 'true'; })[0];
+    if (openTop) { setOpen(openTop, false); openTop.focus(); return; }
+    if (nav.classList.contains('is-open')) {
+      burger.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+      document.body.style.overflow = '';
+      burger.focus();
+    }
+  });
+
+  // --- outside click ---
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target) && !burger.contains(e.target)) {
+      closeAll();
+      if (nav.classList.contains('is-open')) {
+        burger.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+
+  // --- leaving mobile with the drawer open must not strand the page ---
+  desktop.addEventListener('change', function (e) {
+    if (e.matches) {
+      nav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      closeAll();
+    }
+  });
+})();
+</script>
+</body>
+</html>
