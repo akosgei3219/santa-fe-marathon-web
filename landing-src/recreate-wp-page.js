@@ -78,12 +78,12 @@ async function req(url, opts) {
   // AIOSEO meta lives per-post-id and dies with every delete+recreate: re-apply it.
   const seo = await fetch(BASE + "/wp-json/santafe/v1/seo/" + page.id, {
     method: "POST", headers: H,
-    body: JSON.stringify({ description: "Health & Wellness Expo Sept 18-19 and race day Sunday, Sept 20, 2026 in Santa Fe: Half Marathon, 3-Amigos Relay, 5K and free Kids 1K Dash at 7,000 ft." })
+    body: JSON.stringify({ description: "Race weekend Sept 18-19, 2027 in Santa Fe: 5K, 10K and Kids Dash on Saturday; Half Marathon and 3-Amigos Relay on Sunday, Sept 19, at 7,000 ft." })
   });
   console.log("seo re-applied:", seo.ok);
   // this page IS the site front page: repoint the setting at the fresh id and keep the homepage title
   const st = await req(BASE + "/wp-json/wp/v2/settings", { method: "POST", headers: H, body: JSON.stringify({ show_on_front: "page", page_on_front: page.id }) });
   console.log("front page setting:", st.page_on_front === page.id ? "repointed to " + page.id : "UNEXPECTED " + st.page_on_front);
-  await req(BASE + "/wp-json/santafe/v1/seo/" + page.id, { method: "POST", headers: H, body: JSON.stringify({ title: "Santa Fe International Half Marathon | Sept 20, 2026 Race" }) });
+  await req(BASE + "/wp-json/santafe/v1/seo/" + page.id, { method: "POST", headers: H, body: JSON.stringify({ title: "Santa Fe International Half Marathon | Sept 19, 2027 Race" }) });
   console.log("homepage title re-applied");
 })().catch(e => { console.error("FAILED:", e.message); process.exit(1); });

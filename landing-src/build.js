@@ -77,6 +77,9 @@ ${LDJSON}
 <script>${bundle}</script>
 `;
 fs.writeFileSync(path.join(ROOT, "..", "run-santa-fe-2026.prod.src.html"), out);
+// recreate-wp-page.js, predeploy_exact.js and predeploy_diff.py read the copy next to this script, not the
+// one above. Without this second write a build never reaches the deploy and the old page ships again.
+fs.writeFileSync(path.join(ROOT, "run-santa-fe-2026.prod.src.html"), out);
 console.log("prod src assembled:", Math.round(out.length / 1024) + " KB",
   "| bundle:", Math.round(bundle.length / 1024) + " KB",
   "| tailwind css:", Math.round(tw.length / 1024) + " KB");
