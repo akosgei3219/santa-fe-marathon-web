@@ -102,7 +102,9 @@ page up, entries NOT open yet). The homepage's three registration URLs
 `https://runsignup.com/Race/Register/?raceId=89412`; they only render in
 the open/walkup states, so nothing user-facing changed.
 
-**2027 registration OPENED (executed 2026-09-23, same pattern as 2026):**
+**2027 registration OPENED (executed and deployed 2026-09-23; verified
+logged-out: register controls live on raceId 89412, five InStock offers,
+zero sold-out strings, end-to-end register click confirmed):**
 online closes Thursday Sept 16, 2027 11:59 PM MDT (`REG_CLOSE`); 5K
 walk-ups until Sat Sept 18 7:45 AM (`WALKUP_CLOSE`); all open/walkup/
 closed state copy rewritten for 2027 EN+ES (the closed branch now reads
