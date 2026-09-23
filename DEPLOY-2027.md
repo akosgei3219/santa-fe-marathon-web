@@ -112,9 +112,12 @@ same sitting, or Google sees conflicting events.
 
 ## Known remaining 2026 references (WordPress-side, as of the switchover)
 
-- Footer template (Elementor): "Join us this September · September 18–20, 2026"
 - Menu: packet pickup still Running Hub/2026 hours; "Health & Wellness
   Expo (cancelled)" entry
+
+(The Elementor footer date and both AIOSEO schema copies were fixed and
+verified 2026-09-23; the repo's footer-block.html paste block was updated
+to 2027 in the same sitting.)
 
 ## If it goes wrong
 
