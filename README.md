@@ -15,10 +15,11 @@ and make sure Tailwind CSS is active.
 
 ## Registration links (`urgency-banner.jsx`)
 
-The RunSignup race ID is already set. Every tier button links to:
+Every tier button links to the **2027** RunSignup race (raceId `89412`). The
+2026 race was `83604`; don't reuse it.
 
 ```
-https://runsignup.com/Race/Register/?raceId=83604
+https://runsignup.com/Race/Register/?raceId=89412
   &utm_source=referral_banner&utm_medium=web
   &utm_campaign=july_referral_2026&utm_content=<tier>
 ```
@@ -63,7 +64,7 @@ configurable in two places:
 ### To turn it on for Groups/Teams
 1. In RunSignup: **Race → Groups/Teams**. Open the team you want people to join.
 2. Copy its registration link — it contains the group identifier, e.g.
-   `https://runsignup.com/Race/Register/?raceId=83604&groupId=123456`.
+   `https://runsignup.com/Race/Register/?raceId=89412&groupId=123456`.
 3. In both files set:
    - `REFERRAL_PARAM = "groupId"`
    - `REFERRAL_CODE  = "123456"`   (the number from that link)
