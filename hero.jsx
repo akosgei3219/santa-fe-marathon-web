@@ -27,7 +27,7 @@ export default function Hero() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="https://runsignup.com/Race/Register/?raceId=83604"
+            href="https://runsignup.com/Race/Register/?raceId=89412"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-xl bg-amber-500 px-8 py-3.5 text-base font-semibold text-stone-900 shadow-lg transition hover:bg-amber-400"
