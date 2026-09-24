@@ -13,39 +13,28 @@ and make sure Tailwind CSS is active.
 | `timer.jsx` | Live countdown to race day: **Sunday, September 20, 2026, 7:00 AM Mountain**. |
 | `urgency-banner.jsx` | July referral promo. Red/white/blue theme, live countdown, tiered referral links. Auto-hides after July 31, 2026. |
 
-## ⚠️ Before you go live — replace these placeholders
+## Registration links (`urgency-banner.jsx`)
 
-All placeholders live at the **top of `urgency-banner.jsx`**:
-
-```js
-const RACE_ID = "YOUR_RACE_ID";           // ← your numeric RunSignup race ID
-const REFERRAL_CODE = "YOUR_REFERRAL_CODE"; // ← your referral / ambassador code
-```
-
-Once both are set, the three tier buttons build their links automatically:
+The RunSignup race ID is already set. Every tier button links to:
 
 ```
-https://runsignup.com/Race/Register/?raceId=<RACE_ID>&referralCode=<REFERRAL_CODE>
-    &utm_source=referral_banner&utm_medium=web
-    &utm_campaign=july_referral_2026&utm_content=<tier>
+https://runsignup.com/Race/Register/?raceId=83604
+  &utm_source=referral_banner&utm_medium=web
+  &utm_campaign=july_referral_2026&utm_content=<tier>
 ```
 
 `utm_content` is set per button so you can tell tiers apart in analytics:
 
 | Button | Saving | `utm_content` |
 |--------|--------|---------------|
-| Relay  | $25    | `relay` |
-| Half   | $15    | `half`  |
-| 4K     | $7     | `4k`    |
+| Relay | $25 | `relay` |
+| Half | $15 | `half` |
+| 4K | $7 | `4k` |
 
-### Double-check with RunSignup
-
-- **Referral parameter name.** The code uses `referralCode=`. RunSignup's
-  ambassador/referral program may use a different key or a `/Refer` path.
-  Grab one real referral link from your RunSignup dashboard and confirm the
-  format matches, or the attribution may not register.
-- **Register vs. landing page.** Links point at `/Race/Register/`. Change to
-  the race landing page path if you'd rather send people there first.
+`REFERRAL_CODE` is intentionally left as the placeholder `YOUR_REFERRAL_CODE`.
+While it's a placeholder, no referral parameter is added and the links stay
+clean. Referrals run through RunSignup Groups/Teams (see below), so fill it in
+only with a real team `groupId` when a referral campaign is live.
 
 ## Dates baked into the code
 
@@ -59,31 +48,6 @@ https://runsignup.com/Race/Register/?raceId=<RACE_ID>&referralCode=<REFERRAL_COD
 2. Copy these four files into `src/`.
 3. Add Tailwind (https://tailwindcss.com/docs/guides/vite).
 4. Import and render `App` in `main.jsx`, then `npm run dev`.
-
-## Referral setup (RunSignup) — ONE step left
-
-Referral **reward tiers** are already correct in `urgency-banner.jsx`:
-3-Amigos Relay **$25** · Half Marathon **$15** · 4K Fitness **$7**.
-
-What's still needed is the actual RunSignup referral **link/code format** so the
-click actually attributes. RunSignup uses one of a few patterns — we need to see
-the real one from your dashboard:
-
-- `https://runsignup.com/Race/83604/Referral/XXXXXX`  (path style), or
-- `https://runsignup.com/Race/Register/?raceId=83604&rfsn=XXXXXX`  (param style), or
-- `...&referralCode=XXXXXX`
-
-### To finish it
-1. In RunSignup: **Race → Promotion → Referral Rewards** (a.k.a. "Refer a Friend").
-   Confirm the rewards are set to $25 / $15 / $7.
-2. Copy **one real referral link** exactly as RunSignup generates it.
-3. Drop that link/code in, then update two places:
-   - `urgency-banner.jsx` → `REFERRAL_CODE` + `buildLink()`
-   - the site-wide CTA tracking script in the index HTML files
-4. Re-run the jsdom link test to confirm the parameter is present on every CTA.
-
-Until the real code is in, `REFERRAL_CODE = "YOUR_REFERRAL_CODE"` stays a
-placeholder on purpose — a fake value would silently fail to attribute referrals.
 
 ## UPDATE — referral runs through RunSignup Groups/Teams (no code)
 
