@@ -86,7 +86,7 @@ export default function RegistrationUrgency() {
             <Pill value={time.seconds} label="Sec" />
           </div>
           <a
-            href="https://runsignup.com/Race/Register/?raceId=83604"
+            href="https://runsignup.com/Race/Register/?raceId=89412"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-xl bg-amber-500 px-7 py-3 text-sm font-bold text-stone-900 shadow-lg transition hover:bg-amber-400"
