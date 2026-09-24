@@ -4,7 +4,7 @@ import { useState } from "react";
 // RACE_URL   → RunSignup registration page.
 // REF_PARAM  → the URL param the code rides on. Keep "ref" for a generic
 //              passthrough, or set to "groupId" to feed RunSignup Groups/Teams.
-const RACE_URL = "https://runsignup.com/Race/Register/?raceId=83604";
+const RACE_URL = "https://runsignup.com/Race/Register/?raceId=89412";
 const REF_PARAM = "ref";
 
 // Deterministic, URL-safe code: same runner always gets the same code.
