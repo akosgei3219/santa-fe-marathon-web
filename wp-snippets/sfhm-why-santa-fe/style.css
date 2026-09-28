@@ -1,6 +1,6 @@
 /* SFHM-WHY-SANTA-FE 2026-09-28
-   "Why run Santa Fe?" tiles, inserted by script.js just above the race cards
-   (#races). Uses the page's own tokens (--terra, --ink, --line, --sand-2) so it
+   "Why run Santa Fe?" tiles, inserted by script.js in place of the homepage
+   story section (#story), which is hidden only once the tiles are in. Uses the page's own tokens (--terra, --ink, --line, --sand-2) so it
    follows light and dark mode like the rest of the homepage. */
 
 #sfhm-why { padding: 56px 0 8px; }
@@ -43,3 +43,9 @@ html body #sfhm-why .why-item h3 {
   #sfhm-why { padding-top: 40px; }
   #sfhm-why .why-item p { font-size: .95rem; }
 }
+
+/* The tiles replace the story section. The class is set by script.js only
+   after the tiles are on the page, so the story never leaves a blank gap. */
+html.sfhm-why-on #story { display: none !important; }
+#main p.sfhm-hide { display: none !important; }
+#sfhm-why { scroll-margin-top: 90px; }
