@@ -24,13 +24,14 @@
       ["/packet-pickup/", "Packet Pick-Up", "Recogida de paquetes"],
       ["/transportation-parking/", "Parking & Shuttles", "Estacionamiento y shuttles"],
       ["/gear-bag-drop/", "Gear & Bag Drop", "Guarda equipaje"],
-      ["/lodging-travel/", "Lodging Partners & Travel", "Hoteles aliados y viaje"],
+      ["/lodging-travel/", "Lodging & Travel", "Hospedaje y viaje"],
       ["/event-logistics/", "Event Logistics", "Logística del evento"],
       ["/spectator-guide/", "Spectator Guide", "Guía para espectadores"],
       ["/refund-policy/", "Refund & Deferral Policy", "Política de reembolso y aplazamiento"]
     ]},
     { key: "community", en: "Community & Event", es: "Comunidad", items: [
       ["/sponsors/", "Sponsors", "Patrocinadores"],
+      ["/lodging-travel/", "Lodging Partners", "Hoteles aliados"],
       ["/volunteer/", "Volunteer", "Voluntariado"],
       ["/contact-us/", "Contact Us", "Contáctanos"],
       ["/host-city-guide/", "Host City Guide", "Guía de la ciudad anfitriona"],
@@ -178,15 +179,22 @@
     r.insertBefore(bar, r.firstChild);
   }
 
-  /* The grouped panel (phones, tablets) comes from the page bundle and still says
-     "Lodging & Travel"; give it the same "Lodging Partners & Travel" label so the
-     race-rate hotels are easy to find at every width. */
-  var LODGING = { en: "Lodging Partners & Travel", es: "Hoteles aliados y viaje" };
-  function relabelPanel() {
-    var a = document.querySelector('#mobile-menu a[href="/lodging-travel/"]');
-    if (!a) return;
+  /* The grouped panel (phones, tablets) comes from the page bundle and has no
+     Lodging Partners entry. Add one under Community & Event, right after Sponsors,
+     by copying the Sponsors row so it picks up the panel's own styling. */
+  var LODGING = { en: "Lodging Partners", es: "Hoteles aliados" };
+  function addPanelLodging() {
+    var sp = document.querySelector('#mobile-menu a[href="/sponsors/"]');
+    if (!sp) return;
     var want = LODGING[currentLang()];
-    if (a.textContent !== want) a.textContent = want;
+    var mine = sp.parentNode.querySelector('a[data-sfdd-lodging]');
+    if (!mine) {
+      mine = sp.cloneNode(false);
+      mine.setAttribute("href", "/lodging-travel/");
+      mine.setAttribute("data-sfdd-lodging", "1");
+      sp.parentNode.insertBefore(mine, sp.nextSibling);
+    }
+    if (mine.textContent !== want) mine.textContent = want;
   }
 
   /* Grouped panel (phones, tablets): close with Esc or a click outside the header. */
@@ -224,7 +232,7 @@
     new MutationObserver(function () {
       if (queued) return;
       queued = true;
-      requestAnimationFrame(function () { queued = false; ensure(); relabelPanel(); });
+      requestAnimationFrame(function () { queued = false; ensure(); addPanelLodging(); });
     }).observe(root, { childList: true, subtree: true, characterData: true });
   }
 
