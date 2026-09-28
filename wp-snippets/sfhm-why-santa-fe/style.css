@@ -1,0 +1,45 @@
+/* SFHM-WHY-SANTA-FE 2026-09-28
+   "Why run Santa Fe?" tiles, inserted by script.js just above the race cards
+   (#races). Uses the page's own tokens (--terra, --ink, --line, --sand-2) so it
+   follows light and dark mode like the rest of the homepage. */
+
+#sfhm-why { padding: 56px 0 8px; }
+#sfhm-why .why-wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+#sfhm-why .why-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+#sfhm-why h2 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.05; color: var(--ink); }
+
+#sfhm-why .why-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 20px; margin: 0; padding: 0; list-style: none;
+}
+@media (min-width: 900px) {
+  #sfhm-why .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 32px; }
+  /* seven tiles: the giving-back tile closes the section as a full-width row */
+  #sfhm-why .why-item:last-child { grid-column: 1 / -1; }
+  #sfhm-why .why-item:last-child p { max-width: 68ch; }
+}
+@media (max-width: 420px) {
+  #sfhm-why .why-grid { grid-template-columns: 1fr; gap: 22px; }
+}
+@media (min-width: 421px) and (max-width: 899px) {
+  #sfhm-why .why-item:last-child { grid-column: 1 / -1; }
+}
+
+#sfhm-why .why-item { border-top: 3px solid var(--terra); padding-top: 14px; }
+html body #sfhm-why .why-item h3 {
+  margin: 0 0 6px; font-size: 1.2rem !important; line-height: 1.15; color: var(--ink);
+  text-transform: uppercase; letter-spacing: .01em;
+}
+#sfhm-why .why-item p {
+  margin: 0; font-family: 'Figtree', system-ui, sans-serif; font-size: 1rem;
+  line-height: 1.55; color: var(--ink-soft);
+}
+#sfhm-why .why-item a {
+  color: var(--terra-deep); text-decoration: underline; text-underline-offset: 3px;
+}
+#sfhm-why .why-item a:hover, #sfhm-why .why-item a:focus-visible { color: var(--ink); }
+
+@media (max-width: 767.98px) {
+  #sfhm-why { padding-top: 40px; }
+  #sfhm-why .why-item p { font-size: .95rem; }
+}
