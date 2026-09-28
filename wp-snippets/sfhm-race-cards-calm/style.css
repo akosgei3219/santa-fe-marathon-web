@@ -1,0 +1,15 @@
+/* SFHM-RACE-CARDS-CALM 2026-09-28 -- see README.md next to this file. */
+#races .sfhm-cc-hide { display: none !important; }
+#races .sfhm-cc-note {
+  margin: -20px 0 36px; max-width: 62ch;
+  font-family: 'Figtree', system-ui, sans-serif; font-size: 1rem; line-height: 1.5;
+  color: var(--ink-soft);
+}
+@media (max-width: 767.98px) {
+  #races .sfhm-cc-note { margin: -16px 0 28px; font-size: .95rem; }
+}
+/* On phones the decorative shape icon (aria-hidden) drifts below the card's
+   date line and reads as clutter; the title carries the card on its own. */
+@media (max-width: 767.98px) {
+  #races .race-card .race-badge { display: none !important; }
+}
