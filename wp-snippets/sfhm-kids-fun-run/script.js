@@ -35,7 +35,7 @@
         var ours = s.nextElementSibling;
         if (!ours || !ours.classList.contains("sfhm-kids-tag")) {
           ours = s.cloneNode(false);
-          ours.removeAttribute("style");
+          ours.style.removeProperty("display");
           ours.classList.add("sfhm-kids-tag");
           s.parentNode.insertBefore(ours, s.nextSibling);
         }
