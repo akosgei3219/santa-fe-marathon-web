@@ -13,3 +13,10 @@ for n in ORDER:
 (W / "_bundle/homepage.css").write_text("".join(css))
 (W / "_bundle/homepage.js").write_text("".join(js))
 print("built", len("".join(css)), "bytes css,", len("".join(js)), "bytes js")
+
+# One-paste version for Elementor > Custom Code (location: </body> end, condition: Front Page).
+el = (f"<!-- {stamp}: Elementor Custom Code, location </body> end, condition Front Page. {note} -->\n"
+      "<style id=\"sfhm-homepage-bundle\">\n" + "".join(css) + "\n</style>\n"
+      "<script id=\"sfhm-homepage-bundle-js\">\n" + "".join(js) + "\n</script>\n")
+(W / "_bundle/homepage-elementor.html").write_text(el)
+print("built homepage-elementor.html", len(el), "bytes")

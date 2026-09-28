@@ -10,7 +10,19 @@
 Tested together on the live homepage 2026-09-28: desktop 1366px and phone 390px, EN, ES
 and back; no page errors, no sideways scroll.
 
-## Install (WordPress, about 5 minutes)
+## Install: easiest (Elementor > Custom Code, one paste)
+
+The site already runs its add-ons from Elementor > Custom Code, so use that:
+
+1. WordPress admin > Elementor > Custom Code > Add New. Title: `SFHM Homepage Bundle`.
+2. Location: `</body> - End`. Priority: 1.
+3. Paste all of `homepage-elementor.html` into the code box.
+4. Publish. When asked for conditions: Include > Front Page. Save & Close.
+5. Purge the cache (HostGator and any caching plugin), open the homepage in a private window and check.
+
+To undo: Elementor > Custom Code, switch the entry to Draft.
+
+## Install: alternative (a code snippets plugin, two files)
 
 1. Code snippets plugin: add a new snippet, type CSS, paste `homepage.css`, front page only.
 2. Add a second snippet, type JavaScript (footer), paste `homepage.js`, front page only.
