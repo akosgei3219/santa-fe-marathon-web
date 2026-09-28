@@ -24,7 +24,7 @@
       ["/packet-pickup/", "Packet Pick-Up", "Recogida de paquetes"],
       ["/transportation-parking/", "Parking & Shuttles", "Estacionamiento y shuttles"],
       ["/gear-bag-drop/", "Gear & Bag Drop", "Guarda equipaje"],
-      ["/lodging-travel/", "Lodging & Travel", "Hospedaje y viaje"],
+      ["/lodging-travel/", "Lodging Partners & Travel", "Hoteles aliados y viaje"],
       ["/event-logistics/", "Event Logistics", "Logística del evento"],
       ["/spectator-guide/", "Spectator Guide", "Guía para espectadores"],
       ["/refund-policy/", "Refund & Deferral Policy", "Política de reembolso y aplazamiento"]
@@ -178,6 +178,17 @@
     r.insertBefore(bar, r.firstChild);
   }
 
+  /* The grouped panel (phones, tablets) comes from the page bundle and still says
+     "Lodging & Travel"; give it the same "Lodging Partners & Travel" label so the
+     race-rate hotels are easy to find at every width. */
+  var LODGING = { en: "Lodging Partners & Travel", es: "Hoteles aliados y viaje" };
+  function relabelPanel() {
+    var a = document.querySelector('#mobile-menu a[href="/lodging-travel/"]');
+    if (!a) return;
+    var want = LODGING[currentLang()];
+    if (a.textContent !== want) a.textContent = want;
+  }
+
   /* Grouped panel (phones, tablets): close with Esc or a click outside the header. */
   function panelToggle() {
     return document.querySelector('#root > div.sticky button[aria-controls="mobile-menu"][aria-expanded="true"]');
@@ -213,7 +224,7 @@
     new MutationObserver(function () {
       if (queued) return;
       queued = true;
-      requestAnimationFrame(function () { queued = false; ensure(); });
+      requestAnimationFrame(function () { queued = false; ensure(); relabelPanel(); });
     }).observe(root, { childList: true, subtree: true, characterData: true });
   }
 

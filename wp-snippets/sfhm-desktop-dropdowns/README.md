@@ -16,6 +16,7 @@ before. On every width, that panel and the dropdowns now also close with the
 | 1200px and up | Four plain links (no dropdowns) **and** a menu button that opens a 27-link, 3-column panel | Three dropdowns + Results & Photos + registration button. Menu button hidden. |
 | Under 1200px | Menu button opens the grouped panel | Same, plus Esc / outside click closes it |
 | All widths | "Register Now" in the panel points at the 2026 RunSignup page | Hidden until 2027 registration opens (delete the marked CSS rule that day) |
+| All widths | Lodging listed as "Lodging & Travel" | "Lodging Partners & Travel", so the race-rate hotels (Concept Hotel Group, Pecos Trail Inn) are easy to find |
 
 The dropdown entries are the same links, in the same order, as the grouped panel in
 the live homepage bundle (checked 2026-09-28), so the homepage, the panel and the
