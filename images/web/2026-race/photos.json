@@ -198,5 +198,85 @@
   "status": "use",
   "photographer": "Sam Wasson",
   "date": "2026-09-20"
+ },
+ {
+  "n": 26,
+  "file": "sfhm-2026-26-mountains-ahead.jpg",
+  "caption_en": "Mountains ahead",
+  "caption_es": "Montañas al frente",
+  "alt_en": "A runner in a green tank top heads down a paved trail toward blue mountains under a big sky, others ahead of him.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 27,
+  "file": "sfhm-2026-27-railed-path.jpg",
+  "caption_en": "Along the railed path",
+  "caption_es": "Por el sendero con barandales",
+  "alt_en": "A runner in a purple shirt comes up a paved path between metal railings, long shadows across the concrete.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 28,
+  "file": "sfhm-2026-28-railings-shadows.jpg",
+  "caption_en": "Long morning shadows",
+  "caption_es": "Sombras largas de la mañana",
+  "alt_en": "Two runners pass each other on a railed paved path with long shadows, trees on the left.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 29,
+  "file": "sfhm-2026-29-mountain-path.jpg",
+  "caption_en": "Mountains over the trail",
+  "caption_es": "Montañas sobre el sendero",
+  "alt_en": "A runner in a race shirt on a winding tree-lined path, a large mountain behind and other runners ahead.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 30,
+  "file": "sfhm-2026-30-sunny-trail.jpg",
+  "caption_en": "Sun on the trail",
+  "caption_es": "Sol en el sendero",
+  "alt_en": "A runner on a paved path under bright sun, trees and a stream channel beside her, mountains far off.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 31,
+  "file": "sfhm-2026-31-capitol-ford-tent.jpg",
+  "caption_en": "Capitol Ford tent at the Reunity Resources farm stand",
+  "caption_es": "La carpa de Capitol Ford en el puesto de Reunity Resources",
+  "alt_en": "People gather under a blue Capitol Ford tent in front of a red barn at the finish area.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 32,
+  "file": "sfhm-2026-32-speaker.jpg",
+  "caption_en": "Speaker at the finish",
+  "caption_es": "Oradora en la meta",
+  "alt_en": "A woman in a light blue jacket speaks into a microphone at the finish area.",
+  "status": "ask",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 33,
+  "file": "sfhm-2026-33-celebration.jpg",
+  "caption_en": "Celebrating at the finish",
+  "caption_es": "Celebrando en la meta",
+  "alt_en": "A runner wearing a medal throws his arms up in celebration while another holds result sheets.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
  }
 ]
