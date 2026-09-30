@@ -1,4 +1,4 @@
-# Homepage bundle: one snippet instead of four
+# Homepage bundle: one snippet instead of five
 
 `homepage.css` + `homepage.js` combine every front-page snippet in this folder:
 
@@ -6,6 +6,8 @@
 2. `sfhm-why-santa-fe`: "Why run Santa Fe?" in the old story section's place; guards against the three-friends story
 3. `sfhm-race-cards-calm`: one fee/status line, shorter race-card blurbs, no stray phone icons
 4. `sfhm-kids-fun-run`: Kids Fun Dash tag reads FUN RUN / CARRERA DIVERTIDA
+5. `sfhm-photo-gallery`: "2026 in pictures" carousel above the sponsors (shows only once the
+   12 photos are uploaded to the media library; see its README)
 
 Tested together on the live homepage 2026-09-28: desktop 1366px and phone 390px, EN, ES
 and back; no page errors, no sideways scroll.

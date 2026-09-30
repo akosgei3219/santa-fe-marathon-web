@@ -1,7 +1,7 @@
 """Rebuild homepage.css / homepage.js from the snippet folders. Run: python3 wp-snippets/_bundle/build.py"""
 import pathlib, datetime
 W = pathlib.Path(__file__).resolve().parent.parent
-ORDER = ["sfhm-desktop-dropdowns", "sfhm-why-santa-fe", "sfhm-race-cards-calm", "sfhm-kids-fun-run"]
+ORDER = ["sfhm-desktop-dropdowns", "sfhm-why-santa-fe", "sfhm-race-cards-calm", "sfhm-kids-fun-run", "sfhm-photo-gallery"]
 stamp = "SFHM HOMEPAGE BUNDLE " + datetime.date.today().isoformat()
 note = "Do not edit here; edit the source folder and rebuild (wp-snippets/_bundle/build.py)."
 css = [f"/* {stamp} -- built from each snippet folder style.css. {note} */\n"]
