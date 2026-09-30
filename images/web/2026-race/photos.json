@@ -128,5 +128,75 @@
   "status": "use",
   "photographer": "Sam Wasson",
   "date": "2026-09-20"
+ },
+ {
+  "n": 18,
+  "file": "sfhm-2026-18-rainbow-hat.jpg",
+  "caption_en": "All smiles on the trail",
+  "caption_es": "Pura sonrisa en el sendero",
+  "alt_en": "A runner in a rainbow hat gives two thumbs up on a paved trail, another runner beside him and mountains behind.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 20,
+  "file": "sfhm-2026-20-chamisa-bridge.jpg",
+  "caption_en": "Chamisa in bloom along the trail",
+  "caption_es": "Chamisa en flor junto al sendero",
+  "alt_en": "A smiling runner on a paved path between yellow-flowering chamisa bushes, a bridge behind her.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 21,
+  "file": "sfhm-2026-21-big-sky-runner.jpg",
+  "caption_en": "Under the big sky",
+  "caption_es": "Bajo el cielo grande",
+  "alt_en": "A runner crosses tall grass under a wide blue sky with clouds and mountains on the horizon.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 22,
+  "file": "sfhm-2026-22-mountain-view.jpg",
+  "caption_en": "Mountains on the horizon",
+  "caption_es": "Montañas en el horizonte",
+  "alt_en": "A runner in a pink shirt comes over a grassy rise with blue mountains and white clouds behind.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 23,
+  "file": "sfhm-2026-23-running-together.jpg",
+  "caption_en": "Running together",
+  "caption_es": "Corriendo juntos",
+  "alt_en": "Two runners side by side through tall grass with mountains and clouds behind them.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 24,
+  "file": "sfhm-2026-24-high-desert.jpg",
+  "caption_en": "Through the high-desert grass",
+  "caption_es": "Entre la hierba del desierto alto",
+  "alt_en": "A runner in a white cap moves through tall golden grass with mountains in the distance.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
+ },
+ {
+  "n": 25,
+  "file": "sfhm-2026-25-smile-mountains.jpg",
+  "caption_en": "Smiles under the clouds",
+  "caption_es": "Sonrisas bajo las nubes",
+  "alt_en": "A smiling runner in a pink cap crosses a grassy rise with mountains and big white clouds behind.",
+  "status": "use",
+  "photographer": "Sam Wasson",
+  "date": "2026-09-20"
  }
 ]
